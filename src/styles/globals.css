@@ -1,0 +1,231 @@
+/* ─── External font imports must be first ─────────────────────────────── */
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500,400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Areal — local font ──────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Areal';
+  src: url('/fonts/Areal.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Areal';
+  src: url('/fonts/Areal-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Areal';
+  src: url('/fonts/Areal-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Areal';
+  src: url('/fonts/Areal-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Ogg — local trial fonts ─────────────────────────────────────────── */
+@font-face {
+  font-family: 'Ogg';
+  src: url('/fonts/Ogg-Light-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ogg';
+  src: url('/fonts/Ogg-Regular-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ogg';
+  src: url('/fonts/Ogg-Medium-Trial.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ogg';
+  src: url('/fonts/Ogg-Bold-Trial.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ogg';
+  src: url('/fonts/Ogg-LightItalic-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ogg';
+  src: url('/fonts/Ogg-Italic-Trial.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Design tokens — exact Framer site values ────────────────────────── */
+:root {
+  --bg:         #fffbf5;
+  --fg:         #222222;
+  --accent:     #813746;
+  --on-accent:  #fffbf5;  /* text on brand-primary bg — cream on burgundy  7.78:1 ✓ AAA */
+  --surface:    #f7f3f5;
+  --muted:      rgba(255, 237, 209, 0.6);
+  --border:     rgba(34, 34, 34, 0.1);
+  /* Gradient: dark brown → burgundy */
+  --grad-from:  #1c1a16;
+  --grad-to:    #813746;
+  color-scheme: light;
+
+  /* ─── Spacing scale — 4px/8px grid, 16px base ───────────────────────── */
+  /*                                                                        */
+  /*  Token        px     rem    Role                                       */
+  /*  --space-xs   4px   0.25   Micro — icon gaps, optical alignment       */
+  /*  --space-sm   8px   0.5    Component-internal padding                  */
+  /*  --space-md   16px  1      Default element spacing                     */
+  /*  --space-lg   24px  1.5    Card padding, grouped elements              */
+  /*  --space-xl   32px  2      Between related components                  */
+  /*  --space-2xl  48px  3      Section breathing room                      */
+  /*  --space-3xl  64px  4      Large layout gaps                           */
+  /*  --space-4xl  96px  6      Section padding (desktop)                   */
+  /*  --space-5xl  128px 8      Hero / full-bleed gaps                      */
+
+  /* Badge tokens — solid colors so contrast is always predictable */
+  /* Button interaction tokens */
+  --accent-hover:  #5c2232;              /* #813746 darkened ~35% — hover fill */
+  --accent-bg-10:  rgba(129,55,70,0.10); /* #813746 at 10% — secondary hover bg */
+  --accent-ring:   rgba(129,55,70,0.20); /* #813746 at 20% — focus halo        */
+
+  --badge-text:          #555555;          /* 6.9:1 on --surface  ✓ AA */
+  --badge-accent-bg:     rgba(129,55,70,0.10);
+  --badge-accent-border: rgba(129,55,70,0.25);
+
+  /* Overlay — image card hover, always dark regardless of theme */
+  --overlay:             rgba(0, 0, 0, 0.72);
+
+  --space-xs:   0.25rem;   /*   4px */
+  --space-sm:   0.5rem;    /*   8px */
+  --space-md:   1rem;      /*  16px */
+  --space-lg:   1.5rem;    /*  24px */
+  --space-xl:   2rem;      /*  32px */
+  --space-2xl:  3rem;      /*  48px */
+  --space-3xl:  4rem;      /*  64px */
+  --space-4xl:  6rem;      /*  96px */
+  --space-5xl:  8rem;      /* 128px */
+}
+
+.dark {
+  --bg:         #1c1a16;
+  --on-accent:  #1c1a16;  /* text on brand-primary bg — near-black on rose  4.81:1 ✓ AA */
+  /* Button interaction tokens — dark */
+  --accent-hover:  #ba5a6e;              /* #e36f86 darkened ~25% — hover fill */
+  --accent-bg-10:  rgba(227,111,134,0.10); /* #e36f86 at 10% — secondary hover bg */
+  --accent-ring:   rgba(227,111,134,0.20); /* #e36f86 at 20% — focus halo      */
+  /* Badge tokens — dark mode */
+  --badge-text:          #999999;          /* 5.8:1 on --surface dark ✓ AA */
+  --badge-accent-bg:     rgba(227,111,134,0.12);
+  --badge-accent-border: rgba(227,111,134,0.30);
+  --fg:         #fffbf5;
+  --accent:     #e36f86;
+  --surface:    #252220;
+  --muted:      rgba(40, 38, 34, 0.8);
+  --border:     rgba(232, 232, 232, 0.1);
+  /* Gradient: cream → pinkish rose */
+  --grad-from:  #fffbf5;
+  --grad-to:    #e36f86;
+  color-scheme: dark;
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    cursor: none;
+  }
+
+  body {
+    font-family: 'Areal', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg);
+    color: var(--fg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a, button, [role="button"] {
+    cursor: none;
+  }
+}
+
+/* ─── Utility aliases ─────────────────────────────────────────────────── */
+@layer utilities {
+  .text-fg      { color: var(--fg); }
+  .text-accent  { color: var(--accent); }
+  .bg-bg        { background-color: var(--bg); }
+  .bg-surface   { background-color: var(--surface); }
+  .bg-accent    { background-color: var(--accent); }
+  .border-token { border-color: var(--border); }
+
+  /* Projects section — 5% accent wash in light, surface in dark */
+  .bg-projects  { background-color: color-mix(in srgb, var(--accent) 5%, var(--bg)); }
+  .dark .bg-projects { background-color: var(--surface); }
+}
+
+/* ─── Noise overlay ───────────────────────────────────────────────────── */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px;
+}
+
+/* ─── Circle-letter dot interactions ─────────────────────────────────── */
+.cl-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.14s ease, fill 0.14s ease;
+  will-change: transform, opacity;
+}
+.cl-dot:hover {
+  transform: scale(1.1);
+  fill: var(--accent);
+}
+
+/* ─── Dot materialise reveal ──────────────────────────────────────────── */
+/* Only r + opacity — transform stays completely free for hover scale      */
+@keyframes dotReveal {
+  from { opacity: 0; r: 0px; }
+  to   { opacity: 1; }
+}
+
+/* ─── Ongoing pulse — circles breathe using their own CSS custom --r ──── */
+@keyframes circlePulse {
+  0%, 100% { r: var(--r); }
+  50%      { r: calc(var(--r) * 0.80); }
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 3px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--accent); border-radius: 2px; }
