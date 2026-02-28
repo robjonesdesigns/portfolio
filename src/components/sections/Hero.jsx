@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Marquee from '../ui/Marquee'
-import CircleLetters from '../ui/CircleLetters'
+import HeroName from '../ui/HeroName'
 import BlueprintFigure from '../ui/BlueprintFigure'
 
 const EASE     = [0.76, 0, 0.24, 1]
@@ -81,7 +81,7 @@ export default function Hero() {
           style={{ y: nameY, opacity: nameOpacity }}
           className="h-full relative"
         >
-          <CircleLetters className="w-full h-full" />
+          <HeroName className="w-full h-full" />
         </motion.div>
       </div>
 

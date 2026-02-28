@@ -3,12 +3,12 @@ import { motion } from 'framer-motion'
 const EASE = [0.76, 0, 0.24, 1]
 
 /**
- * CircleLetters — "Rob Jones" as an inline SVG with a gradient fill.
+ * HeroName — "Rob Jones" as an inline SVG with a gradient fill.
  * Paths are the exact Ogg Italic letterforms. The linearGradient uses
  * --grad-from / --grad-to from the design system. No text rendering,
  * no background-clip, nothing to clip.
  */
-export default function CircleLetters({ className = '', style = {} }) {
+export default function HeroName({ className = '', style = {} }) {
   return (
     <div
       className={className}
