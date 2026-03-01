@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Marquee from '../ui/Marquee'
 import HeroName from '../ui/HeroName'
-import BlueprintFigure from '../ui/BlueprintFigure'
+import DaliLogo from '../ui/DaliLogo'
 
 const EASE     = [0.76, 0, 0.24, 1]
 const EASE_OUT = [0.16, 1, 0.3, 1]
@@ -74,8 +74,7 @@ export default function Hero() {
 
       {/* ── Name — fills remaining space ── */}
       <div className="relative z-10 flex-1 min-h-0 px-6 md:px-10 pt-6 pb-2">
-        {/* Blueprint figure — sits behind the name */}
-        <BlueprintFigure className="absolute bottom-0 left-6 right-6 h-48 md:left-auto md:right-10 md:top-0 md:h-full md:w-[38%] pointer-events-none text-fg opacity-[0.07]" />
+        <DaliLogo className="absolute bottom-0 left-6 right-6 h-48 md:left-auto md:right-10 md:top-0 md:h-full md:w-[38%] pointer-events-none" />
 
         <motion.div
           style={{ y: nameY, opacity: nameOpacity }}
