@@ -62,7 +62,7 @@ export default function Hero() {
 
       {/* ── Name — fills remaining space ── */}
       <div className="relative z-10 flex-1 min-h-0 px-6 md:px-10 pt-6 pb-2">
-        <RJLogo3D className="absolute bottom-0 left-0 right-0 h-64 md:bottom-auto md:left-auto md:right-10 md:top-0 md:h-full md:w-[38%] pointer-events-none" />
+        <RJLogo3D className="absolute bottom-0 left-0 right-0 h-64 md:bottom-auto md:left-auto md:right-10 md:top-[44%] md:-translate-y-1/2 md:h-[85%] md:w-[38%] pointer-events-none" />
 
         <motion.div
           style={{ y: nameY, opacity: nameOpacity }}
