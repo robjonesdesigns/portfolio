@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import ProjectCard from '../ui/ProjectCard'
+import ProjectRow from '../ui/ProjectRow'
 import { projects } from '../../data/projects'
 import Container from '../layout/Container'
 
@@ -58,19 +58,20 @@ export default function Projects() {
           </motion.p>
         </motion.div>
 
-        {/* Grid */}
+        {/* Rows */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-80px' }}
           variants={stagger}
         >
-          {projects.map((project) => (
+          {projects.map((project, i) => (
             <motion.div key={project.slug} variants={fadeUp}>
-              <ProjectCard project={project} />
+              <ProjectRow project={project} index={i} />
             </motion.div>
           ))}
+          {/* Bottom border after last row */}
+          <div className="border-t" style={{ borderColor: 'var(--border)' }} />
         </motion.div>
       </Container>
     </section>
