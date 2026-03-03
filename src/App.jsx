@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useTheme } from './hooks/useTheme'
@@ -21,11 +22,26 @@ function HomePage() {
   )
 }
 
+function ScrollToTop() {
+  const { pathname, state } = useLocation()
+  useEffect(() => {
+    if (state?.scrollTo) {
+      const timer = setTimeout(() => {
+        document.getElementById(state.scrollTo)?.scrollIntoView({ behavior: 'smooth' })
+      }, 500)
+      return () => clearTimeout(timer)
+    }
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
 function AnimatedRoutes({ theme, toggleTheme }) {
   const location = useLocation()
 
   return (
     <>
+      <ScrollToTop />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>

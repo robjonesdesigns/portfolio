@@ -134,8 +134,8 @@
   --accent-ring:   rgba(227,111,134,0.20); /* #e36f86 at 20% — focus halo      */
   /* Badge tokens — dark mode */
   --badge-text:          #999999;          /* 5.8:1 on --surface dark ✓ AA */
-  --badge-accent-bg:     rgba(227,111,134,0.12);
-  --badge-accent-border: rgba(227,111,134,0.30);
+  --badge-accent-bg:     rgba(227,111,134,0.06); /* 12% failed AA on --surface dark; 6% → ~4.75:1 ✓ */
+  --badge-accent-border: rgba(227,111,134,0.22);
   --fg:         #fffbf5;
   --accent:     #e36f86;
   --surface:    #252220;

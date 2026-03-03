@@ -49,7 +49,7 @@ export default function About() {
             <div className="aspect-[3/4] rounded-2xl overflow-hidden">
               <img
                 src="/images/headshot.jpg"
-                alt="Rob Jones — Product Designer"
+                alt="Rob Jones, Product Designer"
                 className="w-full h-full object-cover object-top"
               />
             </div>
@@ -94,7 +94,7 @@ export default function About() {
               className="text-base leading-relaxed text-fg opacity-60"
             >
               With a background spanning UX research, interaction design, and design
-              systems, I work best at the intersection of strategy and craft — where
+              systems, I work best at the intersection of strategy and craft, where
               thoughtful process meets pixel-perfect execution.
             </motion.p>
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { projects } from '../../data/projects'
 import PageTransition from '../ui/PageTransition'
 import Container from '../layout/Container'
+import Badge from '../ui/Badge'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -17,7 +18,7 @@ const stagger = {
 function Section({ label, children }) {
   return (
     <motion.div variants={fadeUp} className="flex flex-col gap-4">
-      <p className="text-xs font-mono tracking-widest uppercase" style={{ color: 'var(--accent)' }}>
+      <p className="text-xs font-mono tracking-widest uppercase text-brand-primary">
         {label}
       </p>
       <div className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.8 }}>
@@ -50,10 +51,7 @@ export default function CaseStudy() {
     <PageTransition>
       <div className="min-h-screen">
         {/* Hero */}
-        <div
-          className="pt-32 pb-20"
-          style={{ backgroundColor: project.color + '15' }}
-        >
+        <div className="pb-20 bg-surface" style={{ paddingTop: 140 }}>
           <Container size="md">
             <motion.div
               initial="hidden"
@@ -74,8 +72,8 @@ export default function CaseStudy() {
               </motion.div>
 
               <motion.div variants={fadeUp} className="flex items-center gap-3">
-                <span className="inline-block w-8 h-px" style={{ backgroundColor: project.color }} />
-                <span className="text-xs font-mono tracking-widest uppercase" style={{ color: project.color }}>
+                <span className="inline-block w-8 h-px bg-brand-primary" />
+                <span className="text-xs font-mono tracking-widest uppercase text-brand-primary">
                   Case Study
                 </span>
               </motion.div>
@@ -114,14 +112,22 @@ export default function CaseStudy() {
           </Container>
         </div>
 
-        {/* Hero image placeholder */}
-        <div
-          className="w-full"
-          style={{ backgroundColor: 'var(--surface)', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>
-            Add project hero image here
-          </p>
+        {/* Hero image */}
+        <div className="w-full overflow-hidden" style={{ height: '480px' }}>
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={`${project.title} interface`}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: 'center 20%' }}
+            />
+          ) : (
+            <div className="w-full h-full bg-surface flex items-center justify-center">
+              <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>
+                Add project hero image here
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Content */}
@@ -167,13 +173,7 @@ export default function CaseStudy() {
               {/* Tags */}
               <motion.div variants={fadeUp} className="flex flex-wrap gap-2 pt-4">
                 {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs px-3 py-1 rounded-full border"
-                    style={{ borderColor: project.color + '60', color: project.color }}
-                  >
-                    {tag}
-                  </span>
+                  <Badge key={tag}>{tag}</Badge>
                 ))}
               </motion.div>
 
@@ -185,8 +185,7 @@ export default function CaseStudy() {
               >
                 <Link
                   to="/#projects"
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--accent)' }}
+                  className="text-sm font-medium text-brand-primary"
                 >
                   ← All Projects
                 </Link>
@@ -196,8 +195,7 @@ export default function CaseStudy() {
                   return (
                     <Link
                       to={`/projects/${next.slug}`}
-                      className="text-sm font-medium"
-                      style={{ color: 'var(--accent)' }}
+                      className="text-sm font-medium text-brand-primary"
                     >
                       Next: {next.title} →
                     </Link>
