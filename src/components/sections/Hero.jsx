@@ -2,10 +2,9 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Marquee from '../ui/Marquee'
 import HeroName from '../ui/HeroName'
-import DaliLogo from '../ui/DaliLogo'
+import RJLogo3D from '../ui/RJLogo3D'
 
-const EASE     = [0.76, 0, 0.24, 1]
-const EASE_OUT = [0.16, 1, 0.3, 1]
+const EASE = [0.76, 0, 0.24, 1]
 
 const marqueeItems = [
   'UX Design', 'Product Design', 'Design Systems',
@@ -43,9 +42,9 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Eyebrow label + Badge ── */}
+      {/* ── Eyebrow label ── */}
       <div
-        className="relative z-10 flex-shrink-0 flex items-center justify-between px-6 md:px-10"
+        className="relative z-10 flex-shrink-0 flex items-center px-6 md:px-10"
         style={{ paddingTop: EYEBROW_TOP }}
       >
         <motion.div
@@ -59,22 +58,11 @@ export default function Hero() {
             UX & Product Designer
           </span>
         </motion.div>
-
-        <motion.div
-          className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-token
-                     text-[11px] font-mono tracking-widest uppercase select-none text-fg bg-bg"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.8, ease: EASE_OUT }}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 pulse-dot" />
-          Available for work
-        </motion.div>
       </div>
 
       {/* ── Name — fills remaining space ── */}
       <div className="relative z-10 flex-1 min-h-0 px-6 md:px-10 pt-6 pb-2">
-        <DaliLogo className="absolute bottom-0 left-6 right-6 h-48 md:left-auto md:right-10 md:top-0 md:h-full md:w-[38%] pointer-events-none" />
+        <RJLogo3D className="absolute bottom-0 left-0 right-0 h-64 md:bottom-auto md:left-auto md:right-10 md:top-0 md:h-full md:w-[38%] pointer-events-none" />
 
         <motion.div
           style={{ y: nameY, opacity: nameOpacity }}
@@ -98,17 +86,6 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* pulse-dot keyframe */}
-      <style>{`
-        .pulse-dot {
-          animation: pulse-ring 2.4s ease-out infinite;
-        }
-        @keyframes pulse-ring {
-          0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
-          70%  { box-shadow: 0 0 0 7px rgba(16,185,129,0); }
-          100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
-        }
-      `}</style>
     </section>
   )
 }
