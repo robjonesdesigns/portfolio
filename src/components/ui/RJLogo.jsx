@@ -8,12 +8,12 @@
  * size: controls the height in px — width scales proportionally (36:38 ratio)
  */
 export default function RJLogo({ size = 40, className = '' }) {
-  const width = Math.round(size * (36 / 38))
+  const width = Math.round(size * (36 / 41))
   return (
     <svg
       width={width}
       height={size}
-      viewBox="0 0 36 38"
+      viewBox="0 -2 36 41"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
