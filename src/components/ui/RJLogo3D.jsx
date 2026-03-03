@@ -191,7 +191,7 @@ function Scene({ accent, fg }) {
 
       {/* Base tilt: makes the logo appear to lie flat on a ground plane */}
       {/* position Y lifts the scene so the rendered content centres in the canvas */}
-      <group rotation={[-Math.PI / 3, 0, 0]} scale={0.44} position={[0, 2.5, 0]}>
+      <group rotation={[-Math.PI / 3, 0, 0]} scale={0.44} position={[0, 2, 0]}>
 
         {/* Parallax layer: subtle mouse-driven rotation */}
         <group ref={parallaxRef}>
