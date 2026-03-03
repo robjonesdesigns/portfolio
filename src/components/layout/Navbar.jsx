@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ThemeToggle from '../ui/ThemeToggle'
 import RJLogo from '../ui/RJLogo'
@@ -23,6 +23,7 @@ export default function Navbar({ theme, toggleTheme }) {
   const [margin,   setMargin]   = useState(getMargin)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setDocked(window.scrollY > 80)
@@ -42,7 +43,7 @@ export default function Navbar({ theme, toggleTheme }) {
       e.preventDefault()
       const id = href.replace('/#', '')
       if (location.pathname !== '/') {
-        window.location.href = href
+        navigate('/', { state: { scrollTo: id } })
       } else {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
       }

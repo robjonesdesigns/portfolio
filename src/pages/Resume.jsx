@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import PageTransition from '../components/ui/PageTransition'
 import Container from '../components/layout/Container'
+import Badge from '../components/ui/Badge'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -126,23 +127,13 @@ function ExperienceBlock({ company, role, period, bullets }) {
   )
 }
 
-function Chip({ children }) {
-  return (
-    <span
-      className="text-xs px-3 py-1.5 rounded-full border"
-      style={{ borderColor: 'var(--border)', color: 'var(--fg)', opacity: 0.75 }}
-    >
-      {children}
-    </span>
-  )
-}
 
 /* ─── Page ─────────────────────────────────────────────────────── */
 
 export default function Resume() {
   return (
     <PageTransition>
-      <main className="min-h-screen pt-24 pb-24" style={{ backgroundColor: 'var(--bg)' }}>
+      <main className="min-h-screen pb-24" style={{ backgroundColor: 'var(--bg)', paddingTop: 140 }}>
         <Container size="md">
 
           {/* Header */}
@@ -167,7 +158,7 @@ export default function Resume() {
               className="font-display text-lg md:text-xl tracking-tight mb-6"
               style={{ color: 'var(--accent)' }}
             >
-              UX &amp; Product Designer — 5+ years across startups &amp; SaaS enterprise
+              UX &amp; Product Designer with 5+ years across startups &amp; SaaS enterprise
             </motion.p>
 
             {/* Contact row */}
@@ -274,7 +265,7 @@ export default function Resume() {
                   Tools
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {tools.map(t => <Chip key={t}>{t}</Chip>)}
+                  {tools.map(t => <Badge key={t}>{t}</Badge>)}
                 </div>
               </div>
               <div>
@@ -282,7 +273,7 @@ export default function Resume() {
                   Frameworks
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {frameworks.map(f => <Chip key={f}>{f}</Chip>)}
+                  {frameworks.map(f => <Badge key={f}>{f}</Badge>)}
                 </div>
               </div>
             </motion.div>
