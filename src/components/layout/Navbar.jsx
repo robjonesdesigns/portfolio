@@ -95,7 +95,7 @@ export default function Navbar({ theme, toggleTheme }) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ rotate: 180, scale: 0.5 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-            style={{ display: 'inline-block' }}
+            style={{ display: 'block' }}
           >
             <RJLogo size={28} />
           </motion.div>
