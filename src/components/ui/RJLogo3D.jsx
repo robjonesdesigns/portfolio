@@ -93,6 +93,9 @@ function Scene({ accent, fg }) {
   // Mouse parallax — listen on window so pointer-events-none on container is fine
   useEffect(() => {
     const onMove = (e) => {
+      // Only apply parallax when cursor is over the right half of the viewport
+      // (where the logo lives) — prevents visual artefacts when hovering the name
+      if (e.clientX < window.innerWidth * 0.5) return
       target.current.x = (e.clientY / window.innerHeight - 0.5) * 0.15
       target.current.y = (e.clientX / window.innerWidth  - 0.5) * 0.2
     }
@@ -187,7 +190,8 @@ function Scene({ accent, fg }) {
       <directionalLight position={[10, 20, 10]} intensity={1.2} />
 
       {/* Base tilt: makes the logo appear to lie flat on a ground plane */}
-      <group rotation={[-Math.PI / 3, 0, 0]} scale={0.44}>
+      {/* position Y lifts the scene so the rendered content centres in the canvas */}
+      <group rotation={[-Math.PI / 3, 0, 0]} scale={0.44} position={[0, 2.5, 0]}>
 
         {/* Parallax layer: subtle mouse-driven rotation */}
         <group ref={parallaxRef}>
@@ -249,7 +253,7 @@ export default function RJLogo3D({ className = '' }) {
       <Canvas
         camera={{ position: [0, 15, 25], fov: 45, near: 0.1, far: 500 }}
         gl={{ alpha: true, antialias: true }}
-        style={{ width: '100%', height: '100%', background: 'transparent' }}
+        style={{ width: '100%', height: '100%', background: 'transparent', pointerEvents: 'none' }}
       >
         <Scene accent={colors.accent} fg={colors.fg} />
       </Canvas>
