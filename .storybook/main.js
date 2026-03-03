@@ -14,6 +14,14 @@ const config = {
     "@storybook/addon-docs",
     "@storybook/addon-onboarding"
   ],
-  "framework": "@storybook/react-vite"
+  "framework": {
+    "name": "@storybook/react-vite",
+    "options": {
+      "reactDocgen": "react-docgen",
+    },
+  },
+  "features": {
+    "storyStoreV7": true,
+  },
 };
 export default config;

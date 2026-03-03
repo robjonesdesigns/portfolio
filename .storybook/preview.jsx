@@ -1,5 +1,6 @@
 import '../src/styles/globals.css';
 import './storybook-overrides.css';
+import { LazyMotion, domAnimation } from 'framer-motion';
 
 // Restore cursor — globals.css sets cursor:none for the portfolio's custom cursor,
 // which isn't rendered in Storybook.
@@ -35,10 +36,16 @@ const withThemeClass = (StoryFn, context) => {
   return StoryFn();
 };
 
+const withLazyMotion = (StoryFn) => (
+  <LazyMotion features={domAnimation}>
+    <StoryFn />
+  </LazyMotion>
+);
+
 // ─── Preview config ───────────────────────────────────────────────────────────
 /** @type { import('@storybook/react-vite').Preview } */
 const preview = {
-  decorators: [withThemeClass],
+  decorators: [withLazyMotion, withThemeClass],
   parameters: {
     layout: 'fullscreen',
     options: {

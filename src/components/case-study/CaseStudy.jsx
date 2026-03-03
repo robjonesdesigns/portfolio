@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { projects } from '../../data/projects'
 import PageTransition from '../ui/PageTransition'
 import Container from '../layout/Container'
@@ -17,14 +17,14 @@ const stagger = {
 
 function Section({ label, children }) {
   return (
-    <motion.div variants={fadeUp} className="flex flex-col gap-4">
+    <m.div variants={fadeUp} className="flex flex-col gap-4">
       <p className="text-xs font-mono tracking-widest uppercase text-brand-primary">
         {label}
       </p>
       <div className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.8 }}>
         {children}
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -53,13 +53,13 @@ export default function CaseStudy() {
         {/* Hero */}
         <div className="pb-20 bg-surface" style={{ paddingTop: 140 }}>
           <Container size="md">
-            <motion.div
+            <m.div
               initial="hidden"
               animate="show"
               variants={stagger}
               className="flex flex-col gap-6"
             >
-              <motion.div variants={fadeUp}>
+              <m.div variants={fadeUp}>
                 <Link
                   to="/"
                   className="inline-flex items-center gap-2 text-sm mb-8"
@@ -69,25 +69,25 @@ export default function CaseStudy() {
                 >
                   ← Back to work
                 </Link>
-              </motion.div>
+              </m.div>
 
-              <motion.div variants={fadeUp} className="flex items-center gap-3">
+              <m.div variants={fadeUp} className="flex items-center gap-3">
                 <span className="inline-block w-8 h-px bg-brand-primary" />
                 <span className="text-xs font-mono tracking-widest uppercase text-brand-primary">
                   Case Study
                 </span>
-              </motion.div>
+              </m.div>
 
-              <motion.h1
+              <m.h1
                 variants={fadeUp}
                 className="font-display font-bold tracking-tighter leading-none"
                 style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)', color: 'var(--fg)' }}
               >
                 {project.title}
-              </motion.h1>
+              </m.h1>
 
               {/* Meta */}
-              <motion.div
+              <m.div
                 variants={fadeUp}
                 className="flex flex-wrap gap-8 pt-4 border-t"
                 style={{ borderColor: 'var(--border)' }}
@@ -107,8 +107,8 @@ export default function CaseStudy() {
                     </span>
                   </div>
                 ))}
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </Container>
         </div>
 
@@ -133,7 +133,7 @@ export default function CaseStudy() {
         {/* Content */}
         <div className="py-20">
           <Container size="sm">
-            <motion.div
+            <m.div
               className="flex flex-col gap-16"
               initial="hidden"
               whileInView="show"
@@ -145,7 +145,7 @@ export default function CaseStudy() {
               <Section label="Process &amp; Approach">{project.process}</Section>
 
               {/* Process image placeholder */}
-              <motion.div
+              <m.div
                 variants={fadeUp}
                 className="rounded-2xl w-full flex items-center justify-center"
                 style={{ backgroundColor: 'var(--surface)', height: '300px' }}
@@ -153,12 +153,12 @@ export default function CaseStudy() {
                 <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>
                   Process / wireframes image
                 </p>
-              </motion.div>
+              </m.div>
 
               <Section label="Solution">{project.solution}</Section>
 
               {/* Solution image placeholder */}
-              <motion.div
+              <m.div
                 variants={fadeUp}
                 className="rounded-2xl w-full flex items-center justify-center"
                 style={{ backgroundColor: 'var(--surface)', height: '400px' }}
@@ -166,19 +166,19 @@ export default function CaseStudy() {
                 <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>
                   Final design image
                 </p>
-              </motion.div>
+              </m.div>
 
               <Section label="Outcomes">{project.outcome}</Section>
 
               {/* Tags */}
-              <motion.div variants={fadeUp} className="flex flex-wrap gap-2 pt-4">
+              <m.div variants={fadeUp} className="flex flex-wrap gap-2 pt-4">
                 {project.tags.map((tag) => (
                   <Badge key={tag}>{tag}</Badge>
                 ))}
-              </motion.div>
+              </m.div>
 
               {/* Navigation between projects */}
-              <motion.div
+              <m.div
                 variants={fadeUp}
                 className="flex justify-between items-center pt-8 border-t"
                 style={{ borderColor: 'var(--border)' }}
@@ -201,8 +201,8 @@ export default function CaseStudy() {
                     </Link>
                   )
                 })()}
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </Container>
         </div>
       </div>

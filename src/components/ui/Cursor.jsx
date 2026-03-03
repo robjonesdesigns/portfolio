@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { m, useMotionValue, useSpring } from 'framer-motion'
 
 export default function Cursor() {
   const [isPointer, setIsPointer] = useState(false)
@@ -38,7 +38,7 @@ export default function Cursor() {
   return (
     <>
       {/* Dot */}
-      <motion.div
+      <m.div
         className="fixed top-0 left-0 z-[9998] pointer-events-none rounded-full mix-blend-difference bg-white"
         style={{ x: dotX, y: dotY, translateX: '-50%', translateY: '-50%' }}
         animate={{ width: isPointer ? 10 : 6, height: isPointer ? 10 : 6 }}
@@ -46,7 +46,7 @@ export default function Cursor() {
       />
 
       {/* Ring */}
-      <motion.div
+      <m.div
         className="fixed top-0 left-0 z-[9997] pointer-events-none rounded-full border"
         style={{
           x: ringX,

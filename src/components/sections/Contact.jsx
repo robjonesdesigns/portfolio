@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import Container from '../layout/Container'
 
 const EMAIL = 'robjonesdesigns@gmail.com'
@@ -30,40 +30,40 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 md:py-36">
       <Container>
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-80px' }}
           variants={stagger}
         >
           {/* Label */}
-          <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
+          <m.div variants={fadeUp} className="flex items-center gap-3 mb-8">
             <span className="inline-block w-8 h-px bg-brand-primary" />
             <span className="text-xs font-mono tracking-widest uppercase text-brand-primary">
               Contact
             </span>
-          </motion.div>
+          </m.div>
 
           {/* Heading */}
-          <motion.h2
+          <m.h2
             variants={fadeUp}
             className="font-display font-bold tracking-tighter leading-none mb-6 text-fg"
             style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)' }}
           >
             Let's work<br />together.
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             variants={fadeUp}
             className="text-base md:text-lg leading-relaxed mb-12 max-w-lg text-fg opacity-60"
           >
             Have a project in mind? I'm open to new opportunities, collaborations,
             and conversations. Reach out and let's create something great.
-          </motion.p>
+          </m.p>
 
           {/* Email CTA */}
-          <motion.div variants={fadeUp}>
-            <motion.button
+          <m.div variants={fadeUp}>
+            <m.button
               onClick={handleEmailCopy}
               className="flex items-center gap-3 px-6 py-3.5 border border-brand-primary
                          text-brand-primary font-mono text-sm tracking-wide rounded
@@ -72,11 +72,11 @@ export default function Contact() {
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             >
               {copied ? '✓  Copied!' : EMAIL}
-            </motion.button>
-          </motion.div>
+            </m.button>
+          </m.div>
 
           {/* Social links */}
-          <motion.div
+          <m.div
             variants={fadeUp}
             className="flex items-center gap-8 mt-16 pt-8 border-t border-token"
           >
@@ -91,9 +91,9 @@ export default function Contact() {
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
             </a>
-          </motion.div>
+          </m.div>
 
-        </motion.div>
+        </m.div>
       </Container>
     </section>
   )

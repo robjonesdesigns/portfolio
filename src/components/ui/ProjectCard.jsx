@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Badge from './Badge'
 import Button from './Button'
@@ -7,7 +7,7 @@ export default function ProjectCard({ project }) {
   const { slug, title, tags, description, image, year } = project
 
   return (
-    <motion.div
+    <m.div
       className="group relative overflow-hidden rounded-2xl bg-surface border border-border"
       whileHover={{ y: -4 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
@@ -30,7 +30,7 @@ export default function ProjectCard({ project }) {
         )}
 
         {/* Hover overlay — visual only, description exposed via sr-only below */}
-        <motion.div
+        <m.div
           aria-hidden="true"
           className="absolute inset-0 flex items-end p-4 md:p-6"
           style={{ backgroundColor: 'var(--overlay)' }}
@@ -39,7 +39,7 @@ export default function ProjectCard({ project }) {
           transition={{ duration: 0.25 }}
         >
           <p className="text-white text-sm leading-relaxed">{description}</p>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Content */}
@@ -74,6 +74,6 @@ export default function ProjectCard({ project }) {
         </Button>
 
       </div>
-    </motion.div>
+    </m.div>
   )
 }

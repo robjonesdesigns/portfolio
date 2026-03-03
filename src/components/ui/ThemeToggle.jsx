@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 
 export default function ThemeToggle({ theme, toggle }) {
   const isDark = theme === 'dark'
 
   return (
-    <motion.button
+    <m.button
       onClick={toggle}
       className="relative w-16 h-8 rounded-full flex items-center px-1.5 border"
       style={{
@@ -25,12 +25,12 @@ export default function ThemeToggle({ theme, toggle }) {
       </svg>
 
       {/* Thumb */}
-      <motion.div
+      <m.div
         className="w-5 h-5 rounded-full z-10"
         style={{ backgroundColor: 'var(--accent)' }}
         animate={{ x: isDark ? 30 : 0 }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
       />
-    </motion.button>
+    </m.button>
   )
 }

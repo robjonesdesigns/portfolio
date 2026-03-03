@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import PageTransition from '../components/ui/PageTransition'
 import Container from '../components/layout/Container'
 import Badge from '../components/ui/Badge'
@@ -105,7 +105,7 @@ function SectionLabel({ children }) {
 
 function ExperienceBlock({ company, role, period, bullets }) {
   return (
-    <motion.div variants={fadeUp} className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
+    <m.div variants={fadeUp} className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
       {/* Left — company meta */}
       <div>
         <p className="font-display font-bold text-base tracking-tight" style={{ color: 'var(--fg)' }}>
@@ -123,7 +123,7 @@ function ExperienceBlock({ company, role, period, bullets }) {
           </li>
         ))}
       </ul>
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -137,32 +137,32 @@ export default function Resume() {
         <Container size="md">
 
           {/* Header */}
-          <motion.div
+          <m.div
             className="mb-16"
             variants={stagger}
             initial="hidden"
             animate="show"
           >
             {/* Name */}
-            <motion.h1
+            <m.h1
               variants={fadeUp}
               className="font-display font-bold tracking-tighter leading-none mb-3"
               style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', color: 'var(--fg)' }}
             >
               Rob Jones
-            </motion.h1>
+            </m.h1>
 
             {/* Title */}
-            <motion.p
+            <m.p
               variants={fadeUp}
               className="font-display text-lg md:text-xl tracking-tight mb-6"
               style={{ color: 'var(--accent)' }}
             >
               UX &amp; Product Designer with 5+ years across startups &amp; SaaS enterprise
-            </motion.p>
+            </m.p>
 
             {/* Contact row */}
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4 text-sm" style={{ color: 'var(--fg)', opacity: 0.6 }}>
+            <m.div variants={fadeUp} className="flex flex-wrap gap-4 text-sm" style={{ color: 'var(--fg)', opacity: 0.6 }}>
               <a href="mailto:robjonesdesigns@gmail.com" className="hover:opacity-100 transition-opacity"
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                 onMouseLeave={e => e.currentTarget.style.color = ''}>
@@ -179,10 +179,10 @@ export default function Resume() {
                 onMouseLeave={e => e.currentTarget.style.color = ''}>
                 designedbyrob.com
               </a>
-            </motion.div>
+            </m.div>
 
             {/* Download button */}
-            <motion.div variants={fadeUp} className="mt-8">
+            <m.div variants={fadeUp} className="mt-8">
               <a
                 href="/RobJonesResume.pdf"
                 download="RobJonesResume.pdf"
@@ -196,41 +196,41 @@ export default function Resume() {
                 </svg>
                 Download PDF
               </a>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* Divider */}
           <div className="h-px mb-16" style={{ backgroundColor: 'var(--border)' }} />
 
           {/* Experience */}
-          <motion.section
+          <m.section
             className="mb-16"
             variants={stagger}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-60px' }}
           >
-            <motion.div variants={fadeUp}>
+            <m.div variants={fadeUp}>
               <SectionLabel>Experience</SectionLabel>
-            </motion.div>
+            </m.div>
             {experience.map((job) => (
               <ExperienceBlock key={job.company} {...job} />
             ))}
-          </motion.section>
+          </m.section>
 
           {/* Education */}
-          <motion.section
+          <m.section
             className="mb-16"
             variants={stagger}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-60px' }}
           >
-            <motion.div variants={fadeUp}>
+            <m.div variants={fadeUp}>
               <SectionLabel>Education</SectionLabel>
-            </motion.div>
+            </m.div>
 
-            <motion.div variants={fadeUp} className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
+            <m.div variants={fadeUp} className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
                 <p className="font-display font-bold text-base tracking-tight" style={{ color: 'var(--fg)' }}>
                   Stony Brook University
@@ -244,22 +244,22 @@ export default function Resume() {
                 <p className="text-sm mt-1" style={{ color: 'var(--accent)' }}>UX Design Certified Program</p>
                 <p className="text-xs mt-1 font-mono" style={{ color: 'var(--fg)', opacity: 0.45 }}>600+ hours</p>
               </div>
-            </motion.div>
-          </motion.section>
+            </m.div>
+          </m.section>
 
           {/* Skills */}
-          <motion.section
+          <m.section
             className="mb-16"
             variants={stagger}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-60px' }}
           >
-            <motion.div variants={fadeUp}>
+            <m.div variants={fadeUp}>
               <SectionLabel>Skills</SectionLabel>
-            </motion.div>
+            </m.div>
 
-            <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
+            <m.div variants={fadeUp} className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
                 <p className="text-xs font-mono tracking-widest uppercase mb-4" style={{ color: 'var(--fg)', opacity: 0.45 }}>
                   Tools
@@ -276,23 +276,23 @@ export default function Resume() {
                   {frameworks.map(f => <Badge key={f}>{f}</Badge>)}
                 </div>
               </div>
-            </motion.div>
-          </motion.section>
+            </m.div>
+          </m.section>
 
           {/* Additional Experience */}
-          <motion.section
+          <m.section
             variants={stagger}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-60px' }}
           >
-            <motion.div variants={fadeUp}>
+            <m.div variants={fadeUp}>
               <SectionLabel>Additional Experience</SectionLabel>
-            </motion.div>
+            </m.div>
             {additionalExperience.map((job) => (
               <ExperienceBlock key={job.company} {...job} />
             ))}
-          </motion.section>
+          </m.section>
 
         </Container>
       </main>

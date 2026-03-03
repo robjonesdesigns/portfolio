@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import RJLogoComponent from '../components/ui/RJLogo'
 
 // Local inline version used by colour-documentation stories below.
@@ -91,14 +91,14 @@ export const Interactions = {
       justifyContent: 'center',
       gap: '32px',
     }}>
-      <motion.div
+      <m.div
         whileHover={{ scale: 1.1 }}
         whileTap={{ rotate: 180, scale: 0.5 }}
         transition={SPRING}
         style={{ display: 'block', cursor: 'pointer' }}
       >
         <RJLogoComponent size={56} />
-      </motion.div>
+      </m.div>
       <p style={{
         fontFamily: 'monospace',
         fontSize: '11px',
