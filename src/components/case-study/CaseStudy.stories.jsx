@@ -17,7 +17,7 @@ function withSlug(slug) {
 }
 
 export default {
-  title: 'Case Study/CaseStudy',
+  title: 'Pages/Case Study',
   component: CaseStudy,
   parameters: {
     layout: 'fullscreen',

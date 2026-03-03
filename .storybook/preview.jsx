@@ -50,7 +50,14 @@ const preview = {
     layout: 'fullscreen',
     options: {
       storySort: {
-        order: ['Design System', ['Tokens', 'Typography', 'Logo', 'Layout'], 'UI', 'Layout', ['Container', 'Navbar', 'Footer'], '*'],
+        order: [
+          'Design System', ['Typography', 'Logo', 'Color Contrast', 'Layout'],
+          'Layout',        ['Container', 'Navbar', 'Footer'],
+          'UI',            ['Button', 'Badge', 'Marquee', 'ProjectCard', 'ProjectRow', 'ThemeToggle', 'Cursor', 'HeroName', 'RJLogo3D', 'PageTransition'],
+          'Sections',      ['Hero', 'About', 'Projects', 'Contact'],
+          'Pages',
+          '*',
+        ],
       },
     },
     docs: {

@@ -20,8 +20,5 @@ const config = {
       "reactDocgen": "react-docgen",
     },
   },
-  "features": {
-    "storyStoreV7": true,
-  },
 };
 export default config;
