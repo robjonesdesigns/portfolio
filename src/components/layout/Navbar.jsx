@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import ThemeToggle from '../ui/ThemeToggle'
 import RJLogo from '../ui/RJLogo'
 
@@ -58,7 +58,7 @@ export default function Navbar({ theme, toggleTheme }) {
           docked   → left/right = 0,      top = 0,  borderRadius = 0,  height = 64
         Entry animation fires once (y: -80 → 0) then never changes.
       */}
-      <motion.header
+      <m.header
         className="fixed z-50 flex items-center justify-between"
         initial={{ y: -80, opacity: 0 }}
         animate={{
@@ -91,14 +91,14 @@ export default function Navbar({ theme, toggleTheme }) {
       >
         {/* Logo */}
         <Link to="/" className="flex-shrink-0" aria-label="Home">
-          <motion.div
+          <m.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ rotate: 180, scale: 0.5 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             style={{ display: 'block' }}
           >
             <RJLogo size={28} />
-          </motion.div>
+          </m.div>
         </Link>
 
         {/* Desktop nav links + toggle */}
@@ -140,29 +140,29 @@ export default function Navbar({ theme, toggleTheme }) {
             className="flex flex-col gap-1.5 w-6"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
-            <motion.span
+            <m.span
               className="h-0.5 w-full block bg-fg"
               animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
             />
-            <motion.span
+            <m.span
               className="h-0.5 w-full block bg-fg"
               animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
               transition={{ duration: 0.2 }}
             />
-            <motion.span
+            <m.span
               className="h-0.5 w-full block bg-fg"
               animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
             />
           </button>
         </div>
-      </motion.header>
+      </m.header>
 
       {/* Mobile full-screen menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <m.div
             className="fixed inset-0 z-40 flex flex-col justify-center items-center gap-8 md:hidden bg-bg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -180,20 +180,20 @@ export default function Navbar({ theme, toggleTheme }) {
                 transition: { delay: i * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] },
               }
               return isPage ? (
-                <motion.div key={label} {...motionProps}>
+                <m.div key={label} {...motionProps}>
                   <Link to={href} onClick={() => setMenuOpen(false)} className="text-fg">
                     {label}
                   </Link>
-                </motion.div>
+                </m.div>
               ) : (
-                <motion.a
+                <m.a
                   {...motionProps}
                   href={href}
                   onClick={(e) => { handleAnchor(e, href); setMenuOpen(false) }}
                 />
               )
             })}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

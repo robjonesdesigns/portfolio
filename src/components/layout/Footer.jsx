@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import RJLogo from '../ui/RJLogo'
 import Container from './Container'
 
@@ -57,7 +57,7 @@ export default function Footer() {
             </div>
 
             {/* Email CTA — copies to clipboard, falls back to mailto on unsupported browsers */}
-            <motion.button
+            <m.button
               onClick={handleEmailCopy}
               className="self-start md:self-end flex items-center gap-3 px-6 py-3.5
                          border border-brand-primary text-brand-primary font-mono text-sm
@@ -67,7 +67,7 @@ export default function Footer() {
               transition={{ duration: 0.18, ease: EASE }}
             >
               {copied ? '✓  Copied!' : EMAIL}
-            </motion.button>
+            </m.button>
 
           </div>
         </Container>

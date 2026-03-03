@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import Badge from './Badge'
 
@@ -18,7 +18,7 @@ export default function ProjectRow({ project, index }) {
 
   return (
     <Link to={`/projects/${slug}`} className="block">
-      <motion.div
+      <m.div
         className="relative flex items-center gap-4 md:gap-8 py-6 md:py-8 border-t overflow-hidden cursor-pointer"
         style={{ borderColor: 'var(--border)' }}
         initial="rest"
@@ -26,7 +26,7 @@ export default function ProjectRow({ project, index }) {
         transition={{ duration: 0.3 }}
       >
         {/* Hover fill */}
-        <motion.div
+        <m.div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none"
           style={{ backgroundColor: 'var(--accent)', zIndex: 0 }}
@@ -66,7 +66,7 @@ export default function ProjectRow({ project, index }) {
         </span>
 
         {/* Arrow */}
-        <motion.span
+        <m.span
           aria-hidden="true"
           className="relative text-brand-primary shrink-0 text-lg leading-none"
           style={{ zIndex: 1 }}
@@ -74,8 +74,8 @@ export default function ProjectRow({ project, index }) {
           transition={{ type: 'spring', stiffness: 400, damping: 25 }}
         >
           →
-        </motion.span>
-      </motion.div>
+        </m.span>
+      </m.div>
     </Link>
   )
 }

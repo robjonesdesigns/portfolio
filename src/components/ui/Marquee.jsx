@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 
 export default function Marquee({ items, speed = 30, className = '' }) {
   const reduced = useReducedMotion()
@@ -9,7 +9,7 @@ export default function Marquee({ items, speed = 30, className = '' }) {
       aria-label={items.join(' · ')}
     >
       {/* Screen readers get the label above — hide the animated content from them */}
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="inline-flex gap-8"
         animate={reduced ? {} : { x: ['0%', '-50%'] }}
@@ -25,7 +25,7 @@ export default function Marquee({ items, speed = 30, className = '' }) {
             <span className="text-brand-primary">·</span>
           </span>
         ))}
-      </motion.div>
+      </m.div>
     </div>
   )
 }
