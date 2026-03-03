@@ -55,7 +55,7 @@ const preview = {
           'Layout',        ['Container', 'Navbar', 'Footer'],
           'UI',            ['Button', 'Badge', 'Marquee', 'ProjectCard', 'ProjectRow', 'ThemeToggle', 'Cursor', 'HeroName', 'RJLogo3D', 'PageTransition'],
           'Sections',      ['Hero', 'About', 'Projects', 'Contact'],
-          'Pages',
+          'Pages',         ['Resume', 'Case Study'],
           '*',
         ],
       },
