@@ -53,7 +53,7 @@ const preview = {
         order: [
           'Design System', ['Typography', 'Logo', 'Color Contrast', 'Layout'],
           'Layout',        ['Container', 'Navbar', 'Footer'],
-          'UI',            ['Button', 'Badge', 'Marquee', 'ProjectCard', 'ProjectRow', 'ThemeToggle', 'Cursor', 'HeroName', 'RJLogo3D', 'PageTransition'],
+          'UI',            ['Button', 'Badge', 'Marquee', 'WorkEntry', 'ThemeToggle', 'Cursor', 'HeroName', 'RJLogo3D', 'PageTransition'],
           'Sections',      ['Hero', 'About', 'Projects', 'Contact'],
           'Pages',         ['Resume', 'Case Study'],
           '*',

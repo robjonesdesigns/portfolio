@@ -2,7 +2,7 @@ import { MemoryRouter } from 'react-router-dom'
 import Projects from './Projects'
 
 // ─── Meta ──────────────────────────────────────────────────────────────────────
-// ProjectRow uses react-router-dom Link, so MemoryRouter is required here.
+// WorkEntry uses react-router-dom Link, so MemoryRouter is required here.
 
 export default {
   title: 'Sections/Projects',

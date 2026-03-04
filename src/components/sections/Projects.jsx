@@ -1,5 +1,5 @@
 import { m } from 'framer-motion'
-import ProjectRow from '../ui/ProjectRow'
+import WorkEntry from '../ui/WorkEntry'
 import { projects } from '../../data/projects'
 import Container from '../layout/Container'
 
@@ -58,21 +58,14 @@ export default function Projects() {
           </m.p>
         </m.div>
 
-        {/* Rows */}
-        <m.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-80px' }}
-          variants={stagger}
-        >
-          {projects.map((project, i) => (
-            <m.div key={project.slug} variants={fadeUp}>
-              <ProjectRow project={project} index={i} />
-            </m.div>
+        {/* Work entries */}
+        <div>
+          {projects.map((project) => (
+            <WorkEntry key={project.slug} project={project} />
           ))}
-          {/* Bottom border after last row */}
+          {/* Bottom border after last entry */}
           <div className="border-t" style={{ borderColor: 'var(--border)' }} />
-        </m.div>
+        </div>
       </Container>
     </section>
   )
