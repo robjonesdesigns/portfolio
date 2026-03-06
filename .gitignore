@@ -26,3 +26,10 @@ dist-ssr
 *storybook.log
 storybook-static
 .vercel
+
+# Video assets — hosted separately
+public/images/*.mp4
+public/images/*.mov
+
+# Local-only prototype (used for screen recording, not deployed)
+src/pages/KeytrnPrototype.jsx

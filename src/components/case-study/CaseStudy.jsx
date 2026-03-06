@@ -28,6 +28,30 @@ function Section({ label, children }) {
   )
 }
 
+function ProcessMediaCard({ item }) {
+  return (
+    <m.div variants={fadeUp} className="flex flex-col gap-3">
+      <p className="text-xs font-mono tracking-widest uppercase text-brand-primary">
+        {item.label}
+      </p>
+      <div style={{
+        background: 'color-mix(in srgb, var(--fg) 6%, var(--surface))',
+        border: '1px solid var(--border)',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        lineHeight: 0,
+      }}>
+        <video autoPlay muted loop playsInline src={item.video} style={{ width: '100%', display: 'block' }} />
+      </div>
+      {item.caption && (
+        <p className="text-sm leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.55 }}>
+          {item.caption}
+        </p>
+      )}
+    </m.div>
+  )
+}
+
 export default function CaseStudy() {
   const { slug } = useParams()
   const project = projects.find((p) => p.slug === slug)
@@ -144,29 +168,38 @@ export default function CaseStudy() {
               <Section label="The Problem">{project.problem}</Section>
               <Section label="Process &amp; Approach">{project.process}</Section>
 
-              {/* Process image placeholder */}
-              <m.div
-                variants={fadeUp}
-                className="rounded-2xl w-full flex items-center justify-center"
-                style={{ backgroundColor: 'var(--surface)', height: '300px' }}
-              >
-                <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>
-                  Process / wireframes image
-                </p>
-              </m.div>
+              {/* Process media */}
+              {project.processMedia?.length > 0
+                ? project.processMedia.map(item => <ProcessMediaCard key={item.id} item={item} />)
+                : (
+                  <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', height: '300px' }}>
+                    <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>Process / wireframes image</p>
+                  </m.div>
+                )
+              }
 
               <Section label="Solution">{project.solution}</Section>
 
-              {/* Solution image placeholder */}
-              <m.div
-                variants={fadeUp}
-                className="rounded-2xl w-full flex items-center justify-center"
-                style={{ backgroundColor: 'var(--surface)', height: '400px' }}
-              >
-                <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>
-                  Final design image
-                </p>
-              </m.div>
+              {/* Final media */}
+              {project.finalMedia
+                ? <ProcessMediaCard item={{ id: 'final', ...project.finalMedia }} />
+                : (
+                  <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', height: '400px' }}>
+                    <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>Final design image</p>
+                  </m.div>
+                )
+              }
+
+              {/* UGA Business Law Clinic — add ugaContent to project data when ready */}
+              {project.ugaContent !== undefined && (
+                <Section label="Business Foundation">
+                  {project.ugaContent || (
+                    <span style={{ opacity: 0.35, fontStyle: 'italic' }}>
+                      Worked with the UGA Business Law Clinic on entity structure, IP ownership, and equity agreements. Content coming soon.
+                    </span>
+                  )}
+                </Section>
+              )}
 
               <Section label="Outcomes">{project.outcome}</Section>
 
