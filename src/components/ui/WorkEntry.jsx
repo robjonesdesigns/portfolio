@@ -6,6 +6,38 @@ const fadeUp = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
 }
 
+// ── Laptop mockup ─────────────────────────────────────────────────────────────
+function LaptopFrame({ src, color }) {
+  return (
+    <div style={{
+      background: 'color-mix(in srgb, var(--fg) 6%, var(--surface))',
+      border: '1px solid var(--border)',
+      borderRadius: '16px',
+      padding: '32px 3% 0',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
+      {/* Gradient accent wash from project color */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: `radial-gradient(ellipse 80% 50% at 50% 0%, ${color}22 0%, transparent 70%)`,
+        pointerEvents: 'none',
+      }} />
+
+      {/* Laptop screen only */}
+      <div style={{ position: 'relative', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))', transform: 'translateY(30px)' }}>
+        <div style={{ background: '#1c1c1e', borderRadius: '10px', padding: '16px 16px 12px', border: '1px solid rgba(255,255,255,0.09)', position: 'relative' }}>
+          <div style={{ position: 'absolute', top: '7px', left: '50%', transform: 'translateX(-50%)', width: '6px', height: '6px', borderRadius: '50%', background: '#3d3d3d' }} />
+          <div style={{ overflow: 'hidden', borderRadius: '4px', background: '#000', lineHeight: 0 }}>
+            <video autoPlay muted loop playsInline src={src} style={{ width: '100%', display: 'block' }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── Image placeholder ─────────────────────────────────────────────────────────
 function Placeholder({ color }) {
   return (
@@ -65,7 +97,7 @@ function ImageGrid({ images, color }) {
 
 // ── WorkEntry ─────────────────────────────────────────────────────────────────
 export default function WorkEntry({ project }) {
-  const { slug, headline, company, role, description, outcomes, images, color } = project
+  const { slug, headline, company, role, description, outcomes, images, color, video } = project
 
   return (
     <m.article
@@ -84,9 +116,9 @@ export default function WorkEntry({ project }) {
         {headline}
       </h3>
 
-      {/* Images */}
+      {/* Images / Video */}
       <div className="mb-5">
-        <ImageGrid images={images} color={color} />
+        {video ? <LaptopFrame src={video} color={color} /> : <ImageGrid images={images} color={color} />}
       </div>
 
       {/* See more */}

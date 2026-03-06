@@ -59,12 +59,41 @@ export const projects = [
       'Designed both the government and consumer product sides as the sole designer',
       'Primary research across 20+ municipalities informed the entire information architecture',
     ],
+    video: '/images/keytrn-demo.mp4',
     images: [null, null, null],
     image: null,
     overview: 'End-to-end product design for Keytrn, a PropTech startup building a dual-sided platform for tax-delinquent and foreclosure property data. The product served two entirely different user groups simultaneously: government workers entering property records and consumers browsing foreclosure listings.',
     problem: 'The platform had to solve for two audiences with completely different needs, workflows, and mental models, all with the same underlying data. Government users needed structured data entry tools; consumers needed a browsable, Zillow-like experience. Neither side had been designed. Both had to work together.',
-    process: 'Started with primary research: directly calling Pennsylvania county offices to understand judicial and repository sale workflows, how properties are processed, what data formats look like in practice, and where manual processes break down. These calls informed every design decision: card structure, data hierarchy, input modals, and error handling. Worked as the sole designer across both product sides simultaneously.',
-    solution: 'Designed the government-facing interface (manual data entry, PDF upload, Excel import, modal-to-data-table flows) and the consumer-facing property browsing experience, accounting for highly variable data across listings including photos, satellite imagery, bed and bath counts, acreage, and legal status. Also established a relationship with the UGA Business Law Clinic to advise the startup on entity structure, IP, and equity agreements.',
+    process: 'Started with primary research: directly calling Pennsylvania county offices to understand judicial, upset, and repository sale workflows, how properties are processed, what data formats look like in practice, and where manual processes break down. Used NotebookLM to organize call notes by county, then used its AI to summarize patterns and surface inconsistencies across municipalities. These findings informed every design decision: card structure, data hierarchy, input modals, and error handling. Worked as the sole designer across both product sides simultaneously.',
+    processMedia: [
+      {
+        id: 'research',
+        label: 'Primary Research — Butler County, PA',
+        caption: 'One of 20+ counties researched directly. Call notes were organized in NotebookLM by county, with AI used to summarize patterns and surface inconsistencies across municipalities. Every IA and UI decision traces back to these conversations.',
+        video: '/images/keytrn-notebooklm.mp4',
+      },
+      {
+        id: 'ia-gov',
+        label: 'Information Architecture — Government Portal',
+        caption: 'IA for the government-facing data entry tool, mapped in Miro. Structured around the actual workflows county workers use to submit and manage property records across different sale types.',
+        video: '/images/keytrn-miro-ia.mp4',
+      },
+      {
+        id: 'app-arch',
+        label: 'App Architecture',
+        caption: 'Full platform architecture built in Figma. The dual-sided structure required both products to operate off the same underlying data model while serving completely different user needs.',
+        video: '/images/keytrn-figma-arch.mp4',
+      },
+    ],
+    solution: 'Designed the government-facing interface (manual data entry, PDF upload, Excel import, modal-to-data-table flows) and the consumer-facing property browsing experience, accounting for highly variable data across listings including photos, satellite imagery, bed and bath counts, acreage, and legal status.',
+    finalMedia: {
+      label: 'Consumer App — Final Prototype',
+      caption: 'The consumer-facing property browser, built as an interactive prototype. Designed to surface foreclosure and tax-delinquent listings with variable data across counties.',
+      video: '/images/keytrn-demo.mp4',
+    },
+    // UGA Business Law Clinic — entity structure, IP, equity agreements
+    // Add content here once documents are reviewed
+    ugaContent: null,
     outcome: 'Designed most of both the government and consumer product sides before departing. Primary research across 20+ municipalities produced firsthand insights that grounded the entire information architecture.',
     role: 'Product Designer (Solo)',
     duration: '5 months',
