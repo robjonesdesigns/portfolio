@@ -1,5 +1,6 @@
 import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import LazyVideo from './LazyVideo'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -30,7 +31,7 @@ function LaptopFrame({ src, color }) {
         <div style={{ background: '#1c1c1e', borderRadius: '10px', padding: '16px 16px 12px', border: '1px solid rgba(255,255,255,0.09)', position: 'relative' }}>
           <div style={{ position: 'absolute', top: '7px', left: '50%', transform: 'translateX(-50%)', width: '6px', height: '6px', borderRadius: '50%', background: '#3d3d3d' }} />
           <div style={{ overflow: 'hidden', borderRadius: '4px', background: '#000', lineHeight: 0 }}>
-            <video autoPlay muted loop playsInline src={src} style={{ width: '100%', display: 'block' }} />
+            <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
           </div>
         </div>
       </div>

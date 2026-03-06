@@ -4,6 +4,7 @@ import { projects } from '../../data/projects'
 import PageTransition from '../ui/PageTransition'
 import Container from '../layout/Container'
 import Badge from '../ui/Badge'
+import LazyVideo from '../ui/LazyVideo'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -41,7 +42,7 @@ function ProcessMediaCard({ item }) {
         overflow: 'hidden',
         lineHeight: 0,
       }}>
-        <video autoPlay muted loop playsInline src={item.video} style={{ width: '100%', display: 'block' }} />
+        <LazyVideo src={item.video} style={{ width: '100%', display: 'block' }} />
       </div>
       {item.caption && (
         <p className="text-sm leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.55 }}>
