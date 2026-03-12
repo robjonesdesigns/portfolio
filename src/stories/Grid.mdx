@@ -1,0 +1,552 @@
+{/* Grid.mdx */}
+import { Meta, Canvas, Unstyled } from '@storybook/addon-docs/blocks'
+import { DocsTabs, TabList, Tab, TabPanel } from './DocsTabs'
+import { DoDont, Do, Dont } from './DoDont'
+import * as GridStories from './Layout.stories'
+
+<Meta of={GridStories} />
+
+# Grid
+
+The grid provides the foundation for visual rhythm and spatial consistency across every page and section. Every layout in the portfolio is built on a responsive column system that adapts across three breakpoints — from a 4-column mobile stack to a 12-column desktop layout.
+
+<DocsTabs>
+
+<TabList>
+  <Tab index={0}>Overview</Tab>
+  <Tab index={1}>Usage</Tab>
+  <Tab index={2}>Code</Tab>
+</TabList>
+
+{/* ── OVERVIEW ──────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={0}>
+
+## Base unit
+
+The base unit is **4px** — the default step in Tailwind's spacing scale. All padding, margin, and gap values use values from this scale. Never use arbitrary spacing values.
+
+<table>
+  <thead>
+    <tr><th>Tailwind</th><th>px</th><th>Use</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>{'*'}-1</code></td><td>4px</td><td>Icon gaps, fine-grained alignment</td></tr>
+    <tr><td><code>{'*'}-2</code></td><td>8px</td><td>Component internal padding</td></tr>
+    <tr><td><code>{'*'}-4</code></td><td>16px</td><td>Default element spacing</td></tr>
+    <tr><td><code>{'*'}-6</code></td><td>24px</td><td>Card padding, gutters</td></tr>
+    <tr><td><code>{'*'}-8</code></td><td>32px</td><td>Between related components</td></tr>
+    <tr><td><code>{'*'}-12</code></td><td>48px</td><td>Section breathing room</td></tr>
+    <tr><td><code>{'*'}-16</code></td><td>64px</td><td>Large layout gaps</td></tr>
+    <tr><td><code>{'*'}-24</code></td><td>96px</td><td>Section padding</td></tr>
+    <tr><td><code>{'*'}-32</code></td><td>128px</td><td>Hero / full-bleed gaps</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Grid fundamentals
+
+The grid is built on the principle of dividing space by two. Column counts follow powers of two — 4, 8, 12 — adapting to the available screen width at each breakpoint.
+
+### Columns and rows
+
+Columns create the vertical key lines that all content aligns to. Row rhythm is established through consistent vertical spacing using the sizing scale. Content never fights the grid — it either spans a number of columns or aligns to a column edge.
+
+Use the viewport toolbar (screen icon, top-right) to see the column grid adapt across all three breakpoints.
+
+<Canvas of={GridStories.ColumnGrid} />
+
+### Margins
+
+Margins are the fixed space between the viewport edge and the content area. They grow with screen width to maintain visual balance as content scales.
+
+<table>
+  <thead>
+    <tr><th>Breakpoint</th><th>Margin</th><th>Tailwind</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>base</code></td><td>24px</td><td><code>px-6</code></td></tr>
+    <tr><td><code>md</code></td><td>40px</td><td><code>px-10</code></td></tr>
+    <tr><td><code>lg</code></td><td>56px</td><td><code>px-14</code></td></tr>
+  </tbody>
+</table>
+
+Margins are always applied through the `Container` component — never set manually on individual sections.
+
+### Padding
+
+Internal component padding is always a fixed multiple of the base unit. The standard value is **16px** (`p-4`) at all breakpoints. Always align type to the edge of box padding, not to the box boundary itself.
+
+### Gutters
+
+Gutters are the space between columns. They are fixed at each breakpoint — they do not scale fluidly between breakpoints.
+
+<table>
+  <thead>
+    <tr><th>Breakpoint</th><th>Gutter</th><th>Tailwind</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>base</code></td><td>12px</td><td><code>gap-3</code></td></tr>
+    <tr><td><code>md</code></td><td>24px</td><td><code>gap-6</code></td></tr>
+    <tr><td><code>lg</code></td><td>24px</td><td><code>gap-6</code></td></tr>
+  </tbody>
+</table>
+
+Apply tighter gutters when content items are closely related. Use wider gutters when columns contain distinct, independent content areas.
+
+### Breakpoints
+
+Three breakpoints define how the grid adapts. Test every layout at each breakpoint using the viewport toolbar.
+
+<table>
+  <thead>
+    <tr><th>Breakpoint</th><th>Range</th><th>Columns</th><th>Margin</th><th>Gutter</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>base</code></td><td>0 – 767px</td><td>4</td><td><code>px-6</code> · 24px</td><td><code>gap-3</code> · 12px</td></tr>
+    <tr><td><code>md</code></td><td>768px+</td><td>8</td><td><code>px-10</code> · 40px</td><td><code>gap-6</code> · 24px</td></tr>
+    <tr><td><code>lg</code></td><td>1024px+</td><td>12</td><td><code>px-14</code> · 56px</td><td><code>gap-6</code> · 24px</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={GridStories.Breakpoints} />
+
+---
+
+## Grid behaviors
+
+### Fluid columns
+
+This portfolio uses fluid column structures throughout. Column widths scale as a percentage of the available grid area between breakpoints. At each breakpoint boundary, the column count steps up and the grid resets.
+
+Multi-column layouts collapse to a single column at `base`. This ensures content is always readable regardless of screen size.
+
+### Key lines
+
+Consistent key lines are what make a layout feel ordered and intentional. The `Container` component creates the primary vertical key lines by ensuring all sections share the same left and right edges. No section breaks this alignment.
+
+Horizontal key lines are established through the spacing scale — section dividers, borders, and vertical rhythm all snap to multiples of the base unit.
+
+---
+
+## Container widths
+
+Content is constrained by the `Container` component, which applies `max-width` and horizontal padding consistently across every breakpoint. Three size tiers cover every layout context.
+
+<table>
+  <thead>
+    <tr><th>Size</th><th>Max-width</th><th>Used by</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>lg</code></td><td>72rem · 1152px</td><td>Work, About — default</td></tr>
+    <tr><td><code>md</code></td><td>56rem · 896px</td><td>Resume, case study hero</td></tr>
+    <tr><td><code>sm</code></td><td>48rem · 768px</td><td>Case study body text</td></tr>
+  </tbody>
+</table>
+
+<Canvas of={GridStories.ContentWidths} />
+
+---
+
+### Aspect ratios
+
+When sizing image or media boxes, constrain dimensions to a standard aspect ratio. Consistent ratios heighten the perception of unity across pages.
+
+<table>
+  <thead>
+    <tr><th>Ratio</th><th>Use</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>3/4</code></td><td>Portrait headshot — About section</td></tr>
+    <tr><td><code>16/9</code></td><td>Video embeds — case study process media</td></tr>
+    <tr><td><code>1/1</code></td><td>Square thumbnails and icons</td></tr>
+  </tbody>
+</table>
+
+### Vertical rhythm
+
+Section-level vertical spacing uses the sizing scale to create consistent breathing room between content areas. Standard section padding is `py-24 md:py-36` (96px mobile / 144px desktop). Tighter sections use `py-12 md:py-24`.
+
+Never use arbitrary `padding-top` or `padding-bottom` values on sections. Always reference the spacing scale.
+
+</TabPanel>
+
+{/* ── USAGE ─────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={1}>
+
+## Fit for purpose
+
+Every page has a story that ends with a desired action. Layout choices should always start with content and user goals — not aesthetics.
+
+Ask: what is the user trying to do on this page?
+
+<table>
+  <thead>
+    <tr><th>Experience type</th><th>Layout approach</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Reading / long-form</strong></td><td>Narrow container (<code>sm</code>), single column, controlled line length</td></tr>
+    <tr><td><strong>Scanning / browsing</strong></td><td>Wide container (<code>lg</code>), stacked entries with clear visual hierarchy</td></tr>
+    <tr><td><strong>Structured reference</strong></td><td>Medium container (<code>md</code>), asymmetric columns, scannable sections</td></tr>
+  </tbody>
+</table>
+
+This portfolio uses all three — case study prose uses `sm` for comfortable reading, the Work section uses `lg` with a stacked entry list for browsing, and the Resume uses `md` with an asymmetric grid for scannable structured content.
+
+---
+
+## Content hierarchy
+
+Hierarchy helps users navigate complex content without getting lost. The grid is one of the primary tools for establishing hierarchy — not just through column count, but through the relationship between content areas.
+
+### How our layouts communicate priority
+
+- **Full-width sections** (Hero, Contact) — maximum visual weight, single focused message
+- **2-column equal** (About) — headshot and bio/skills; neither side dominates
+- **Asymmetric 2-column** (Resume) — 1fr meta + 2fr content; label column anchors the detail column
+- **Stacked single-column** (Work) — sequential WorkEntry items; vertical flow drives scanning
+- **Narrow single-column** (Case study body) — long-form reading; line length controlled for comfort
+
+### Spacing reinforces structure
+
+Vertical rhythm between sections uses consistent spacing tokens. Tighter gaps group related content; looser gaps separate sections. Never use arbitrary spacing — always reference the spacing scale.
+
+---
+
+## Continuity
+
+Pattern recognition across pages reduces cognitive load. Users build a mental model of the layout early — breaking it mid-journey creates friction.
+
+### Shared alignments
+
+Every section in this portfolio shares the same horizontal rhythm through the `Container` component. The left edge of body text, headings, and labels all align to the same invisible column — whether on the homepage, resume, or a case study.
+
+### Consistent section structure
+
+Each page section follows the same scaffolding pattern:
+
+```
+section (owns vertical padding)
+└── Container (owns max-width + horizontal padding)
+    └── content
+```
+
+This means adding a new section never requires thinking about margins — the Container handles it automatically.
+
+<DoDont>
+  <Do label="Maintain shared left alignment">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      All page sections use Container, so every heading and body text aligns to the same left edge across the entire portfolio.
+    </div>
+  </Do>
+  <Dont label="Mix alignment systems">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Avoid adding custom padding or margin to individual sections. It breaks the shared left edge and makes the layout feel inconsistent.
+    </div>
+  </Dont>
+</DoDont>
+
+---
+
+## Gutter guidance
+
+Gutters are the space between columns. The right gutter size depends on the relationship between the content items — are they related or independent?
+
+<table>
+  <thead>
+    <tr><th>Gutter</th><th>Token</th><th>When to use</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Tight</strong></td><td><code>gap-6</code> · 24px</td><td>Items in the same content group — metadata columns, skill badges</td></tr>
+    <tr><td><strong>Default</strong></td><td><code>gap-8</code> · 32px</td><td>Standard card grids — project cards, work entries</td></tr>
+    <tr><td><strong>Loose</strong></td><td><code>gap-12 md:gap-20</code></td><td>Two distinct content areas — About section left/right split</td></tr>
+  </tbody>
+</table>
+
+Larger gutters signal independence between columns. Smaller gutters signal relationship. Never use arbitrary gap values — always use the spacing scale.
+
+<DoDont>
+  <Do label="Use loose gutters for unrelated columns">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      The About section uses <code>gap-12 md:gap-20</code> because the two columns contain distinct content — bio text vs. skills.
+    </div>
+  </Do>
+  <Dont label="Use the same gap everywhere">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Uniform gutters flatten the hierarchy. Content that belongs together should have tighter gaps than content that stands apart.
+    </div>
+  </Dont>
+</DoDont>
+
+---
+
+## Layout patterns
+
+Three layout patterns cover all multi-column arrangements in the portfolio.
+
+### 2-column equal — About
+
+Headshot on the left, bio and skills on the right. Splits into two equal columns at `md` (768px), stacks on mobile. The loose gutter signals that the two sides are distinct but related.
+
+```
+grid md:grid-cols-2 gap-12 md:gap-20
+```
+
+<Canvas of={GridStories.TwoColumn} />
+
+---
+
+### Asymmetric 2-column — Resume
+
+A narrow label column (1fr) paired with a wider content column (2fr). Used for every `ExperienceBlock` on the Resume — company/role/period on the left, bullet points on the right. The asymmetry creates a clear anchor for scanning.
+
+```
+grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12
+```
+
+---
+
+### Stacked list — Work
+
+Work entries stack vertically in a single column. No grid — each `WorkEntry` is full-width and self-contained. The vertical flow encourages sequential reading rather than comparison browsing.
+
+```
+flex flex-col  {/* or simply block children in a div */}
+```
+
+---
+
+## Guidelines
+
+<DoDont>
+  <Do label="Wrap every section in Container">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Always use the Container component to maintain consistent horizontal rhythm. It handles max-width and padding automatically across all breakpoints.
+    </div>
+  </Do>
+  <Dont label="Apply custom max-width directly">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Avoid setting max-width inline or with one-off Tailwind classes. It breaks the shared alignment and is harder to maintain.
+    </div>
+  </Dont>
+</DoDont>
+
+<DoDont>
+  <Do label="Let layouts stack on mobile">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Multi-column grids should collapse to a single column below md. Use <code>md:grid-cols-2</code>, not <code>grid-cols-2</code>.
+    </div>
+  </Do>
+  <Dont label="Force multi-column on small screens">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Avoid fixed column counts without a responsive prefix. Columns become too narrow and content breaks at small widths.
+    </div>
+  </Dont>
+</DoDont>
+
+<DoDont>
+  <Do label="Match Container size to content type">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Use <code>lg</code> for sections, <code>md</code> for page headers, <code>sm</code> for long-form prose. Line length matters for readability.
+    </div>
+  </Do>
+  <Dont label="Use lg everywhere">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Long-form text in a full-width Container becomes too wide to read comfortably. Case study body content should always use <code>sm</code>.
+    </div>
+  </Dont>
+</DoDont>
+
+</TabPanel>
+
+{/* ── CODE ──────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={2}>
+
+## Documentation
+
+This portfolio's grid is built on **Tailwind CSS Grid** — native CSS Grid with responsive utility classes. The `Container` component is the primary layout primitive that handles max-width and horizontal padding. Multi-column layouts are composed with Tailwind's `grid` utilities directly in JSX.
+
+No separate grid package is needed. Everything is available through Tailwind's responsive prefix system.
+
+---
+
+## Container
+
+The `Container` component wraps every page section. It provides consistent `max-width` and horizontal padding across all breakpoints.
+
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>size</code></td>
+      <td><code>'lg' | 'md' | 'sm'</code></td>
+      <td><code>'lg'</code></td>
+      <td>Max-width tier — lg 1152px, md 896px, sm 768px</td>
+    </tr>
+    <tr>
+      <td><code>as</code></td>
+      <td><code>string | component</code></td>
+      <td><code>'div'</code></td>
+      <td>HTML element or component to render as</td>
+    </tr>
+    <tr>
+      <td><code>className</code></td>
+      <td><code>string</code></td>
+      <td><code>''</code></td>
+      <td>Additional Tailwind classes to merge</td>
+    </tr>
+    <tr>
+      <td><code>children</code></td>
+      <td><code>ReactNode</code></td>
+      <td>—</td>
+      <td>Page content</td>
+    </tr>
+  </tbody>
+</table>
+
+### Examples
+
+```jsx
+import Container from '../components/layout/Container'
+
+{/* Default — Work, About sections */}
+<section className="py-24">
+  <Container>
+    {/* content */}
+  </Container>
+</section>
+
+{/* Resume, case study hero */}
+<Container size="md">…</Container>
+
+{/* Case study long-form body */}
+<Container size="sm">…</Container>
+
+{/* Render as a semantic element */}
+<Container as="main" size="md">…</Container>
+```
+
+---
+
+## CSS Grid
+
+Multi-column layouts use Tailwind's `grid` utilities. Column count and gutter are always defined with responsive prefixes so layouts collapse gracefully on mobile.
+
+### 2-column equal — About
+
+```jsx
+<Container>
+  <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+    <div>{/* left */}</div>
+    <div>{/* right */}</div>
+  </div>
+</Container>
+```
+
+### Asymmetric 2-column — Resume
+
+The `[1fr_2fr]` syntax sets a narrow label column alongside a wider content column. This is a Tailwind arbitrary value — use bracket notation for non-standard column templates.
+
+```jsx
+<div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12">
+  <div>{/* meta: company, role, period */}</div>
+  <div>{/* content: bullet points */}</div>
+</div>
+```
+
+### Stacked list — Work
+
+No grid needed. Work entries are block-level and stack naturally.
+
+```jsx
+<Container>
+  <div>
+    {projects.map(p => (
+      <WorkEntry key={p.slug} project={p} />
+    ))}
+  </div>
+</Container>
+```
+
+---
+
+## Responsive utilities
+
+Tailwind's breakpoint prefixes are the equivalent of CSS breakpoint mixins. Apply them to any utility class to change behavior at a given screen width.
+
+<table>
+  <thead>
+    <tr><th>Prefix</th><th>Min-width</th><th>Equivalent</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><em>(none)</em></td><td>0px</td><td>Mobile-first base styles</td></tr>
+    <tr><td><code>md:</code></td><td>768px</td><td>Tablet and above</td></tr>
+    <tr><td><code>lg:</code></td><td>1024px</td><td>Desktop and above</td></tr>
+  </tbody>
+</table>
+
+### Show / hide at breakpoint
+
+```jsx
+{/* Visible on mobile only */}
+<div className="block md:hidden">…</div>
+
+{/* Visible on tablet and above only */}
+<div className="hidden md:block">…</div>
+
+{/* Visible on desktop only */}
+<div className="hidden lg:block">…</div>
+```
+
+### Responsive column count
+
+```jsx
+{/* 1 col → 2 col at md → 3 col at lg */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  …
+</div>
+```
+
+### Responsive spacing
+
+```jsx
+{/* Tighter gap on mobile, wider on desktop */}
+<div className="grid md:grid-cols-2 gap-6 md:gap-12 lg:gap-20">
+  …
+</div>
+```
+
+---
+
+## Aspect ratio
+
+When sizing image or media boxes, use Tailwind's `aspect-*` utilities to enforce consistent proportions. This prevents layout shift and keeps grids visually stable.
+
+```jsx
+{/* Portrait headshot — About section */}
+<div className="aspect-[3/4] overflow-hidden rounded-2xl">
+  <img src="..." className="w-full h-full object-cover" />
+</div>
+
+{/* 16:9 video embed — case study process media */}
+<div className="aspect-video overflow-hidden rounded-xl">
+  <video src="..." autoPlay muted loop playsInline />
+</div>
+
+{/* Square — icons, thumbnails */}
+<div className="aspect-square">…</div>
+```
+
+</TabPanel>
+
+</DocsTabs>

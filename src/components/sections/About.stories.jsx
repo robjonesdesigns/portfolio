@@ -3,7 +3,7 @@ import About from './About'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'Sections/About',
+  title: 'Patterns/About',
   component: About,
   parameters: { layout: 'fullscreen', controls: { disable: true } },
 }

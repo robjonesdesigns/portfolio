@@ -4,7 +4,7 @@ import Footer from './Footer'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'Layout/Footer',
+  title: 'Components/Footer',
   component: Footer,
   tags: ['autodocs'],
   parameters: {

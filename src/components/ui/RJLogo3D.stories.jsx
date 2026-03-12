@@ -3,7 +3,7 @@ import RJLogo3D from './RJLogo3D'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/RJLogo3D',
+  title: 'Components/RJLogo3D',
   component: RJLogo3D,
   parameters: { layout: 'fullscreen', controls: { disable: true } },
 }

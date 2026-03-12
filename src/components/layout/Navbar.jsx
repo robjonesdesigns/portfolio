@@ -105,7 +105,7 @@ export default function Navbar({ theme, toggleTheme }) {
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map(({ label, href }) => {
             const isPage = !href.startsWith('/#')
-            const linkClass = "text-sm font-medium relative group text-fg opacity-70 hover:opacity-100 transition-opacity duration-300"
+            const linkClass = "font-body text-body-sm font-medium relative group text-fg opacity-70 hover:opacity-100 transition-opacity duration-300"
             const inner = (
               <>
                 {label}
@@ -173,7 +173,7 @@ export default function Navbar({ theme, toggleTheme }) {
               const isPage = !href.startsWith('/#')
               const motionProps = {
                 key: label,
-                className: "font-display font-bold text-4xl tracking-tighter text-fg",
+                className: "font-display font-bold text-display-md text-fg",
                 initial: { opacity: 0, y: 20 },
                 animate: { opacity: 1, y: 0 },
                 exit:    { opacity: 0, y: 10 },

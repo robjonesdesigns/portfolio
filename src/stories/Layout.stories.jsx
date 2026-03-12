@@ -132,7 +132,7 @@ const Legend = ({ marginLabel, gutterLabel }) => (
 // ─── Story meta ───────────────────────────────────────────────────────────────
 
 export default {
-  title: 'Design System/Layout',
+  title: 'Elements/Grid',
   parameters: {
     controls: { disable: true },
     layout: 'fullscreen',
@@ -142,6 +142,7 @@ export default {
 // ─── Breakpoints reference ────────────────────────────────────────────────────
 
 export const Breakpoints = {
+  tags: ["!dev"],
   name: 'Breakpoints',
   render: () => (
     <div style={{ backgroundColor: '#fffbf5', padding: '48px' }}>
@@ -187,6 +188,7 @@ const GRID_CONFIG = {
 }
 
 export const ColumnGrid = {
+  tags: ["!dev"],
   name: 'Column Grid ↔ resize with toolbar',
   render: () => {
     const bp = useBreakpoint()
@@ -256,6 +258,7 @@ export const ColumnGrid = {
 // ─── 2-column layout ──────────────────────────────────────────────────────────
 
 export const TwoColumn = {
+  tags: ["!dev"],
   name: '2 Column — About',
   render: () => (
     <MarginShell>
@@ -274,30 +277,10 @@ export const TwoColumn = {
   ),
 }
 
-// ─── Project grid ─────────────────────────────────────────────────────────────
-
-export const ProjectGrid = {
-  name: 'Project Grid — 1 → 2 col',
-  render: () => (
-    <MarginShell paddingClass="px-6 md:px-16">
-      <p style={{ fontFamily: 'monospace', fontSize: '11px', color: 'rgba(34,34,34,0.55)', margin: '0 0 20px' }}>
-        grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 · px-6 md:px-16 margins
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" style={{ backgroundColor: C_GUTTER, borderRadius: '8px' }}>
-        {[1, 2, 3, 4].map(n => (
-          <div key={n} style={{ backgroundColor: C_COLUMN, borderRadius: '8px', minHeight: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontFamily: 'monospace', fontSize: '11px', color: 'rgba(129,55,70,0.8)' }}>card {n}</span>
-          </div>
-        ))}
-      </div>
-      <Legend marginLabel="px-6 md:px-16" gutterLabel="gap-6 md:gap-8" />
-    </MarginShell>
-  ),
-}
-
 // ─── Content widths ───────────────────────────────────────────────────────────
 
 export const ContentWidths = {
+  tags: ["!dev"],
   name: 'Content Widths',
   render: () => (
     <div className="px-6 md:px-10" style={{ backgroundColor: '#fffbf5', paddingTop: '48px', paddingBottom: '48px' }}>
@@ -305,7 +288,7 @@ export const ContentWidths = {
         Container widths used in this portfolio
       </p>
       {[
-        { cls: 'max-w-6xl', px: '1152px', note: 'Projects, About — wide layout sections'   },
+        { cls: 'max-w-6xl', px: '1152px', note: 'Work, About — wide layout sections'   },
         { cls: 'max-w-4xl', px: '896px',  note: 'Resume, case study hero'                  },
         { cls: 'max-w-3xl', px: '768px',  note: 'Case study body text'                     },
       ].map(({ cls, px, note }) => (

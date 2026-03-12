@@ -3,7 +3,7 @@ import Container from './Container'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'Layout/Container',
+  title: 'Components/Container',
   component: Container,
   tags: ['autodocs'],
   parameters: {

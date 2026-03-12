@@ -11,7 +11,7 @@ const Shell = ({ dark, children }) => (
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/HeroName',
+  title: 'Components/HeroName',
   component: HeroName,
   parameters: { layout: 'fullscreen', controls: { disable: true } },
 }

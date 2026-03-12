@@ -3,7 +3,7 @@ import PageTransition from './PageTransition'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/PageTransition',
+  title: 'Components/PageTransition',
   component: PageTransition,
   parameters: { layout: 'fullscreen', controls: { disable: true } },
 }

@@ -5,9 +5,12 @@ import { projects } from '../../data/projects'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/WorkEntry',
+  title: 'Components/WorkEntry',
   component: WorkEntry,
-  parameters: { layout: 'fullscreen' },
+  parameters: {
+    layout: 'fullscreen',
+    a11y: { test: 'error' },
+  },
   decorators: [
     (Story) => (
       <MemoryRouter>

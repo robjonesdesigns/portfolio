@@ -49,7 +49,7 @@ function Placeholder({ color }) {
         border:          `1px solid ${color ? `${color}45` : 'var(--border)'}`,
       }}
     >
-      <span className="text-xs font-mono text-fg" style={{ opacity: 0.25 }}>[ image ]</span>
+      <span className="font-body text-caption text-fg" style={{ opacity: 0.25 }}>[ image ]</span>
     </div>
   )
 }
@@ -102,7 +102,7 @@ export default function WorkEntry({ project }) {
 
   return (
     <m.article
-      className="py-12 md:py-16 border-t"
+      className="py-8 border-t"
       style={{ borderColor: 'var(--border)' }}
       initial="hidden"
       whileInView="show"
@@ -111,8 +111,7 @@ export default function WorkEntry({ project }) {
     >
       {/* Headline */}
       <h3
-        className="font-display font-bold tracking-tighter leading-tight text-fg mb-8 md:mb-10"
-        style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+        className="font-display font-bold text-display-md text-fg mb-8 md:mb-10"
       >
         {headline}
       </h3>
@@ -126,7 +125,7 @@ export default function WorkEntry({ project }) {
       <div className="mb-10 md:mb-12">
         <Link
           to={`/projects/${slug}`}
-          className="text-sm font-mono tracking-wide text-brand-primary hover:opacity-60 transition-opacity"
+          className="font-body text-body-sm tracking-wide text-brand-primary hover:opacity-60 transition-opacity"
         >
           See more →
         </Link>
@@ -136,33 +135,33 @@ export default function WorkEntry({ project }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
 
         <div>
-          <p className="text-xs font-mono tracking-widest uppercase mb-2 text-fg" style={{ opacity: 0.4 }}>
+          <p className="font-body font-bold text-meta mb-2 text-fg-secondary">
             Company
           </p>
-          <p className="text-sm text-fg">{company}</p>
+          <p className="font-body text-body-sm text-fg">{company}</p>
         </div>
 
         <div>
-          <p className="text-xs font-mono tracking-widest uppercase mb-2 text-fg" style={{ opacity: 0.4 }}>
+          <p className="font-body font-bold text-meta mb-2 text-fg-secondary">
             Role
           </p>
-          <p className="text-sm text-fg">{role}</p>
+          <p className="font-body text-body-sm text-fg">{role}</p>
         </div>
 
         <div>
-          <p className="text-xs font-mono tracking-widest uppercase mb-2 text-fg" style={{ opacity: 0.4 }}>
+          <p className="font-body font-bold text-meta mb-2 text-fg-secondary">
             Problem
           </p>
-          <p className="text-sm text-fg leading-relaxed" style={{ opacity: 0.75 }}>{description}</p>
+          <p className="font-body text-body-sm text-fg leading-relaxed" style={{ opacity: 0.75 }}>{description}</p>
         </div>
 
         <div>
-          <p className="text-xs font-mono tracking-widest uppercase mb-2 text-fg" style={{ opacity: 0.4 }}>
+          <p className="font-body font-bold text-meta mb-2 text-fg-secondary">
             Outcome
           </p>
           <ul className="flex flex-col gap-2">
             {(outcomes || []).map((item, i) => (
-              <li key={i} className="flex gap-2 text-sm text-fg leading-relaxed">
+              <li key={i} className="flex gap-2 font-body text-body-sm text-fg leading-relaxed">
                 <span className="text-brand-primary shrink-0 leading-relaxed">○</span>
                 <span style={{ opacity: 0.75 }}>{item}</span>
               </li>

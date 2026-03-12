@@ -18,9 +18,8 @@ const Swatch = ({ dark = false, label, children }) => (
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/ThemeToggle',
+  title: 'Components/ThemeToggle',
   component: ThemeToggle,
-  tags: ['autodocs'],
   parameters: { layout: 'centered' },
   argTypes: {
     theme: {

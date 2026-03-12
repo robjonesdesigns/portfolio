@@ -3,7 +3,7 @@ import Contact from './Contact'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'Sections/Contact',
+  title: 'Patterns/Contact',
   component: Contact,
   parameters: { layout: 'fullscreen', controls: { disable: true } },
 }

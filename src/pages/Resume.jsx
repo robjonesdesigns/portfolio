@@ -2,6 +2,7 @@ import { m } from 'framer-motion'
 import PageTransition from '../components/ui/PageTransition'
 import Container from '../components/layout/Container'
 import Badge from '../components/ui/Badge'
+import Button from '../components/ui/Button'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -96,7 +97,7 @@ function SectionLabel({ children }) {
   return (
     <div className="flex items-center gap-2 mb-8">
       <span className="inline-block w-8 h-px" style={{ backgroundColor: 'var(--accent)' }} />
-      <span className="text-xs font-mono tracking-widest uppercase" style={{ color: 'var(--accent)' }}>
+      <span className="font-body text-label text-brand-primary">
         {children}
       </span>
     </div>
@@ -108,16 +109,16 @@ function ExperienceBlock({ company, role, period, bullets }) {
     <m.div variants={fadeUp} className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
       {/* Left — company meta */}
       <div>
-        <p className="font-display font-bold text-base tracking-tight" style={{ color: 'var(--fg)' }}>
+        <p className="font-display font-bold text-body tracking-tight text-fg">
           {company}
         </p>
-        <p className="text-sm mt-1" style={{ color: 'var(--accent)' }}>{role}</p>
-        <p className="text-xs mt-1 font-mono" style={{ color: 'var(--fg)', opacity: 0.45 }}>{period}</p>
+        <p className="font-body text-body-sm mt-1 text-brand-primary">{role}</p>
+        <p className="font-body text-caption mt-1 text-fg-secondary">{period}</p>
       </div>
       {/* Right — bullets */}
       <ul className="flex flex-col gap-3">
         {bullets.map((b, i) => (
-          <li key={i} className="text-sm leading-relaxed pl-4 relative" style={{ color: 'var(--fg)', opacity: 0.75 }}>
+          <li key={i} className="font-body text-body-sm leading-relaxed pl-4 relative text-fg" style={{ opacity: 0.75 }}>
             <span className="absolute left-0 top-[0.55em] w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--accent)' }} />
             {b}
           </li>
@@ -146,8 +147,7 @@ export default function Resume() {
             {/* Name */}
             <m.h1
               variants={fadeUp}
-              className="font-display font-bold tracking-tighter leading-none mb-3"
-              style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', color: 'var(--fg)' }}
+              className="font-display font-bold text-display-2xl text-fg mb-3"
             >
               Rob Jones
             </m.h1>
@@ -155,14 +155,14 @@ export default function Resume() {
             {/* Title */}
             <m.p
               variants={fadeUp}
-              className="font-display text-lg md:text-xl tracking-tight mb-6"
+              className="font-display text-body-lg tracking-tight mb-6"
               style={{ color: 'var(--accent)' }}
             >
               UX &amp; Product Designer with 5+ years across startups &amp; SaaS enterprise
             </m.p>
 
             {/* Contact row */}
-            <m.div variants={fadeUp} className="flex flex-wrap gap-4 text-sm" style={{ color: 'var(--fg)', opacity: 0.6 }}>
+            <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body-sm" style={{ color: 'var(--fg)', opacity: 0.6 }}>
               <a href="mailto:robjonesdesigns@gmail.com" className="hover:opacity-100 transition-opacity"
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                 onMouseLeave={e => e.currentTarget.style.color = ''}>
@@ -183,19 +183,12 @@ export default function Resume() {
 
             {/* Download button */}
             <m.div variants={fadeUp} className="mt-8">
-              <a
-                href="/RobJonesResume.pdf"
-                download="RobJonesResume.pdf"
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200"
-                style={{ backgroundColor: 'var(--accent)', color: '#fff' }}
-                onMouseEnter={e => { e.currentTarget.style.opacity = '0.85' }}
-                onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
-              >
+              <Button as="a" href="/RobJonesResume.pdf" download="RobJonesResume.pdf">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M1 11.5h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 Download PDF
-              </a>
+              </Button>
             </m.div>
           </m.div>
 
@@ -232,17 +225,17 @@ export default function Resume() {
 
             <m.div variants={fadeUp} className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-display font-bold text-base tracking-tight" style={{ color: 'var(--fg)' }}>
+                <p className="font-display font-bold text-body tracking-tight text-fg">
                   Stony Brook University
                 </p>
-                <p className="text-xs mt-1 font-mono" style={{ color: 'var(--fg)', opacity: 0.45 }}>BA in Studio Arts</p>
+                <p className="font-body text-caption mt-1 text-fg-secondary">BA in Studio Arts</p>
               </div>
               <div>
-                <p className="font-display font-bold text-base tracking-tight" style={{ color: 'var(--fg)' }}>
+                <p className="font-display font-bold text-body tracking-tight text-fg">
                   CareerFoundry
                 </p>
-                <p className="text-sm mt-1" style={{ color: 'var(--accent)' }}>UX Design Certified Program</p>
-                <p className="text-xs mt-1 font-mono" style={{ color: 'var(--fg)', opacity: 0.45 }}>600+ hours</p>
+                <p className="font-body text-body-sm mt-1 text-brand-primary">UX Design Certified Program</p>
+                <p className="font-body text-caption mt-1 text-fg-secondary">600+ hours</p>
               </div>
             </m.div>
           </m.section>
@@ -261,7 +254,7 @@ export default function Resume() {
 
             <m.div variants={fadeUp} className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="text-xs font-mono tracking-widest uppercase mb-4" style={{ color: 'var(--fg)', opacity: 0.45 }}>
+                <p className="font-body text-meta mb-4 text-fg-secondary">
                   Tools
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -269,7 +262,7 @@ export default function Resume() {
                 </div>
               </div>
               <div>
-                <p className="text-xs font-mono tracking-widest uppercase mb-4" style={{ color: 'var(--fg)', opacity: 0.45 }}>
+                <p className="font-body text-meta mb-4 text-fg-secondary">
                   Frameworks
                 </p>
                 <div className="flex flex-wrap gap-2">

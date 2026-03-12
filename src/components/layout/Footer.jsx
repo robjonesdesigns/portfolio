@@ -44,13 +44,12 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <span className="inline-block w-7 h-px flex-shrink-0 bg-brand-primary" />
-                <span className="text-xs font-mono tracking-widest uppercase text-brand-primary">
-                  Let's work together
+                <span className="font-body text-label text-brand-primary">
+                  Available for work
                 </span>
               </div>
               <h2
-                className="font-display font-bold text-fg leading-tight tracking-tighter"
-                style={{ fontSize: 'clamp(2rem, 5vw, 3.75rem)' }}
+                className="font-display font-bold text-display-lg text-fg"
               >
                 Let's build something<br className="hidden md:block" /> great together.
               </h2>
@@ -60,7 +59,7 @@ export default function Footer() {
             <m.button
               onClick={handleEmailCopy}
               className="self-start md:self-end flex items-center gap-3 px-6 py-3.5
-                         border border-brand-primary text-brand-primary font-mono text-sm
+                         border border-brand-primary text-brand-primary font-body text-body-sm
                          tracking-wide rounded hover:bg-brand-primary hover:text-on-accent
                          transition-colors duration-200 whitespace-nowrap"
               animate={copied ? { scale: [1, 0.96, 1] } : {}}
@@ -82,8 +81,8 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <RJLogo size={28} />
               <div className="flex flex-col leading-tight">
-                <span className="text-sm font-medium">Rob Jones</span>
-                <span className="text-xs opacity-50">UX &amp; Product Designer</span>
+                <span className="font-body text-body-sm font-medium">Rob Jones</span>
+                <span className="font-body text-caption opacity-50">UX &amp; Product Designer</span>
               </div>
             </div>
 
@@ -94,7 +93,7 @@ export default function Footer() {
                   <a
                     key={label}
                     href={href}
-                    className="text-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
+                    className="font-body text-body-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
                   >
                     {label}
                   </a>
@@ -102,7 +101,7 @@ export default function Footer() {
                   <Link
                     key={label}
                     to={href}
-                    className="text-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
+                    className="font-body text-body-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
                   >
                     {label}
                   </Link>
@@ -125,14 +124,14 @@ export default function Footer() {
               </a>
               <button
                 onClick={handleEmailCopy}
-                className="text-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
+                className="font-body text-body-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
               >
                 {copied ? '✓ Copied!' : 'Email'}
               </button>
               <button
                 onClick={scrollToTop}
                 aria-label="Back to top"
-                className="text-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
+                className="font-body text-body-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
               >
                 ↑ Top
               </button>
@@ -142,8 +141,8 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className="mt-8 pt-6 border-t border-token flex flex-col md:flex-row justify-between gap-1">
-            <p className="text-xs opacity-40">© {new Date().getFullYear()} Rob Jones. All rights reserved.</p>
-            <p className="text-xs opacity-40">Designed &amp; built by Rob Jones</p>
+            <p className="font-body text-caption opacity-40">© {new Date().getFullYear()} Rob Jones. All rights reserved.</p>
+            <p className="font-body text-caption opacity-40">Designed &amp; built by Rob Jones</p>
           </div>
 
         </Container>

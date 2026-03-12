@@ -1,0 +1,53 @@
+{/* PageTransition.mdx */}
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as PageTransitionStories from '../components/ui/PageTransition.stories'
+
+<Meta of={PageTransitionStories} />
+
+# PageTransition
+
+Framer Motion wrapper that fades page content in from `y: 20` on mount. Wraps the entire content of a page — it does not stagger children individually.
+
+---
+
+## Default
+
+<Canvas of={PageTransitionStories.Default} />
+
+## Light and dark
+
+<Canvas of={PageTransitionStories.BothThemes} />
+
+---
+
+## Animation spec
+
+| Property | Enter | Exit |
+|---|---|---|
+| `opacity` | 0 → 1 | 1 → 0 |
+| `y` | 20px → 0 | 0 → 20px |
+| Duration | 0.35s | 0.2s |
+| Easing | `easeOut` | `easeIn` |
+
+---
+
+## Usage
+
+```jsx
+// Wrap the full page content in every route component
+export default function CaseStudy() {
+  return (
+    <PageTransition>
+      <main>…</main>
+    </PageTransition>
+  )
+}
+```
+
+PageTransition is already applied to every page in the portfolio — `Home.jsx`, `CaseStudy.jsx`, and `Resume.jsx` all use it as the outermost wrapper.
+
+---
+
+## Props
+
+<ArgTypes of={PageTransitionStories} />

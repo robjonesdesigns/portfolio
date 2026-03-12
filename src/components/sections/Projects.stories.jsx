@@ -5,7 +5,7 @@ import Projects from './Projects'
 // WorkEntry uses react-router-dom Link, so MemoryRouter is required here.
 
 export default {
-  title: 'Sections/Projects',
+  title: 'Patterns/Projects',
   component: Projects,
   parameters: { layout: 'fullscreen', controls: { disable: true } },
   decorators: [(Story) => <MemoryRouter><Story /></MemoryRouter>],

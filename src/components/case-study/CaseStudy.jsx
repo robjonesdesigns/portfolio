@@ -19,10 +19,10 @@ const stagger = {
 function Section({ label, children }) {
   return (
     <m.div variants={fadeUp} className="flex flex-col gap-4">
-      <p className="text-xs font-mono tracking-widest uppercase text-brand-primary">
+      <p className="font-body text-label text-brand-primary">
         {label}
       </p>
-      <div className="text-base md:text-lg leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.8 }}>
+      <div className="font-body text-body md:text-body-lg leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.8 }}>
         {children}
       </div>
     </m.div>
@@ -32,7 +32,7 @@ function Section({ label, children }) {
 function ProcessMediaCard({ item }) {
   return (
     <m.div variants={fadeUp} className="flex flex-col gap-3">
-      <p className="text-xs font-mono tracking-widest uppercase text-brand-primary">
+      <p className="font-body text-label text-brand-primary">
         {item.label}
       </p>
       <div style={{
@@ -45,7 +45,7 @@ function ProcessMediaCard({ item }) {
         <LazyVideo src={item.video} style={{ width: '100%', display: 'block' }} />
       </div>
       {item.caption && (
-        <p className="text-sm leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.55 }}>
+        <p className="font-body text-body-sm leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.55 }}>
           {item.caption}
         </p>
       )}
@@ -61,10 +61,10 @@ export default function CaseStudy() {
     return (
       <PageTransition>
         <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-6">
-          <h1 className="font-display font-bold text-4xl" style={{ color: 'var(--fg)' }}>
+          <h1 className="font-display font-bold text-display-md text-fg">
             Project not found
           </h1>
-          <Link to="/" className="text-sm" style={{ color: 'var(--accent)' }}>
+          <Link to="/" className="font-body text-body-sm" style={{ color: 'var(--accent)' }}>
             ← Back to home
           </Link>
         </div>
@@ -87,7 +87,7 @@ export default function CaseStudy() {
               <m.div variants={fadeUp}>
                 <Link
                   to="/"
-                  className="inline-flex items-center gap-2 text-sm mb-8"
+                  className="inline-flex items-center gap-2 font-body text-body-sm mb-8"
                   style={{ color: 'var(--fg)', opacity: 0.5 }}
                   onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
                   onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.5')}
@@ -98,15 +98,14 @@ export default function CaseStudy() {
 
               <m.div variants={fadeUp} className="flex items-center gap-3">
                 <span className="inline-block w-8 h-px bg-brand-primary" />
-                <span className="text-xs font-mono tracking-widest uppercase text-brand-primary">
+                <span className="font-body text-label text-brand-primary">
                   Case Study
                 </span>
               </m.div>
 
               <m.h1
                 variants={fadeUp}
-                className="font-display font-bold tracking-tighter leading-none"
-                style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)', color: 'var(--fg)' }}
+                className="font-display font-bold text-display-xl text-fg"
               >
                 {project.title}
               </m.h1>
@@ -124,10 +123,10 @@ export default function CaseStudy() {
                   { label: 'Year', value: project.year },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex flex-col gap-1">
-                    <span className="text-xs font-mono tracking-widest uppercase" style={{ color: 'var(--fg)', opacity: 0.4 }}>
+                    <span className="font-body text-meta text-fg-secondary">
                       {label}
                     </span>
-                    <span className="text-sm font-medium" style={{ color: 'var(--fg)' }}>
+                    <span className="font-body text-body-sm font-medium text-fg">
                       {value}
                     </span>
                   </div>
@@ -148,7 +147,7 @@ export default function CaseStudy() {
             />
           ) : (
             <div className="w-full h-full bg-surface flex items-center justify-center">
-              <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>
+              <p className="font-body text-body-sm opacity-30" style={{ color: 'var(--fg)' }}>
                 Add project hero image here
               </p>
             </div>
@@ -174,7 +173,7 @@ export default function CaseStudy() {
                 ? project.processMedia.map(item => <ProcessMediaCard key={item.id} item={item} />)
                 : (
                   <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', height: '300px' }}>
-                    <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>Process / wireframes image</p>
+                    <p className="font-body text-body-sm opacity-30" style={{ color: 'var(--fg)' }}>Process / wireframes image</p>
                   </m.div>
                 )
               }
@@ -186,7 +185,7 @@ export default function CaseStudy() {
                 ? <ProcessMediaCard item={{ id: 'final', ...project.finalMedia }} />
                 : (
                   <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', height: '400px' }}>
-                    <p className="font-mono text-sm opacity-30" style={{ color: 'var(--fg)' }}>Final design image</p>
+                    <p className="font-body text-body-sm opacity-30" style={{ color: 'var(--fg)' }}>Final design image</p>
                   </m.div>
                 )
               }
@@ -219,7 +218,7 @@ export default function CaseStudy() {
               >
                 <Link
                   to="/#projects"
-                  className="text-sm font-medium text-brand-primary"
+                  className="font-body text-body-sm font-medium text-brand-primary"
                 >
                   ← All Projects
                 </Link>
@@ -229,7 +228,7 @@ export default function CaseStudy() {
                   return (
                     <Link
                       to={`/projects/${next.slug}`}
-                      className="text-sm font-medium text-brand-primary"
+                      className="font-body text-body-sm font-medium text-brand-primary"
                     >
                       Next: {next.title} →
                     </Link>

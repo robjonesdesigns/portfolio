@@ -48,7 +48,7 @@ function PairSamples({ bg, fg, token, ratio, level }) {
 
       {/* Label */}
       <p style={{
-        color: fg, opacity: 0.55,
+        color: fg,
         fontFamily: 'monospace', fontSize: '10px',
         textTransform: 'uppercase', letterSpacing: '0.1em',
         margin: '0 0 24px',
@@ -98,7 +98,7 @@ function PairSamples({ bg, fg, token, ratio, level }) {
 // ─── Story meta ───────────────────────────────────────────────────────────────
 
 export default {
-  title: 'Design System/Color Contrast',
+  title: 'Elements/Color',
   parameters: {
     layout: 'fullscreen',
     controls: { disable: true },
@@ -124,6 +124,7 @@ intentionally below the AAA threshold as documented in the Tokens page.
 // ─── WCAG AAA — Light theme ───────────────────────────────────────────────────
 
 export const AAALightFgOnBg = {
+  tags: ['!dev'],
   name: 'AAA · Light  —  --fg on --bg  (16.8 : 1)',
   parameters: {
     a11y: { test: 'error', config: AAA_CONFIG },
@@ -140,6 +141,7 @@ export const AAALightFgOnBg = {
 }
 
 export const AAALightFgOnSurface = {
+  tags: ['!dev'],
   name: 'AAA · Light  —  --fg on --surface  (15.4 : 1)',
   parameters: {
     a11y: { test: 'error', config: AAA_CONFIG },
@@ -156,6 +158,7 @@ export const AAALightFgOnSurface = {
 }
 
 export const AAALightOnAccent = {
+  tags: ['!dev'],
   name: 'AAA · Light  —  --on-accent on --accent  (7.78 : 1)',
   parameters: {
     a11y: { test: 'error', config: AAA_CONFIG },
@@ -172,6 +175,7 @@ export const AAALightOnAccent = {
 }
 
 export const AAALightAccentOnBg = {
+  tags: ['!dev'],
   name: 'AAA · Light  —  --accent on --bg  (7.1 : 1)',
   parameters: {
     a11y: { test: 'error', config: AAA_CONFIG },
@@ -190,6 +194,7 @@ export const AAALightAccentOnBg = {
 // ─── WCAG AAA — Dark theme ────────────────────────────────────────────────────
 
 export const AAADarkFgOnBg = {
+  tags: ['!dev'],
   name: 'AAA · Dark  —  --fg on --bg  (12.5 : 1)',
   parameters: {
     a11y: { test: 'error', config: AAA_CONFIG },
@@ -206,6 +211,7 @@ export const AAADarkFgOnBg = {
 }
 
 export const AAADarkFgOnSurface = {
+  tags: ['!dev'],
   name: 'AAA · Dark  —  --fg on --surface  (11.4 : 1)',
   parameters: {
     a11y: { test: 'error', config: AAA_CONFIG },
@@ -226,6 +232,7 @@ export const AAADarkFgOnSurface = {
 // The color-contrast-enhanced rule is disabled so only the AA bar is enforced.
 
 export const AALightAccentOnSurface = {
+  tags: ['!dev'],
   name: 'AA · Light  —  --accent on --surface  (6.7 : 1)',
   parameters: {
     a11y: { test: 'error', config: AA_CONFIG },
@@ -250,6 +257,7 @@ Used in badge borders and secondary UI on surface backgrounds.
 }
 
 export const AADarkOnAccent = {
+  tags: ['!dev'],
   name: 'AA · Dark  —  --on-accent on --accent  (4.81 : 1)',
   parameters: {
     a11y: { test: 'error', config: AA_CONFIG },
@@ -274,6 +282,7 @@ Text on dark-mode primary buttons and filled badges.
 }
 
 export const AADarkAccentOnBg = {
+  tags: ['!dev'],
   name: 'AA · Dark  —  --accent on --bg  (5.4 : 1)',
   parameters: {
     a11y: { test: 'error', config: AA_CONFIG },
@@ -298,6 +307,7 @@ Brand links, eyebrow labels, secondary button text in dark mode.
 }
 
 export const AADarkAccentOnSurface = {
+  tags: ['!dev'],
   name: 'AA · Dark  —  --accent on --surface  (5.1 : 1)',
   parameters: {
     a11y: { test: 'error', config: AA_CONFIG },
@@ -324,6 +334,7 @@ Brand text on dark-mode surface backgrounds (cards, panels).
 // ─── Overview — all pairs at a glance (no automated test) ────────────────────
 
 export const Overview = {
+  tags: ['!dev'],
   name: 'Overview — all pairs',
   parameters: {
     a11y: { test: 'off' },
@@ -356,7 +367,7 @@ export const Overview = {
               borderBottom: '1px solid rgba(128,128,128,0.15)',
             }}
           >
-            <p style={{ color: fg, opacity: 0.5, fontFamily: 'monospace', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 8px' }}>
+            <p style={{ color: fg, fontFamily: 'monospace', fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 8px' }}>
               {token}
             </p>
             <p style={{ color: fg, fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', margin: '0 0 6px' }}>

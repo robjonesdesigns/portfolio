@@ -1,0 +1,54 @@
+{/* Badge.mdx */}
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as BadgeStories from '../components/ui/Badge.stories'
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+Inline label for project tags, skill chips, and status indicators. Two variants: a muted default for neutral tags and an accented variant for brand-colored labels.
+
+---
+
+## Variants
+
+### Default
+
+Muted text with a translucent border. Use for project tags on WorkEntry cards and ProjectCard grids.
+
+<Canvas of={BadgeStories.DefaultVariant} />
+
+### Accent
+
+Brand color text with a tinted background and accent border. Use for eyebrow labels, availability status, or any badge that needs to draw attention.
+
+<Canvas of={BadgeStories.Accent} />
+
+---
+
+## Both themes
+
+<Canvas of={BadgeStories.BothVariants} />
+
+---
+
+## Usage
+
+```jsx
+// Project tag (default)
+<Badge>Enterprise SaaS</Badge>
+
+// Accent — availability label or highlight
+<Badge variant="accent">Available for work</Badge>
+
+// Common usage on a card
+{project.tags.map(tag => (
+  <Badge key={tag}>{tag}</Badge>
+))}
+```
+
+---
+
+## Props
+
+<ArgTypes of={BadgeStories} />

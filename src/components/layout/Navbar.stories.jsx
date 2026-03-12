@@ -5,9 +5,8 @@ import Navbar from './Navbar'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'Layout/Navbar',
+  title: 'Components/Navbar',
   component: Navbar,
-  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     controls: { disable: true },

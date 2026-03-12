@@ -51,11 +51,11 @@ const preview = {
     options: {
       storySort: {
         order: [
-          'Design System', ['Typography', 'Logo', 'Color Contrast', 'Layout'],
-          'Layout',        ['Container', 'Navbar', 'Footer'],
-          'UI',            ['Button', 'Badge', 'Marquee', 'WorkEntry', 'ThemeToggle', 'Cursor', 'HeroName', 'RJLogo3D', 'PageTransition'],
-          'Sections',      ['Hero', 'About', 'Projects', 'Contact'],
-          'Pages',         ['Resume', 'Case Study'],
+          'Brand',      ['Logo'],
+          'Elements',   ['Color', 'Typography', 'Spacing', 'Themes', 'Motion', 'Grid'],
+          'Components', ['Button', 'Badge', 'WorkEntry', 'Marquee', 'ThemeToggle', 'Navbar', 'PageTransition', 'Container', 'Footer', 'Cursor', 'HeroName', 'RJLogo3D'],
+          'Patterns',   ['Hero', 'About', 'Projects', 'Contact'],
+          'Pages',      ['Resume', 'Case Study'],
           '*',
         ],
       },

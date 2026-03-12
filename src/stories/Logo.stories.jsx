@@ -12,11 +12,12 @@ const RJLogo = ({ size = 40, color = '#813746', dotColor = '#813746' }) => (
 )
 
 export default {
-  title: 'Design System/Logo',
+  title: 'Brand/Logo',
   parameters: { controls: { disable: true }, layout: 'fullscreen' },
 }
 
 export const OnLight = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ backgroundColor: '#fffbf5', padding: '48px', display: 'flex', flexDirection: 'column', gap: '40px' }}>
       <p style={{ fontFamily: 'Arial', fontSize: '11px', color: 'rgba(34,34,34,0.8)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
@@ -35,6 +36,7 @@ export const OnLight = {
 }
 
 export const OnDark = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ backgroundColor: '#1c1a16', padding: '48px', display: 'flex', flexDirection: 'column', gap: '40px' }}>
       <p style={{ fontFamily: 'Arial', fontSize: '11px', color: 'rgba(255,251,245,0.8)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
@@ -53,6 +55,7 @@ export const OnDark = {
 }
 
 export const Sizes = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ backgroundColor: 'var(--bg)', padding: '48px', display: 'flex', flexDirection: 'column', gap: '32px' }}>
       {[
@@ -80,6 +83,7 @@ export const Sizes = {
 const SPRING = { type: 'spring', stiffness: 400, damping: 17 }
 
 export const Interactions = {
+  tags: ['!dev'],
   name: 'Interactions — hover & click',
   render: () => (
     <div style={{
@@ -117,6 +121,7 @@ export const Interactions = {
 // ─── Minimum size ─────────────────────────────────────────────────────────────
 
 export const MinimumSize = {
+  tags: ['!dev'],
   render: () => (
     <div style={{ backgroundColor: 'var(--bg)', padding: '48px' }}>
       <p style={{ fontFamily: 'Arial', fontSize: '12px', color: 'var(--fg)', opacity: 0.5, marginBottom: '24px' }}>

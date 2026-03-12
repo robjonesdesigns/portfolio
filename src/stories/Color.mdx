@@ -1,0 +1,655 @@
+{/* Color.mdx */}
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import { DocsTabs, TabList, Tab, TabPanel } from './DocsTabs'
+import { DoDont, Do, Dont } from './DoDont'
+import * as ColorContrastStories from './ColorContrast.stories'
+
+<Meta of={ColorContrastStories} />
+
+# Color
+
+Maintaining consistent and engaging digital interfaces demands clear guidance around color usage. The concepts below provide the foundation for working with color across light and dark themes.
+
+<DocsTabs>
+
+<TabList>
+  <Tab index={0}>Overview</Tab>
+  <Tab index={1}>Usage</Tab>
+  <Tab index={2}>Tokens</Tab>
+  <Tab index={3}>Code</Tab>
+</TabList>
+
+{/* ── OVERVIEW ──────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={0}>
+
+## Introduction
+
+Application of the color palette brings unified and recognizable consistency to the portfolio. This consistency is grounded in a set of well-defined rules about how to work with role-based color tokens in the context of light and dark themes.
+
+---
+
+## Implementing color
+
+The portfolio uses tokens and themes to manage color. Tokens are role-based, and themes specify the color values that serve those roles.
+
+<table>
+  <thead>
+    <tr><th>Term</th><th>Definition</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Theme</strong></td>
+      <td>A collection of color values designed to create a specific look. Themes control the value assigned to every token. The portfolio has two themes: Light and Dark.</td>
+    </tr>
+    <tr>
+      <td><strong>Token</strong></td>
+      <td>A role-based identifier that assigns a color. Unlike hex codes, tokens apply universally across themes. For example, <code>--fg</code>, <code>--accent</code>, <code>--border</code>.</td>
+    </tr>
+    <tr>
+      <td><strong>Role</strong></td>
+      <td>The systematic usage of a color assigned to a token. Roles do not change between themes — <code>--fg</code> is always foreground text regardless of the active theme.</td>
+    </tr>
+    <tr>
+      <td><strong>Value</strong></td>
+      <td>The unique visual attribute (hex code or rgba value) assigned to a token through a theme. For example, <code>--fg</code> resolves to <code>#222222</code> in light and <code>#fffbf5</code> in dark.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Themes
+
+Themes serve as an organizational framework for color in the portfolio. Each theme is based on a primary background color. The portfolio has one light theme and one dark theme.
+
+<table>
+  <thead>
+    <tr><th>Theme</th><th>Type</th><th>Primary background</th><th>Token</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Light</strong></td><td>Light</td><td>Cream</td><td><code>--bg</code></td><td>#fffbf5</td></tr>
+    <tr><td><strong>Dark</strong></td><td>Dark</td><td>Near-black</td><td><code>--bg</code></td><td>#1c1a16</td></tr>
+  </tbody>
+</table>
+
+The active theme is controlled by the `.dark` class on `<html>`. When `.dark` is present, all adaptive tokens resolve to their dark values simultaneously. The `ThemeToggle` component manages this — no component-level logic is needed.
+
+In the light theme, the surface layer (`--surface`) sits one step above the page background, creating depth. In the dark theme, the same layering applies in reverse — surface is one step lighter than the background.
+
+---
+
+## Color palette
+
+Eight adaptive tokens cover every color need in the portfolio. Each token shifts value between themes — components never reference hex codes directly.
+
+<div style={{ marginTop: '24px' }}>
+{[
+  {
+    name: 'Background',
+    cssVar: '--bg',
+    tw: 'bg-[var(--bg)]',
+    lightHex: '#fffbf5', lightName: 'Cream',
+    darkHex:  '#1c1a16', darkName:  'Near-black',
+    role: 'Page background',
+  },
+  {
+    name: 'Surface',
+    cssVar: '--surface',
+    tw: 'bg-surface',
+    lightHex: '#f7f3f5', lightName: 'Off-white',
+    darkHex:  '#252220', darkName:  'Dark warm',
+    role: 'Cards, panels, elevated surfaces',
+  },
+  {
+    name: 'Foreground',
+    cssVar: '--fg',
+    tw: 'text-fg',
+    lightHex: '#222222', lightName: 'Near-black',
+    darkHex:  '#fffbf5', darkName:  'Cream',
+    role: 'All text — headings, body, labels, icons',
+  },
+  {
+    name: 'Foreground Secondary',
+    cssVar: '--fg-secondary',
+    tw: 'text-fg-secondary',
+    lightHex: 'rgba(34,34,34,0.55)', lightName: 'Muted dark',
+    darkHex:  'rgba(255,251,245,0.55)', darkName: 'Muted light',
+    lightSwatchBg: 'rgba(34,34,34,0.55)',
+    role: 'Supporting text, captions, metadata',
+  },
+  {
+    name: 'Brand Primary',
+    cssVar: '--accent',
+    tw: 'text-brand-primary · bg-brand-primary',
+    lightHex: '#813746', lightName: 'Burgundy',
+    darkHex:  '#e36f86', darkName:  'Rose',
+    role: 'CTAs, links, highlights, eyebrow labels',
+  },
+  {
+    name: 'On Accent',
+    cssVar: '--on-accent',
+    tw: 'text-on-accent',
+    lightHex: '#fffbf5', lightName: 'Cream',
+    darkHex:  '#1c1a16', darkName:  'Near-black',
+    role: 'Text placed on brand-primary backgrounds',
+  },
+  {
+    name: 'Brand Hover',
+    cssVar: '--brand-hover',
+    tw: 'bg-brand-hover',
+    lightHex: '#612935', lightName: 'Deep burgundy',
+    darkHex:  '#c15e72', darkName:  'Deep rose',
+    role: 'Hover fill — darker shade of brand primary',
+  },
+  {
+    name: 'Border',
+    cssVar: '--border',
+    tw: 'border-border',
+    lightHex: 'rgba(34,34,34,0.10)',    lightName: 'Translucent dark',
+    darkHex:  'rgba(255,251,245,0.10)', darkName:  'Translucent light',
+    lightSwatchBg: 'rgba(34,34,34,0.10)',
+    darkSwatchBorder: '#1c1a16',
+    role: 'Dividers, card outlines',
+  },
+].map(({ name, cssVar, tw, lightHex, lightName, darkHex, darkName, lightSwatchBg, darkSwatchBorder, role }) => (
+  <div key={name} style={{ display: 'flex', alignItems: 'center', gap: '20px', padding: '14px 0', borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+    <div style={{ display: 'flex', gap: '4px', flexShrink: 0 }}>
+      <div>
+        <div style={{ width: '44px', height: '32px', backgroundColor: lightSwatchBg || lightHex, borderRadius: '6px', border: '1px solid rgba(34,34,34,0.1)' }} />
+        <div style={{ fontFamily: 'monospace', fontSize: '9px', color: 'rgba(34,34,34,0.4)', marginTop: '3px', textAlign: 'center' }}>Light</div>
+      </div>
+      <div>
+        <div style={{ width: '44px', height: '32px', backgroundColor: darkSwatchBorder || 'transparent', borderRadius: '6px', border: '1px solid rgba(34,34,34,0.1)', overflow: 'hidden' }}>
+          <div style={{ width: '100%', height: '100%', backgroundColor: darkHex }} />
+        </div>
+        <div style={{ fontFamily: 'monospace', fontSize: '9px', color: 'rgba(34,34,34,0.4)', marginTop: '3px', textAlign: 'center' }}>Dark</div>
+      </div>
+    </div>
+    <div style={{ minWidth: '200px' }}>
+      <div style={{ fontFamily: 'monospace', fontSize: '13px', fontWeight: 'bold', color: 'rgba(34,34,34,0.9)', marginBottom: '4px' }}>{name}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: '11px', color: 'rgba(34,34,34,0.45)' }}>{cssVar}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: '11px', color: '#813746', marginTop: '2px' }}>{tw}</div>
+    </div>
+    <div style={{ minWidth: '200px' }}>
+      <div style={{ fontFamily: 'monospace', fontSize: '11px', color: 'rgba(34,34,34,0.65)' }}>L — {lightHex}</div>
+      <div style={{ fontFamily: 'monospace', fontSize: '11px', color: 'rgba(34,34,34,0.65)', marginTop: '4px' }}>D — {darkHex}</div>
+    </div>
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.5)', flex: 1 }}>{role}</div>
+  </div>
+))}
+</div>
+
+---
+
+## Interaction states
+
+In addition to the enabled state, interactive elements have dedicated states. Interaction tokens are identified by their purpose — `--brand-hover` is the hover variant of `--accent`.
+
+<table>
+  <thead>
+    <tr><th>State</th><th>Token</th><th>Tailwind</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Hover</td><td><code>--brand-hover</code></td><td><code>bg-brand-hover</code></td><td>Slightly darker accent applied to button and link hover fill</td></tr>
+    <tr><td>Focus</td><td><code>--accent</code></td><td><code>ring-2 ring-[var(--accent)]</code></td><td>2px outline ring using the brand color — required on all keyboard-navigable elements</td></tr>
+    <tr><td>Disabled</td><td>—</td><td><code>opacity-50 cursor-not-allowed</code></td><td>50% opacity on the element — no separate token; disabled states are intentionally de-emphasized and are not subject to contrast compliance</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Accessibility
+
+Using contrast is the most important consideration when making color choices. Awareness of WCAG standards is key to accessible color selection.
+
+Contrast is the difference in brightness between any two elements. The Web Content Accessibility Guidelines (WCAG) set specific ratios that achieve the minimum required contrast for legibility.
+
+<table>
+  <thead>
+    <tr><th>Element type</th><th>Minimum — AA</th><th>Enhanced — AAA</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Body text (below 24px)</td><td>4.5:1</td><td>7:1</td></tr>
+    <tr><td>Large text (24px and above)</td><td>3:1</td><td>4.5:1</td></tr>
+    <tr><td>Non-text elements and icons</td><td>3:1</td><td>—</td></tr>
+  </tbody>
+</table>
+
+All text-on-background combinations in the portfolio meet WCAG 2.1. Primary text pairs (`--fg` on `--bg` and `--fg` on `--surface`) achieve AAA in both themes. Brand color pairs achieve AAA in light and AA in dark.
+
+<Canvas of={ColorContrastStories.Overview} />
+
+</TabPanel>
+
+{/* ── USAGE ─────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={1}>
+
+## Choosing a token
+
+Select the token that matches the semantic role of what you are styling. Never choose a token based on its hex value. Token names and roles are the same across themes — only the assigned value changes with the theme.
+
+<table>
+  <thead>
+    <tr><th>Situation</th><th>Token</th><th>Tailwind</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Page background</td><td><code>--bg</code></td><td><code>bg-[var(--bg)]</code></td></tr>
+    <tr><td>All text — headings, body, labels, icons</td><td><code>--fg</code></td><td><code>text-fg</code></td></tr>
+    <tr><td>Supporting text, captions, metadata</td><td><code>--fg-secondary</code></td><td><code>text-fg-secondary</code></td></tr>
+    <tr><td>Brand color — CTAs, links, eyebrow labels</td><td><code>--accent</code></td><td><code>text-brand-primary</code> / <code>bg-brand-primary</code></td></tr>
+    <tr><td>Text on a brand-colored background</td><td><code>--on-accent</code></td><td><code>text-on-accent</code></td></tr>
+    <tr><td>Cards, panels, elevated surfaces</td><td><code>--surface</code></td><td><code>bg-surface</code></td></tr>
+    <tr><td>Dividers, card outlines, borders</td><td><code>--border</code></td><td><code>border-border</code></td></tr>
+    <tr><td>Button and link hover fill</td><td><code>--brand-hover</code></td><td><code>bg-brand-hover</code></td></tr>
+  </tbody>
+</table>
+
+---
+
+## Token naming
+
+Token names describe their role, not their value. The first part identifies the UI element; the second part identifies the specific function within that group. Interaction states are appended at the end.
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Group</th><th>Role</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--bg</code></td><td>Background</td><td>Page-level canvas</td></tr>
+    <tr><td><code>--surface</code></td><td>Surface</td><td>Elevated containers — one step above the background</td></tr>
+    <tr><td><code>--fg</code></td><td>Text</td><td>Primary foreground — all text and icons</td></tr>
+    <tr><td><code>--fg-secondary</code></td><td>Text</td><td>Secondary foreground — reduced emphasis</td></tr>
+    <tr><td><code>--accent</code></td><td>Brand</td><td>Primary brand color — CTAs, links, highlights</td></tr>
+    <tr><td><code>--on-accent</code></td><td>Brand</td><td>Text on top of an accent-colored element</td></tr>
+    <tr><td><code>--brand-hover</code></td><td>Brand</td><td>Interaction state — hover variant of the brand color</td></tr>
+    <tr><td><code>--border</code></td><td>Border</td><td>Dividers, outlines, and separators</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Light or dark mode
+
+The portfolio supports light and dark mode, controlled by the `.dark` class on `<html>`. Every adaptive token resolves to the correct value automatically. You cannot implement light or dark mode without using tokens everywhere — hardcoded hex values will not change when the mode switches.
+
+**Respecting OS preferences**
+
+Most operating systems (macOS, iOS, Windows, Android) support dark and light mode via the `prefers-color-scheme` media query. The `useTheme` hook detects this preference on first load and applies the matching theme automatically. Users can override it using the `ThemeToggle` component.
+
+**What changes automatically**
+
+All eight adaptive tokens update instantly when the theme changes — no re-renders, no component-level conditionals needed. The same component code works correctly in both themes.
+
+**What to watch**
+
+- Images and videos do not respond to theme changes — choose assets that work in both modes, or swap them manually
+- Static Tailwind classes like `bg-cream` or `bg-dark-bg` are locked values and will not switch — use them only in Storybook story wrappers, never in component code
+
+---
+
+## Guidelines
+
+<DoDont>
+  <Do label="Use tokens everywhere">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Always reference tokens in component code. <code>color: var(--fg)</code> or <code>text-fg</code> adapts automatically to both themes with no extra work.
+    </div>
+  </Do>
+  <Dont label="Hardcode hex values">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      Hardcoded values like <code>#222222</code> or <code>#fffbf5</code> will not switch in dark mode. The component breaks the moment the theme changes.
+    </div>
+  </Dont>
+</DoDont>
+
+<DoDont>
+  <Do label="Use --fg for all text">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      One foreground token covers headings, body, labels, and icons. There is no separate heading color — <code>--fg</code> is always AAA contrast in both themes.
+    </div>
+  </Do>
+  <Dont label="Use --accent for body text">
+    <div style={{ fontFamily: 'Arial', fontSize: '12px', lineHeight: 1.5, color: 'var(--fg)', opacity: 0.8 }}>
+      The brand color is AA in dark mode, not AAA. Using it for long-form body text reduces readability. Reserve it for CTAs, labels, and short UI strings.
+    </div>
+  </Dont>
+</DoDont>
+
+</TabPanel>
+
+{/* ── TOKENS ────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={2}>
+
+## Core tokens
+
+Core tokens are the global colors used across all components. They are named and grouped by the UI element they apply to. Token color names and roles are the same across themes — only the value changes.
+
+<div style={{ marginTop: '24px', overflowX: 'auto' }}>
+<table style={{ width: '100%', borderCollapse: 'collapse' }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid rgba(34,34,34,0.12)' }}>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em', whiteSpace: 'nowrap' }}>Token</th>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'Arial', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Role</th>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em', whiteSpace: 'nowrap' }}>Light</th>
+      <th style={{ textAlign: 'left', padding: '8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em', whiteSpace: 'nowrap' }}>Dark</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr><td colSpan={4} style={{ padding: '16px 0 4px', fontFamily: 'monospace', fontSize: '10px', fontWeight: '700', color: 'rgba(34,34,34,0.35)', textTransform: 'uppercase', letterSpacing: '0.12em', borderTop: '1px solid rgba(34,34,34,0.08)' }}>Background</td></tr>
+
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>--bg</div>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#813746', marginTop: '2px' }}>bg-[var(--bg)]</div>
+      </td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)', verticalAlign: 'top' }}>Page background</td>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#fffbf5', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Cream — #fffbf5</span>
+      </td>
+      <td style={{ padding: '10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#1c1a16', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Near-black — #1c1a16</span>
+      </td>
+    </tr>
+
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>--surface</div>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#813746', marginTop: '2px' }}>bg-surface</div>
+      </td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)', verticalAlign: 'top' }}>Cards, panels, elevated surfaces; one step above the background</td>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#f7f3f5', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Off-white — #f7f3f5</span>
+      </td>
+      <td style={{ padding: '10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#252220', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Dark warm — #252220</span>
+      </td>
+    </tr>
+
+    <tr><td colSpan={4} style={{ padding: '16px 0 4px', fontFamily: 'monospace', fontSize: '10px', fontWeight: '700', color: 'rgba(34,34,34,0.35)', textTransform: 'uppercase', letterSpacing: '0.12em', borderTop: '1px solid rgba(34,34,34,0.08)' }}>Text</td></tr>
+
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>--fg</div>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#813746', marginTop: '2px' }}>text-fg</div>
+      </td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)', verticalAlign: 'top' }}>Primary text; body copy; headings; labels; icons</td>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#222222', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Near-black — #222222</span>
+      </td>
+      <td style={{ padding: '10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#fffbf5', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Cream — #fffbf5</span>
+      </td>
+    </tr>
+
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>--fg-secondary</div>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#813746', marginTop: '2px' }}>text-fg-secondary</div>
+      </td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)', verticalAlign: 'top' }}>Secondary text; captions; metadata; helper text</td>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: 'rgba(34,34,34,0.55)', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Muted dark — rgba(34,34,34,.55)</span>
+      </td>
+      <td style={{ padding: '10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#1c1a16', border: '1px solid rgba(34,34,34,0.15)', overflow: 'hidden', verticalAlign: 'middle', marginRight: '7px' }}>
+          <span style={{ display: 'block', width: '100%', height: '100%', backgroundColor: 'rgba(255,251,245,0.55)' }}></span>
+        </span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Muted light — rgba(255,251,245,.55)</span>
+      </td>
+    </tr>
+
+    <tr><td colSpan={4} style={{ padding: '16px 0 4px', fontFamily: 'monospace', fontSize: '10px', fontWeight: '700', color: 'rgba(34,34,34,0.35)', textTransform: 'uppercase', letterSpacing: '0.12em', borderTop: '1px solid rgba(34,34,34,0.08)' }}>Brand</td></tr>
+
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>--accent</div>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#813746', marginTop: '2px' }}>text-brand-primary · bg-brand-primary</div>
+      </td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)', verticalAlign: 'top' }}>Brand color; CTAs; links; eyebrow labels; highlights</td>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#813746', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Burgundy — #813746</span>
+      </td>
+      <td style={{ padding: '10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#e36f86', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Rose — #e36f86</span>
+      </td>
+    </tr>
+
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>--on-accent</div>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#813746', marginTop: '2px' }}>text-on-accent</div>
+      </td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)', verticalAlign: 'top' }}>Text on interactive colors; text on brand-colored backgrounds</td>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#fffbf5', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Cream — #fffbf5</span>
+      </td>
+      <td style={{ padding: '10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#1c1a16', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Near-black — #1c1a16</span>
+      </td>
+    </tr>
+
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>--brand-hover</div>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#813746', marginTop: '2px' }}>bg-brand-hover</div>
+      </td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)', verticalAlign: 'top' }}>Hover color for --accent; darker brand shade for interactive states</td>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#612935', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Deep burgundy — #612935</span>
+      </td>
+      <td style={{ padding: '10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#c15e72', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Deep rose — #c15e72</span>
+      </td>
+    </tr>
+
+    <tr><td colSpan={4} style={{ padding: '16px 0 4px', fontFamily: 'monospace', fontSize: '10px', fontWeight: '700', color: 'rgba(34,34,34,0.35)', textTransform: 'uppercase', letterSpacing: '0.12em', borderTop: '1px solid rgba(34,34,34,0.08)' }}>Border</td></tr>
+
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <div style={{ fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>--border</div>
+        <div style={{ fontFamily: 'monospace', fontSize: '10px', color: '#813746', marginTop: '2px' }}>border-border</div>
+      </td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)', verticalAlign: 'top' }}>Dividers, rules, and borders between and around elements</td>
+      <td style={{ padding: '10px 24px 10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: 'rgba(34,34,34,0.10)', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '7px' }}></span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Translucent — rgba(34,34,34,.10)</span>
+      </td>
+      <td style={{ padding: '10px 0', verticalAlign: 'top', whiteSpace: 'nowrap' }}>
+        <span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#1c1a16', border: '1px solid rgba(34,34,34,0.15)', overflow: 'hidden', verticalAlign: 'middle', marginRight: '7px' }}>
+          <span style={{ display: 'block', width: '100%', height: '100%', backgroundColor: 'rgba(255,251,245,0.10)' }}></span>
+        </span>
+        <span style={{ fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', verticalAlign: 'middle' }}>Translucent — rgba(255,251,245,.10)</span>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+---
+
+## Static tokens
+
+Fixed values that do not adapt to theme. Use only in Storybook story wrappers where you need to lock a specific background regardless of the active theme. Never use static tokens in component code.
+
+<table>
+  <thead>
+    <tr><th>Tailwind</th><th>Value</th><th>Use</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>bg-cream</code></td><td>#fffbf5</td><td>Light page background (locked)</td></tr>
+    <tr><td><code>bg-cream-surface</code></td><td>#f7f3f5</td><td>Light surface background (locked)</td></tr>
+    <tr><td><code>bg-dark-bg</code></td><td>#1c1a16</td><td>Dark page background (locked)</td></tr>
+    <tr><td><code>bg-dark-surface</code></td><td>#252220</td><td>Dark surface background (locked)</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Contrast pairs
+
+All text-on-background combinations with WCAG contrast ratios. AAA = 7:1 normal text, 4.5:1 large text. AA = 4.5:1 normal text, 3:1 large text.
+
+<div style={{ display: 'flex', gap: '40px', marginTop: '20px', flexWrap: 'wrap' }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: '280px' }}>
+    <p style={{ fontFamily: 'monospace', fontSize: '10px', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 8px' }}>Light theme</p>
+    {[
+      { bg: '#fffbf5', fg: '#222222',  label: 'text-fg · bg',                        ratio: '16.8:1', level: 'AAA', border: true  },
+      { bg: '#f7f3f5', fg: '#222222',  label: 'text-fg · bg-surface',                ratio: '15.4:1', level: 'AAA', border: false },
+      { bg: '#813746', fg: '#fffbf5',  label: 'text-on-accent · bg-brand-primary',   ratio: '7.78:1', level: 'AAA', border: false },
+      { bg: '#fffbf5', fg: '#813746',  label: 'text-brand-primary · bg',             ratio: '7.1:1',  level: 'AAA', border: true  },
+      { bg: '#f7f3f5', fg: '#813746',  label: 'text-brand-primary · bg-surface',     ratio: '6.7:1',  level: 'AA',  border: false },
+    ].map(({ bg, fg, label, ratio, level, border }) => (
+      <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ backgroundColor: bg, color: fg, width: '56px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', fontSize: '18px', fontWeight: 'bold', flexShrink: 0, border: border ? '1px solid rgba(34,34,34,0.08)' : 'none' }}>Aa</div>
+        <div>
+          <div style={{ fontFamily: 'monospace', fontSize: '11px', color: 'rgba(34,34,34,0.8)' }}>{label}</div>
+          <div style={{ fontFamily: 'monospace', fontSize: '10px', color: 'rgba(34,34,34,0.4)', marginTop: '2px' }}>{ratio} — {level} ✓</div>
+        </div>
+      </div>
+    ))}
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: '280px', backgroundColor: '#1c1a16', padding: '16px', borderRadius: '10px' }}>
+    <p style={{ fontFamily: 'monospace', fontSize: '10px', color: 'rgba(255,251,245,0.5)', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 8px' }}>Dark theme</p>
+    {[
+      { bg: '#1c1a16', fg: '#fffbf5',  label: 'text-fg · bg',                        ratio: '12.5:1', level: 'AAA', border: true  },
+      { bg: '#252220', fg: '#fffbf5',  label: 'text-fg · bg-surface',                ratio: '11.4:1', level: 'AAA', border: false },
+      { bg: '#e36f86', fg: '#1c1a16',  label: 'text-on-accent · bg-brand-primary',   ratio: '4.81:1', level: 'AA',  border: false },
+      { bg: '#1c1a16', fg: '#e36f86',  label: 'text-brand-primary · bg',             ratio: '5.4:1',  level: 'AA',  border: true  },
+      { bg: '#252220', fg: '#e36f86',  label: 'text-brand-primary · bg-surface',     ratio: '5.1:1',  level: 'AA',  border: false },
+    ].map(({ bg, fg, label, ratio, level, border }) => (
+      <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ backgroundColor: bg, color: fg, width: '56px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', fontSize: '18px', fontWeight: 'bold', flexShrink: 0, border: border ? '1px solid rgba(255,251,245,0.08)' : 'none' }}>Aa</div>
+        <div>
+          <div style={{ fontFamily: 'monospace', fontSize: '11px', color: 'rgba(255,251,245,0.8)' }}>{label}</div>
+          <div style={{ fontFamily: 'monospace', fontSize: '10px', color: 'rgba(255,251,245,0.4)', marginTop: '2px' }}>{ratio} — {level} ✓</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+---
+
+## WCAG test results
+
+All pairs rendered at every text size used in the portfolio, tested against axe-core.
+
+<Canvas of={ColorContrastStories.Overview} />
+
+</TabPanel>
+
+{/* ── CODE ──────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={3}>
+
+## CSS variables
+
+Reference tokens directly as CSS custom properties. Use this in inline styles in JSX or anywhere Tailwind classes are not available.
+
+```jsx
+// Inline styles
+<div style={{ color: 'var(--fg)', backgroundColor: 'var(--surface)' }}>
+  Card content
+</div>
+
+// Border using the border token
+<div style={{ border: '1px solid var(--border)' }}>…</div>
+
+// Hover state using brand tokens
+<button
+  style={{ backgroundColor: 'var(--accent)' }}
+  onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--brand-hover)'}
+  onMouseLeave={e => e.currentTarget.style.backgroundColor = 'var(--accent)'}
+>
+  Button
+</button>
+```
+
+---
+
+## Tailwind classes
+
+Tailwind utility classes map directly to the CSS tokens. Use these in `className` strings. The token value and the Tailwind value are identical — use whichever fits the context.
+
+<table>
+  <thead>
+    <tr><th>Class</th><th>Token</th><th>Use</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>text-fg</code></td><td><code>--fg</code></td><td>All text — headings, body, labels, icons</td></tr>
+    <tr><td><code>text-fg-secondary</code></td><td><code>--fg-secondary</code></td><td>Secondary and muted text</td></tr>
+    <tr><td><code>text-brand-primary</code></td><td><code>--accent</code></td><td>Brand text — links, eyebrow labels</td></tr>
+    <tr><td><code>bg-brand-primary</code></td><td><code>--accent</code></td><td>Brand fill — buttons, badges</td></tr>
+    <tr><td><code>text-on-accent</code></td><td><code>--on-accent</code></td><td>Text on brand-colored backgrounds</td></tr>
+    <tr><td><code>bg-surface</code></td><td><code>--surface</code></td><td>Card and panel backgrounds</td></tr>
+    <tr><td><code>border-border</code></td><td><code>--border</code></td><td>Dividers and outlines</td></tr>
+    <tr><td><code>bg-brand-hover</code></td><td><code>--brand-hover</code></td><td>Hover fill for interactive elements</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Dark mode
+
+Dark mode is controlled by the `.dark` class on `<html>`. The `ThemeToggle` component manages this automatically. All adaptive tokens update instantly — no re-renders needed.
+
+```jsx
+// ThemeToggle sets this on click
+document.documentElement.classList.toggle('dark')
+
+// useTheme hook — detect OS preference on first load
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+if (prefersDark) document.documentElement.classList.add('dark')
+```
+
+---
+
+## Example
+
+A card using tokens correctly. All colors adapt to light and dark automatically.
+
+```jsx
+function ProjectCard({ title, description }) {
+  return (
+    <div className="bg-surface border border-border rounded-2xl p-6">
+      <p className="font-body uppercase tracking-widest text-xs text-brand-primary mb-2">
+        Case Study
+      </p>
+      <h3 className="font-display font-bold text-fg text-xl mb-3">
+        {title}
+      </h3>
+      <p className="font-body text-fg-secondary text-sm leading-relaxed">
+        {description}
+      </p>
+      <a
+        className="text-brand-primary text-sm font-medium mt-4 inline-block
+                   hover:text-[var(--brand-hover)] transition-colors"
+      >
+        View project →
+      </a>
+    </div>
+  )
+}
+```
+
+</TabPanel>
+
+</DocsTabs>

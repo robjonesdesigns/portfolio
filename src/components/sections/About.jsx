@@ -23,20 +23,6 @@ export default function About() {
   return (
     <section id="about" className="py-24 md:py-36">
       <Container>
-        {/* Section label */}
-        <m.div
-          className="flex items-center gap-3 mb-16"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-80px' }}
-          variants={fadeUp}
-        >
-          <span className="inline-block w-8 h-px bg-brand-primary" />
-          <span className="text-xs font-mono tracking-widest uppercase text-brand-primary">
-            About
-          </span>
-        </m.div>
-
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
           {/* Headshot */}
           <m.div
@@ -74,15 +60,14 @@ export default function About() {
           >
             <m.h2
               variants={fadeUp}
-              className="font-display font-bold leading-tight tracking-tighter text-fg"
-              style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
+              className="font-display font-bold text-display-lg text-fg"
             >
               Designing with intention. Building with care.
             </m.h2>
 
             <m.p
               variants={fadeUp}
-              className="text-base md:text-lg leading-relaxed text-fg opacity-70"
+              className="font-body text-body md:text-body-lg leading-relaxed text-fg opacity-70"
             >
               I'm a Product Designer with a passion for creating digital experiences
               that put people first. I bridge the gap between business goals and user
@@ -91,7 +76,7 @@ export default function About() {
 
             <m.p
               variants={fadeUp}
-              className="text-base leading-relaxed text-fg opacity-60"
+              className="font-body text-body leading-relaxed text-fg opacity-60"
             >
               With a background spanning UX research, interaction design, and design
               systems, I work best at the intersection of strategy and craft, where
@@ -100,7 +85,7 @@ export default function About() {
 
             {/* Skills */}
             <m.div variants={fadeUp}>
-              <p className="text-xs font-mono tracking-widest uppercase mb-4 text-brand-primary">
+              <p className="font-body text-label mb-4 text-brand-primary">
                 Skills &amp; Tools
               </p>
               <m.div
