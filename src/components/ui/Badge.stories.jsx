@@ -12,9 +12,8 @@ const Wrapper = ({ children }) => (
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/Badge',
+  title: 'Components/Badge',
   component: Badge,
-  tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
   argTypes: {
     children:  { control: 'text',   description: 'Badge label' },

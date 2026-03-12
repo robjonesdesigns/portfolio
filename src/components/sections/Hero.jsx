@@ -54,7 +54,7 @@ export default function Hero() {
           transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
         >
           <span className="inline-block w-7 h-px flex-shrink-0 bg-brand-primary" />
-          <span className="text-xs font-mono tracking-[0.22em] uppercase text-brand-primary">
+          <span className="font-body text-label tracking-[0.22em] text-brand-primary">
             UX & Product Designer
           </span>
         </m.div>
@@ -82,7 +82,7 @@ export default function Hero() {
         <Marquee
           items={marqueeItems}
           speed={42}
-          className="text-sm md:text-base text-fg"
+          className="text-body-sm md:text-body text-fg"
         />
       </m.div>
 

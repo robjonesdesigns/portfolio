@@ -1,0 +1,59 @@
+{/* WorkEntry.mdx */}
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as WorkEntryStories from '../components/ui/WorkEntry.stories'
+
+<Meta of={WorkEntryStories} />
+
+# WorkEntry
+
+Full-width project entry for the homepage Projects section. Each entry displays a project headline, media block, a "See more" link, and a four-column metadata row (Company, Role, Problem, Outcome).
+
+The media block has two layouts depending on the `project.video` field:
+
+| `project.video` present | Renders |
+|---|---|
+| Yes | `LaptopFrame` — laptop mockup card with a looping `LazyVideo`, radial gradient accent wash from `project.color`, screen cut off at bottom edge |
+| No | `ImageGrid` — 1, 2, or 3+ image slots with placeholder fallback when `src` is null |
+
+---
+
+## With video (LaptopFrame)
+
+<Canvas of={WorkEntryStories.Honeywell} />
+
+## With images (ImageGrid)
+
+<Canvas of={WorkEntryStories.Aysa} />
+
+---
+
+## All projects stacked
+
+<Canvas of={WorkEntryStories.AllProjects} />
+
+---
+
+## Usage
+
+```jsx
+// In Projects.jsx — map over the projects array
+{projects.map(project => (
+  <WorkEntry key={project.slug} project={project} />
+))}
+```
+
+WorkEntry reads everything it needs from the `project` object — no other props required.
+See `src/data/projects.js` for the full data shape.
+
+---
+
+## Animation
+
+Each WorkEntry fades in from `y: 24` as it enters the viewport (`whileInView`, `once: true`, margin `-60px`).
+Stagger is handled by the parent section, not the component itself.
+
+---
+
+## Props
+
+<ArgTypes of={WorkEntryStories} />

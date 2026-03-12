@@ -11,7 +11,7 @@ export default function Badge({ children, variant = 'default', className = '' })
   }
 
   return (
-    <span className={`inline-block text-xs px-2 py-1 rounded border font-body leading-none ${classes[variant]} ${className}`}>
+    <span className={`inline-block text-caption px-2 py-1 rounded border font-body leading-none ${classes[variant]} ${className}`}>
       {children}
     </span>
   )

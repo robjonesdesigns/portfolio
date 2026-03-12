@@ -1,0 +1,60 @@
+{/* Navbar.mdx */}
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as NavbarStories from '../components/layout/Navbar.stories'
+
+<Meta of={NavbarStories} />
+
+# Navbar
+
+Floating navigation bar that morphs to a docked header when the user scrolls past 80px. Framer Motion animates `left`, `right`, `top`, `borderRadius`, `height`, and padding live on scroll — no class swapping.
+
+On mobile, the nav collapses to a hamburger that opens a full-screen menu.
+
+---
+
+## Floating (initial state)
+
+<Canvas of={NavbarStories.Floating} />
+
+## Dark theme
+
+<Canvas of={NavbarStories.OnDark} />
+
+## Mobile
+
+<Canvas of={NavbarStories.Mobile} />
+
+---
+
+## Scroll behavior
+
+| State | left/right | top | borderRadius | height |
+|---|---|---|---|---|
+| Floating | margin (16–300px by breakpoint) | 40px | 50px | 52px |
+| Docked | 0 | 0 | 0 | 64px |
+
+The margin at floating state is calculated from `window.innerWidth`:
+- `>= 1280px` → 300px
+- `>= 768px` → 60px
+- `< 768px` → 16px
+
+Background uses `color-mix(in srgb, var(--surface) 74–92%, transparent)` with `backdrop-filter: blur(20px)`.
+
+---
+
+## Usage
+
+```jsx
+// In App.jsx — Navbar is always mounted above the route outlet
+const { theme, toggleTheme } = useTheme()
+
+<Navbar theme={theme} toggleTheme={toggleTheme} />
+```
+
+Navbar is self-contained — it attaches its own scroll listener internally.
+
+---
+
+## Props
+
+<ArgTypes of={NavbarStories} />

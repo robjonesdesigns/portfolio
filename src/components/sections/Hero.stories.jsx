@@ -5,7 +5,7 @@ import Hero from './Hero'
 // the Storybook iframe — this is expected. The component renders correctly.
 
 export default {
-  title: 'Sections/Hero',
+  title: 'Patterns/Hero',
   component: Hero,
   parameters: { layout: 'fullscreen', controls: { disable: true } },
 }

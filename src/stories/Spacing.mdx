@@ -1,0 +1,246 @@
+{/* Spacing.mdx */}
+import { Meta } from '@storybook/addon-docs/blocks'
+import { DocsTabs, TabList, Tab, TabPanel } from './DocsTabs'
+
+<Meta title="Elements/Spacing" />
+
+# Spacing
+
+Spacing is an important — and often overlooked — part of design. The portfolio uses a fixed token scale to take the guesswork out of spacing and deliver clear, functional layouts.
+
+<DocsTabs>
+
+<TabList>
+  <Tab index={0}>Overview</Tab>
+  <Tab index={1}>Code</Tab>
+</TabList>
+
+{/* ── OVERVIEW ────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={0}>
+
+## Introduction
+
+Spacing is the negative area between elements and components. It is controlled in code through margin and padding. The portfolio offers a single spacing scale as CSS custom properties and as Tailwind utilities — values are identical, use whichever fits the context.
+
+The spacing scale complements the layout grid and type scale by using multiples of 4px. It includes small increments for detail-level design and larger increments for layout density and section rhythm.
+
+---
+
+## Spacing scale
+
+Use the spacing scale when building individual components and when composing layouts. Each step has its own token.
+
+<div style={{ marginTop: '24px', overflowX: 'auto' }}>
+<table style={{ width: '100%', borderCollapse: 'collapse' }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid rgba(34,34,34,0.12)' }}>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Token</th>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>px</th>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Tailwind</th>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>CSS variable</th>
+      <th style={{ textAlign: 'left', padding: '8px 0', fontFamily: 'Arial', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      { name: 'space-xs',  px: 4,   tw: '*-1',  css: '--space-xs'  },
+      { name: 'space-sm',  px: 8,   tw: '*-2',  css: '--space-sm'  },
+      { name: 'space-md',  px: 16,  tw: '*-4',  css: '--space-md'  },
+      { name: 'space-lg',  px: 24,  tw: '*-6',  css: '--space-lg'  },
+      { name: 'space-xl',  px: 32,  tw: '*-8',  css: '--space-xl'  },
+      { name: 'space-2xl', px: 48,  tw: '*-12', css: '--space-2xl' },
+      { name: 'space-3xl', px: 64,  tw: '*-16', css: '--space-3xl' },
+      { name: 'space-4xl', px: 96,  tw: '*-24', css: '--space-4xl' },
+      { name: 'space-5xl', px: 128, tw: '*-32', css: '--space-5xl' },
+    ].map(({ name, px, tw, css }) => (
+      <tr key={name} style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+        <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)', whiteSpace: 'nowrap' }}>{name}</td>
+        <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)', whiteSpace: 'nowrap' }}>{px}px</td>
+        <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '12px', color: '#813746', whiteSpace: 'nowrap' }}>{tw}</td>
+        <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.5)', whiteSpace: 'nowrap' }}>{css}</td>
+        <td style={{ padding: '10px 0' }}>
+          <div style={{ height: '8px', backgroundColor: 'var(--accent)', borderRadius: '2px', width: `${Math.min(px, 128)}px`, opacity: 0.6 }} />
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+</div>
+
+---
+
+## Applying spacing
+
+The spacing scale can be applied to `margin`, `padding`, `gap`, and related properties. Replace `*` in the Tailwind column with any spacing prefix — `p`, `m`, `mt`, `px`, `gap`, etc.
+
+```jsx
+// Padding
+<div className="p-4">…</div>       // 16px
+<div className="px-6 py-4">…</div> // 24px horizontal, 16px vertical
+
+// Margin
+<div className="mt-12">…</div>     // 48px top margin
+
+// Gap
+<div className="flex gap-6">…</div> // 24px between flex children
+```
+
+For spacing between major page sections, use the larger end of the scale (`space-4xl` at 96px or `space-5xl` at 128px). For spacing inside components, use the smaller end (`space-xs` through `space-lg`).
+
+---
+
+## Other spacing methods
+
+There are a few non-token methods that can also be used for spacing elements.
+
+<table>
+  <thead>
+    <tr><th>Method</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>mx-auto</code></td><td>Center an element horizontally between two edges</td></tr>
+    <tr><td><code>ml-auto</code> / <code>mr-auto</code></td><td>Push an element to one side; allow undefined space to grow and shrink</td></tr>
+    <tr><td>Grid columns</td><td>Horizontal spacing between content areas — use the layout grid, not margin</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Designing with space
+
+Every part of a UI should be intentional — including the empty space between elements. The amount of space between items creates relationships and hierarchy.
+
+**Creating relationships**
+
+Elements near each other are perceived as meaningfully related. As more space is added between elements, their perceived relationship weakens. Use spacing to group associated information without needing lines or other graphical dividers.
+
+**Creating hierarchy**
+
+Elements with more space around them tend to be perceived as more important than elements with less space. Section headers have more surrounding space, giving them focus. As headings descend in importance they receive less space.
+
+**White space**
+
+Empty space helps with information processing. Too much dense information can be disorienting. Sections of a UI can be dense, but the whole page should have enough breathing room for the user's eye to rest.
+
+---
+
+## FAQ
+
+<table>
+  <thead>
+    <tr><th>Question</th><th>Answer</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Are spacing values outside the scale allowed?</td><td>There are always exceptions, but deviating from the scale should be avoided whenever possible.</td></tr>
+    <tr><td>Are the spacing tokens responsive?</td><td>No — the tokens themselves do not change at breakpoints. It is acceptable to jump a step on the scale at a breakpoint to fit the design (e.g., <code>p-6</code> at desktop, <code>p-4</code> at mobile).</td></tr>
+    <tr><td>Can I use percentages for spacing?</td><td>Percentages like <code>50%</code> or <code>33%</code> are acceptable for dividing a page or controlling max and min widths, but not for component-level spacing.</td></tr>
+    <tr><td>Why not use the hyphenated Tailwind keys?</td><td>Keys like <code>gap-space-lg</code> never generate CSS in Tailwind JIT. Always use the numeric scale: <code>gap-6</code> not <code>gap-space-lg</code>.</td></tr>
+  </tbody>
+</table>
+
+</TabPanel>
+
+{/* ── CODE ────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={1}>
+
+## Tailwind utilities
+
+The spacing scale maps directly to Tailwind's numeric scale. Replace `*` with any spacing prefix.
+
+<table>
+  <thead>
+    <tr><th>Scale step</th><th>px</th><th>Tailwind class (example)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>space-xs</code></td><td>4px</td><td><code>p-1</code> · <code>m-1</code> · <code>gap-1</code></td></tr>
+    <tr><td><code>space-sm</code></td><td>8px</td><td><code>p-2</code> · <code>m-2</code> · <code>gap-2</code></td></tr>
+    <tr><td><code>space-md</code></td><td>16px</td><td><code>p-4</code> · <code>m-4</code> · <code>gap-4</code></td></tr>
+    <tr><td><code>space-lg</code></td><td>24px</td><td><code>p-6</code> · <code>m-6</code> · <code>gap-6</code></td></tr>
+    <tr><td><code>space-xl</code></td><td>32px</td><td><code>p-8</code> · <code>m-8</code> · <code>gap-8</code></td></tr>
+    <tr><td><code>space-2xl</code></td><td>48px</td><td><code>p-12</code> · <code>m-12</code> · <code>gap-12</code></td></tr>
+    <tr><td><code>space-3xl</code></td><td>64px</td><td><code>p-16</code> · <code>m-16</code> · <code>gap-16</code></td></tr>
+    <tr><td><code>space-4xl</code></td><td>96px</td><td><code>p-24</code> · <code>m-24</code> · <code>gap-24</code></td></tr>
+    <tr><td><code>space-5xl</code></td><td>128px</td><td><code>p-32</code> · <code>m-32</code> · <code>gap-32</code></td></tr>
+  </tbody>
+</table>
+
+---
+
+## CSS custom properties
+
+Access spacing tokens directly as CSS custom properties in inline styles or `globals.css`.
+
+```css
+/* In globals.css */
+.my-component {
+  padding: var(--space-lg);         /* 24px */
+  margin-bottom: var(--space-2xl);  /* 48px */
+  gap: var(--space-md);             /* 16px */
+}
+```
+
+```jsx
+// In JSX inline styles
+<div style={{ padding: 'var(--space-lg)', gap: 'var(--space-md)' }}>
+  …
+</div>
+```
+
+---
+
+## Component example
+
+A card using spacing tokens throughout.
+
+```jsx
+function ProjectCard({ title, description }) {
+  return (
+    // p-6 = space-lg = 24px padding
+    <div className="bg-surface border border-border rounded-2xl p-6">
+
+      {/* gap-2 = space-sm = 8px between label and heading */}
+      <div className="flex flex-col gap-2 mb-4">
+        <p className="font-body font-bold text-label text-brand-primary">
+          Case Study
+        </p>
+        <h3 className="font-display font-bold text-display-md text-fg">
+          {title}
+        </h3>
+      </div>
+
+      {/* mb-6 = space-lg = 24px below description */}
+      <p className="font-body text-body text-fg-secondary mb-6">
+        {description}
+      </p>
+
+      <a className="text-brand-primary text-sm font-medium">
+        View project →
+      </a>
+    </div>
+  )
+}
+```
+
+---
+
+## Section spacing
+
+For vertical rhythm between major page sections, use the large end of the scale.
+
+```jsx
+// py-24 = space-4xl = 96px — standard section vertical padding
+<section className="py-24">
+  <Container>…</Container>
+</section>
+
+// gap-16 = space-3xl = 64px — between WorkEntry cards
+<div className="flex flex-col gap-16">
+  {projects.map(p => <WorkEntry key={p.slug} {...p} />)}
+</div>
+```
+
+</TabPanel>
+
+</DocsTabs>

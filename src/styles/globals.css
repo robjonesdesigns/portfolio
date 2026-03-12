@@ -74,77 +74,81 @@
   font-display: swap;
 }
 
-/* ─── Design tokens — exact Framer site values ────────────────────────── */
+/* ─── Design tokens ───────────────────────────────────────────────────── */
 :root {
-  --bg:         #fffbf5;
-  --fg:         #222222;
-  --accent:     #813746;
-  --on-accent:  #fffbf5;  /* text on brand-primary bg — cream on burgundy  7.78:1 ✓ AAA */
-  --surface:    #f7f3f5;
-  --muted:      rgba(255, 237, 209, 0.6);
-  --border:     rgba(34, 34, 34, 0.1);
-  /* Gradient: dark brown → burgundy */
-  --grad-from:  #1c1a16;
-  --grad-to:    #813746;
+  /* Color */
+  --bg:        #fffbf5;
+  --fg:        #222222;
+  --accent:    #813746;
+  --on-accent: #fffbf5;   /* text on brand-primary bg — 7.78:1 AAA */
+  --surface:   #f7f3f5;
+  --border:    rgba(34, 34, 34, 0.1);
+  --grad-from: #1c1a16;
+  --grad-to:   #813746;
   color-scheme: light;
 
-  /* ─── Spacing scale — 4px/8px grid, 16px base ───────────────────────── */
-  /*                                                                        */
-  /*  Token        px     rem    Role                                       */
-  /*  --space-xs   4px   0.25   Micro — icon gaps, optical alignment       */
-  /*  --space-sm   8px   0.5    Component-internal padding                  */
-  /*  --space-md   16px  1      Default element spacing                     */
-  /*  --space-lg   24px  1.5    Card padding, grouped elements              */
-  /*  --space-xl   32px  2      Between related components                  */
-  /*  --space-2xl  48px  3      Section breathing room                      */
-  /*  --space-3xl  64px  4      Large layout gaps                           */
-  /*  --space-4xl  96px  6      Section padding (desktop)                   */
-  /*  --space-5xl  128px 8      Hero / full-bleed gaps                      */
+  /* Interactive states */
+  --accent-hover:  #5c2232;               /* #813746 darkened ~35% */
+  --accent-bg-10:  rgba(129, 55, 70, 0.10);
+  --accent-ring:   rgba(129, 55, 70, 0.20);
 
-  /* Badge tokens — solid colors so contrast is always predictable */
-  /* Button interaction tokens */
-  --accent-hover:  #5c2232;              /* #813746 darkened ~35% — hover fill */
-  --accent-bg-10:  rgba(129,55,70,0.10); /* #813746 at 10% — secondary hover bg */
-  --accent-ring:   rgba(129,55,70,0.20); /* #813746 at 20% — focus halo        */
+  /* Component tokens */
+  --fg-secondary:        #555555;              /* 6.9:1 on --bg ✓ AA */
+  --badge-text:          #555555;              /* 6.9:1 on --surface ✓ AA */
+  --badge-accent-bg:     rgba(129, 55, 70, 0.10);
+  --badge-accent-border: rgba(129, 55, 70, 0.25);
+  --overlay:             rgba(0, 0, 0, 0.72);  /* image card hover — always dark */
 
-  --badge-text:          #555555;          /* 6.9:1 on --surface  ✓ AA */
-  --badge-accent-bg:     rgba(129,55,70,0.10);
-  --badge-accent-border: rgba(129,55,70,0.25);
+  /* Spacing scale — 4px/8px grid, 16px base */
+  /*  Token        px     rem                  */
+  /*  --space-xs   4px    0.25                 */
+  /*  --space-sm   8px    0.5                  */
+  /*  --space-md   16px   1                    */
+  /*  --space-lg   24px   1.5                  */
+  /*  --space-xl   32px   2                    */
+  /*  --space-2xl  48px   3                    */
+  /*  --space-3xl  64px   4                    */
+  /*  --space-4xl  96px   6                    */
+  /*  --space-5xl  128px  8                    */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
 
-  /* Overlay — image card hover, always dark regardless of theme */
-  --overlay:             rgba(0, 0, 0, 0.72);
-
-  --space-xs:   0.25rem;   /*   4px */
-  --space-sm:   0.5rem;    /*   8px */
-  --space-md:   1rem;      /*  16px */
-  --space-lg:   1.5rem;    /*  24px */
-  --space-xl:   2rem;      /*  32px */
-  --space-2xl:  3rem;      /*  48px */
-  --space-3xl:  4rem;      /*  64px */
-  --space-4xl:  6rem;      /*  96px */
-  --space-5xl:  8rem;      /* 128px */
+  /* Fluid display type scale */
+  --text-display-2xl: clamp(3rem, 8vw, 6rem);      /* 48–96px  Hero h1, Resume name     */
+  --text-display-xl:  clamp(2.5rem, 6vw, 5rem);    /* 40–80px  Section h2, CaseStudy h1 */
+  --text-display-lg:  clamp(2rem, 5vw, 3.75rem);   /* 32–60px  CTA / editorial h2       */
+  --text-display-md:  clamp(1.5rem, 3vw, 2.25rem); /* 24–36px  Card / component h3      */
 }
 
 .dark {
-  --bg:         #1c1a16;
-  --on-accent:  #1c1a16;  /* text on brand-primary bg — near-black on rose  4.81:1 ✓ AA */
-  /* Button interaction tokens — dark */
-  --accent-hover:  #ba5a6e;              /* #e36f86 darkened ~25% — hover fill */
-  --accent-bg-10:  rgba(227,111,134,0.10); /* #e36f86 at 10% — secondary hover bg */
-  --accent-ring:   rgba(227,111,134,0.20); /* #e36f86 at 20% — focus halo      */
-  /* Badge tokens — dark mode */
-  --badge-text:          #999999;          /* 5.8:1 on --surface dark ✓ AA */
-  --badge-accent-bg:     rgba(227,111,134,0.06); /* 12% failed AA on --surface dark; 6% → ~4.75:1 ✓ */
-  --badge-accent-border: rgba(227,111,134,0.22);
-  --fg:         #fffbf5;
-  --accent:     #e36f86;
-  --surface:    #252220;
-  --muted:      rgba(40, 38, 34, 0.8);
-  --border:     rgba(232, 232, 232, 0.1);
-  /* Gradient: cream → pinkish rose */
-  --grad-from:  #fffbf5;
-  --grad-to:    #e36f86;
+  /* Color */
+  --bg:        #1c1a16;
+  --fg:        #fffbf5;
+  --accent:    #e36f86;
+  --on-accent: #1c1a16;   /* text on brand-primary bg — 4.81:1 AA */
+  --surface:   #252220;
+  --border:    rgba(232, 232, 232, 0.1);
+  --grad-from: #fffbf5;
+  --grad-to:   #e36f86;
   color-scheme: dark;
+
+  /* Interactive states */
+  --accent-hover:  #ba5a6e;                /* #e36f86 darkened ~25% */
+  --accent-bg-10:  rgba(227, 111, 134, 0.10);
+  --accent-ring:   rgba(227, 111, 134, 0.20);
+
+  /* Component tokens */
+  --fg-secondary:        #a8a5a0;               /* 7.0:1 on --bg dark ✓ AA */
+  --badge-text:          #999999;               /* 5.8:1 on --surface dark ✓ AA */
+  --badge-accent-bg:     rgba(227, 111, 134, 0.06);
+  --badge-accent-border: rgba(227, 111, 134, 0.22);
 }
 
 /* ─── Base ────────────────────────────────────────────────────────────── */
@@ -173,17 +177,39 @@
   }
 }
 
-/* ─── Utility aliases ─────────────────────────────────────────────────── */
+/* ─── Type tokens ─────────────────────────────────────────────────────── */
 @layer utilities {
-  .text-fg      { color: var(--fg); }
-  .text-accent  { color: var(--accent); }
-  .bg-bg        { background-color: var(--bg); }
-  .bg-surface   { background-color: var(--surface); }
-  .bg-accent    { background-color: var(--accent); }
-  .border-token { border-color: var(--border); }
 
-  /* Projects section — 5% accent wash in light, surface in dark */
-  .bg-projects  { background-color: color-mix(in srgb, var(--accent) 5%, var(--bg)); }
+  /* Display — fluid, defined here to avoid Tailwind JIT hyphenation issues */
+  .text-display-2xl { font-size: var(--text-display-2xl); line-height: 1;    letter-spacing: -0.04em; }
+  .text-display-xl  { font-size: var(--text-display-xl);  line-height: 1;    letter-spacing: -0.03em; }
+  .text-display-lg  { font-size: var(--text-display-lg);  line-height: 1.1;  letter-spacing: -0.03em; }
+  .text-display-md  { font-size: var(--text-display-md);  line-height: 1.25; letter-spacing: -0.02em; }
+
+  /* Body — fixed sizes */
+  .text-body-lg { font-size: 18px; line-height: 1.6; }
+  .text-body    { font-size: 16px; line-height: 1.6; }
+  .text-body-sm { font-size: 14px; line-height: 1.6; }
+  .text-caption { font-size: 12px; line-height: 1.5; }
+
+  /* Editorial — contextual sizes */
+  .text-editorial-lg { font-size: 40px; line-height: 1.3; }
+  .text-editorial    { font-size: 32px; line-height: 1.3; }
+  .text-editorial-sm { font-size: 24px; line-height: 1.3; }
+
+  /* Labels — font-body in uppercase. color applied separately in the component */
+  .text-label { font-size: 11px; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; }
+  .text-meta  { font-size: 12px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Color aliases */
+  .text-fg           { color: var(--fg); }
+  .text-fg-secondary { color: var(--fg-secondary); }
+  .text-accent       { color: var(--accent); }
+  .bg-bg             { background-color: var(--bg); }
+  .bg-surface        { background-color: var(--surface); }
+  .bg-accent         { background-color: var(--accent); }
+  .border-token      { border-color: var(--border); }
+  .bg-projects       { background-color: color-mix(in srgb, var(--accent) 5%, var(--bg)); }
   .dark .bg-projects { background-color: var(--surface); }
 }
 
@@ -212,17 +238,15 @@
   fill: var(--accent);
 }
 
-/* ─── Dot materialise reveal ──────────────────────────────────────────── */
-/* Only r + opacity — transform stays completely free for hover scale      */
+/* ─── Keyframes ───────────────────────────────────────────────────────── */
 @keyframes dotReveal {
   from { opacity: 0; r: 0px; }
   to   { opacity: 1; }
 }
 
-/* ─── Ongoing pulse — circles breathe using their own CSS custom --r ──── */
 @keyframes circlePulse {
   0%, 100% { r: var(--r); }
-  50%      { r: calc(var(--r) * 0.80); }
+  50%       { r: calc(var(--r) * 0.80); }
 }
 
 /* ─── Scrollbar ───────────────────────────────────────────────────────── */

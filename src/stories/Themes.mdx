@@ -1,0 +1,279 @@
+{/* Themes.mdx */}
+import { Meta } from '@storybook/addon-docs/blocks'
+import { DocsTabs, TabList, Tab, TabPanel } from './DocsTabs'
+
+<Meta title="Elements/Themes" />
+
+# Themes
+
+Themes are used to customize the portfolio's visual style to reflect a specific aesthetic. By using role-based tokens, all components update automatically when the theme changes — no individual overrides needed.
+
+<DocsTabs>
+
+<TabList>
+  <Tab index={0}>Overview</Tab>
+  <Tab index={1}>Code</Tab>
+</TabList>
+
+{/* ── OVERVIEW ────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={0}>
+
+## Theming basics
+
+Themes are used to modify the visual style of all components by changing a set of universal token values. With tokens, the code only needs to change in one place to see the effect system-wide.
+
+<table>
+  <thead>
+    <tr><th>Term</th><th>Definition</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Theme</strong></td>
+      <td>A collection of visual attributes assigned to the tokens in order to create a specific aesthetic. The portfolio has two themes: Light and Dark.</td>
+    </tr>
+    <tr>
+      <td><strong>Token</strong></td>
+      <td>A role-based identifier that assigns a value to a theme. Tokens are universal and never change across themes — only their values change.</td>
+    </tr>
+    <tr>
+      <td><strong>Role</strong></td>
+      <td>The systematic usage of a token. Roles cannot change between themes — <code>--fg</code> is always foreground text in both light and dark.</td>
+    </tr>
+    <tr>
+      <td><strong>Value</strong></td>
+      <td>The actual color (hex code or rgba value) assigned to a token in a given theme. For example, <code>--fg</code> is <code>#222222</code> in light and <code>#fffbf5</code> in dark.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## The two themes
+
+The portfolio provides two themes. The active theme is set by the `.dark` class on the `<html>` element. When `.dark` is absent, the light theme is active.
+
+<table>
+  <thead>
+    <tr><th>Theme</th><th>Class</th><th>Background</th><th>Use</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Light</strong></td>
+      <td>—</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#fffbf5', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>Cream — #fffbf5</td>
+      <td>Default theme; applied when <code>.dark</code> is absent</td>
+    </tr>
+    <tr>
+      <td><strong>Dark</strong></td>
+      <td><code>.dark</code> on <code>&lt;html&gt;</code></td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#1c1a16', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>Near-black — #1c1a16</td>
+      <td>Applied when <code>.dark</code> is present</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Tokens
+
+With tokens, a single value change propagates system-wide. Tokens are used across all components and keep global patterns consistent. There are four token categories:
+
+<table>
+  <thead>
+    <tr><th>Category</th><th>Tokens</th><th>Applied to</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Color</strong></td><td><code>--bg</code>, <code>--fg</code>, <code>--accent</code>, <code>--on-accent</code>, <code>--surface</code>, <code>--border</code>, <code>--fg-secondary</code>, <code>--brand-hover</code></td><td>Backgrounds, text, brand, dividers</td></tr>
+    <tr><td><strong>Spacing</strong></td><td><code>--space-xs</code> → <code>--space-5xl</code></td><td>Margin, padding, gap — same values across both themes</td></tr>
+    <tr><td><strong>Typography</strong></td><td><code>--text-display-{'*'}</code></td><td>Fluid display sizes — same values across both themes</td></tr>
+    <tr><td><strong>Motion</strong></td><td><code>--duration-{'*'}</code></td><td>Transition durations — same values across both themes</td></tr>
+  </tbody>
+</table>
+
+Only color tokens change between themes. Spacing, typography, and motion tokens are invariant.
+
+For the full list of color tokens and their values in each theme, see the [Color — Tokens](/docs/elements-color--docs) tab.
+
+---
+
+## Theming applied
+
+The following table demonstrates the relationship between the two themes. Each theme shares the same tokens and roles — only the value changes.
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Role</th><th>Light value</th><th>Dark value</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--fg</code></td>
+      <td>Primary text color</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#222222', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>#222222</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#fffbf5', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>#fffbf5</td>
+    </tr>
+    <tr>
+      <td><code>--bg</code></td>
+      <td>Page background</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#fffbf5', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>#fffbf5</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#1c1a16', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>#1c1a16</td>
+    </tr>
+    <tr>
+      <td><code>--surface</code></td>
+      <td>Card / panel background</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#f7f3f5', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>#f7f3f5</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#252220', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>#252220</td>
+    </tr>
+    <tr>
+      <td><code>--accent</code></td>
+      <td>Brand color; CTAs; links</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#813746', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>#813746</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: '#e36f86', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>#e36f86</td>
+    </tr>
+    <tr>
+      <td><code>--border</code></td>
+      <td>Dividers, card outlines</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', borderRadius: '3px', backgroundColor: 'rgba(34,34,34,0.1)', border: '1px solid rgba(34,34,34,0.15)', verticalAlign: 'middle', marginRight: '6px' }}></span>rgba(34,34,34,.10)</td>
+      <td><span style={{ display: 'inline-block', width: '12px', height: '12px', backgroundColor: '#1c1a16', border: '1px solid rgba(34,34,34,0.15)', borderRadius: '3px', overflow: 'hidden', verticalAlign: 'middle', marginRight: '6px' }}><span style={{ display: 'block', width: '100%', height: '100%', backgroundColor: 'rgba(255,251,245,0.10)' }}></span></span>rgba(255,251,245,.10)</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## System preferences
+
+Most operating systems (macOS, iOS, Windows, Android) expose the user's preferred color scheme via `prefers-color-scheme`. The `useTheme` hook reads this preference on first load and applies the matching theme automatically.
+
+Where no saved preference exists, the system preference is used as the default. Users can override it at any time using the `ThemeToggle` component in the navigation bar.
+
+</TabPanel>
+
+{/* ── CODE ────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={1}>
+
+## CSS custom properties
+
+The two themes are defined in `globals.css` using the `.dark` class selector. When `.dark` is on `<html>`, all adaptive tokens resolve to their dark values simultaneously.
+
+```css
+/* globals.css */
+
+/* Light theme — default (no class needed) */
+:root {
+  --bg:           #fffbf5;
+  --fg:           #222222;
+  --fg-secondary: rgba(34, 34, 34, 0.55);
+  --accent:       #813746;
+  --on-accent:    #fffbf5;
+  --surface:      #f7f3f5;
+  --border:       rgba(34, 34, 34, 0.10);
+  --brand-hover:  #612935;
+}
+
+/* Dark theme — applied when .dark is on <html> */
+.dark {
+  --bg:           #1c1a16;
+  --fg:           #fffbf5;
+  --fg-secondary: rgba(255, 251, 245, 0.55);
+  --accent:       #e36f86;
+  --on-accent:    #1c1a16;
+  --surface:      #252220;
+  --border:       rgba(255, 251, 245, 0.10);
+  --brand-hover:  #c15e72;
+}
+```
+
+---
+
+## useTheme hook
+
+The `useTheme` hook manages the active theme. It reads the saved preference from `localStorage`, falls back to the OS `prefers-color-scheme`, and applies `.dark` to `<html>` accordingly.
+
+```js
+// src/hooks/useTheme.js
+export function useTheme() {
+  const [dark, setDark] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    if (saved) return saved === 'dark'
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+  })
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', dark)
+    localStorage.setItem('theme', dark ? 'dark' : 'light')
+  }, [dark])
+
+  return { dark, toggle: () => setDark(d => !d) }
+}
+```
+
+---
+
+## ThemeToggle component
+
+The `ThemeToggle` component calls `useTheme` and renders a button that switches between themes.
+
+```jsx
+// Usage — placed in Navbar
+import { useTheme } from '../hooks/useTheme'
+
+function Navbar() {
+  const { dark, toggle } = useTheme()
+  return (
+    <nav>
+      {/* ... */}
+      <ThemeToggle dark={dark} onToggle={toggle} />
+    </nav>
+  )
+}
+```
+
+---
+
+## System preference detection
+
+Detect the OS preference without `useTheme` — useful in non-React contexts or for SSR hydration.
+
+```js
+// Detect on first load
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+if (prefersDark) document.documentElement.classList.add('dark')
+
+// Listen for OS-level changes
+window.matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', e => {
+    document.documentElement.classList.toggle('dark', e.matches)
+  })
+```
+
+---
+
+## Inline theming
+
+For Storybook stories where you need to lock a specific background regardless of the active theme, use static Tailwind tokens rather than the adaptive ones. These values are fixed — they never switch.
+
+```jsx
+// Story decorator — force light background
+export const decorators = [
+  (Story) => (
+    <div className="bg-cream p-8">
+      <Story />
+    </div>
+  ),
+]
+
+// Story decorator — force dark background
+export const decorators = [
+  (Story) => (
+    <div className="bg-dark-bg p-8">
+      <Story />
+    </div>
+  ),
+]
+```
+
+</TabPanel>
+
+</DocsTabs>

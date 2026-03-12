@@ -3,7 +3,7 @@ import Cursor from './Cursor'
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/Cursor',
+  title: 'Components/Cursor',
   component: Cursor,
   tags: ['autodocs'],
   parameters: {

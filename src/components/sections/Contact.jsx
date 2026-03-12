@@ -39,7 +39,7 @@ export default function Contact() {
           {/* Label */}
           <m.div variants={fadeUp} className="flex items-center gap-3 mb-8">
             <span className="inline-block w-8 h-px bg-brand-primary" />
-            <span className="text-xs font-mono tracking-widest uppercase text-brand-primary">
+            <span className="font-body text-label text-brand-primary">
               Contact
             </span>
           </m.div>
@@ -47,15 +47,14 @@ export default function Contact() {
           {/* Heading */}
           <m.h2
             variants={fadeUp}
-            className="font-display font-bold tracking-tighter leading-none mb-6 text-fg"
-            style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)' }}
+            className="font-display font-bold text-display-lg mb-6 text-fg"
           >
             Let's work<br />together.
           </m.h2>
 
           <m.p
             variants={fadeUp}
-            className="text-base md:text-lg leading-relaxed mb-12 max-w-lg text-fg opacity-60"
+            className="font-body text-body md:text-body-lg leading-relaxed mb-12 max-w-lg text-fg opacity-60"
           >
             Have a project in mind? I'm open to new opportunities, collaborations,
             and conversations. Reach out and let's create something great.
@@ -66,7 +65,7 @@ export default function Contact() {
             <m.button
               onClick={handleEmailCopy}
               className="flex items-center gap-3 px-6 py-3.5 border border-brand-primary
-                         text-brand-primary font-mono text-sm tracking-wide rounded
+                         text-brand-primary font-body text-body-sm tracking-wide rounded
                          hover:bg-brand-primary hover:text-on-accent transition-colors duration-200"
               animate={copied ? { scale: [1, 0.96, 1] } : {}}
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}

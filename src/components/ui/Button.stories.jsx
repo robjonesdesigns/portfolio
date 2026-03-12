@@ -37,9 +37,8 @@ const Section = ({ label, children }) => (
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/Button',
+  title: 'Components/Button',
   component: Button,
-  tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
   argTypes: {
     children:  { control: 'text',   description: 'Button label' },
@@ -54,6 +53,7 @@ export default {
 // ─── Default — interactive, use the Controls panel to explore ─────────────────
 
 export const Default = {
+  tags: ['!dev'],
   decorators: [(Story) => <Wrapper><Story /></Wrapper>],
   args: { children: 'View Work', variant: 'primary', size: 'md' },
 }
@@ -61,6 +61,7 @@ export const Default = {
 // ─── Individual variants — adaptive (theme toolbar switches light/dark) ────────
 
 export const Primary = {
+  tags: ['!dev'],
   name: 'Primary',
   parameters: { controls: { disable: true } },
   render: () => (
@@ -74,6 +75,7 @@ export const Primary = {
 }
 
 export const Secondary = {
+  tags: ['!dev'],
   name: 'Secondary',
   parameters: { controls: { disable: true } },
   render: () => (
@@ -87,6 +89,7 @@ export const Secondary = {
 }
 
 export const Tertiary = {
+  tags: ['!dev'],
   name: 'Tertiary',
   parameters: { controls: { disable: true } },
   render: () => (
@@ -100,6 +103,7 @@ export const Tertiary = {
 }
 
 export const LinkVariant = {
+  tags: ['!dev'],
   name: 'Link',
   parameters: { controls: { disable: true } },
   render: () => (
@@ -113,6 +117,7 @@ export const LinkVariant = {
 }
 
 export const CTAPair = {
+  tags: ['!dev'],
   name: 'CTA Pair (Hero)',
   parameters: { controls: { disable: true } },
   render: () => (
@@ -124,6 +129,7 @@ export const CTAPair = {
 }
 
 export const AsAnchor = {
+  tags: ['!dev'],
   name: 'As Anchor',
   parameters: { controls: { disable: true } },
   render: () => (
@@ -138,6 +144,7 @@ export const AsAnchor = {
 // ─── All variants — both themes, comparison reference ─────────────────────────
 
 export const AllVariants = {
+  tags: ['!dev'],
   name: 'All Variants',
   parameters: { controls: { disable: true } },
   render: () => (
@@ -207,6 +214,7 @@ function StatesGrid({ dark }) {
 }
 
 export const HoverFocusStates = {
+  tags: ['!dev'],
   name: 'Hover & Focus States',
   parameters: { controls: { disable: true } },
   render: () => (

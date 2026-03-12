@@ -33,3 +33,5 @@ public/images/*.mov
 
 # Local-only prototype (used for screen recording, not deployed)
 src/pages/KeytrnPrototype.jsx
+.env
+upload-videos.mjs

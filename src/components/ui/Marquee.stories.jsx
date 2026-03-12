@@ -13,9 +13,8 @@ const Wrapper = ({ children }) => (
 // ─── Meta ──────────────────────────────────────────────────────────────────────
 
 export default {
-  title: 'UI/Marquee',
+  title: 'Components/Marquee',
   component: Marquee,
-  tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
   argTypes: {
     items: {

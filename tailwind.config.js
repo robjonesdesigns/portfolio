@@ -9,6 +9,7 @@ export default {
         'brand-primary': 'var(--accent)',    // #813746 light / #e36f86 dark — primary brand
         'on-accent':     'var(--on-accent)', // #fffbf5 light / #1c1a16 dark — text on brand-primary bg
         fg:              'var(--fg)',        // #222222 light / #fffbf5 dark — all text (headings + body)
+        'fg-secondary':  'var(--fg-secondary)', // #555555 light / #a8a5a0 dark — labels, metadata
         surface:         'var(--surface)',   // #f7f3f5 light / #252220 dark — cards, panels
         border:          'var(--border)',    // rgba(34,34,34,0.10) light / rgba(255,251,245,0.10) dark — dividers, card outlines
         'brand-hover':   'var(--accent-hover)', // #612935 light / #c15e72 dark — button hover (darker primary)
@@ -27,6 +28,10 @@ export default {
         tightest: '-0.04em',
         tighter:  '-0.03em',
       },
+      // ── Fluid display type scale ────────────────────────────────────────
+      // Defined in globals.css @layer utilities (avoids Tailwind JIT hyphenation issues).
+      // CSS variables: --text-display-2xl/xl/lg/md in :root
+      // Utility classes: .text-display-2xl/xl/lg/md in @layer utilities
       transitionTimingFunction: {
         'out-expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
       },

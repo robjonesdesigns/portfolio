@@ -1,0 +1,387 @@
+{/* Motion.mdx */}
+import { Meta } from '@storybook/addon-docs/blocks'
+import { DocsTabs, TabList, Tab, TabPanel } from './DocsTabs'
+
+<Meta title="Elements/Motion" />
+
+# Motion
+
+Motion can bring the portfolio to life, guide users through experiences, and help move them forward — from here to there, start to finish — and make progress feel tangible.
+
+<DocsTabs>
+
+<TabList>
+  <Tab index={0}>Overview</Tab>
+  <Tab index={1}>Choreography</Tab>
+  <Tab index={2}>Code</Tab>
+</TabList>
+
+{/* ── OVERVIEW ────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={0}>
+
+## Portfolio in motion
+
+Components have motion built in for microinteractions. The motion design of the overarching UI — how components enter and exit the page, how sections transition — is defined here. Use this guidance to customize, combine, and choreograph motion across the portfolio.
+
+---
+
+## Style
+
+The portfolio recognizes two types of motion — **productive** and **expressive** — reflecting the dual nature of a portfolio: efficient navigation and memorable presentation.
+
+Reserve expressive motion for important moments to capture attention and provide a rhythmic break from the productive experience.
+
+<table>
+  <thead>
+    <tr><th>Style</th><th>Character</th><th>When to use</th><th>Examples</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Productive</strong></td>
+      <td>Subtle, efficient, out of the way</td>
+      <td>Task-focused interactions where motion should not distract</td>
+      <td>Button hover, navbar scroll transition, theme toggle, link underlines</td>
+    </tr>
+    <tr>
+      <td><strong>Expressive</strong></td>
+      <td>Enthusiastic, visible, meaningful</td>
+      <td>Significant moments where the motion itself conveys meaning</td>
+      <td>Page entrance, hero CircleLetters, WorkEntry card reveal, case study hero</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Easing
+
+Strictly linear movement appears unnatural to the human eye. Elements on screen should speed up quickly and slow down smoothly, obeying the physics of a lightweight material. Easing curves describe the precise amount of acceleration in motion.
+
+Three easing types are used — one for each phase of an element's journey.
+
+**Standard easing** — element is visible from start to finish (expanding, sorting, transforming in place).
+
+**Entrance easing** — element enters the view and slows to a stop (modals appearing, sections fading in, cards entering the viewport).
+
+**Exit easing** — element leaves the view and accelerates out (closing, dismissing, leaving permanently).
+
+<div style={{ marginTop: '24px', overflowX: 'auto' }}>
+<table style={{ width: '100%', borderCollapse: 'collapse' }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid rgba(34,34,34,0.12)' }}>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Easing curve</th>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Productive</th>
+      <th style={{ textAlign: 'left', padding: '8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Expressive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>Standard</td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)' }}>cubic-bezier(0.2, 0, 0.38, 0.9)</td>
+      <td style={{ padding: '10px 0', fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)' }}>cubic-bezier(0.4, 0.14, 0.3, 1)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>Entrance</td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)' }}>cubic-bezier(0, 0, 0.38, 0.9)</td>
+      <td style={{ padding: '10px 0', fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)' }}>cubic-bezier(0, 0, 0.3, 1)</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)' }}>Exit</td>
+      <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)' }}>cubic-bezier(0.2, 0, 1, 0.9)</td>
+      <td style={{ padding: '10px 0', fontFamily: 'monospace', fontSize: '12px', color: 'rgba(34,34,34,0.65)' }}>cubic-bezier(0.4, 0.14, 1, 1)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+Avoid easing curves that suggest bounce, stretch, or sudden stops. Motion should be essential and efficient, guiding users to content as quickly as possible.
+
+---
+
+## Duration
+
+Duration is calculated based on the style and size of the motion. Productive motion is significantly faster than expressive motion. Larger changes in distance or scale take longer.
+
+<div style={{ marginTop: '24px', overflowX: 'auto' }}>
+<table style={{ width: '100%', borderCollapse: 'collapse' }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid rgba(34,34,34,0.12)' }}>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Token</th>
+      <th style={{ textAlign: 'left', padding: '8px 24px 8px 0', fontFamily: 'monospace', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Value</th>
+      <th style={{ textAlign: 'left', padding: '8px 0', fontFamily: 'Arial', fontSize: '11px', fontWeight: '600', color: 'rgba(34,34,34,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      { token: '--duration-fast-01',     value: '70ms',  use: 'Micro-interactions — button hover, toggle, icon state' },
+      { token: '--duration-fast-02',     value: '110ms', use: 'Micro-interactions — fade in/out, small opacity change' },
+      { token: '--duration-moderate-01', value: '150ms', use: 'Small expansion, short distance movement' },
+      { token: '--duration-moderate-02', value: '240ms', use: 'Expansion, navbar transition, card reveal' },
+      { token: '--duration-slow-01',     value: '400ms', use: 'Large expansion, page section entrance, hero animation' },
+      { token: '--duration-slow-02',     value: '700ms', use: 'Background dimming, overlay, page transition' },
+    ].map(({ token, value, use }) => (
+      <tr key={token} style={{ borderBottom: '1px solid rgba(34,34,34,0.06)' }}>
+        <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '13px', color: 'rgba(34,34,34,0.85)', whiteSpace: 'nowrap' }}>{token}</td>
+        <td style={{ padding: '10px 24px 10px 0', fontFamily: 'monospace', fontSize: '12px', color: '#813746', whiteSpace: 'nowrap' }}>{value}</td>
+        <td style={{ padding: '10px 0', fontFamily: 'Arial', fontSize: '12px', color: 'rgba(34,34,34,0.6)' }}>{use}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+</div>
+
+---
+
+## Implementation
+
+**Motion design strategy**
+
+Follow these steps to assess the portfolio for purposeful motion:
+
+1. Define the goal of the interaction — is it navigation, feedback, or delight?
+2. Identify the type: productive (task) or expressive (moment)?
+3. Assign easing and duration from the scale above
+4. Prototype and test — does it feel right at full speed?
+
+**Evaluation checklist**
+
+<table>
+  <thead>
+    <tr><th>Criterion</th><th>Questions to ask</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Purposeful</strong></td><td>What problem is this motion solving? Does it enhance understanding of an action?</td></tr>
+    <tr><td><strong>Responsive</strong></td><td>Do user actions receive immediate feedback? Do microinteractions use entrance easing on input? Are microinteraction durations under 150ms?</td></tr>
+    <tr><td><strong>Meticulous</strong></td><td>Is the correct easing curve used? Is each motion individually considered? Do related movements feel unified?</td></tr>
+    <tr><td><strong>Unobtrusive</strong></td><td>Is this motion frequently noticed by average users? If so, remove or minimize it — the best interface motion goes unnoticed.</td></tr>
+  </tbody>
+</table>
+
+**Accessible motion**
+
+Always provide alternatives for users with vestibular disorders or motion sensitivity. The `prefers-reduced-motion` media query should disable or simplify all non-essential animations.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+</TabPanel>
+
+{/* ── CHOREOGRAPHY ────────────────────────────────────────────────────────── */}
+
+<TabPanel index={1}>
+
+## Composition
+
+When multiple animated elements coexist in the same view, they must work together to form a coherent experience. Motion should provide wayfinding and focus — not distraction.
+
+---
+
+## Sequence and stagger
+
+When multiple elements need to animate, distribute their entrances over time instead of introducing everything at once. This helps users understand content and orientation.
+
+Stagger by **20–40ms** per item. Keep the total time under **500ms** regardless of item count — adjust the stagger delay if needed.
+
+<table>
+  <thead>
+    <tr><th>Sequence</th><th>Content type</th><th>Examples</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Static structure</td><td>Navbar, page shell</td></tr>
+    <tr><td>2</td><td>Static body content</td><td>Section headings, written content, images</td></tr>
+    <tr><td>3</td><td>Dynamic content</td><td>WorkEntry cards, case study sections</td></tr>
+    <tr><td>4</td><td>Primary action</td><td>CTA button, contact link</td></tr>
+    <tr><td>5</td><td>Animated content</td><td>CircleLetters, marquee, decorative SVG</td></tr>
+  </tbody>
+</table>
+
+Start with the most stable content and end with the most important information to focus user attention.
+
+---
+
+## Consistency
+
+**Semantic consistency** — When elements convey the same meaning or perform the same function, use the same motion for them. This reinforces meaning behind a movement and improves user proficiency.
+
+For example, all scroll-triggered section entrances should share the same easing and direction — not mix upward and downward reveals.
+
+**Spatial consistency** — Pay attention to spatial relationships between elements. Panels sliding in from the right should always come from the right; panels exiting should leave the same way they entered.
+
+**Intentional inconsistency** — Conscious use of inconsistency highlights a difference in intent. Forward motion typically signals affirmation; reversing entrance motion signals cancellation. Use motion to reinforce meaning.
+
+---
+
+## Continuity
+
+Motion can establish continuity between sections of a page. Shared elements — a heading that moves into the hero, a card that expands into a case study — create graceful transitions.
+
+Continuous elements guide users and should not distract. Always finish a sequence with the most important content on screen.
+
+---
+
+## Paths
+
+Elements move on paths that respect the layout grid. Avoid diagonal paths — they break the grid and are harsh to the eye.
+
+When an element needs to move both horizontally and vertically, stagger the axes slightly to create a rounded-corner path rather than a straight diagonal.
+
+</TabPanel>
+
+{/* ── CODE ────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={2}>
+
+## Framer Motion setup
+
+The portfolio uses Framer Motion for all animation. Import `motion` from `framer-motion` and apply transition props directly.
+
+```jsx
+import { motion } from 'framer-motion'
+```
+
+---
+
+## Easing presets
+
+Define easing curves once and reference them by name throughout the codebase.
+
+```js
+// src/utils/motion.js
+export const ease = {
+  // Productive
+  standard:  [0.2, 0, 0.38, 0.9],
+  entrance:  [0, 0, 0.38, 0.9],
+  exit:      [0.2, 0, 1, 0.9],
+
+  // Expressive
+  stdExp:    [0.4, 0.14, 0.3, 1],
+  entrExp:   [0, 0, 0.3, 1],
+  exitExp:   [0.4, 0.14, 1, 1],
+}
+
+export const duration = {
+  fast01:     0.07,   // 70ms  — button hover, toggle
+  fast02:     0.11,   // 110ms — fade in/out
+  moderate01: 0.15,   // 150ms — small expansion
+  moderate02: 0.24,   // 240ms — card reveal, navbar
+  slow01:     0.40,   // 400ms — page section entrance
+  slow02:     0.70,   // 700ms — overlay, page transition
+}
+```
+
+---
+
+## Productive transitions
+
+Micro-interactions and UI feedback — fast, subtle, out of the way.
+
+```jsx
+import { ease, duration } from '../utils/motion'
+
+// Button hover scale — productive micro-interaction
+<motion.button
+  whileHover={{ scale: 1.02 }}
+  transition={{ duration: duration.fast01, ease: ease.standard }}
+>
+  View project
+</motion.button>
+
+// Dropdown / panel entrance — entrance easing
+<motion.div
+  initial={{ opacity: 0, y: -8 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -8 }}
+  transition={{ duration: duration.moderate01, ease: ease.entrance }}
+>
+  {children}
+</motion.div>
+```
+
+---
+
+## Expressive transitions
+
+Significant moments — page entrances, hero animations, scroll reveals.
+
+```jsx
+// Section entrance on scroll — expressive, staggered
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.04 }
+  }
+}
+
+const itemVariants = {
+  hidden:  { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: duration.slow01, ease: ease.entrExp }
+  }
+}
+
+<motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+  {items.map(item => (
+    <motion.div key={item.id} variants={itemVariants}>
+      {item.content}
+    </motion.div>
+  ))}
+</motion.div>
+```
+
+---
+
+## Page transitions
+
+Page-level transitions use the `PageTransition` component, which wraps route content with an opacity fade.
+
+```jsx
+// PageTransition.jsx
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ duration: duration.slow02, ease: ease.stdExp }}
+>
+  {children}
+</motion.div>
+```
+
+---
+
+## Reduced motion
+
+Wrap all non-essential animation in a reduced motion check. Use Framer Motion's `useReducedMotion` hook.
+
+```jsx
+import { useReducedMotion } from 'framer-motion'
+
+function AnimatedCard({ children }) {
+  const reduce = useReducedMotion()
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: reduce ? 0 : 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: reduce ? 0 : duration.slow01,
+        ease: ease.entrExp
+      }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+```
+
+</TabPanel>
+
+</DocsTabs>

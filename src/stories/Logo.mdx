@@ -1,0 +1,258 @@
+{/* Logo.mdx */}
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as LogoStories from './Logo.stories'
+import { DocsTabs, TabList, Tab, TabPanel } from './DocsTabs'
+
+<Meta of={LogoStories} />
+
+# Logo
+
+The RJ mark is the primary brand identifier for the portfolio. It uses adaptive color tokens so it updates automatically with the active theme — no separate logo-specific values.
+
+<DocsTabs>
+
+<TabList>
+  <Tab index={0}>Overview</Tab>
+  <Tab index={1}>Usage</Tab>
+  <Tab index={2}>Code</Tab>
+</TabList>
+
+{/* ── OVERVIEW ────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={0}>
+
+## Definition
+
+<table>
+  <thead>
+    <tr><th>Term</th><th>Definition</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>RJ mark</strong></td>
+      <td>The primary logo — an interlocking R and J letterform rendered as a single SVG shape.</td>
+    </tr>
+    <tr>
+      <td><strong>Dot</strong></td>
+      <td>A filled circle at the lower right of the mark. It acts as a visual period, grounding the letterforms and signaling completion.</td>
+    </tr>
+    <tr>
+      <td><strong>Adaptive color</strong></td>
+      <td>The mark uses <code>--accent</code> and <code>--fg</code> tokens, so it inherits the correct color automatically in both light and dark themes.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## Anatomy
+
+The logo has two distinct parts. Each maps to a different token.
+
+<div style={{ display: 'flex', gap: '48px', marginTop: '20px', flexWrap: 'wrap' }}>
+  {[
+    { theme: 'Light', bg: '#fffbf5', items: [
+      { label: 'RJ letterforms', hex: '#813746', name: 'Burgundy', token: '--accent' },
+      { label: 'Dot (bottom right)', hex: '#222222', name: 'Near-black', token: '--fg' },
+    ]},
+    { theme: 'Dark', bg: '#1c1a16', items: [
+      { label: 'RJ letterforms', hex: '#e36f86', name: 'Rose', token: '--accent' },
+      { label: 'Dot (bottom right)', hex: '#fffbf5', name: 'Cream', token: '--fg' },
+    ]},
+  ].map(({ theme, bg, items }) => (
+    <div key={theme} style={{ backgroundColor: bg, padding: '20px 24px', borderRadius: '10px', border: '1px solid rgba(34,34,34,0.08)' }}>
+      <p style={{ fontFamily: 'monospace', fontSize: '10px', color: theme === 'Light' ? 'rgba(34,34,34,0.5)' : 'rgba(255,251,245,0.5)', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 14px' }}>{theme}</p>
+      {items.map(({ label, hex, name, token }) => (
+        <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+          <div style={{ width: '32px', height: '32px', backgroundColor: hex, borderRadius: '6px', flexShrink: 0 }} />
+          <div>
+            <div style={{ fontFamily: 'Arial', fontSize: '12px', color: theme === 'Light' ? 'rgba(34,34,34,0.8)' : 'rgba(255,251,245,0.8)' }}>{label}</div>
+            <div style={{ fontFamily: 'monospace', fontSize: '10px', color: theme === 'Light' ? 'rgba(34,34,34,0.45)' : 'rgba(255,251,245,0.45)', marginTop: '2px' }}>{hex} · {name} · {token}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
+
+---
+
+## On light
+
+<Canvas of={LogoStories.OnLight} />
+
+---
+
+## On dark
+
+<Canvas of={LogoStories.OnDark} />
+
+</TabPanel>
+
+{/* ── USAGE ────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={1}>
+
+## Size scale
+
+The logo is available at five sizes. Each size has a recommended context.
+
+<Canvas of={LogoStories.Sizes} />
+
+<table>
+  <thead>
+    <tr><th>Size</th><th>Context</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>16px</strong></td><td>Favicon only — browser tab and bookmark icon</td></tr>
+    <tr><td><strong>24px</strong></td><td>Mobile navigation, tight inline contexts</td></tr>
+    <tr><td><strong>40px</strong></td><td>Default nav (compact header)</td></tr>
+    <tr><td><strong>56px</strong></td><td>Standard desktop navigation</td></tr>
+    <tr><td><strong>80px</strong></td><td>Featured placement — splash, hero, print</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Minimum size
+
+<Canvas of={LogoStories.MinimumSize} />
+
+The minimum usable size is **24px**. Below 24px the letterforms become illegible. The 16px size is reserved for the browser favicon only — never use it in the UI.
+
+---
+
+## Interactions
+
+<Canvas of={LogoStories.Interactions} />
+
+The logo responds to hover and click. These interactions are defined in the `RJLogo` component using Framer Motion spring physics.
+
+<table>
+  <thead>
+    <tr><th>Interaction</th><th>Motion</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Hover</strong></td><td>Scale up</td><td><code>scale: 1.1</code></td></tr>
+    <tr><td><strong>Click / tap</strong></td><td>Rotate and shrink, spring back on release</td><td><code>rotate: 180, scale: 0.5</code></td></tr>
+    <tr><td><strong>Easing</strong></td><td>Spring physics</td><td><code>stiffness: 400, damping: 17</code></td></tr>
+  </tbody>
+</table>
+
+---
+
+## Guidelines
+
+<table>
+  <thead>
+    <tr><th>Do</th><th>Don't</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Use <code>--accent</code> for the letterforms and <code>--fg</code> for the dot</td>
+      <td>Hardcode hex values — the logo will break in the opposite theme</td>
+    </tr>
+    <tr>
+      <td>Use the <code>RJLogo</code> component — it handles tokens and props automatically</td>
+      <td>Copy the raw SVG and apply color attributes directly</td>
+    </tr>
+    <tr>
+      <td>Respect the minimum size of 24px in the UI</td>
+      <td>Scale below 24px outside of a favicon context</td>
+    </tr>
+    <tr>
+      <td>Place the logo on <code>--bg</code> or <code>--surface</code> backgrounds for full contrast</td>
+      <td>Place the logo on <code>--accent</code> — the burgundy letterforms will disappear</td>
+    </tr>
+  </tbody>
+</table>
+
+</TabPanel>
+
+{/* ── CODE ────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={2}>
+
+## Component
+
+Import `RJLogo` from the `ui` directory. Pass a `size` prop to control the rendered dimensions. Colors are applied via CSS tokens automatically.
+
+```jsx
+import RJLogo from '../components/ui/RJLogo'
+
+// Default — 40px, tokens applied from CSS
+<RJLogo size={40} />
+
+// Explicit size
+<RJLogo size={56} />
+```
+
+---
+
+## Props
+
+<table>
+  <thead>
+    <tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>size</code></td><td><code>number</code></td><td><code>40</code></td><td>Width in pixels. Height scales proportionally (ratio 36:41).</td></tr>
+  </tbody>
+</table>
+
+---
+
+## SVG structure
+
+The SVG has three paths. The first two form the R and J letterforms; the third is the dot. All three accept a `fill` attribute or inherit from CSS.
+
+```jsx
+<svg width={size} height={size * (41 / 36)} viewBox="0 -2 36 41" fill="none">
+  {/* Left stem (R) */}
+  <path d="M0.5 33.5V3.5…" fill="var(--accent)" />
+  {/* Right bowl + J arc */}
+  <path d="M29.7754 2.56878…" fill="var(--accent)" />
+  {/* Dot */}
+  <path d="M35.5 32C35.5 34.76…" fill="var(--fg)" />
+</svg>
+```
+
+---
+
+## With Framer Motion
+
+The navbar wraps `RJLogo` in a `motion.div` to add hover and click interactions.
+
+```jsx
+import { motion } from 'framer-motion'
+import RJLogo from '../components/ui/RJLogo'
+
+const SPRING = { type: 'spring', stiffness: 400, damping: 17 }
+
+<motion.div
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ rotate: 180, scale: 0.5 }}
+  transition={SPRING}
+  style={{ display: 'block', cursor: 'pointer' }}
+>
+  <RJLogo size={56} />
+</motion.div>
+```
+
+---
+
+## In the navbar
+
+The logo renders at 40px by default and links back to the homepage.
+
+```jsx
+import { Link } from 'react-router-dom'
+
+<Link to="/" aria-label="Rob Jones — home">
+  <RJLogo size={40} />
+</Link>
+```
+
+</TabPanel>
+
+</DocsTabs>

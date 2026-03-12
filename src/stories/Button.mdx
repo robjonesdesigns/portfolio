@@ -1,0 +1,80 @@
+{/* Button.mdx */}
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as ButtonStories from '../components/ui/Button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Polymorphic CTA component. Renders as a `<button>` by default; pass `as="a"` for anchor links or `as={Link}` for React Router navigation.
+
+Four variants cover every use case in the portfolio: a filled primary CTA, a bordered secondary, a lower-emphasis tertiary, and a text-only link.
+
+---
+
+## Variants
+
+### Primary
+
+Filled with the brand accent color. Use for the main action on any screen — one per view.
+
+<Canvas of={ButtonStories.Primary} />
+
+### Secondary
+
+Bordered, no fill. Use alongside Primary for a paired CTA or as a standalone secondary action.
+
+<Canvas of={ButtonStories.Secondary} />
+
+### Tertiary
+
+Surface fill, lower visual weight. Use for supporting actions that should not compete with Primary or Secondary.
+
+<Canvas of={ButtonStories.Tertiary} />
+
+### Link
+
+Text only, no pill shape. Use for inline links, icon CTAs, and any action that should feel like prose.
+
+<Canvas of={ButtonStories.LinkVariant} />
+
+---
+
+## Sizes
+
+All variants (except link) support three sizes: `sm`, `md` (default), `lg`.
+The link variant ignores `size` horizontally — only vertical padding scales.
+
+---
+
+## States
+
+<Canvas of={ButtonStories.HoverFocusStates} />
+
+| State | Behavior |
+|---|---|
+| Hover | Variant-specific fill shift (see above) |
+| Focus | 4px accent ring via `focus-visible` — keyboard only |
+| Disabled | `opacity-40`, pointer events removed |
+| Active | `scale(0.97)` press — all pill variants |
+
+---
+
+## Polymorphic usage
+
+```jsx
+// Default — renders <button>
+<Button variant="primary">View Work</Button>
+
+// Anchor link
+<Button as="a" href="/resume" variant="secondary">Download Resume</Button>
+
+// React Router Link
+<Button as={Link} to="/projects/keytrn" variant="link">See case study →</Button>
+```
+
+---
+
+## Props
+
+<ArgTypes of={ButtonStories} />

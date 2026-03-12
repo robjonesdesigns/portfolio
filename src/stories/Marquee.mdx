@@ -1,0 +1,51 @@
+{/* Marquee.mdx */}
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as MarqueeStories from '../components/ui/Marquee.stories'
+
+<Meta of={MarqueeStories} />
+
+# Marquee
+
+Horizontally scrolling ticker pinned to the bottom of the Hero section. Accepts an array of strings and scrolls them in a seamless loop using a CSS `@keyframes` animation.
+
+The list is duplicated internally — pass the original set once, and the component handles the loop.
+
+---
+
+## Default
+
+<Canvas of={MarqueeStories.Default} />
+
+---
+
+## Speed comparison
+
+`speed` is the duration of one full loop in seconds. Higher number = slower scroll.
+
+<Canvas of={MarqueeStories.SpeedComparison} />
+
+---
+
+## Extended list
+
+<Canvas of={MarqueeStories.ExtendedList} />
+
+---
+
+## Usage
+
+```jsx
+// In Hero.jsx
+const skills = [
+  'Product Design', 'UX Research', 'Design Systems',
+  'Prototyping', 'Developer Handoff',
+]
+
+<Marquee items={skills} speed={30} />
+```
+
+---
+
+## Props
+
+<ArgTypes of={MarqueeStories} />

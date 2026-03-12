@@ -1,0 +1,452 @@
+{/* Typography.mdx */}
+import { Meta, Canvas, Unstyled } from '@storybook/addon-docs/blocks'
+import { DocsTabs, TabList, Tab, TabPanel } from './DocsTabs'
+import { DoDont, Do, Dont } from './DoDont'
+import * as TypographyStories from './Typography.stories'
+
+<Meta of={TypographyStories} />
+
+# Typography
+
+Our approach to the typographic system uses three purpose-built typefaces. Scales, styles, and weights are calibrated to create clear hierarchy and guide users through the portfolio.
+
+<DocsTabs>
+
+<TabList>
+  <Tab index={0}>Overview</Tab>
+  <Tab index={1}>Typefaces</Tab>
+  <Tab index={2}>Type Sets</Tab>
+  <Tab index={3}>Code</Tab>
+  <Tab index={4}>Pairings</Tab>
+</TabList>
+
+{/* ── OVERVIEW ────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={0}>
+
+## Type tokens and sets
+
+The portfolio uses type tokens across two modes to manage typography. Type tokens are pre-set configurations of typographic elements — font size, weight, line-height, and letter-spacing — calibrated for their role.
+
+**Fluid (display)** — Four display tokens use `clamp()` so they scale smoothly between viewport sizes. No breakpoints needed.
+
+**Fixed (body + labels)** — Body and label sizes are set in `px`. Reading comfort at these sizes depends on consistent line-height, not fluid scaling.
+
+---
+
+## Typeface roles
+
+Three font families, each with a defined role. Roles do not change — Cabinet Grotesk is always display, Areal is always body, Ogg is always editorial.
+
+<table>
+  <thead>
+    <tr><th>Family</th><th>Token</th><th>Role</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Cabinet Grotesk</td><td><code>font-display</code></td><td>All headings and display text</td></tr>
+    <tr><td>Areal</td><td><code>font-body</code></td><td>Body copy, labels, UI text</td></tr>
+    <tr><td>Ogg</td><td><code>font-editorial</code></td><td>Pull quotes, editorial accents only</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Scale structure
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Mode</th><th>Size</th><th>Range</th><th>Element</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>text-display-2xl</code></td><td>Fluid</td><td><code>clamp(3rem, 8vw, 6rem)</code></td><td>48–96px</td><td><code>h1</code></td></tr>
+    <tr><td><code>text-display-xl</code></td><td>Fluid</td><td><code>clamp(2.5rem, 6vw, 5rem)</code></td><td>40–80px</td><td><code>h2</code> / <code>h1</code></td></tr>
+    <tr><td><code>text-display-lg</code></td><td>Fluid</td><td><code>clamp(2rem, 5vw, 3.75rem)</code></td><td>32–60px</td><td><code>h2</code></td></tr>
+    <tr><td><code>text-display-md</code></td><td>Fluid</td><td><code>clamp(1.5rem, 3vw, 2.25rem)</code></td><td>24–36px</td><td><code>h3</code></td></tr>
+    <tr><td><code>font-body · 18px</code></td><td>Fixed</td><td>18px</td><td>—</td><td><code>p</code></td></tr>
+    <tr><td><code>font-body · 16px</code></td><td>Fixed</td><td>16px</td><td>—</td><td><code>p</code></td></tr>
+    <tr><td><code>font-body · 14px</code></td><td>Fixed</td><td>14px</td><td>—</td><td><code>p</code></td></tr>
+    <tr><td><code>font-body · 12px</code></td><td>Fixed</td><td>12px</td><td>—</td><td><code>p</code> / <code>span</code></td></tr>
+    <tr><td><code>font-editorial</code></td><td>Fixed</td><td>contextual</td><td>—</td><td><code>p</code> / <code>blockquote</code></td></tr>
+  </tbody>
+</table>
+
+---
+
+## Full scale
+
+<Canvas of={TypographyStories.Overview} />
+
+</TabPanel>
+
+{/* ── TYPEFACES ───────────────────────────────────────────────────────────── */}
+
+<TabPanel index={1}>
+
+## Cabinet Grotesk
+
+A geometric grotesque used for all headings and display text. Applied exclusively through `font-display`. Available from Fontshare CDN.
+
+**Available weights:** 400, 500, 700, 800
+**Weight used in portfolio:** 700 (Bold) — all display headings use `font-bold`
+**Source:** `@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500,400&display=swap')`
+
+<table>
+  <thead>
+    <tr><th>Weight</th><th>Class</th><th>Usage</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>400 Regular</td><td><code>font-display</code></td><td>Not currently used</td></tr>
+    <tr><td>500 Medium</td><td><code>font-display font-medium</code></td><td>Not currently used</td></tr>
+    <tr><td>700 Bold</td><td><code>font-display font-bold</code></td><td>All display headings</td></tr>
+    <tr><td>800 ExtraBold</td><td><code>font-display</code> + inline style</td><td>Available — not assigned</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Areal
+
+A clean humanist sans-serif used for all body copy, labels, captions, and UI text. Loaded from local `.otf` files in `/public/fonts/`. Applied through `font-body`.
+
+**Available weights:** Regular 400, Italic 400, Bold 700, Bold Italic 700
+**Source:** `/public/fonts/Areal.otf`, `Areal-Italic.otf`, `Areal-Bold.otf`, `Areal-BoldItalic.otf`
+
+<table>
+  <thead>
+    <tr><th>Weight</th><th>Class</th><th>Usage</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>400 Regular</td><td><code>font-body</code></td><td>All body copy</td></tr>
+    <tr><td>400 Italic</td><td><code>font-body italic</code></td><td>Emphasis within body</td></tr>
+    <tr><td>700 Bold</td><td><code>font-body font-bold</code></td><td>Labels, utility text</td></tr>
+    <tr><td>700 Bold Italic</td><td><code>font-body font-bold italic</code></td><td>Available</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Ogg
+
+A contemporary serif used sparingly for editorial accent moments. Never used for UI text or body copy. Applied through `font-editorial`. Loaded from local trial `.otf` files.
+
+**Available weights:** Light 300, Regular 400, Medium 500, Bold 700 — all with matching italics
+**Source:** `/public/fonts/Ogg-*-Trial.otf`
+
+<table>
+  <thead>
+    <tr><th>Weight</th><th>Style</th><th>Class</th><th>Usage</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>300 Light</td><td>Normal</td><td><code>font-editorial</code> + <code>fontWeight: 300</code></td><td>Available</td></tr>
+    <tr><td>300 Light</td><td>Italic</td><td><code>font-editorial italic</code> + <code>fontWeight: 300</code></td><td>Available</td></tr>
+    <tr><td>400 Regular</td><td>Normal</td><td><code>font-editorial</code></td><td>Primary editorial weight</td></tr>
+    <tr><td>400 Regular</td><td>Italic</td><td><code>font-editorial italic</code></td><td>Pull quotes, accents</td></tr>
+    <tr><td>500 Medium</td><td>Normal</td><td><code>font-editorial</code> + <code>fontWeight: 500</code></td><td>Available</td></tr>
+    <tr><td>700 Bold</td><td>Normal</td><td><code>font-editorial font-bold</code></td><td>Avoid — competes with display</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Specimens
+
+<Canvas of={TypographyStories.Typefaces} />
+
+</TabPanel>
+
+{/* ── TYPE SETS ───────────────────────────────────────────────────────────── */}
+
+<TabPanel index={2}>
+
+## Display set — fluid
+
+All four display tokens are fluid. They scale continuously between a minimum and maximum size using `clamp()`. Line-height and letter-spacing are bundled into the token — applying `.text-display-*` sets all three values at once.
+
+Font-weight is kept **separate and explicit** (`font-bold`) so semantic weight decisions remain in the component, not the token.
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Size range</th><th>Line-height</th><th>Letter-spacing</th><th>Element</th><th>Usage</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>text-display-2xl</code></td><td>48–96px</td><td><code>1</code></td><td><code>-0.04em</code></td><td><code>h1</code></td><td>Hero headline, Resume name</td></tr>
+    <tr><td><code>text-display-xl</code></td><td>40–80px</td><td><code>1</code></td><td><code>-0.03em</code></td><td><code>h2</code> / <code>h1</code></td><td>Section heading (Work), Case Study title</td></tr>
+    <tr><td><code>text-display-lg</code></td><td>32–60px</td><td><code>1.1</code></td><td><code>-0.03em</code></td><td><code>h2</code></td><td>CTA heading — About, Footer, Contact</td></tr>
+    <tr><td><code>text-display-md</code></td><td>24–36px</td><td><code>1.25</code></td><td><code>-0.02em</code></td><td><code>h3</code></td><td>Card / component heading (WorkEntry)</td></tr>
+  </tbody>
+</table>
+
+> **Note:** `.text-display-*` classes are defined in `globals.css @layer utilities`, not generated by Tailwind JIT. They will not appear in Tailwind IntelliSense. See the Code tab for implementation details.
+
+---
+
+## Body set — fixed
+
+Body sizes are fixed in `px`. The `font-body` class (`Areal, Arial, sans-serif`) is applied via Tailwind. Size is set via semantic token class.
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Size</th><th>Line-height</th><th>Weight</th><th>Usage</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>text-body-lg</code></td><td>18px</td><td>1.6</td><td>Regular 400</td><td>Intro paragraphs, lead copy</td></tr>
+    <tr><td><code>text-body</code></td><td>16px</td><td>1.6</td><td>Regular 400</td><td>Default body, case study content, UI copy</td></tr>
+    <tr><td><code>text-body-sm</code></td><td>14px</td><td>1.6</td><td>Regular 400</td><td>Captions, metadata, supporting copy</td></tr>
+    <tr><td><code>text-caption</code></td><td>12px</td><td>1.5</td><td>Regular 400</td><td>Minimum body size, timestamps</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Editorial set — contextual
+
+Ogg is used without a fixed size token. Size is applied contextually in the component. This keeps editorial text flexible without creating tokens that imply a rigid usage pattern.
+
+<table>
+  <thead>
+    <tr><th>Weight</th><th>Style</th><th>Line-height</th><th>Usage</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>400 Regular</td><td>Normal</td><td>1.3</td><td>Section accent, pull quotes</td></tr>
+    <tr><td>400 Regular</td><td>Italic</td><td>1.3</td><td>Pull quote emphasis, inline accent</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Labels and utility set
+
+Small-scale text for UI labels, metadata, and utility copy. These use `font-body` (Areal) for UI precision.
+
+<table>
+  <thead>
+    <tr><th>Token</th><th>Family</th><th>Size</th><th>Weight</th><th>Tracking</th><th>Color token</th><th>Usage</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>text-label</code></td><td><code>font-body</code></td><td>11px</td><td>Bold 700</td><td>0.12em</td><td><code>text-brand-primary</code></td><td>Eyebrow / section marker</td></tr>
+    <tr><td><code>text-meta</code></td><td><code>font-body</code></td><td>12px</td><td>Bold 700</td><td>0.08em</td><td><code>text-fg-secondary</code></td><td>WorkEntry columns, field headers</td></tr>
+    <tr><td><code>text-caption</code></td><td><code>font-body</code></td><td>12px</td><td>Regular 400</td><td>0</td><td><code>text-fg-secondary</code></td><td>Supporting copy, timestamps</td></tr>
+    <tr><td><code>text-body</code></td><td><code>font-body</code></td><td>16px</td><td>Medium 500</td><td>0</td><td><code>text-brand-primary</code></td><td>Inline links, CTA text links</td></tr>
+  </tbody>
+</table>
+
+---
+
+## Live specimens
+
+<Canvas of={TypographyStories.TypeSets} />
+
+</TabPanel>
+
+{/* ── CODE ────────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={3}>
+
+## How display tokens work
+
+Display tokens are **not** generated by Tailwind JIT. The class names (`.text-display-2xl` etc.) contain hyphens that cause Tailwind's scanner to break them into sub-tokens it cannot resolve.
+
+They are defined manually in `globals.css` inside `@layer utilities`:
+
+```css
+/* globals.css — @layer utilities */
+.text-display-2xl { font-size: var(--text-display-2xl); line-height: 1;    letter-spacing: -0.04em; }
+.text-display-xl  { font-size: var(--text-display-xl);  line-height: 1;    letter-spacing: -0.03em; }
+.text-display-lg  { font-size: var(--text-display-lg);  line-height: 1.1;  letter-spacing: -0.03em; }
+.text-display-md  { font-size: var(--text-display-md);  line-height: 1.25; letter-spacing: -0.02em; }
+```
+
+The CSS custom properties are defined in `:root`:
+
+```css
+:root {
+  --text-display-2xl: clamp(3rem, 8vw, 6rem);      /* 48–96px */
+  --text-display-xl:  clamp(2.5rem, 6vw, 5rem);    /* 40–80px */
+  --text-display-lg:  clamp(2rem, 5vw, 3.75rem);   /* 32–60px */
+  --text-display-md:  clamp(1.5rem, 3vw, 2.25rem); /* 24–36px */
+}
+```
+
+---
+
+## Display headings
+
+```jsx
+{/* display-2xl — Hero h1, Resume name */}
+<h1 className="font-display font-bold text-display-2xl text-fg">
+  Heading text
+</h1>
+
+{/* display-xl — Section heading (Work), Case Study title */}
+<h2 className="font-display font-bold text-display-xl text-fg">
+  Heading text
+</h2>
+
+{/* display-lg — CTA heading (About, Footer, Contact) */}
+<h2 className="font-display font-bold text-display-lg text-fg">
+  Heading text
+</h2>
+
+{/* display-md — Card / component heading (WorkEntry) */}
+<h3 className="font-display font-bold text-display-md text-fg">
+  Heading text
+</h3>
+```
+
+The `font-display` + `font-bold` + `text-display-*` + `text-fg` pattern is standard for all headings. All four classes are always required together.
+
+---
+
+## Body copy
+
+```jsx
+{/* Body large — 18px — intro paragraphs, lead copy */}
+<p className="font-body text-body-lg text-fg">Body copy here</p>
+
+{/* Body — 16px — default body, case study content */}
+<p className="font-body text-body text-fg">Body copy here</p>
+
+{/* Body small — 14px — captions, metadata */}
+<p className="font-body text-body-sm text-fg">Supporting copy here</p>
+
+{/* Caption — 12px — minimum size */}
+<p className="font-body text-caption text-fg-secondary">Caption or timestamp</p>
+```
+
+---
+
+## Editorial (Ogg)
+
+```jsx
+{/* Regular — editorial accent, pull quote */}
+<p className="font-editorial text-fg" style={{ fontSize: '32px', fontWeight: 400 }}>
+  Pull quote or editorial accent text
+</p>
+
+{/* Italic — emphasis, pull quote accent */}
+<p className="font-editorial text-fg" style={{ fontSize: '32px', fontWeight: 400, fontStyle: 'italic' }}>
+  Italic editorial text
+</p>
+```
+
+Font size for Ogg is always set inline — there is no fixed size token. Use the size that fits the layout context.
+
+---
+
+## Labels and utility
+
+```jsx
+{/* Accent label — eyebrow / section marker */}
+<p className="font-body font-bold text-label text-brand-primary">
+  Section Label
+</p>
+
+{/* Metadata label — WorkEntry columns, field headers */}
+<p className="font-body font-bold text-meta text-fg-secondary">
+  Column Header
+</p>
+
+{/* Caption / supporting copy */}
+<p className="font-body text-caption text-fg-secondary">
+  Caption text
+</p>
+
+{/* Inline link */}
+<a href="/path"
+   className="font-body text-body font-medium"
+   style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+  Link text
+</a>
+```
+
+---
+
+## Live code specimens
+
+<Canvas of={TypographyStories.Code} />
+
+</TabPanel>
+
+{/* ── PAIRINGS ────────────────────────────────────────────────────────────── */}
+
+<TabPanel index={4}>
+
+## Heading and body
+
+Pair display tokens with body text one or two sizes below the visual weight of the heading. The larger the heading, the smaller the body text can afford to be.
+
+<DoDont>
+  <Do label="display-lg + body 16px — standard pairing">
+    <div style={{ padding: '4px 0' }}>
+      <p style={{ fontFamily: '"Cabinet Grotesk"', fontSize: 'clamp(2rem, 5vw, 3.75rem)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.03em', color: 'var(--fg)', margin: '0 0 10px' }}>Let's build something great</p>
+      <p style={{ fontFamily: 'Areal, Arial, sans-serif', fontSize: '16px', lineHeight: 1.6, color: 'var(--fg)', opacity: 0.75, margin: 0 }}>Comfortable visual separation between headline and supporting copy.</p>
+    </div>
+  </Do>
+  <Dont label="display-lg + 12px caption — gap too large">
+    <div style={{ padding: '4px 0' }}>
+      <p style={{ fontFamily: '"Cabinet Grotesk"', fontSize: 'clamp(2rem, 5vw, 3.75rem)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.03em', color: 'var(--fg)', margin: '0 0 10px' }}>Let's build something great</p>
+      <p style={{ fontFamily: 'Areal, Arial, sans-serif', fontSize: '12px', lineHeight: 1.6, color: 'var(--fg)', opacity: 0.75, margin: 0 }}>Too large a jump. The body feels disconnected and hard to scan.</p>
+    </div>
+  </Dont>
+</DoDont>
+
+---
+
+## Adjacent display sizes
+
+Never stack two display tokens that are one step apart — the sizes are too close and neither leads clearly. Skip at least one step when pairing display text vertically.
+
+<DoDont>
+  <Do label="display-xl then display-md — clear hierarchy">
+    <div>
+      <p style={{ fontFamily: '"Cabinet Grotesk"', fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.03em', color: 'var(--fg)', margin: '0 0 8px' }}>Work</p>
+      <p style={{ fontFamily: '"Cabinet Grotesk"', fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 700, lineHeight: 1.25, letterSpacing: '-0.02em', color: 'var(--fg)', opacity: 0.6, margin: 0 }}>Redesigning property tax foreclosure</p>
+    </div>
+  </Do>
+  <Dont label="display-xl then display-lg — too similar">
+    <div>
+      <p style={{ fontFamily: '"Cabinet Grotesk"', fontSize: 'clamp(2.5rem, 6vw, 5rem)', fontWeight: 700, lineHeight: 1, letterSpacing: '-0.03em', color: 'var(--fg)', margin: '0 0 8px' }}>Work</p>
+      <p style={{ fontFamily: '"Cabinet Grotesk"', fontSize: 'clamp(2rem, 5vw, 3.75rem)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-0.03em', color: 'var(--fg)', opacity: 0.85, margin: 0 }}>Redesigning property tax foreclosure</p>
+    </div>
+  </Dont>
+</DoDont>
+
+---
+
+## Ogg usage
+
+Ogg belongs in editorial moments only — pull quotes, accent phrases, expressive breaks in layout. Never use Ogg Bold; it competes with Cabinet Grotesk. Regular and Italic are the only weights to use in the portfolio.
+
+<DoDont>
+  <Do label="Ogg Regular Italic — pull quote">
+    <p style={{ fontFamily: 'Ogg, Georgia, serif', fontSize: '24px', fontWeight: 400, fontStyle: 'italic', color: 'var(--fg)', margin: 0 }}>"Design is problem solving at every scale."</p>
+  </Do>
+  <Dont label="Ogg Bold — competes with display headings">
+    <p style={{ fontFamily: 'Ogg, Georgia, serif', fontSize: '24px', fontWeight: 700, color: 'var(--fg)', margin: 0 }}>"Design is problem solving at every scale."</p>
+  </Dont>
+</DoDont>
+
+---
+
+## Labels — color signals
+
+Accent label color (`text-brand-primary`) signals a navigational or brand marker. Metadata labels use `text-fg-secondary` — they inform, not direct. Never use `text-brand-primary` on labels that don't carry a navigational or brand meaning — it reads as a link.
+
+<DoDont>
+  <Do label="text-fg-secondary — metadata label, no link signal">
+    <p style={{ fontFamily: 'monospace', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--fg-secondary)', margin: 0 }}>Company</p>
+  </Do>
+  <Dont label="text-brand-primary on metadata — looks like a link">
+    <p style={{ fontFamily: 'monospace', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent)', margin: 0 }}>Company</p>
+  </Dont>
+</DoDont>
+
+---
+
+## Real component context
+
+<Canvas of={TypographyStories.Pairings} />
+
+</TabPanel>
+
+</DocsTabs>

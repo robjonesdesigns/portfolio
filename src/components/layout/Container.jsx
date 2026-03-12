@@ -4,13 +4,10 @@
  * Wraps page content with consistent max-width and horizontal padding.
  * The outer section/main/div owns vertical padding; Container handles the rest.
  *
- * size   max-width    used by
- * ─────────────────────────────────────────────────────
- * lg     72rem        homepage sections (default)
- * md     56rem        resume, case-study hero
- * sm     48rem        case-study long-form content
- *
- * as: override the rendered element (defaults to 'div')
+ * @param {'lg'|'md'|'sm'} size - Max-width tier. lg=1152px (default), md=896px, sm=768px
+ * @param {string} as - HTML element or component to render as. Defaults to 'div'
+ * @param {string} className - Additional Tailwind classes to merge
+ * @param {React.ReactNode} children - Page content
  */
 export default function Container({ as: Tag = 'div', size = 'lg', className = '', children }) {
   const widths = {

@@ -26,16 +26,16 @@ const variants = {
 }
 
 const sizes = {
-  sm: 'px-4 py-2 text-xs',
-  md: 'px-7 py-3.5 text-sm',
-  lg: 'px-9 py-5 text-base',
+  sm: 'px-4 py-2 text-caption',
+  md: 'px-7 py-3.5 text-body-sm',
+  lg: 'px-9 py-5 text-body',
 }
 
 // Link variant: vertical padding only (no horizontal padding, no pill shape)
 const linkSizes = {
-  sm: 'py-2 text-xs',
-  md: 'py-3.5 text-sm',
-  lg: 'py-5 text-base',
+  sm: 'py-2 text-caption',
+  md: 'py-3.5 text-body-sm',
+  lg: 'py-5 text-body',
 }
 
 const Button = forwardRef(function Button(

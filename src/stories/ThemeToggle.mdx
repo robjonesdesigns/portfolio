@@ -1,0 +1,44 @@
+{/* ThemeToggle.mdx */}
+import { Meta, Canvas, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as ThemeToggleStories from '../components/ui/ThemeToggle.stories'
+
+<Meta of={ThemeToggleStories} />
+
+# ThemeToggle
+
+Pill-shaped sun/moon toggle for switching between light and dark themes. Stateless — it receives the current `theme` string and a `toggle` callback, and owns no state itself.
+
+In the portfolio, `ThemeToggle` sits inside `Navbar`. The `useTheme` hook in `App.jsx` owns the theme state and passes it down.
+
+---
+
+## Live (animated)
+
+Click the toggle to see the Framer Motion thumb animation.
+
+<Canvas of={ThemeToggleStories.Live} />
+
+---
+
+## Both states
+
+<Canvas of={ThemeToggleStories.BothStates} />
+
+---
+
+## Usage
+
+```jsx
+// Inside Navbar — receives theme from useTheme
+const { theme, toggleTheme } = useTheme()
+
+<ThemeToggle theme={theme} toggle={toggleTheme} />
+```
+
+The `toggle` callback should call `document.documentElement.classList.toggle('dark')` and update the stored preference in `localStorage`. This is handled automatically by `useTheme`.
+
+---
+
+## Props
+
+<ArgTypes of={ThemeToggleStories} />
