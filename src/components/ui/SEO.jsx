@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-const SITE_URL  = 'https://www.designedbyrob.com'
+const SITE_URL  = 'https://robjonesportfolio.vercel.app'
 const OG_IMAGE  = `${SITE_URL}/images/og-image.jpg`
 const TWITTER   = '@robjonesdesigns'
 
