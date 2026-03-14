@@ -2,10 +2,7 @@ import { m } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import LazyVideo from './LazyVideo'
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
-}
+const EASE = [0.16, 1, 0.3, 1]
 
 // ── Laptop mockup ─────────────────────────────────────────────────────────────
 function LaptopFrame({ src, color }) {
@@ -30,8 +27,8 @@ function LaptopFrame({ src, color }) {
       <div style={{ position: 'relative', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))', transform: 'translateY(30px)' }}>
         <div style={{ background: '#1c1c1e', borderRadius: '10px', padding: '16px 16px 12px', border: '1px solid rgba(255,255,255,0.09)', position: 'relative' }}>
           <div style={{ position: 'absolute', top: '7px', left: '50%', transform: 'translateX(-50%)', width: '6px', height: '6px', borderRadius: '50%', background: '#3d3d3d' }} />
-          <div style={{ overflow: 'hidden', borderRadius: '4px', background: '#000', lineHeight: 0 }}>
-            <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
+          <div style={{ overflow: 'hidden', borderRadius: '4px', background: '#000', lineHeight: 0, aspectRatio: '16/9' }}>
+            <LazyVideo src={src} style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }} />
           </div>
         </div>
       </div>
@@ -97,17 +94,17 @@ function ImageGrid({ images, color }) {
 }
 
 // ── WorkEntry ─────────────────────────────────────────────────────────────────
-export default function WorkEntry({ project }) {
+export default function WorkEntry({ project, index = 0 }) {
   const { slug, headline, company, role, description, outcomes, images, color, video } = project
 
   return (
     <m.article
       className="py-8 border-t"
       style={{ borderColor: 'var(--border)' }}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: '-60px' }}
-      variants={fadeUp}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0 }}
+      transition={{ duration: 0.4, ease: EASE, delay: index * 0.06 }}
     >
       {/* Headline */}
       <h3

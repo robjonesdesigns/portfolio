@@ -3,20 +3,12 @@ import WorkEntry from '../ui/WorkEntry'
 import { projects } from '../../data/projects'
 import Container from '../layout/Container'
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
-}
-
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-}
+const EASE = [0.16, 1, 0.3, 1]
 
 export default function Projects() {
   return (
     <section id="projects" className="relative py-12 md:py-24 bg-projects">
-      {/* Dot grid — same 24px pitch as the hero grid, dots instead of lines */}
+      {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none select-none opacity-[0.06]"
         style={{
@@ -26,25 +18,22 @@ export default function Projects() {
       />
       <Container>
         {/* Header */}
-        <m.div
-          className="mb-8"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-80px' }}
-          variants={stagger}
-        >
+        <div className="mb-8">
           <m.h2
-            variants={fadeUp}
             className="font-display font-bold text-display-xl text-fg"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0 }}
+            transition={{ duration: 0.6, ease: EASE }}
           >
             Work
           </m.h2>
-        </m.div>
+        </div>
 
         {/* Work entries */}
         <div>
-          {projects.map((project) => (
-            <WorkEntry key={project.slug} project={project} />
+          {projects.map((project, i) => (
+            <WorkEntry key={project.slug} project={project} index={i} />
           ))}
         </div>
       </Container>

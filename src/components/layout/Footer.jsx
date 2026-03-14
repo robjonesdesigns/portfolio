@@ -93,7 +93,7 @@ export default function Footer() {
                   <a
                     key={label}
                     href={href}
-                    className="font-body text-body-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
+                    className="font-body text-body-sm opacity-70 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
                   >
                     {label}
                   </a>
@@ -101,7 +101,7 @@ export default function Footer() {
                   <Link
                     key={label}
                     to={href}
-                    className="font-body text-body-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
+                    className="font-body text-body-sm opacity-70 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
                   >
                     {label}
                   </Link>
@@ -124,14 +124,14 @@ export default function Footer() {
               </a>
               <button
                 onClick={handleEmailCopy}
-                className="font-body text-body-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
+                className="font-body text-body-sm opacity-70 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
               >
                 {copied ? '✓ Copied!' : 'Email'}
               </button>
               <button
                 onClick={scrollToTop}
                 aria-label="Back to top"
-                className="font-body text-body-sm opacity-60 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
+                className="font-body text-body-sm opacity-70 hover:opacity-100 hover:text-brand-primary transition-all duration-200"
               >
                 ↑ Top
               </button>

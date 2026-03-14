@@ -9,9 +9,11 @@
  * @param {string} className - Additional Tailwind classes to merge
  * @param {React.ReactNode} children - Page content
  */
-export default function Container({ as: Tag = 'div', size = 'lg', className = '', children }) {
+import { forwardRef } from 'react'
+
+const Container = forwardRef(function Container({ as: Tag = 'div', size = 'lg', className = '', children }, ref) {
   const widths = {
-    lg: 'max-w-6xl',
+    lg: 'max-w-7xl',
     md: 'max-w-4xl',
     sm: 'max-w-3xl',
   }
@@ -20,5 +22,7 @@ export default function Container({ as: Tag = 'div', size = 'lg', className = ''
     .filter(Boolean)
     .join(' ')
 
-  return <Tag className={classes}>{children}</Tag>
-}
+  return <Tag ref={ref} className={classes}>{children}</Tag>
+})
+
+export default Container

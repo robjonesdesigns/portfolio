@@ -13,7 +13,7 @@ const fadeUp = {
 
 const stagger = {
   hidden: {},
-  show:   { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+  show:   { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 }
 
 /* ─── Resume data ──────────────────────────────────────────────── */
@@ -97,25 +97,19 @@ function SectionLabel({ children }) {
   return (
     <div className="flex items-center gap-2 mb-8">
       <span className="inline-block w-8 h-px" style={{ backgroundColor: 'var(--accent)' }} />
-      <span className="font-body text-label text-brand-primary">
-        {children}
-      </span>
+      <span className="font-body text-label text-brand-primary">{children}</span>
     </div>
   )
 }
 
 function ExperienceBlock({ company, role, period, bullets }) {
   return (
-    <m.div variants={fadeUp} className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
-      {/* Left — company meta */}
+    <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
       <div>
-        <p className="font-display font-bold text-body tracking-tight text-fg">
-          {company}
-        </p>
+        <p className="font-display font-bold text-body tracking-tight text-fg">{company}</p>
         <p className="font-body text-body-sm mt-1 text-brand-primary">{role}</p>
         <p className="font-body text-caption mt-1 text-fg-secondary">{period}</p>
       </div>
-      {/* Right — bullets */}
       <ul className="flex flex-col gap-3">
         {bullets.map((b, i) => (
           <li key={i} className="font-body text-body-sm leading-relaxed pl-4 relative text-fg" style={{ opacity: 0.75 }}>
@@ -124,10 +118,9 @@ function ExperienceBlock({ company, role, period, bullets }) {
           </li>
         ))}
       </ul>
-    </m.div>
+    </div>
   )
 }
-
 
 /* ─── Page ─────────────────────────────────────────────────────── */
 
@@ -137,31 +130,21 @@ export default function Resume() {
       <main className="min-h-screen pb-24" style={{ backgroundColor: 'var(--bg)', paddingTop: 140 }}>
         <Container size="md">
 
-          {/* Header */}
+          {/* Header — animates in on mount only */}
           <m.div
             className="mb-16"
             variants={stagger}
             initial="hidden"
             animate="show"
           >
-            {/* Name */}
-            <m.h1
-              variants={fadeUp}
-              className="font-display font-bold text-display-2xl text-fg mb-3"
-            >
+            <m.h1 variants={fadeUp} className="font-display font-bold text-display-2xl text-fg mb-3">
               Rob Jones
             </m.h1>
 
-            {/* Title */}
-            <m.p
-              variants={fadeUp}
-              className="font-display text-body-lg tracking-tight mb-6"
-              style={{ color: 'var(--accent)' }}
-            >
+            <m.p variants={fadeUp} className="font-display text-body-lg tracking-tight mb-6" style={{ color: 'var(--accent)' }}>
               UX &amp; Product Designer with 5+ years across startups &amp; SaaS enterprise
             </m.p>
 
-            {/* Contact row */}
             <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body-sm" style={{ color: 'var(--fg)', opacity: 0.6 }}>
               <a href="mailto:robjonesdesigns@gmail.com" className="hover:opacity-100 transition-opacity"
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
@@ -169,9 +152,7 @@ export default function Resume() {
                 robjonesdesigns@gmail.com
               </a>
               <span style={{ opacity: 0.3 }}>·</span>
-              <a href="tel:4703820603" className="hover:opacity-100 transition-opacity">
-                470-382-0603
-              </a>
+              <a href="tel:4703820603" className="hover:opacity-100 transition-opacity">470-382-0603</a>
               <span style={{ opacity: 0.3 }}>·</span>
               <a href="https://www.designedbyrob.com" target="_blank" rel="noopener noreferrer"
                 className="hover:opacity-100 transition-opacity"
@@ -181,7 +162,6 @@ export default function Resume() {
               </a>
             </m.div>
 
-            {/* Download button */}
             <m.div variants={fadeUp} className="mt-8">
               <Button as="a" href="/RobJonesResume.pdf" download="RobJonesResume.pdf">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -196,96 +176,55 @@ export default function Resume() {
           <div className="h-px mb-16" style={{ backgroundColor: 'var(--border)' }} />
 
           {/* Experience */}
-          <m.section
-            className="mb-16"
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-60px' }}
-          >
-            <m.div variants={fadeUp}>
-              <SectionLabel>Experience</SectionLabel>
-            </m.div>
+          <section className="mb-16">
+            <SectionLabel>Experience</SectionLabel>
             {experience.map((job) => (
               <ExperienceBlock key={job.company} {...job} />
             ))}
-          </m.section>
+          </section>
 
           {/* Education */}
-          <m.section
-            className="mb-16"
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-60px' }}
-          >
-            <m.div variants={fadeUp}>
-              <SectionLabel>Education</SectionLabel>
-            </m.div>
-
-            <m.div variants={fadeUp} className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
+          <section className="mb-16">
+            <SectionLabel>Education</SectionLabel>
+            <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-display font-bold text-body tracking-tight text-fg">
-                  Stony Brook University
-                </p>
+                <p className="font-display font-bold text-body tracking-tight text-fg">Stony Brook University</p>
                 <p className="font-body text-caption mt-1 text-fg-secondary">BA in Studio Arts</p>
               </div>
               <div>
-                <p className="font-display font-bold text-body tracking-tight text-fg">
-                  CareerFoundry
-                </p>
+                <p className="font-display font-bold text-body tracking-tight text-fg">CareerFoundry</p>
                 <p className="font-body text-body-sm mt-1 text-brand-primary">UX Design Certified Program</p>
                 <p className="font-body text-caption mt-1 text-fg-secondary">600+ hours</p>
               </div>
-            </m.div>
-          </m.section>
+            </div>
+          </section>
 
           {/* Skills */}
-          <m.section
-            className="mb-16"
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-60px' }}
-          >
-            <m.div variants={fadeUp}>
-              <SectionLabel>Skills</SectionLabel>
-            </m.div>
-
-            <m.div variants={fadeUp} className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
+          <section className="mb-16">
+            <SectionLabel>Skills</SectionLabel>
+            <div className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-body text-meta mb-4 text-fg-secondary">
-                  Tools
-                </p>
+                <p className="font-body text-meta mb-4 text-fg-secondary">Tools</p>
                 <div className="flex flex-wrap gap-2">
                   {tools.map(t => <Badge key={t}>{t}</Badge>)}
                 </div>
               </div>
               <div>
-                <p className="font-body text-meta mb-4 text-fg-secondary">
-                  Frameworks
-                </p>
+                <p className="font-body text-meta mb-4 text-fg-secondary">Frameworks</p>
                 <div className="flex flex-wrap gap-2">
                   {frameworks.map(f => <Badge key={f}>{f}</Badge>)}
                 </div>
               </div>
-            </m.div>
-          </m.section>
+            </div>
+          </section>
 
           {/* Additional Experience */}
-          <m.section
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-60px' }}
-          >
-            <m.div variants={fadeUp}>
-              <SectionLabel>Additional Experience</SectionLabel>
-            </m.div>
+          <section>
+            <SectionLabel>Additional Experience</SectionLabel>
             {additionalExperience.map((job) => (
               <ExperienceBlock key={job.company} {...job} />
             ))}
-          </m.section>
+          </section>
 
         </Container>
       </main>

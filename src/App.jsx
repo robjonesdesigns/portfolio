@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { LazyMotion, domAnimation, AnimatePresence } from 'framer-motion'
+import { LazyMotion, domAnimation, AnimatePresence, MotionConfig } from 'framer-motion'
 import { useTheme } from './hooks/useTheme'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -14,11 +14,11 @@ import PageTransition from './components/ui/PageTransition'
 
 function HomePage() {
   return (
-    <PageTransition>
+    <>
       <Hero />
       <Projects />
       <About />
-    </PageTransition>
+    </>
   )
 }
 
@@ -47,14 +47,16 @@ function AnimatedRoutes({ theme, toggleTheme }) {
     <>
       <ScrollToTop />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/projects/:slug" element={<CaseStudy />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/keytrn" element={null} />
-        </Routes>
-      </AnimatePresence>
+      <main id="main" tabIndex="-1">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects/:slug" element={<CaseStudy />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/keytrn" element={null} />
+          </Routes>
+        </AnimatePresence>
+      </main>
       <Footer />
     </>
   )
@@ -65,12 +67,15 @@ export default function App() {
 
   return (
     <LazyMotion features={domAnimation}>
+      <MotionConfig reducedMotion="user">
       <BrowserRouter>
         <div className="noise">
+          <a href="#projects" className="skip-link">Skip to main content</a>
           <ConditionalCursor />
           <AnimatedRoutes theme={theme} toggleTheme={toggle} />
         </div>
       </BrowserRouter>
+      </MotionConfig>
     </LazyMotion>
   )
 }
