@@ -91,7 +91,7 @@ export default function Hero() {
         <m.a
           href="#projects"
           aria-label="Scroll to work"
-          className="text-brand-primary hover:opacity-70 transition-opacity inline-block ml-[25px] md:ml-[40px] lg:ml-[60px]"
+          className="text-brand-primary hover:opacity-70 transition-opacity inline-block ml-[15px] md:ml-[30px] lg:ml-[60px]"
           style={{ lineHeight: 1 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 8, 0] }}
@@ -105,7 +105,7 @@ export default function Hero() {
           }}
         >
           <svg
-            width="78" height="100"
+            className="w-[58px] h-[75px] md:w-[78px] md:h-[100px]"
             viewBox="-1 -1 22 28"
             fill="none"
             stroke="currentColor"
