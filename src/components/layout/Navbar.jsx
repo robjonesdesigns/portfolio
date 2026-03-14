@@ -11,17 +11,11 @@ const navLinks = [
 const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
 
 export default function Navbar({ theme, toggleTheme }) {
-  const [scrolled, setScrolled] = useState(false)
-  const [entered,  setEntered]  = useState(false)
+  const [entered, setEntered] = useState(false)
 
   useEffect(() => {
     const t = setTimeout(() => setEntered(true), 100)
-    const onScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      clearTimeout(t)
-      window.removeEventListener('scroll', onScroll)
-    }
+    return () => clearTimeout(t)
   }, [])
 
   const headerStyle = {
@@ -36,10 +30,8 @@ export default function Navbar({ theme, toggleTheme }) {
     transition:     `opacity 0.7s ease, transform 0.8s ${EASE}, background-color 0.4s ease`,
     backdropFilter:       'blur(20px)',
     WebkitBackdropFilter: 'blur(20px)',
-    backgroundColor: scrolled
-      ? 'color-mix(in srgb, var(--surface) 92%, transparent)'
-      : 'color-mix(in srgb, var(--surface) 74%, transparent)',
-    borderBottom: '1px solid var(--border)',
+    backgroundColor:      'color-mix(in srgb, var(--surface) 82%, transparent)',
+    borderBottom:         '1px solid var(--border)',
   }
 
   const linkClass = "font-body text-body md:text-body-lg font-medium relative group text-fg transition-opacity duration-300"
