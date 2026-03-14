@@ -7,9 +7,9 @@ const RJLogo3D = lazy(() => import('../ui/RJLogo3D'))
 const EASE = [0.76, 0, 0.24, 1]
 
 const LINES = [
-  "I'm Rob. I've shipped",
-  "enterprise software",
-  "and built startups.",
+  "I'm Rob.",
+  "I design enterprise software",
+  "and ship products from\u00a0scratch.",
 ]
 
 let _i = 0
@@ -36,30 +36,32 @@ export default function Hero() {
       <Container className="relative z-10 pt-28 md:pt-36 pb-10 md:pb-14">
 
         {/* ── 3D logo watermark ── */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.3] aspect-square w-4/5 md:w-3/5 md:max-w-[640px]">
+        <div className="absolute z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.3] aspect-square w-4/5 md:w-3/5 md:max-w-[640px]">
           <Suspense fallback={null}>
             <RJLogo3D className="w-full h-full" />
           </Suspense>
         </div>
 
+        {/* ── Text content ── */}
+        <div className="relative z-10">
+
         {/* ── Headline — word by word, forced line breaks ── */}
         <h1
-          className="font-display font-bold text-fg leading-[1.05] tracking-tight mb-4"
-          style={{ fontSize: 'clamp(2.8rem, 7vw, 6.5rem)' }}
+          className="font-display font-bold text-display-2xl text-fg leading-[0.95] tracking-tight mb-7"
           aria-label={LINES.join(' ')}
         >
           {WORDS.map((lineWords, li) => (
-            <span key={li} className="inline">
+            <span key={li} className={li === 0 ? 'block' : 'inline'}>
               {lineWords.map(({ word, index }) => (
                 <m.span
                   key={index}
                   className="inline-block mr-[0.25em]"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: EASE }}
                 >
                   {word === 'Rob.' ? (
-                    <><span className="font-editorial italic text-brand-primary">Rob</span>.</>
+                    <><span className="font-editorial italic text-brand-primary" style={{ fontSize: '0.9em' }}>Rob</span>.</>
                   ) : word}
                 </m.span>
               ))}
@@ -69,7 +71,7 @@ export default function Hero() {
 
         {/* ── Role ── */}
         <m.p
-          className="font-editorial italic text-2xl text-fg-secondary mb-6 md:mb-8"
+          className="font-editorial italic text-display-sm text-fg-secondary mb-6 md:mb-8"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: TOTAL_WORDS * 0.1, ease: EASE }}
@@ -79,12 +81,12 @@ export default function Hero() {
 
         {/* ── Subtext ── */}
         <m.p
-          className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary max-w-md mb-6"
+          className="font-body text-body md:text-body-lg text-fg-secondary max-w-2xl mb-6 text-pretty"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 + TOTAL_WORDS * 0.1, ease: EASE }}
         >
-          3 years at Honeywell shipping 7+ dashboards used by engineers in industrial operations. 0→1 products for Aysa and Keytrn. Available for work.
+          3 years at Honeywell designing dashboards used by industrial engineers. Also built 0→1 products for Aysa and Keytrn.<br />Currently available for new roles.
         </m.p>
 
         {/* ── Arrow — offset right to sit above center of "Work" heading ── */}
@@ -117,6 +119,8 @@ export default function Hero() {
             <path d="M10 0 L10 21 M5 15 L10 21 L15 15" />
           </svg>
         </m.a>
+
+        </div>{/* end text content */}
 
       </Container>
     </section>
