@@ -5,6 +5,7 @@ import PageTransition from '../ui/PageTransition'
 import Container from '../layout/Container'
 import Badge from '../ui/Badge'
 import LazyVideo from '../ui/LazyVideo'
+import SEO from '../ui/SEO'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -74,6 +75,11 @@ export default function CaseStudy() {
 
   return (
     <PageTransition>
+      <SEO
+        title={`${project.title} — ${project.company}`}
+        description={project.description}
+        canonical={`/projects/${project.slug}`}
+      />
       <div className="min-h-screen">
         {/* Hero */}
         <div className="pb-20 bg-subtle" style={{ paddingTop: 140 }}>
