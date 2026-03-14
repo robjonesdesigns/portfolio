@@ -132,7 +132,7 @@ export default function Resume() {
         description="Resume of Rob Jones — UX & Product Designer with 5+ years across Honeywell, Aysa, and Keytrn. Available for new roles."
         canonical="/resume"
       />
-      <main className="min-h-screen pb-24" style={{ backgroundColor: 'var(--bg)', paddingTop: 140 }}>
+      <main className="min-h-screen pt-28 md:pt-36 pb-24" style={{ backgroundColor: 'var(--bg)' }}>
         <Container>
 
           {/* Header — animates in on mount only */}
