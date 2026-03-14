@@ -9,7 +9,7 @@ export default function LazyVideo({ src, style, className }) {
     if (!el) return
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } },
-      { rootMargin: '200px' }
+      { rootMargin: '600px' }
     )
     observer.observe(el)
     return () => observer.disconnect()

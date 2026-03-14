@@ -151,6 +151,24 @@
   --badge-accent-border: rgba(227, 111, 134, 0.22);
 }
 
+/* ─── Skip link ───────────────────────────────────────────────────────── */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.25rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: 'Areal', Arial, sans-serif;
+  font-size: 14px;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 /* ─── Base ────────────────────────────────────────────────────────────── */
 @layer base {
   html {
@@ -166,6 +184,7 @@
     color: var(--fg);
     transition: background-color 0.3s ease, color 0.3s ease;
     margin: 0;
+    overflow-x: hidden;
   }
 
   * {

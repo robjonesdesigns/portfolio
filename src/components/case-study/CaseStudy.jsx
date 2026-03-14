@@ -157,13 +157,7 @@ export default function CaseStudy() {
         {/* Content */}
         <div className="py-20">
           <Container size="sm">
-            <m.div
-              className="flex flex-col gap-16"
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              variants={stagger}
-            >
+            <div className="flex flex-col gap-16">
               <Section label="Overview">{project.overview}</Section>
               <Section label="The Problem">{project.problem}</Section>
               <Section label="Process &amp; Approach">{project.process}</Section>
@@ -235,7 +229,7 @@ export default function CaseStudy() {
                   )
                 })()}
               </m.div>
-            </m.div>
+            </div>
           </Container>
         </div>
       </div>

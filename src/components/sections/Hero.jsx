@@ -1,35 +1,26 @@
-import { useRef } from 'react'
-import { m, useScroll, useTransform } from 'framer-motion'
-import Marquee from '../ui/Marquee'
-import HeroName from '../ui/HeroName'
-import RJLogo3D from '../ui/RJLogo3D'
+import { lazy, Suspense } from 'react'
+import { m } from 'framer-motion'
+import Container from '../layout/Container'
+
+const RJLogo3D = lazy(() => import('../ui/RJLogo3D'))
 
 const EASE = [0.76, 0, 0.24, 1]
 
-const marqueeItems = [
-  'UX Design', 'Product Design', 'Design Systems',
-  'User Research', 'Interaction Design', 'Prototyping', 'Design Strategy',
+const LINES = [
+  "I'm Rob. I've shipped",
+  "enterprise software",
+  "and built startups.",
 ]
 
-// Navbar floating bottom edge (top:40 + height:52 = 92) + 48px breathing room
-const EYEBROW_TOP = 140
+let _i = 0
+const WORDS = LINES.map(line => line.split(' ').map(word => ({ word, index: _i++ })))
+const TOTAL_WORDS = _i
 
 export default function Hero() {
-  const heroRef = useRef(null)
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  })
-  const nameY       = useTransform(scrollYProgress, [0, 1], ['0%', '-14%'])
-  const nameOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
 
   return (
-    <section
-      ref={heroRef}
-      id="hero"
-      className="relative h-[100svh] flex flex-col overflow-hidden"
-    >
+    <section id="hero" className="relative overflow-hidden">
+
       {/* ── Grid ── */}
       <div
         className="absolute inset-0 pointer-events-none select-none opacity-[0.028]"
@@ -42,50 +33,92 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Eyebrow label ── */}
-      <div
-        className="relative z-10 flex-shrink-0 flex items-center px-6 md:px-10"
-        style={{ paddingTop: EYEBROW_TOP }}
-      >
-        <m.div
-          className="flex items-center gap-3"
-          initial={{ opacity: 0, y: 8 }}
+      <Container className="relative z-10 pt-28 md:pt-36 pb-10 md:pb-14">
+
+        {/* ── 3D logo watermark ── */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.3] aspect-square w-4/5 md:w-3/5 md:max-w-[640px]">
+          <Suspense fallback={null}>
+            <RJLogo3D className="w-full h-full" />
+          </Suspense>
+        </div>
+
+        {/* ── Headline — word by word, forced line breaks ── */}
+        <h1
+          className="font-display font-bold text-fg leading-[1.05] tracking-tight mb-4"
+          style={{ fontSize: 'clamp(2.8rem, 7vw, 6.5rem)' }}
+          aria-label={LINES.join(' ')}
+        >
+          {WORDS.map((lineWords, li) => (
+            <span key={li} className="inline">
+              {lineWords.map(({ word, index }) => (
+                <m.span
+                  key={index}
+                  className="inline-block mr-[0.25em]"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: EASE }}
+                >
+                  {word === 'Rob.' ? (
+                    <><span className="font-editorial italic text-brand-primary">Rob</span>.</>
+                  ) : word}
+                </m.span>
+              ))}
+            </span>
+          ))}
+        </h1>
+
+        {/* ── Role ── */}
+        <m.p
+          className="font-editorial italic text-2xl text-fg-secondary mb-6 md:mb-8"
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
+          transition={{ duration: 0.6, delay: TOTAL_WORDS * 0.1, ease: EASE }}
         >
-          <span className="inline-block w-7 h-px flex-shrink-0 bg-brand-primary" />
-          <span className="font-body text-label tracking-[0.22em] text-brand-primary">
-            UX & Product Designer
-          </span>
-        </m.div>
-      </div>
+          UX & Product Designer
+        </m.p>
 
-      {/* ── Name — fills remaining space ── */}
-      <div className="relative z-10 flex-1 min-h-0 px-6 md:px-10 pt-6 pb-2">
-        <RJLogo3D className="absolute bottom-0 left-0 right-0 h-64 md:bottom-auto md:left-auto md:right-10 md:top-[44%] md:-translate-y-1/2 md:h-[85%] md:w-[38%] pointer-events-none" />
-
-        <m.div
-          style={{ y: nameY, opacity: nameOpacity }}
-          className="h-full relative"
+        {/* ── Subtext ── */}
+        <m.p
+          className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary max-w-md mb-6"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 + TOTAL_WORDS * 0.1, ease: EASE }}
         >
-          <HeroName className="w-full h-full" />
-        </m.div>
-      </div>
+          3 years at Honeywell shipping 7+ dashboards used by engineers in industrial operations. 0→1 products for Aysa and Keytrn. Available for work.
+        </m.p>
 
-      {/* ── Marquee ── */}
-      <m.div
-        className="relative z-10 flex-shrink-0 py-4 border-t border-b border-token overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 0.9 }}
-      >
-        <Marquee
-          items={marqueeItems}
-          speed={42}
-          className="text-body-sm md:text-body text-fg"
-        />
-      </m.div>
+        {/* ── Arrow — offset right to sit above center of "Work" heading ── */}
+        <m.a
+          href="#projects"
+          aria-label="Scroll to work"
+          className="text-brand-primary hover:opacity-70 transition-opacity inline-block ml-[25px] md:ml-[40px] lg:ml-[60px]"
+          style={{ lineHeight: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, y: [0, 8, 0] }}
+          transition={{
+            opacity: { duration: 0.6, delay: 0.4 + TOTAL_WORDS * 0.1 },
+            y: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.6 + TOTAL_WORDS * 0.1 },
+          }}
+          onClick={e => {
+            e.preventDefault()
+            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+          }}
+        >
+          <svg
+            width="78" height="100"
+            viewBox="-1 -1 22 28"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M10 0 L10 21 M5 15 L10 21 L15 15" />
+          </svg>
+        </m.a>
 
+      </Container>
     </section>
   )
 }
