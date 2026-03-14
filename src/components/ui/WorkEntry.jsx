@@ -122,7 +122,7 @@ export default function WorkEntry({ project, index = 0 }) {
       <div className="mb-10 md:mb-12">
         <Link
           to={`/projects/${slug}`}
-          className="font-body text-body-sm tracking-wide text-brand-primary hover:opacity-60 transition-opacity"
+          className="font-body text-body md:text-body-lg text-brand-primary hover:opacity-60 transition-opacity"
         >
           See more →
         </Link>
@@ -132,35 +132,35 @@ export default function WorkEntry({ project, index = 0 }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
 
         <div>
-          <p className="font-body font-bold text-meta mb-2 text-fg-secondary">
+          <p className="font-body font-bold text-body md:text-body-lg mb-2 text-fg-secondary uppercase tracking-wide">
             Company
           </p>
-          <p className="font-body text-body-sm text-fg">{company}</p>
+          <p className="font-body text-body md:text-body-lg text-fg-secondary">{company}</p>
         </div>
 
         <div>
-          <p className="font-body font-bold text-meta mb-2 text-fg-secondary">
+          <p className="font-body font-bold text-body md:text-body-lg mb-2 text-fg-secondary uppercase tracking-wide">
             Role
           </p>
-          <p className="font-body text-body-sm text-fg">{role}</p>
+          <p className="font-body text-body md:text-body-lg text-fg-secondary">{role}</p>
         </div>
 
         <div>
-          <p className="font-body font-bold text-meta mb-2 text-fg-secondary">
+          <p className="font-body font-bold text-body md:text-body-lg mb-2 text-fg-secondary uppercase tracking-wide">
             Problem
           </p>
-          <p className="font-body text-body-sm text-fg leading-relaxed" style={{ opacity: 0.75 }}>{description}</p>
+          <p className="font-body text-body md:text-body-lg text-fg-secondary">{description}</p>
         </div>
 
         <div>
-          <p className="font-body font-bold text-meta mb-2 text-fg-secondary">
+          <p className="font-body font-bold text-body md:text-body-lg mb-2 text-fg-secondary uppercase tracking-wide">
             Outcome
           </p>
           <ul className="flex flex-col gap-2">
             {(outcomes || []).map((item, i) => (
-              <li key={i} className="flex gap-2 font-body text-body-sm text-fg leading-relaxed">
+              <li key={i} className="flex gap-2 font-body text-body md:text-body-lg text-fg-secondary">
                 <span className="text-brand-primary shrink-0 leading-relaxed">○</span>
-                <span style={{ opacity: 0.75 }}>{item}</span>
+                <span>{item}</span>
               </li>
             ))}
           </ul>

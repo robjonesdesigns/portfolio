@@ -1,5 +1,4 @@
 import { m } from 'framer-motion'
-import Button from '../ui/Button'
 import Badge from '../ui/Badge'
 import Container from '../layout/Container'
 
@@ -47,13 +46,13 @@ export default function About() {
               Designing with intention. Building with care.
             </h2>
 
-            <p className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary">
+            <p className="font-body text-body md:text-body-lg text-fg-secondary">
               I'm a Product Designer with a passion for creating digital experiences
               that put people first. I bridge the gap between business goals and user
               needs, turning complex problems into elegant, intuitive solutions.
             </p>
 
-            <p className="font-body text-body leading-relaxed text-fg-secondary">
+            <p className="font-body text-body md:text-body-lg text-fg-secondary">
               With a background spanning UX research, interaction design, and design
               systems, I work best at the intersection of strategy and craft, where
               thoughtful process meets pixel-perfect execution.
@@ -61,7 +60,7 @@ export default function About() {
 
             {/* Skills */}
             <div>
-              <p className="font-body text-label mb-4 text-brand-primary">
+              <p className="font-body font-bold text-body md:text-body-lg mb-4 text-fg-secondary uppercase tracking-wide">
                 Skills &amp; Tools
               </p>
               <div className="flex flex-wrap gap-2">
@@ -71,9 +70,6 @@ export default function About() {
               </div>
             </div>
 
-            <Button as="a" href="/RobJonesResume.pdf" target="_blank" rel="noopener noreferrer" variant="link">
-              Download Resume ↓
-            </Button>
           </m.div>
 
         </div>

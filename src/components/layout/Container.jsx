@@ -18,7 +18,7 @@ const Container = forwardRef(function Container({ as: Tag = 'div', size = 'lg', 
     sm: 'max-w-3xl',
   }
 
-  const classes = [widths[size], 'mx-auto px-6 md:px-10', className]
+  const classes = [widths[size], 'mx-auto px-6', className]
     .filter(Boolean)
     .join(' ')
 

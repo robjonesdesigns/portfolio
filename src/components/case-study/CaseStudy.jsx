@@ -18,11 +18,11 @@ const stagger = {
 
 function Section({ label, children }) {
   return (
-    <m.div variants={fadeUp} className="flex flex-col gap-4">
-      <p className="font-body text-label text-brand-primary">
+    <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-2xl">
+      <h2 className="font-display font-bold text-display-md text-fg">
         {label}
-      </p>
-      <div className="font-body text-body md:text-body-lg leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.8 }}>
+      </h2>
+      <div className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary">
         {children}
       </div>
     </m.div>
@@ -32,9 +32,9 @@ function Section({ label, children }) {
 function ProcessMediaCard({ item }) {
   return (
     <m.div variants={fadeUp} className="flex flex-col gap-3">
-      <p className="font-body text-label text-brand-primary">
+      <h2 className="font-display font-bold text-display-md text-fg">
         {item.label}
-      </p>
+      </h2>
       <div style={{
         background: 'color-mix(in srgb, var(--fg) 6%, var(--surface))',
         border: '1px solid var(--border)',
@@ -45,7 +45,7 @@ function ProcessMediaCard({ item }) {
         <LazyVideo src={item.video} style={{ width: '100%', display: 'block' }} />
       </div>
       {item.caption && (
-        <p className="font-body text-body-sm leading-relaxed" style={{ color: 'var(--fg)', opacity: 0.55 }}>
+        <p className="font-body text-body-sm leading-relaxed max-w-2xl text-fg-secondary">
           {item.caption}
         </p>
       )}
@@ -76,33 +76,14 @@ export default function CaseStudy() {
     <PageTransition>
       <div className="min-h-screen">
         {/* Hero */}
-        <div className="pb-20 bg-surface" style={{ paddingTop: 140 }}>
-          <Container size="md">
+        <div className="pb-20 bg-subtle" style={{ paddingTop: 140 }}>
+          <Container >
             <m.div
               initial="hidden"
               animate="show"
               variants={stagger}
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-6 max-w-2xl"
             >
-              <m.div variants={fadeUp}>
-                <Link
-                  to="/"
-                  className="inline-flex items-center gap-2 font-body text-body-sm mb-8"
-                  style={{ color: 'var(--fg)', opacity: 0.5 }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.5')}
-                >
-                  ← Back to work
-                </Link>
-              </m.div>
-
-              <m.div variants={fadeUp} className="flex items-center gap-3">
-                <span className="inline-block w-8 h-px bg-brand-primary" />
-                <span className="font-body text-label text-brand-primary">
-                  Case Study
-                </span>
-              </m.div>
-
               <m.h1
                 variants={fadeUp}
                 className="font-display font-bold text-display-xl text-fg"
@@ -123,10 +104,10 @@ export default function CaseStudy() {
                   { label: 'Year', value: project.year },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex flex-col gap-1">
-                    <span className="font-body text-meta text-fg-secondary">
+                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">
                       {label}
                     </span>
-                    <span className="font-body text-body-sm font-medium text-fg">
+                    <span className="font-body text-body md:text-body-lg font-medium text-fg">
                       {value}
                     </span>
                   </div>
@@ -156,7 +137,7 @@ export default function CaseStudy() {
 
         {/* Content */}
         <div className="py-20">
-          <Container size="sm">
+          <Container >
             <div className="flex flex-col gap-16">
               <Section label="Overview">{project.overview}</Section>
               <Section label="The Problem">{project.problem}</Section>
@@ -166,7 +147,7 @@ export default function CaseStudy() {
               {project.processMedia?.length > 0
                 ? project.processMedia.map(item => <ProcessMediaCard key={item.id} item={item} />)
                 : (
-                  <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', height: '300px' }}>
+                  <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', aspectRatio: '16/9' }}>
                     <p className="font-body text-body-sm opacity-30" style={{ color: 'var(--fg)' }}>Process / wireframes image</p>
                   </m.div>
                 )
@@ -178,7 +159,7 @@ export default function CaseStudy() {
               {project.finalMedia
                 ? <ProcessMediaCard item={{ id: 'final', ...project.finalMedia }} />
                 : (
-                  <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', height: '400px' }}>
+                  <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', aspectRatio: '16/9' }}>
                     <p className="font-body text-body-sm opacity-30" style={{ color: 'var(--fg)' }}>Final design image</p>
                   </m.div>
                 )

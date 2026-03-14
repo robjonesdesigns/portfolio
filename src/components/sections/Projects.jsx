@@ -7,7 +7,7 @@ const EASE = [0.16, 1, 0.3, 1]
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-12 md:py-24 bg-projects">
+    <section id="projects" className="relative py-12 md:py-24 bg-subtle">
       {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none select-none opacity-[0.06]"

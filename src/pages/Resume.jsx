@@ -95,9 +95,8 @@ const frameworks = [
 
 function SectionLabel({ children }) {
   return (
-    <div className="flex items-center gap-2 mb-8">
-      <span className="inline-block w-8 h-px" style={{ backgroundColor: 'var(--accent)' }} />
-      <span className="font-body text-label text-brand-primary">{children}</span>
+    <div className="mb-8">
+      <span className="font-display font-bold text-display-sm text-fg">{children}</span>
     </div>
   )
 }
@@ -106,13 +105,13 @@ function ExperienceBlock({ company, role, period, bullets }) {
   return (
     <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
       <div>
-        <p className="font-display font-bold text-body tracking-tight text-fg">{company}</p>
-        <p className="font-body text-body-sm mt-1 text-brand-primary">{role}</p>
-        <p className="font-body text-caption mt-1 text-fg-secondary">{period}</p>
+        <p className="font-body font-bold text-body md:text-body-lg text-fg">{company}</p>
+        <p className="font-body text-body md:text-body-lg mt-1 text-brand-primary">{role}</p>
+        <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">{period}</p>
       </div>
       <ul className="flex flex-col gap-3">
         {bullets.map((b, i) => (
-          <li key={i} className="font-body text-body-sm leading-relaxed pl-4 relative text-fg" style={{ opacity: 0.75 }}>
+          <li key={i} className="font-body text-body md:text-body-lg pl-4 relative text-fg-secondary">
             <span className="absolute left-0 top-[0.55em] w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--accent)' }} />
             {b}
           </li>
@@ -128,7 +127,7 @@ export default function Resume() {
   return (
     <PageTransition>
       <main className="min-h-screen pb-24" style={{ backgroundColor: 'var(--bg)', paddingTop: 140 }}>
-        <Container size="md">
+        <Container>
 
           {/* Header — animates in on mount only */}
           <m.div
@@ -141,24 +140,23 @@ export default function Resume() {
               Rob Jones
             </m.h1>
 
-            <m.p variants={fadeUp} className="font-display text-body-lg tracking-tight mb-6" style={{ color: 'var(--accent)' }}>
+            <m.p variants={fadeUp} className="font-display font-bold text-display-md text-brand-primary tracking-tight mb-6">
               UX &amp; Product Designer with 5+ years across startups &amp; SaaS enterprise
             </m.p>
 
-            <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body-sm" style={{ color: 'var(--fg)', opacity: 0.6 }}>
-              <a href="mailto:robjonesdesigns@gmail.com" className="hover:opacity-100 transition-opacity"
+            <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body md:text-body-lg text-fg-secondary">
+              <a href="mailto:robjonesdesigns@gmail.com" target="_blank" rel="noopener noreferrer"
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                 onMouseLeave={e => e.currentTarget.style.color = ''}>
                 robjonesdesigns@gmail.com
               </a>
               <span style={{ opacity: 0.3 }}>·</span>
-              <a href="tel:4703820603" className="hover:opacity-100 transition-opacity">470-382-0603</a>
+              <span>470-382-0603</span>
               <span style={{ opacity: 0.3 }}>·</span>
-              <a href="https://www.designedbyrob.com" target="_blank" rel="noopener noreferrer"
-                className="hover:opacity-100 transition-opacity"
+              <a href="https://linkedin.com/in/robjonesdesigner" target="_blank" rel="noopener noreferrer"
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                 onMouseLeave={e => e.currentTarget.style.color = ''}>
-                designedbyrob.com
+                LinkedIn
               </a>
             </m.div>
 
@@ -188,13 +186,13 @@ export default function Resume() {
             <SectionLabel>Education</SectionLabel>
             <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-display font-bold text-body tracking-tight text-fg">Stony Brook University</p>
-                <p className="font-body text-caption mt-1 text-fg-secondary">BA in Studio Arts</p>
+                <p className="font-body font-bold text-body md:text-body-lg text-fg">Stony Brook University</p>
+                <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">BA in Studio Arts</p>
               </div>
               <div>
-                <p className="font-display font-bold text-body tracking-tight text-fg">CareerFoundry</p>
-                <p className="font-body text-body-sm mt-1 text-brand-primary">UX Design Certified Program</p>
-                <p className="font-body text-caption mt-1 text-fg-secondary">600+ hours</p>
+                <p className="font-body font-bold text-body md:text-body-lg text-fg">CareerFoundry</p>
+                <p className="font-body text-body md:text-body-lg mt-1 text-brand-primary">UX Design Certified Program</p>
+                <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">600+ hours</p>
               </div>
             </div>
           </section>
@@ -204,13 +202,13 @@ export default function Resume() {
             <SectionLabel>Skills</SectionLabel>
             <div className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-body text-meta mb-4 text-fg-secondary">Tools</p>
+                <p className="font-body font-bold text-body md:text-body-lg mb-4 text-fg-secondary uppercase tracking-wide">Tools</p>
                 <div className="flex flex-wrap gap-2">
                   {tools.map(t => <Badge key={t}>{t}</Badge>)}
                 </div>
               </div>
               <div>
-                <p className="font-body text-meta mb-4 text-fg-secondary">Frameworks</p>
+                <p className="font-body font-bold text-body md:text-body-lg mb-4 text-fg-secondary uppercase tracking-wide">Frameworks</p>
                 <div className="flex flex-wrap gap-2">
                   {frameworks.map(f => <Badge key={f}>{f}</Badge>)}
                 </div>
