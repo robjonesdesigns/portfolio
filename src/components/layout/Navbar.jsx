@@ -30,7 +30,7 @@ export default function Navbar({ theme, toggleTheme }) {
     transition:     `opacity 0.7s ease, transform 0.8s ${EASE}, background-color 0.4s ease`,
     backdropFilter:       'blur(20px)',
     WebkitBackdropFilter: 'blur(20px)',
-    backgroundColor:      'color-mix(in srgb, var(--surface) 82%, transparent)',
+    backgroundColor:      'color-mix(in srgb, var(--surface) 65%, transparent)',
     borderBottom:         '1px solid var(--border)',
   }
 
