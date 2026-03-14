@@ -82,7 +82,7 @@ export default function CaseStudy() {
       />
       <div className="min-h-screen">
         {/* Hero */}
-        <div className="pb-20 bg-subtle" style={{ paddingTop: 140 }}>
+        <div className="pt-28 md:pt-36 pb-20 bg-subtle">
           <Container >
             <m.div
               initial="hidden"
