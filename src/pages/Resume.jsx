@@ -3,6 +3,7 @@ import PageTransition from '../components/ui/PageTransition'
 import Container from '../components/layout/Container'
 import Badge from '../components/ui/Badge'
 import Button from '../components/ui/Button'
+import SEO from '../components/ui/SEO'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -126,6 +127,11 @@ function ExperienceBlock({ company, role, period, bullets }) {
 export default function Resume() {
   return (
     <PageTransition>
+      <SEO
+        title="Resume"
+        description="Resume of Rob Jones — UX & Product Designer with 5+ years across Honeywell, Aysa, and Keytrn. Available for new roles."
+        canonical="/resume"
+      />
       <main className="min-h-screen pb-24" style={{ backgroundColor: 'var(--bg)', paddingTop: 140 }}>
         <Container>
 
