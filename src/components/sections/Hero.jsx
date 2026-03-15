@@ -8,8 +8,8 @@ const EASE = [0.76, 0, 0.24, 1]
 
 const LINES = [
   "I'm Rob.",
-  "I design enterprise software",
-  "and ship products from\u00a0scratch.",
+  "UX Designer for SaaS enterprise",
+  "and hands-on product builder for\u00a0founders.",
 ]
 
 let _i = 0
