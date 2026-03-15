@@ -4,6 +4,8 @@ import { m, useMotionValue, useSpring } from 'framer-motion'
 export default function Cursor() {
   const [isPointer, setIsPointer] = useState(false)
   const [isText, setIsText] = useState(false)
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reducedMotion) return null
 
   const mouseX = useMotionValue(-100)
   const mouseY = useMotionValue(-100)

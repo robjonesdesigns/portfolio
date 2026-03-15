@@ -6,6 +6,7 @@ import Container from '../layout/Container'
 import Badge from '../ui/Badge'
 import LazyVideo from '../ui/LazyVideo'
 import SEO from '../ui/SEO'
+import { Helmet } from 'react-helmet-async'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -61,6 +62,7 @@ export default function CaseStudy() {
   if (!project) {
     return (
       <PageTransition>
+        <Helmet><meta name="robots" content="noindex" /></Helmet>
         <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-6">
           <h1 className="font-display font-bold text-display-md text-fg">
             Project not found
@@ -73,6 +75,21 @@ export default function CaseStudy() {
     )
   }
 
+  const creativeWorkSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.description,
+    author: {
+      '@type': 'Person',
+      name: 'Rob Jones',
+      url: 'https://robjonesportfolio.vercel.app',
+    },
+    url: `https://robjonesportfolio.vercel.app/projects/${project.slug}`,
+    dateCreated: project.year,
+    keywords: project.tags?.join(', '),
+  }
+
   return (
     <PageTransition>
       <SEO
@@ -80,6 +97,9 @@ export default function CaseStudy() {
         description={project.description}
         canonical={`/projects/${project.slug}`}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(creativeWorkSchema)}</script>
+      </Helmet>
       <div className="min-h-screen">
         {/* Hero */}
         <div className="pt-28 md:pt-36 pb-20 bg-subtle">
