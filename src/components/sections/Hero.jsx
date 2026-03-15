@@ -69,22 +69,12 @@ export default function Hero() {
           ))}
         </h1>
 
-        {/* ── Role ── */}
-        <m.p
-          className="font-editorial italic text-display-sm text-fg-secondary mb-6 md:mb-8"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: TOTAL_WORDS * 0.1, ease: EASE }}
-        >
-          UX & Product Designer
-        </m.p>
-
         {/* ── Subtext ── */}
         <m.p
           className="font-body text-body md:text-body-lg text-fg-secondary max-w-2xl mb-6 text-pretty"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 + TOTAL_WORDS * 0.1, ease: EASE }}
+          transition={{ duration: 0.6, delay: TOTAL_WORDS * 0.1, ease: EASE }}
         >
           3 years at Honeywell designing dashboards used by industrial engineers. Also built 0→1 products for early-stage startups.<br />Currently available for new roles.
         </m.p>
