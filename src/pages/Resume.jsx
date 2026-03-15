@@ -22,7 +22,7 @@ const experience = [
   {
     company:  'Honeywell',
     role:     'UX Designer',
-    period:   'April 2022 – June 2025',
+    period:   '2022 – 2025',
     bullets: [
       'Led UX design for 3+ Asset Performance Management Dashboards, from discovery to high-fidelity UI and dev handoff.',
       'Planned and ran user research: wrote screeners and interview guides, recruited participants, and conducted moderated interviews to validate workflows.',
