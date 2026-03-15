@@ -112,7 +112,7 @@ export default function Resume() {
             </m.h1>
 
             <m.p variants={fadeUp} className="font-display font-bold text-display-md text-brand-primary tracking-tight mb-6">
-              UX &amp; Product Designer with 5+ years across startups &amp; SaaS enterprise
+              UX &amp; Product Designer with 4+ years across startups &amp; SaaS enterprise
             </m.p>
 
             <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body md:text-body-lg text-fg-secondary">
