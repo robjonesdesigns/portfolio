@@ -12,7 +12,7 @@ export default function ThemeToggle({ theme, toggle }) {
         borderColor: 'var(--border)',
       }}
       whileTap={{ scale: 0.95 }}
-      aria-label="Toggle theme"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {/* Sun — filled burst, reads clearly at larger size */}
       <svg className="absolute left-2 w-4 h-4" style={{ color: 'var(--fg)', opacity: 0.9 }} viewBox="0 0 24 24" fill="currentColor">
