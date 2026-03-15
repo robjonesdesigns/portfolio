@@ -20,26 +20,6 @@ const stagger = {
 /* ─── Resume data ──────────────────────────────────────────────── */
 const experience = [
   {
-    company:  'Aysa',
-    role:     'Product Designer',
-    period:   'November 2025 – Present',
-    bullets: [
-      'Shipped a complete MVP from zero to live in 2 weeks, helping the product earn 15,000+ views in early rollout.',
-      'Established a scalable UI kit / component library to keep screens consistent and reduce redesign churn.',
-      'Partnered directly with engineering and founders to iterate quickly and keep design/implementation aligned.',
-    ],
-  },
-  {
-    company:  'Keytrn Technologies',
-    role:     'Product Designer',
-    period:   'May 2025 – September 2025',
-    bullets: [
-      'Created the brand + design system (tokens & components) to keep the product consistent as it grows.',
-      'Interviewed 20+ municipalities to understand foreclosure / tax-delinquent workflows and data access.',
-      'Worked closely with the founding team to define MVP scope and ship designs that are build-ready.',
-    ],
-  },
-  {
     company:  'Honeywell',
     role:     'UX Designer',
     period:   'April 2022 – June 2025',
@@ -50,32 +30,17 @@ const experience = [
       'Increased usability through research-driven iteration, contributing to SUS scores in the 80s.',
     ],
   },
-]
-
-const additionalExperience = [
   {
-    company: 'Sinta',
-    role:    'UX Designer',
-    period:  'December 2021 – April 2022',
+    company:  'Freelance',
+    role:     'UX Designer',
+    period:   '2021 – Present',
     bullets: [
-      'Owned the full UX lifecycle for a next-generation HR interview platform, working directly with the founders to shape product strategy and design core workflows.',
-    ],
-  },
-  {
-    company: 'Coffee & Bananaz',
-    role:    'UX Designer & Webflow Developer',
-    period:  'September 2021 – March 2022',
-    bullets: [
-      'Redesigned the agency\'s website, transforming it from a static portfolio into a dynamic platform that showcased client work and the studio\'s creative energy.',
-    ],
-  },
-  {
-    company: 'National Political Advocacy Group',
-    role:    'UX Design Consultant & WordPress Developer',
-    period:  'July 2021 – January 2022',
-    bullets: [
-      'Collaborated with the design team to ensure political campaign websites followed best design practices.',
-      'Designed and maintained 3 political leaders\' campaign websites.',
+      'Aysa — Shipped a complete MVP from zero to live in 2 weeks, earning 15,000+ views in early rollout. Built a scalable UI kit to keep the product consistent as it scaled.',
+      'Keytrn Technologies — Interviewed 20+ municipalities to understand foreclosure workflows, created the brand and design system, and shipped build-ready designs for the founding team.',
+      'Alonesy — Led UX and UI design end-to-end for a mentorship app, from research and iterations through to final handoff.',
+      'Sinta — Owned the full UX lifecycle for a next-generation HR interview platform, working directly with founders to shape product strategy and core workflows.',
+      'Coffee & Bananaz — Redesigned the agency website as a UX Designer and Webflow Developer, transforming it into a dynamic platform showcasing client work.',
+      'National Political Advocacy Group — Designed and maintained 3 political campaign websites, ensuring best design practices across the team.',
     ],
   },
 ]
@@ -222,13 +187,6 @@ export default function Resume() {
             </div>
           </section>
 
-          {/* Additional Experience */}
-          <section>
-            <SectionLabel>Additional Experience</SectionLabel>
-            {additionalExperience.map((job) => (
-              <ExperienceBlock key={job.company} {...job} />
-            ))}
-          </section>
 
         </Container>
       </main>
