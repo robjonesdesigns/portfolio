@@ -61,7 +61,7 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: EASE }}
                 >
                   {word === 'Rob.' ? (
-                    <><span className="font-editorial italic text-brand-primary" style={{ fontSize: '0.9em' }}>Rob</span>.</>
+                    <><span className="font-editorial italic text-brand-primary" style={{ fontSize: '0.81em', letterSpacing: '-0.04em' }}>Rob</span>.</>
                   ) : word}
                 </m.span>
               ))}
