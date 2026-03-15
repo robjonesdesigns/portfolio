@@ -86,7 +86,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 + TOTAL_WORDS * 0.1, ease: EASE }}
         >
-          3 years at Honeywell designing dashboards used by industrial engineers. Also built 0→1 products for Aysa and Keytrn.<br />Currently available for new roles.
+          3 years at Honeywell designing dashboards used by industrial engineers. Also built 0→1 products for early-stage startups.<br />Currently available for new roles.
         </m.p>
 
         {/* ── Arrow — offset right to sit above center of "Work" heading ── */}
