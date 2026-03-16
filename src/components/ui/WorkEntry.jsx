@@ -45,7 +45,7 @@ function Placeholder({ color }) {
         border:          `1px solid ${color ? `${color}45` : 'var(--border)'}`,
       }}
     >
-      <span className="font-body text-caption text-fg" style={{ opacity: 0.25 }}>[ image ]</span>
+      <span className="font-body text-body md:text-body-lg text-fg" style={{ opacity: 0.25 }}>[ image ]</span>
     </div>
   )
 }
