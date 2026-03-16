@@ -51,7 +51,7 @@ function ProcessMediaCard({ item }) {
           <LazyVideo src={item.video} style={{ width: '100%', display: 'block' }} />
         ) : (
           <div style={{ aspectRatio: '16/9', lineHeight: 1.6, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-            <p className="font-body text-body-sm leading-relaxed text-center" style={{ color: 'var(--fg)', opacity: 0.4 }}>
+            <p className="font-body text-body md:text-body-lg leading-relaxed text-center" style={{ color: 'var(--fg)', opacity: 0.4 }}>
               {item.note || '[ asset coming soon ]'}
             </p>
           </div>
