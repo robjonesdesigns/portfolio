@@ -13,7 +13,17 @@ export default function HomePage() {
     <LazyMotion features={domAnimation}>
       <MotionConfig reducedMotion="user">
         <div className="noise">
-          <a href="#main" className="skip-link">Skip to main content</a>
+          <a
+            href="#first-project"
+            className="skip-link"
+            onClick={e => {
+              e.preventDefault()
+              const article = document.getElementById('first-project')
+              const link = article?.querySelector('a[href^="/projects/"]')
+              article?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              setTimeout(() => link?.focus({ preventScroll: true }), 400)
+            }}
+          >Skip to work</a>
           <Navbar theme={theme} toggleTheme={toggle} />
           <main id="main" tabIndex="-1">
             <Hero />

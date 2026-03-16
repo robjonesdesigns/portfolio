@@ -17,8 +17,8 @@ export default function RJLogo({ size = 40, className = '' }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      role="img"
-      aria-label="Rob Jones logo"
+      aria-hidden="true"
+      focusable="false"
     >
       {/* RJ letterforms */}
       <path d="M0.5 33.5V3.5C0.5 1.56701 2.067 0 4 0C5.933 0 7.5 1.56701 7.5 3.5V33.5C7.5 35.433 5.933 37 4 37C2.067 37 0.5 35.433 0.5 33.5Z" fill="var(--accent)" />

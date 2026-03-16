@@ -30,6 +30,7 @@ export default function About() {
                 alt="Rob Jones, Product Designer"
                 width="533"
                 height="800"
+                loading="lazy"
                 className="w-full h-full object-cover object-top"
               />
             </div>

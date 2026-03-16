@@ -98,6 +98,8 @@ export default function WorkEntry({ project, index = 0 }) {
 
   return (
     <m.article
+      id={index === 0 ? 'first-project' : undefined}
+      tabIndex={index === 0 ? -1 : undefined}
       className="py-8 border-t"
       style={{ borderColor: 'var(--border)' }}
       initial={{ opacity: 0, y: 20 }}

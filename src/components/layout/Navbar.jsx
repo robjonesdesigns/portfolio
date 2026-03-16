@@ -42,8 +42,9 @@ export default function Navbar({ theme, toggleTheme }) {
       <div className="w-full h-full max-w-7xl mx-auto px-6 flex items-center justify-between">
 
         {/* Logo */}
-        <a href="/" className="flex-shrink-0" aria-label="Home">
+        <a href="/" className="flex-shrink-0" aria-label="Home" tabIndex={currentPath === '/' ? -1 : undefined}>
           <m.div
+            tabIndex={-1}
             whileHover={{ scale: 1.1 }}
             whileTap={{ rotate: 180, scale: 0.5 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}

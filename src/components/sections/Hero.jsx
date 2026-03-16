@@ -6,7 +6,7 @@ const EASE = [0.76, 0, 0.24, 1]
 const LINES = [
   "I'm Rob.",
   "Enterprise SaaS UX Designer.",
-  "Product builder with founders 0→1.",
+  "Startup products, built from scratch.",
 ]
 
 let _i = 0
@@ -41,7 +41,7 @@ export default function Hero() {
           aria-label={LINES.join(' ')}
         >
           {WORDS.map((lineWords, li) => (
-            <span key={li} className={li === 0 ? 'block' : 'inline'}>
+            <span key={li} className="inline">
               {lineWords.map(({ word, index }) => (
                 <m.span
                   key={index}
@@ -66,24 +66,19 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: TOTAL_WORDS * 0.1, ease: EASE }}
         >
-          3 years at Honeywell designing dashboards used by industrial engineers. Also built 0→1 products for early-stage startups.<br />Currently available for new roles.
+          3 years at Honeywell designing dashboards used by industrial engineers. Also shipped products for early-stage founders from scratch.<br />Currently available for new roles.
         </m.p>
 
         {/* ── Arrow — offset right to sit above center of "Work" heading ── */}
-        <m.a
-          href="#projects"
-          aria-label="Scroll to work"
-          className="text-brand-primary hover:opacity-70 transition-opacity inline-block ml-[15px] md:ml-[30px] lg:ml-[60px]"
+        <m.div
+          aria-hidden="true"
+          className="text-brand-primary inline-block ml-[15px] md:ml-[30px] lg:ml-[60px]"
           style={{ lineHeight: 1 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 8, 0] }}
           transition={{
             opacity: { duration: 0.6, delay: 0.4 + TOTAL_WORDS * 0.1 },
             y: { repeat: Infinity, duration: 2, ease: 'easeInOut', delay: 0.6 + TOTAL_WORDS * 0.1 },
-          }}
-          onClick={e => {
-            e.preventDefault()
-            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
           }}
         >
           <svg
@@ -98,7 +93,7 @@ export default function Hero() {
           >
             <path d="M10 0 L10 21 M5 15 L10 21 L15 15" />
           </svg>
-        </m.a>
+        </m.div>
 
         </div>{/* end text content */}
 

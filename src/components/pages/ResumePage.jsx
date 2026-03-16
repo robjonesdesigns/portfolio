@@ -42,12 +42,12 @@ const experience = [
     role:     'UX Designer',
     period:   '2021 – Present',
     bullets: [
-      'Aysa — Shipped a complete MVP from zero to live in 2 weeks, earning 15,000+ views in early rollout. Built a scalable UI kit to keep the product consistent as it scaled.',
-      'Keytrn Technologies — Interviewed 20+ municipalities to understand foreclosure workflows, created the brand and design system, and shipped build-ready designs for the founding team.',
-      'Alonesy — Led UX and UI design end-to-end for a mentorship app, from research and iterations through to final handoff.',
-      'Sinta — Owned the full UX lifecycle for a next-generation HR interview platform, working directly with founders to shape product strategy and core workflows.',
-      'Coffee & Bananaz — Redesigned the agency website as a UX Designer and Webflow Developer, transforming it into a dynamic platform showcasing client work.',
-      'National Political Advocacy Group — Designed and maintained 3 political campaign websites, ensuring best design practices across the team.',
+      'Aysa: Shipped a complete MVP from zero to live in 2 weeks, earning 15,000+ views in early rollout. Built a scalable UI kit to keep the product consistent as it scaled.',
+      'Keytrn Technologies: Interviewed 20+ municipalities to understand foreclosure workflows, created the brand and design system, and shipped build-ready designs for the founding team.',
+      'Alonesy: Led UX and UI design end-to-end for a mentorship app, from research and iterations through to final handoff.',
+      'Sinta: Owned the full UX lifecycle for a next-generation HR interview platform, working directly with founders to shape product strategy and core workflows.',
+      'Coffee & Bananaz: Redesigned the agency website as a UX Designer and Webflow Developer, transforming it into a dynamic platform showcasing client work.',
+      'National Political Advocacy Group: Designed and maintained 3 political campaign websites, ensuring best design practices across the team.',
     ],
   },
 ]
@@ -69,7 +69,7 @@ const frameworks = [
 function SectionLabel({ children }) {
   return (
     <div className="mb-8">
-      <span className="font-display font-bold text-display-sm text-fg">{children}</span>
+      <h2 className="font-display font-bold text-display-sm text-fg">{children}</h2>
     </div>
   )
 }
@@ -78,8 +78,8 @@ function ExperienceBlock({ company, role, period, bullets }) {
   return (
     <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
       <div>
-        <p className="font-body font-bold text-body md:text-body-lg text-fg">{company}</p>
-        <p className="font-body text-body md:text-body-lg mt-1 text-brand-primary">{role}</p>
+        <h3 className="font-body font-bold text-body md:text-body-lg text-fg">{company}</h3>
+        <p className="font-body text-body md:text-body-lg mt-1 text-fg">{role}</p>
         <p className="font-body text-body md:text-body-lg mt-1 text-fg">{period}</p>
       </div>
       <ul className="flex flex-col gap-3">
@@ -121,13 +121,13 @@ export default function Resume() {
               Rob Jones
             </m.h1>
 
-            <m.p variants={slideUp} className="font-display font-bold text-display-md text-brand-primary tracking-tight mb-6">
+            <m.p variants={slideUp} className="font-display font-bold text-display-md text-fg tracking-tight mb-6">
               UX &amp; Product Designer with 4+ years across startups &amp; SaaS enterprise
             </m.p>
 
             <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body md:text-body-lg text-fg">
               <a href="mailto:robjonesdesigns@gmail.com" target="_blank" rel="noopener noreferrer"
-                className="hover:text-brand-primary transition-colors duration-200">
+                className="text-brand-primary hover:opacity-70 transition-opacity duration-200">
                 robjonesdesigns@gmail.com
               </a>
               <span style={{ opacity: 0.3 }}>·</span>
@@ -135,7 +135,7 @@ export default function Resume() {
               <span style={{ opacity: 0.3 }}>·</span>
               <a href="https://linkedin.com/in/robjonesdesigner" target="_blank" rel="noopener noreferrer"
                 aria-label="LinkedIn profile (opens in new tab)"
-                className="hover:text-brand-primary transition-colors duration-200">
+                className="text-brand-primary hover:opacity-70 transition-opacity duration-200">
                 LinkedIn
               </a>
             </m.div>
@@ -171,7 +171,7 @@ export default function Resume() {
               </div>
               <div>
                 <p className="font-body font-bold text-body md:text-body-lg text-fg">CareerFoundry</p>
-                <p className="font-body text-body md:text-body-lg mt-1 text-brand-primary">UX Design Certified Program</p>
+                <p className="font-body text-body md:text-body-lg mt-1 text-fg">UX Design Certified Program</p>
                 <p className="font-body text-body md:text-body-lg mt-1 text-fg">600+ hours</p>
               </div>
             </div>
