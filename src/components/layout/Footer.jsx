@@ -19,7 +19,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t border-token text-fg" role="contentinfo">
+    <footer className="border-t border-token text-fg">
       <div className="py-16 md:py-24">
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
