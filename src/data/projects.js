@@ -5,7 +5,7 @@ export const projects = [
     company: 'Honeywell',
     year: '2022–2025',
     tags: ['Enterprise SaaS', 'UX Research', 'Data Visualization', 'Agile', 'Industrial'],
-    headline: 'Leading research and design for industrial dashboards that helped engineers prevent equipment failure',
+    headline: 'Giving an industrial suite a facelift',
     description: 'Led UX research and design across Honeywell\'s APM platform — redesigning Asset Health and building Asset Details from scratch, raising SUS scores from the low 70s to the high 80s through research-driven iteration.',
     outcomes: [
       'Raised SUS scores from the low 70s to the high 80s on Asset Health and Asset Details',
@@ -67,7 +67,7 @@ export const projects = [
     company: 'Honeywell',
     year: '2022–2025',
     tags: ['Enterprise SaaS', 'UX Research', 'Heuristic Evaluation', 'Data Visualization', 'Agile'],
-    headline: 'Bringing visibility to warehouse operations — and fixing years of accumulated usability debt',
+    headline: 'Fixing years of warehouse usability debt',
     description: 'Designed the Merge Dashboard and Homepage for Honeywell\'s Warehouse Operations platform from the ground up, and led a heuristic review that drove platform-wide UXQA improvements.',
     outcomes: [
       'Shipped the Merge Dashboard and Homepage as the sole designer on both',
@@ -122,7 +122,7 @@ export const projects = [
     company: 'Aysa',
     year: '2025',
     tags: ['0→1 Product Design', 'Brand', 'UI Systems', 'Social Impact'],
-    headline: 'Taking a founder\'s rough concept to a product that earned 15,000+ views on launch',
+    headline: 'Zero to 15,000+ views at launch',
     description: 'Took a founder\'s raw concept and shipped a working MVP in under 2 weeks. The product earned 15,000+ views in its first social rollout on LinkedIn and Instagram.',
     outcomes: [
       '15,000+ views in the first social rollout on LinkedIn and Instagram',
@@ -148,7 +148,7 @@ export const projects = [
     company: 'Keytrn',
     year: '2025',
     tags: ['0→1 Product Design', 'Primary Research', 'B2G + B2C', 'Data-Heavy UI'],
-    headline: 'Designing a dual-sided PropTech platform grounded in primary research across 20+ municipalities',
+    headline: 'PropTech platform built on 20+ interviews',
     description: 'Designed a dual-sided PropTech platform from scratch: a government data entry tool and a consumer property browser, grounded in primary research across 20+ municipalities.',
     outcomes: [
       'Designed both the government and consumer product sides as the sole designer',
@@ -203,7 +203,7 @@ export const projects = [
     company: 'Sinta',
     year: '2022',
     tags: ['0→1 Product Design', 'HR Tech', 'Startup', 'Figma'],
-    headline: 'Taking a startup from zero screens to a complete interview platform',
+    headline: 'Zero to complete HR interview platform',
     description: 'Designed all screens for an early-stage HR interview platform from scratch. A full 0→1 product design engagement as a solo freelance designer.',
     outcomes: [
       'Full product design delivered in 5 months as the sole designer',
