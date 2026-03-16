@@ -28,7 +28,7 @@ export default function About() {
               <img
                 src="/images/headshot.jpg"
                 alt="Rob Jones, Product Designer"
-                width="600"
+                width="533"
                 height="800"
                 className="w-full h-full object-cover object-top"
               />

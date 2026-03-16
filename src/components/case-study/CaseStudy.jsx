@@ -52,7 +52,7 @@ function ProcessMediaCard({ item }) {
         )}
       </div>
       {item.caption && (
-        <p className="font-body text-body md:text-body-lg leading-relaxed max-w-3xl text-fg-secondary mt-3">
+        <p className="font-body text-body-lg leading-relaxed max-w-3xl text-fg-secondary mt-3">
           {item.caption}
         </p>
       )}
