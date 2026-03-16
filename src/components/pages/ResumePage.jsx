@@ -1,4 +1,7 @@
-import { m } from 'framer-motion'
+import { m, LazyMotion, domAnimation, MotionConfig } from 'framer-motion'
+import { useTheme } from '../../hooks/useTheme'
+import Navbar from '../layout/Navbar'
+import Footer from '../layout/Footer'
 import PageTransition from '../ui/PageTransition'
 import Container from '../layout/Container'
 import Badge from '../ui/Badge'
@@ -89,8 +92,16 @@ function ExperienceBlock({ company, role, period, bullets }) {
 /* ─── Page ─────────────────────────────────────────────────────── */
 
 export default function Resume() {
+  const { theme, toggle } = useTheme()
+
   return (
-    <PageTransition>
+    <LazyMotion features={domAnimation}>
+      <MotionConfig reducedMotion="user">
+      <div className="noise">
+        <a href="#main" className="skip-link">Skip to main content</a>
+        <Navbar theme={theme} toggleTheme={toggle} />
+        <main id="main" tabIndex="-1">
+        <PageTransition>
       <main className="min-h-screen pt-28 md:pt-36 pb-24" style={{ backgroundColor: 'var(--bg)' }}>
         <Container>
 
@@ -185,5 +196,10 @@ export default function Resume() {
         </Container>
       </main>
     </PageTransition>
+        </main>
+        <Footer />
+      </div>
+      </MotionConfig>
+    </LazyMotion>
   )
 }

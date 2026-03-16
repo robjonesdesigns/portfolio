@@ -1,8 +1,5 @@
-import { lazy, Suspense } from 'react'
 import { m } from 'framer-motion'
 import Container from '../layout/Container'
-
-const RJLogo3D = lazy(() => import('../ui/RJLogo3D'))
 
 const EASE = [0.76, 0, 0.24, 1]
 
@@ -35,14 +32,7 @@ export default function Hero() {
 
       <Container className="relative z-10 pt-28 md:pt-36 pb-10 md:pb-14">
 
-        {/* ── 3D logo watermark ── */}
-        <div className="absolute z-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.3] aspect-square w-4/5 md:w-3/5 md:max-w-[640px]">
-          <Suspense fallback={null}>
-            <RJLogo3D className="w-full h-full" />
-          </Suspense>
-        </div>
-
-        {/* ── Text content ── */}
+{/* ── Text content ── */}
         <div className="relative z-10">
 
         {/* ── Headline — word by word, forced line breaks ── */}

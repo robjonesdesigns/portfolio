@@ -1,10 +1,10 @@
 import { LazyMotion, domAnimation, MotionConfig } from 'framer-motion'
-import { useTheme } from '../hooks/useTheme'
-import Navbar from './layout/Navbar'
-import Footer from './layout/Footer'
-import Cursor from './ui/Cursor'
+import { useTheme } from '../../hooks/useTheme'
+import Navbar from '../layout/Navbar'
+import Footer from '../layout/Footer'
+import CaseStudy from '../case-study/CaseStudy'
 
-export default function AppShell({ children }) {
+export default function CaseStudyPage({ project }) {
   const { theme, toggle } = useTheme()
 
   return (
@@ -12,10 +12,9 @@ export default function AppShell({ children }) {
       <MotionConfig reducedMotion="user">
         <div className="noise">
           <a href="#main" className="skip-link">Skip to main content</a>
-          <Cursor />
           <Navbar theme={theme} toggleTheme={toggle} />
           <main id="main" tabIndex="-1">
-            {children}
+            <CaseStudy project={project} />
           </main>
           <Footer />
         </div>

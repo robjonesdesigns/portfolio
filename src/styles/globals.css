@@ -150,7 +150,6 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    cursor: none;
   }
 
   body {
@@ -169,7 +168,7 @@
   }
 
   a, button, [role="button"] {
-    cursor: none;
+    cursor: pointer;
   }
 }
 

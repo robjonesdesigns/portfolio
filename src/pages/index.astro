@@ -1,9 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import AppShell from '../components/AppShell.jsx'
-import Hero from '../components/sections/Hero.jsx'
-import Projects from '../components/sections/Projects.jsx'
-import About from '../components/sections/About.jsx'
+import HomePage from '../components/pages/HomePage.jsx'
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -21,9 +18,5 @@ const personSchema = {
   canonical="/"
 >
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-  <AppShell client:load>
-    <Hero />
-    <Projects />
-    <About />
-  </AppShell>
+  <HomePage client:load />
 </Layout>

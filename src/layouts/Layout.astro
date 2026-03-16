@@ -1,4 +1,6 @@
 ---
+import '../styles/globals.css'
+
 interface Props {
   title?: string
   description?: string
@@ -45,11 +47,17 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
     <meta name="twitter:image"       content={metaImage} />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.fontshare.com" />
     <link
       rel="stylesheet"
       href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500,400&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500,400&display=swap" />
+    </noscript>
 
     <!-- Theme init: runs sync before paint to prevent flash of wrong theme -->
     <script is:inline>
