@@ -121,6 +121,7 @@ export default function WorkEntry({ project, index = 0 }) {
       <div className="mb-10 md:mb-12">
         <a
           href={`/projects/${slug}`}
+          aria-label={`See more — ${company} case study`}
           className="font-body text-body md:text-body-lg text-brand-primary hover:opacity-60 transition-opacity"
         >
           See more →

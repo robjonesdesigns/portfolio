@@ -130,6 +130,7 @@ export default function Resume() {
               <span>470-382-0603</span>
               <span style={{ opacity: 0.3 }}>·</span>
               <a href="https://linkedin.com/in/robjonesdesigner" target="_blank" rel="noopener noreferrer"
+                aria-label="LinkedIn profile (opens in new tab)"
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                 onMouseLeave={e => e.currentTarget.style.color = ''}>
                 LinkedIn
@@ -137,7 +138,7 @@ export default function Resume() {
             </m.div>
 
             <m.div variants={fadeUp} className="mt-8">
-              <Button as="a" href="/RobJonesResume.pdf" download="RobJonesResume.pdf">
+              <Button as="a" href="/RobJonesResume.pdf" download="RobJonesResume.pdf" aria-label="Download Rob Jones resume as PDF">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M1 11.5h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
