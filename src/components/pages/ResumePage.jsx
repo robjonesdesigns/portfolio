@@ -14,6 +14,11 @@ const fadeUp = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE } },
 }
 
+const slideUp = {
+  hidden: { y: 24 },
+  show:   { y: 0, transition: { duration: 0.65, ease: EASE } },
+}
+
 const stagger = {
   hidden: {},
   show:   { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
@@ -112,11 +117,11 @@ export default function Resume() {
             initial="hidden"
             animate="show"
           >
-            <m.h1 variants={fadeUp} className="font-display font-bold text-display-2xl text-fg mb-3">
+            <m.h1 variants={slideUp} className="font-display font-bold text-display-2xl text-fg mb-3">
               Rob Jones
             </m.h1>
 
-            <m.p variants={fadeUp} className="font-display font-bold text-display-md text-brand-primary tracking-tight mb-6">
+            <m.p variants={slideUp} className="font-display font-bold text-display-md text-brand-primary tracking-tight mb-6">
               UX &amp; Product Designer with 4+ years across startups &amp; SaaS enterprise
             </m.p>
 

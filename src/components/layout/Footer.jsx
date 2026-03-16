@@ -19,7 +19,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t border-token text-fg">
+    <footer className="border-t border-token text-fg" role="contentinfo">
       <div className="py-16 md:py-24">
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
@@ -49,6 +49,11 @@ export default function Footer() {
               {copied ? '✓  Copied!' : EMAIL}
             </m.button>
 
+          </div>
+          <div className="mt-10 pt-6 border-t" style={{ borderColor: 'var(--border)' }}>
+            <a href="/sitemap" className="font-body text-body text-fg-secondary hover:text-brand-primary transition-colors">
+              Sitemap
+            </a>
           </div>
         </Container>
       </div>

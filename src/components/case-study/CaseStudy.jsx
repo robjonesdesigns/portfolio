@@ -10,6 +10,12 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 }
 
+// Headings: slide only — never opacity:0 so crawlers always see the text
+const slideUp = {
+  hidden: { y: 24 },
+  show: { y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+}
+
 const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1 } },
@@ -74,7 +80,7 @@ export default function CaseStudy({ project }) {
               className="flex flex-col gap-6 max-w-3xl"
             >
               <m.h1
-                variants={fadeUp}
+                variants={slideUp}
                 className="font-display font-bold text-display-md text-fg"
               >
                 {project.headline}

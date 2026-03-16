@@ -21,8 +21,8 @@ export default function Projects() {
         <div className="mb-8">
           <m.h2
             className="font-display font-bold text-display-xl text-fg"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 16 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.6, ease: EASE }}
           >
