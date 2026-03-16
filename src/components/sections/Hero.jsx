@@ -8,8 +8,8 @@ const EASE = [0.76, 0, 0.24, 1]
 
 const LINES = [
   "I'm Rob.",
-  "UX Designer for SaaS enterprise",
-  "and hands-on product builder for\u00a0founders.",
+  "Enterprise SaaS UX Designer.",
+  "Product builder with founders 0→1.",
 ]
 
 let _i = 0
@@ -61,7 +61,7 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: EASE }}
                 >
                   {word === 'Rob.' ? (
-                    <><span className="font-editorial italic text-brand-primary" style={{ fontSize: '0.81em', letterSpacing: '-0.04em' }}>Rob</span>.</>
+                    <><span className="font-editorial italic text-brand-primary" style={{ fontSize: '0.85em', letterSpacing: '-0.04em' }}>Rob</span>.</>
                   ) : word}
                 </m.span>
               ))}

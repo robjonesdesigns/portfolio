@@ -43,7 +43,7 @@ export default function About() {
             transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
           >
             <h2 className="font-display font-bold text-display-lg text-fg">
-              Designing with intention. Building with care.
+              Designing with intention. Building with&nbsp;care.
             </h2>
 
             <p className="font-body text-body md:text-body-lg text-fg-secondary">

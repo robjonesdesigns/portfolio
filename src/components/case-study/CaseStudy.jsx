@@ -20,7 +20,7 @@ const stagger = {
 
 function Section({ label, children }) {
   return (
-    <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-2xl">
+    <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-3xl">
       <h2 className="font-display font-bold text-display-md text-fg">
         {label}
       </h2>
@@ -34,7 +34,7 @@ function Section({ label, children }) {
 function ProcessMediaCard({ item }) {
   return (
     <m.div variants={fadeUp} className="flex flex-col gap-3">
-      <h2 className="font-display font-bold text-display-md text-fg">
+      <h2 className="font-display font-bold text-display-sm text-fg">
         {item.label}
       </h2>
       <div style={{
@@ -44,10 +44,18 @@ function ProcessMediaCard({ item }) {
         overflow: 'hidden',
         lineHeight: 0,
       }}>
-        <LazyVideo src={item.video} style={{ width: '100%', display: 'block' }} />
+        {item.video ? (
+          <LazyVideo src={item.video} style={{ width: '100%', display: 'block' }} />
+        ) : (
+          <div style={{ aspectRatio: '16/9', lineHeight: 1.6, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+            <p className="font-body text-body-sm leading-relaxed text-center" style={{ color: 'var(--fg)', opacity: 0.4 }}>
+              {item.note || '[ asset coming soon ]'}
+            </p>
+          </div>
+        )}
       </div>
       {item.caption && (
-        <p className="font-body text-body-sm leading-relaxed max-w-2xl text-fg-secondary">
+        <p className="font-body text-body md:text-body-lg leading-relaxed max-w-3xl text-fg-secondary mt-3">
           {item.caption}
         </p>
       )}
@@ -108,135 +116,102 @@ export default function CaseStudy() {
               initial="hidden"
               animate="show"
               variants={stagger}
-              className="flex flex-col gap-6 max-w-2xl"
+              className="flex flex-col gap-6 max-w-3xl"
             >
               <m.h1
                 variants={fadeUp}
-                className="font-display font-bold text-display-xl text-fg"
+                className="font-display font-bold text-display-md text-fg"
               >
-                {project.title}
+                {project.headline}
               </m.h1>
 
               {/* Meta */}
-              <m.div
-                variants={fadeUp}
-                className="flex flex-wrap gap-8 pt-4 border-t"
-                style={{ borderColor: 'var(--border)' }}
-              >
-                {[
-                  { label: 'Role', value: project.role },
-                  { label: 'Duration', value: project.duration },
-                  { label: 'Team', value: project.team },
-                  { label: 'Year', value: project.year },
-                ].map(({ label, value }) => (
-                  <div key={label} className="flex flex-col gap-1">
-                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">
-                      {label}
-                    </span>
-                    <span className="font-body text-body md:text-body-lg font-medium text-fg">
-                      {value}
-                    </span>
+              <m.div variants={fadeUp} className="grid grid-cols-2 gap-x-8 gap-y-6">
+
+                {/* Left col — Company + Problem */}
+                <div className="flex flex-col gap-8">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">Company</span>
+                    <span className="font-body text-body md:text-body-lg font-medium text-fg">{project.company}</span>
                   </div>
-                ))}
+                  <div className="flex flex-col gap-1">
+                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">Problem</span>
+                    <p className="font-body text-body md:text-body-lg text-fg">{project.metaProblem}</p>
+                  </div>
+                </div>
+
+                {/* Right col — Role + Outcome */}
+                <div className="flex flex-col gap-8">
+                  <div className="flex flex-col gap-1">
+                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">Role</span>
+                    <span className="font-body text-body md:text-body-lg font-medium text-fg">{project.role}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">Outcome</span>
+                    <p className="font-body text-body md:text-body-lg text-fg">{project.outcomes?.[0]}</p>
+                  </div>
+                </div>
+
               </m.div>
             </m.div>
           </Container>
         </div>
 
-        {/* Hero image */}
-        <div className="w-full overflow-hidden" style={{ height: '480px' }}>
-          {project.image ? (
-            <img
-              src={project.image}
-              alt={`${project.title} interface`}
-              className="w-full h-full object-cover"
-              style={{ objectPosition: 'center 20%' }}
-            />
-          ) : (
-            <div className="w-full h-full bg-surface flex items-center justify-center">
-              <p className="font-body text-body-sm opacity-30" style={{ color: 'var(--fg)' }}>
-                Add project hero image here
-              </p>
-            </div>
-          )}
-        </div>
-
         {/* Content */}
         <div className="py-20">
-          <Container >
-            <div className="flex flex-col gap-16">
-              <Section label="Overview">{project.overview}</Section>
-              <Section label="The Problem">{project.problem}</Section>
-              <Section label="Process &amp; Approach">{project.process}</Section>
+          <Container>
+            <m.div
+              className="flex flex-col gap-16"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }}
+              variants={stagger}
+            >
 
-              {/* Process media */}
-              {project.processMedia?.length > 0
-                ? project.processMedia.map(item => <ProcessMediaCard key={item.id} item={item} />)
-                : (
-                  <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', aspectRatio: '16/9' }}>
-                    <p className="font-body text-body-sm opacity-30" style={{ color: 'var(--fg)' }}>Process / wireframes image</p>
-                  </m.div>
-                )
-              }
-
-              <Section label="Solution">{project.solution}</Section>
-
-              {/* Final media */}
-              {project.finalMedia
-                ? <ProcessMediaCard item={{ id: 'final', ...project.finalMedia }} />
-                : (
-                  <m.div variants={fadeUp} className="rounded-2xl w-full flex items-center justify-center" style={{ backgroundColor: 'var(--surface)', aspectRatio: '16/9' }}>
-                    <p className="font-body text-body-sm opacity-30" style={{ color: 'var(--fg)' }}>Final design image</p>
-                  </m.div>
-                )
-              }
-
-              {/* UGA Business Law Clinic — add ugaContent to project data when ready */}
-              {project.ugaContent !== undefined && (
-                <Section label="Business Foundation">
-                  {project.ugaContent || (
-                    <span style={{ opacity: 0.35, fontStyle: 'italic' }}>
-                      Worked with the UGA Business Law Clinic on entity structure, IP ownership, and equity agreements. Content coming soon.
-                    </span>
-                  )}
-                </Section>
+              {/* Intro */}
+              {project.intro && (
+                <m.p variants={fadeUp} className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary max-w-3xl">
+                  {project.intro}
+                </m.p>
               )}
 
-              <Section label="Outcomes">{project.outcome}</Section>
+              {/* Process media */}
+              {project.processMedia?.map(item => <ProcessMediaCard key={item.id} item={item} />)}
 
-              {/* Tags */}
-              <m.div variants={fadeUp} className="flex flex-wrap gap-2 pt-4">
-                {project.tags.map((tag) => (
-                  <Badge key={tag}>{tag}</Badge>
-                ))}
-              </m.div>
+              {/* UGA Business Law Clinic */}
+              {project.ugaContent !== undefined && (
+                <m.div variants={fadeUp} className="max-w-3xl">
+                  {project.ugaContent ? (
+                    <p className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary">{project.ugaContent}</p>
+                  ) : (
+                    <p className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary" style={{ opacity: 0.35, fontStyle: 'italic' }}>
+                      Worked with the UGA Business Law Clinic on entity structure, IP ownership, and equity agreements. Content coming soon.
+                    </p>
+                  )}
+                </m.div>
+              )}
 
-              {/* Navigation between projects */}
+              {/* Navigation */}
               <m.div
                 variants={fadeUp}
                 className="flex justify-between items-center pt-8 border-t"
                 style={{ borderColor: 'var(--border)' }}
               >
-                <Link
-                  to="/#projects"
-                  className="font-body text-body-sm font-medium text-brand-primary"
-                >
+                <Link to="/#projects" className="font-body text-body-sm font-medium text-brand-primary">
                   ← All Projects
                 </Link>
                 {(() => {
                   const idx = projects.findIndex((p) => p.slug === slug)
                   const next = projects[(idx + 1) % projects.length]
                   return (
-                    <Link
-                      to={`/projects/${next.slug}`}
-                      className="font-body text-body-sm font-medium text-brand-primary"
-                    >
+                    <Link to={`/projects/${next.slug}`} className="font-body text-body-sm font-medium text-brand-primary">
                       Next: {next.title} →
                     </Link>
                   )
                 })()}
               </m.div>
-            </div>
+
+            </m.div>
           </Container>
         </div>
       </div>

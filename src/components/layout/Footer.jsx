@@ -38,7 +38,7 @@ export default function Footer() {
 
             <m.button
               onClick={handleEmailCopy}
-              aria-label={copied ? 'Email address copied' : 'Copy email address'}
+              aria-label={copied ? 'Email address copied' : `Copy ${EMAIL}`}
               className="self-start md:self-end flex items-center gap-3 px-6 py-3.5
                          border border-brand-primary text-brand-primary font-body text-body md:text-body-lg
                          tracking-wide rounded hover:bg-brand-primary hover:text-on-accent
