@@ -127,8 +127,7 @@ export default function Resume() {
 
             <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body md:text-body-lg text-fg-secondary">
               <a href="mailto:robjonesdesigns@gmail.com" target="_blank" rel="noopener noreferrer"
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                onMouseLeave={e => e.currentTarget.style.color = ''}>
+                className="hover:text-brand-primary transition-colors duration-200">
                 robjonesdesigns@gmail.com
               </a>
               <span style={{ opacity: 0.3 }}>·</span>
@@ -136,8 +135,7 @@ export default function Resume() {
               <span style={{ opacity: 0.3 }}>·</span>
               <a href="https://linkedin.com/in/robjonesdesigner" target="_blank" rel="noopener noreferrer"
                 aria-label="LinkedIn profile (opens in new tab)"
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
-                onMouseLeave={e => e.currentTarget.style.color = ''}>
+                className="hover:text-brand-primary transition-colors duration-200">
                 LinkedIn
               </a>
             </m.div>
