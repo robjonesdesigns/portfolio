@@ -26,9 +26,9 @@ export default function ThemeToggle({ theme, toggle }) {
       </svg>
 
       {/* Thumb */}
-      <m.div
+      <m.span
         className="w-5 h-5 rounded-full z-10"
-        style={{ backgroundColor: 'var(--accent)' }}
+        style={{ backgroundColor: 'var(--accent)', display: 'block' }}
         animate={{ x: isDark ? 30 : 0 }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
       />

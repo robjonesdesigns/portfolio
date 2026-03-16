@@ -217,28 +217,6 @@
   background-size: 128px;
 }
 
-/* ─── Circle-letter dot interactions ─────────────────────────────────── */
-.cl-dot {
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.14s ease, fill 0.14s ease;
-  will-change: transform, opacity;
-}
-.cl-dot:hover {
-  transform: scale(1.1);
-  fill: var(--accent);
-}
-
-/* ─── Keyframes ───────────────────────────────────────────────────────── */
-@keyframes dotReveal {
-  from { opacity: 0; r: 0px; }
-  to   { opacity: 1; }
-}
-
-@keyframes circlePulse {
-  0%, 100% { r: var(--r); }
-  50%       { r: calc(var(--r) * 0.80); }
-}
 
 /* ─── Scrollbar ───────────────────────────────────────────────────────── */
 ::-webkit-scrollbar        { width: 3px; }

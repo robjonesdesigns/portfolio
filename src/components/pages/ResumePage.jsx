@@ -102,7 +102,7 @@ export default function Resume() {
         <Navbar theme={theme} toggleTheme={toggle} />
         <main id="main" tabIndex="-1">
         <PageTransition>
-      <main className="min-h-screen pt-28 md:pt-36 pb-24" style={{ backgroundColor: 'var(--bg)' }}>
+      <div className="min-h-screen pt-28 md:pt-36 pb-24" style={{ backgroundColor: 'var(--bg)' }}>
         <Container>
 
           {/* Header — animates in on mount only */}
@@ -150,15 +150,15 @@ export default function Resume() {
           <div className="h-px mb-16" style={{ backgroundColor: 'var(--border)' }} />
 
           {/* Experience */}
-          <section className="mb-16">
+          <div className="mb-16">
             <SectionLabel>Experience</SectionLabel>
             {experience.map((job) => (
               <ExperienceBlock key={job.company} {...job} />
             ))}
-          </section>
+          </div>
 
           {/* Education */}
-          <section className="mb-16">
+          <div className="mb-16">
             <SectionLabel>Education</SectionLabel>
             <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
@@ -171,10 +171,10 @@ export default function Resume() {
                 <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">600+ hours</p>
               </div>
             </div>
-          </section>
+          </div>
 
           {/* Skills */}
-          <section className="mb-16">
+          <div className="mb-16">
             <SectionLabel>Skills</SectionLabel>
             <div className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
@@ -190,11 +190,11 @@ export default function Resume() {
                 </div>
               </div>
             </div>
-          </section>
+          </div>
 
 
         </Container>
-      </main>
+      </div>
     </PageTransition>
         </main>
         <Footer />
