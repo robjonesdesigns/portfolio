@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import AppShell from '../../components/AppShell.jsx'
+import CaseStudy from '../../components/case-study/CaseStudy.jsx'
+import { projects } from '../../data/projects.js'
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }))
+}
+
+const { project } = Astro.props
+
+const creativeWorkSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: project.title,
+  description: project.description,
+  author: {
+    '@type': 'Person',
+    name: 'Rob Jones',
+    url: 'https://robjonesportfolio.vercel.app',
+  },
+  url: `https://robjonesportfolio.vercel.app/projects/${project.slug}`,
+  dateCreated: project.year,
+  keywords: project.tags?.join(', '),
+}
+---
+
+<Layout
+  title={`${project.title} — ${project.company}`}
+  description={project.description}
+  canonical={`/projects/${project.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(creativeWorkSchema)} />
+  <AppShell client:load>
+    <CaseStudy project={project} />
+  </AppShell>
+</Layout>

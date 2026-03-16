@@ -1,5 +1,4 @@
 import { m } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import LazyVideo from './LazyVideo'
 
 const EASE = [0.16, 1, 0.3, 1]
@@ -120,12 +119,12 @@ export default function WorkEntry({ project, index = 0 }) {
 
       {/* See more */}
       <div className="mb-10 md:mb-12">
-        <Link
-          to={`/projects/${slug}`}
+        <a
+          href={`/projects/${slug}`}
           className="font-body text-body md:text-body-lg text-brand-primary hover:opacity-60 transition-opacity"
         >
           See more →
-        </Link>
+        </a>
       </div>
 
       {/* Metadata row */}

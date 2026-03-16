@@ -1,12 +1,9 @@
-import { useParams, Link } from 'react-router-dom'
 import { m } from 'framer-motion'
 import { projects } from '../../data/projects'
 import PageTransition from '../ui/PageTransition'
 import Container from '../layout/Container'
 import Badge from '../ui/Badge'
 import LazyVideo from '../ui/LazyVideo'
-import SEO from '../ui/SEO'
-import { Helmet } from 'react-helmet-async'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -63,51 +60,9 @@ function ProcessMediaCard({ item }) {
   )
 }
 
-export default function CaseStudy() {
-  const { slug } = useParams()
-  const project = projects.find((p) => p.slug === slug)
-
-  if (!project) {
-    return (
-      <PageTransition>
-        <Helmet><meta name="robots" content="noindex" /></Helmet>
-        <div className="min-h-screen flex flex-col items-center justify-center gap-4 px-6">
-          <h1 className="font-display font-bold text-display-md text-fg">
-            Project not found
-          </h1>
-          <Link to="/" className="font-body text-body-sm" style={{ color: 'var(--accent)' }}>
-            ← Back to home
-          </Link>
-        </div>
-      </PageTransition>
-    )
-  }
-
-  const creativeWorkSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: project.title,
-    description: project.description,
-    author: {
-      '@type': 'Person',
-      name: 'Rob Jones',
-      url: 'https://robjonesportfolio.vercel.app',
-    },
-    url: `https://robjonesportfolio.vercel.app/projects/${project.slug}`,
-    dateCreated: project.year,
-    keywords: project.tags?.join(', '),
-  }
-
+export default function CaseStudy({ project }) {
   return (
     <PageTransition>
-      <SEO
-        title={`${project.title} — ${project.company}`}
-        description={project.description}
-        canonical={`/projects/${project.slug}`}
-      />
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(creativeWorkSchema)}</script>
-      </Helmet>
       <div className="min-h-screen">
         {/* Hero */}
         <div className="pt-28 md:pt-36 pb-20 bg-subtle">
@@ -197,16 +152,16 @@ export default function CaseStudy() {
                 className="flex justify-between items-center pt-8 border-t"
                 style={{ borderColor: 'var(--border)' }}
               >
-                <Link to="/#projects" className="font-body text-body-sm font-medium text-brand-primary">
+                <a href="/" className="font-body text-body-sm font-medium text-brand-primary">
                   ← All Projects
-                </Link>
+                </a>
                 {(() => {
-                  const idx = projects.findIndex((p) => p.slug === slug)
+                  const idx = projects.findIndex((p) => p.slug === project.slug)
                   const next = projects[(idx + 1) % projects.length]
                   return (
-                    <Link to={`/projects/${next.slug}`} className="font-body text-body-sm font-medium text-brand-primary">
+                    <a href={`/projects/${next.slug}`} className="font-body text-body-sm font-medium text-brand-primary">
                       Next: {next.title} →
-                    </Link>
+                    </a>
                   )
                 })()}
               </m.div>

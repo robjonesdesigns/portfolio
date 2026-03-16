@@ -1,0 +1,68 @@
+---
+interface Props {
+  title?: string
+  description?: string
+  canonical?: string
+  ogImage?: string
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+} = Astro.props
+
+const SITE_URL  = 'https://robjonesportfolio.vercel.app'
+const fullTitle = title ? `${title} — Rob Jones` : 'Rob Jones — Product Designer'
+const metaDesc  = description ?? 'Rob Jones — UX Designer for enterprise SaaS and product builder for founders. Available for new roles.'
+const metaUrl   = canonical ? `${SITE_URL}${canonical}` : SITE_URL
+const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={metaDesc} />
+    <link rel="canonical" href={metaUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={metaUrl} />
+    <meta property="og:title"       content={fullTitle} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:image"       content={metaImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={fullTitle} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta name="twitter:image"       content={metaImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link
+      rel="stylesheet"
+      href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500,400&display=swap"
+    />
+
+    <!-- Theme init: runs sync before paint to prevent flash of wrong theme -->
+    <script is:inline>
+      try {
+        var s = localStorage.getItem('theme')
+        var d = window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (s === 'dark' || (!s && d)) {
+          document.documentElement.classList.add('dark')
+        }
+      } catch(e) {}
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

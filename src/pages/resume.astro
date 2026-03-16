@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro'
+import AppShell from '../components/AppShell.jsx'
+import ResumePage from '../components/pages/ResumePage.jsx'
+---
+
+<Layout
+  title="Resume"
+  description="Resume of Rob Jones — UX Designer for enterprise SaaS and product builder for founders. Available for new roles."
+  canonical="/resume"
+>
+  <AppShell client:load>
+    <ResumePage />
+  </AppShell>
+</Layout>
