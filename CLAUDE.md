@@ -3,8 +3,8 @@
 Rob Jones. Product Designer. This is a personal portfolio site.
 
 **Path:** `~/Documents/Dev/portfolio/`
-**Dev server:** `npm run dev` → `http://localhost:5173/`
-**Stack:** React 19, Vite 7, Tailwind CSS v3.4, Framer Motion 12, React Router v7
+**Dev server:** `npm run dev` → `http://localhost:4321/`
+**Stack:** Astro 6 (SSG) + React 19 islands + Tailwind CSS v3.4 + Framer Motion
 
 ---
 
@@ -18,31 +18,72 @@ Rob Jones. Product Designer. This is a personal portfolio site.
 | `--accent` | `#813746` (burgundy) | `#e36f86` (rose) |
 | `--on-accent` | `#fffbf5` | `#1c1a16` |
 | `--surface` | `#f7f3f5` | `#252220` |
-| `--border` | `rgba(34,34,34,0.1)` | `rgba(255,251,245,0.1)` |
+| `--border` | `rgba(92,82,80,0.1)` | `rgba(176,168,158,0.1)` |
+| `--fg-secondary` | `#6e6562` | `#c2bab0` |
+| `--bg-subtle` | `#fdf8f2` | `#201e1a` |
 
 ### Tailwind Color Classes
-`text-fg`, `bg-surface`, `text-brand-primary`, `bg-brand-primary`, `text-on-accent`
+`text-fg`, `text-fg-secondary`, `text-brand-primary`, `bg-brand-primary`, `text-on-accent`, `bg-surface`, `bg-subtle`, `border-token`, `border-token-strong`
 
-### Fonts
-- `font-display` → Cabinet Grotesk (Fontshare CDN)
-- `font-editorial` → Ogg (local, `/public/fonts/`)
-- `font-body` → Areal (local, `/public/fonts/`)
+---
 
-### Spacing — 4px/8px grid
-| Token | px | Tailwind |
+## Typography System
+
+### Font Families (`tailwind.config.js` → `fontFamily`)
+| Tailwind class | Font | Source |
 |---|---|---|
-| space-1 | 4px | `1` |
-| space-2 | 8px | `2` |
-| space-3 | 16px | `4` |
-| space-4 | 24px | `6` |
-| space-5 | 32px | `8` |
-| space-6 | 48px | `12` |
-| space-7 | 64px | `16` |
-| space-8 | 96px | `24` |
-| space-9 | 128px | `32` |
+| `font-display` | Cabinet Grotesk | Fontshare CDN |
+| `font-body` | Areal | Local `/public/fonts/` |
+| `font-editorial` | Ogg | Local `/public/fonts/` (trial) — one-off use only |
 
-**CRITICAL:** Hyphenated keys like `gap-space-4` never generate CSS in Tailwind JIT.
-Always use the numeric Tailwind value: `gap-6` (not `gap-space-4`).
+### Type Scale (`tailwind.config.js` → `fontSize`)
+Display sizes use fluid `clamp()`. Body sizes are fixed with a responsive step at `md:`.
+
+| Token | Size | Use |
+|---|---|---|
+| `text-display-2xl` | clamp(48–96px) | Hero h1 |
+| `text-display-xl` | clamp(40–80px) | Section h2 |
+| `text-display-lg` | clamp(32–60px) | CTA / editorial h2 |
+| `text-display-md` | clamp(24–36px) | Card / component h3 |
+| `text-display-sm` | clamp(20–24px) | Sub-headings |
+| `text-body-lg` | 20px | Body text — desktop |
+| `text-body` | 16px | Body text — mobile |
+| `text-body-sm` | 14px | Small body |
+| `text-caption` | 12px | Captions |
+
+### Type Composition Classes (`globals.css` → `@layer components`)
+Use these everywhere — one class handles font, size, weight, and color.
+
+**Display** (Cabinet Grotesk, bold, fluid clamp, `text-fg`):
+```
+type-display-2xl   type-display-xl   type-display-lg   type-display-md   type-display-sm
+```
+
+**Body** (Areal, 16px mobile → 20px desktop):
+| Class | Color | Weight | Notes |
+|---|---|---|---|
+| `type-body` | `text-fg` | 400 | Body paragraphs |
+| `type-label` | `text-fg-secondary` | 700 | Uppercase section labels |
+| `type-link` | `text-brand-primary` | 400 | Inline links, opacity on hover |
+| `type-badge` | `text-fg` | 400 | Metadata / tag text |
+| `type-nav-link` | `text-fg` | 500 | Nav links — underline handled in component |
+
+**Rule:** utilities always override composition classes. `type-body text-brand-primary` works as expected.
+
+---
+
+## Spacing — 4px/8px grid (`tailwind.config.js` → `spacing`)
+| Token | px | Tailwind class |
+|---|---|---|
+| space-xs | 4px | `p-space-xs`, `gap-space-xs` |
+| space-sm | 8px | `p-space-sm` |
+| space-md | 16px | `p-space-md` |
+| space-lg | 24px | `p-space-lg` |
+| space-xl | 32px | `p-space-xl` |
+| space-2xl | 48px | `p-space-2xl` |
+| space-3xl | 64px | `p-space-3xl` |
+| space-4xl | 96px | `p-space-4xl` |
+| space-5xl | 128px | `p-space-5xl` |
 
 ---
 
@@ -52,35 +93,57 @@ Always use the numeric Tailwind value: `gap-6` (not `gap-space-4`).
 src/
 ├── components/
 │   ├── layout/
-│   │   ├── Navbar.jsx          floating pill → docked on scroll
-│   │   └── Footer.jsx
+│   │   ├── Navbar.jsx          Fixed top bar — logo, nav links, theme toggle
+│   │   └── Footer.jsx          CTA + email copy + sitemap link
 │   ├── sections/
 │   │   ├── Hero.jsx            CircleLetters + eyebrow + marquee
 │   │   ├── About.jsx
 │   │   ├── Projects.jsx        WorkEntry list
 │   │   └── Contact.jsx
+│   ├── pages/
+│   │   ├── ResumePage.jsx      Full resume page (Navbar + Footer included)
+│   │   └── SitemapPage.jsx     Sitemap page (Navbar + Footer included)
 │   ├── ui/
-│   │   ├── WorkEntry.jsx       project card with LaptopFrame or ImageGrid
+│   │   ├── WorkEntry.jsx       Project card — LaptopFrame or ImageGrid
 │   │   ├── LazyVideo.jsx       IntersectionObserver lazy loader for videos
 │   │   ├── CircleLetters.jsx   SVG circle-fill typography
 │   │   ├── Badge.jsx
-│   │   ├── ProjectCard.jsx
+│   │   ├── Button.jsx
 │   │   ├── PageTransition.jsx
 │   │   ├── Marquee.jsx
-│   │   ├── ThemeToggle.jsx
-│   │   └── Cursor.jsx
+│   │   └── ThemeToggle.jsx
 │   └── case-study/
 │       └── CaseStudy.jsx
 ├── data/
-│   └── projects.js             project data array
-├── pages/
-│   └── Resume.jsx
+│   └── projects.js             All project content and case study data
+├── pages/                      Astro pages — SSG routes
+│   ├── index.astro             Home
+│   ├── resume.astro
+│   ├── sitemap.astro
+│   └── projects/
+│       └── [slug].astro        Dynamic case study route
 ├── hooks/
-│   ├── useTheme.js
-│   └── useCursor.js
+│   └── useTheme.js
+├── layouts/
+│   └── Layout.astro            HTML shell — head, meta, OG tags, font loading
 └── styles/
     └── globals.css
 ```
+
+---
+
+## Routing
+
+Astro file-based SSG routing.
+
+```
+/                  → index.astro → Home (Hero, About, Projects, Contact)
+/resume            → resume.astro → ResumePage.jsx (client:load)
+/sitemap           → sitemap.astro → SitemapPage.jsx (client:load)
+/projects/:slug    → projects/[slug].astro → CaseStudy.jsx (client:load)
+```
+
+React components that need interactivity use `client:load`. Layout.astro handles all `<head>` — meta, OG tags, canonical, fonts.
 
 ---
 
@@ -95,16 +158,16 @@ Each project can include:
 - `role`, `duration`, `team` — case study meta
 - `processMedia` — array of `{ id, label, caption, video }` for case study process section
 - `finalMedia` — `{ label, caption, video }` for case study solution section
-- `ugaContent` — omit field to hide section; set `null` for placeholder text; set string to show content
+- `ugaContent` — omit to hide section; `null` for placeholder; string to show content
 
 ---
 
 ## Key Components
 
 ### WorkEntry.jsx
-- `video` prop → renders `LaptopFrame` (laptop mockup card with radial gradient wash)
+- `video` prop → renders `LaptopFrame` (laptop mockup with radial gradient wash)
 - No `video` → renders `ImageGrid` (1/2/3+ image layouts)
-- `LaptopFrame`: card bg `color-mix(in srgb, var(--fg) 6%, var(--surface))`, `overflow: hidden`, laptop screen only (no base), `translateY(30px)` cuts bottom
+- `LaptopFrame`: card bg `color-mix(in srgb, var(--fg) 6%, var(--surface))`, `overflow: hidden`, `translateY(30px)` cuts bottom
 
 ### LazyVideo.jsx
 - `IntersectionObserver` with `rootMargin: '200px'`
@@ -121,10 +184,10 @@ Each project can include:
 ## Video Assets
 
 Videos are gitignored (`public/images/*.mp4`, `public/images/*.mov`).
-Not yet hosted remotely — stored locally only.
+Keytrn videos hosted on Cloudinary (cloud: `dlqvgithx`, folder: `portfolio/`).
 
-Current videos in `public/images/`:
-- `keytrn-demo.mp4` — consumer app prototype (homepage + case study final)
+Local videos in `public/images/`:
+- `keytrn-demo.mp4` — consumer app prototype
 - `keytrn-notebooklm.mp4` — NotebookLM research session
 - `keytrn-miro-ia.mp4` — Miro government portal IA
 - `keytrn-figma-arch.mp4` — Figma platform architecture
@@ -134,30 +197,10 @@ Copy files to `/tmp` first if filename has spaces.
 
 ---
 
-## Routing
-
-React Router v7. `vercel.json` has SPA rewrite rule.
-
-```
-/                  → Home (Hero, About, Projects, Contact)
-/projects/:slug    → CaseStudy
-/resume            → Resume
-```
-
-Nav links starting with `/#` use `<a>` + `handleAnchor`. Page routes use `<Link>`.
-
----
-
-## Gitignore Notes
-
-- `public/images/*.mp4` and `*.mov` — videos excluded
-- `src/pages/KeytrnPrototype.jsx` — local-only prototype for screen recording
-
----
-
 ## Known Gotchas
 
-- **Tailwind hyphenated keys**: `gap-space-4` never generates CSS. Use `gap-6`.
-- **Framer Motion + CSS transform conflict**: Don't put `transform: translateY()` inline on a `motion.*` element that also uses `whileHover={{ scale }}`. Wrap in a plain div for positioning; let the motion element only handle scale.
+- **`@apply` + fontSize tokens**: `@apply text-display-2xl` fails inside `@layer components` — write clamp values as plain CSS instead.
+- **Tailwind hyphenated spacing**: `gap-space-4` never generates CSS in JIT. Use standard numeric scale (`gap-6`) or the `space-*` tokens defined in config.
+- **Framer Motion + CSS transform conflict**: Don't put `transform: translateY()` inline on a `motion.*` element that also uses `whileHover={{ scale }}`. Wrap in a plain div for positioning.
 - **Font timing**: Use `document.fonts.ready`, not `document.fonts.load()`.
 - **CircleLetters hover**: Only animate `r` and `opacity` in keyframes — adding transform causes `forwards` fill to block the hover scale.

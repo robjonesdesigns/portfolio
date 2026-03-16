@@ -20,7 +20,7 @@ export default function Projects() {
         {/* Header */}
         <div className="mb-8">
           <m.h2
-            className="font-display font-bold text-display-xl text-fg"
+            className="type-display-xl"
             initial={{ y: 16 }}
             whileInView={{ y: 0 }}
             viewport={{ once: true, amount: 0 }}

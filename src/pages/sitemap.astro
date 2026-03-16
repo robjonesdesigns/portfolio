@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import SitemapPage from '../components/pages/SitemapPage.jsx'
 ---
 
 <Layout
@@ -7,22 +8,5 @@ import Layout from '../layouts/Layout.astro'
   description="Site map for Rob Jones - Product Designer portfolio."
   canonical="/sitemap"
 >
-  <div style="padding: 6rem 2rem; max-width: 640px; margin: 0 auto; font-family: sans-serif; color: var(--fg); background: var(--bg); min-height: 100vh;">
-    <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">Sitemap</h1>
-
-    <h2 style="font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.5; margin-bottom: 0.75rem;">Pages</h2>
-    <ul style="list-style: none; padding: 0; margin: 0 0 2rem;">
-      <li style="margin-bottom: 0.5rem;"><a href="/" style="color: var(--accent);">Home</a></li>
-      <li style="margin-bottom: 0.5rem;"><a href="/resume" style="color: var(--accent);">Resume</a></li>
-    </ul>
-
-    <h2 style="font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.5; margin-bottom: 0.75rem;">Case Studies</h2>
-    <ul style="list-style: none; padding: 0; margin: 0;">
-      <li style="margin-bottom: 0.5rem;"><a href="/projects/keytrn-proptech" style="color: var(--accent);">Keytrn - PropTech Platform</a></li>
-      <li style="margin-bottom: 0.5rem;"><a href="/projects/honeywell-apm" style="color: var(--accent);">Honeywell - Asset Performance Management</a></li>
-      <li style="margin-bottom: 0.5rem;"><a href="/projects/honeywell-warehouse" style="color: var(--accent);">Honeywell - Warehouse Operations</a></li>
-      <li style="margin-bottom: 0.5rem;"><a href="/projects/aysa-mvp" style="color: var(--accent);">Aysa - MVP Launch</a></li>
-      <li style="margin-bottom: 0.5rem;"><a href="/projects/sinta-hr-platform" style="color: var(--accent);">Sinta - HR Interview Platform</a></li>
-    </ul>
-  </div>
+  <SitemapPage client:load />
 </Layout>

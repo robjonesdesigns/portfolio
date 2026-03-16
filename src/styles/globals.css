@@ -89,20 +89,13 @@
   color-scheme: light;
 
   /* Interactive states */
-  --accent-hover:  #5c2232;               /* #813746 darkened ~35% */
+  --accent-hover:  #5c2232;
   --accent-bg-10:  rgba(129, 55, 70, 0.10);
   --accent-ring:   rgba(129, 55, 70, 0.20);
 
   /* Component tokens */
   --fg-secondary: #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
   --bg-subtle:    #fdf8f2;  /* warm section tint */
-
-  /* Fluid display type scale */
-  --text-display-2xl: clamp(3rem, 8vw, 6rem);          /* 48–96px  Hero h1, Resume name        */
-  --text-display-xl:  clamp(2.5rem, 6vw, 5rem);        /* 40–80px  Section h2, CaseStudy h1    */
-  --text-display-lg:  clamp(2rem, 5vw, 3.75rem);       /* 32–60px  CTA / editorial h2          */
-  --text-display-md:  clamp(1.5rem, 3vw, 2.25rem);     /* 24–36px  Card / component h3         */
-  --text-display-sm:  clamp(1.25rem, 1.75vw, 1.5rem);  /* 20–24px  Resume labels, sub-headings */
 }
 
 .dark {
@@ -119,7 +112,7 @@
   color-scheme: dark;
 
   /* Interactive states */
-  --accent-hover:  #ba5a6e;                /* #e36f86 darkened ~25% */
+  --accent-hover:  #ba5a6e;
   --accent-bg-10:  rgba(227, 111, 134, 0.10);
   --accent-ring:   rgba(227, 111, 134, 0.20);
 
@@ -172,26 +165,8 @@
   }
 }
 
-/* ─── Type tokens ─────────────────────────────────────────────────────── */
+/* ─── Utilities ───────────────────────────────────────────────────────── */
 @layer utilities {
-
-  /* Display — fluid, defined here to avoid Tailwind JIT hyphenation issues */
-  .text-display-2xl { font-size: var(--text-display-2xl); line-height: 1;    letter-spacing: -0.04em; }
-  .text-display-xl  { font-size: var(--text-display-xl);  line-height: 1;    letter-spacing: -0.03em; }
-  .text-display-lg  { font-size: var(--text-display-lg);  line-height: 1.1;  letter-spacing: -0.03em; }
-  .text-display-md  { font-size: var(--text-display-md);  line-height: 1.25; letter-spacing: -0.02em; }
-  .text-display-sm  { font-size: var(--text-display-sm);  line-height: 1.3;  letter-spacing: -0.01em; }
-
-  /* Body — fixed sizes */
-  .text-body-lg { font-size: 20px; line-height: 1.7; }
-  .text-body    { font-size: 16px; line-height: 1.7; }
-  .text-body-sm { font-size: 14px; line-height: 1.7; }
-  .text-caption { font-size: 12px; line-height: 1.5; }
-
-  /* Labels — font-body in uppercase. color applied separately in the component */
-  .text-label { font-size: 14px; line-height: 1.4; letter-spacing: 0.12em; text-transform: uppercase; }
-  .text-meta  { font-size: 12px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; }
-
   /* Color aliases */
   .text-fg           { color: var(--fg); }
   .text-fg-secondary { color: var(--fg-secondary); }
@@ -201,7 +176,77 @@
   .bg-accent         { background-color: var(--accent); }
   .border-token        { border-color: var(--border); }
   .border-token-strong { border-color: var(--border-strong); }
-  .bg-subtle { background-color: var(--bg-subtle); }
+  .bg-subtle           { background-color: var(--bg-subtle); }
+}
+
+/* ─── Type composition classes ───────────────────────────────────────── */
+/*
+ * Single-class typography — font, size, weight, color all baked in.
+ * Use these everywhere instead of manual class strings.
+ *
+ * Display (Cabinet Grotesk, bold, fluid clamp):
+ *   type-display-2xl  48–96px   Hero h1
+ *   type-display-xl   40–80px   Section h2
+ *   type-display-lg   32–60px   CTA / editorial h2
+ *   type-display-md   24–36px   Card / component h3
+ *   type-display-sm   20–24px   Sub-headings
+ *
+ * Body (Areal, responsive 16px → 20px):
+ *   type-body         Body text, full fg color
+ *   type-label        Uppercase label, secondary color, bold
+ *   type-link         Brand-colored inline link, opacity on hover
+ *   type-badge        Metadata / tag text, full fg color
+ *   type-nav-link     Nav link, medium weight, underline in component
+ */
+@layer components {
+  /* ── Display — Cabinet Grotesk, bold, fluid clamp ── */
+  .type-display-2xl {
+    @apply font-display font-bold text-fg;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .type-display-xl {
+    @apply font-display font-bold text-fg;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .type-display-lg {
+    @apply font-display font-bold text-fg;
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  .type-display-md {
+    @apply font-display font-bold text-fg;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .type-display-sm {
+    @apply font-display font-bold text-fg;
+    font-size: clamp(1.25rem, 1.75vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── Body — Areal, responsive 16px → 20px ── */
+  .type-body, .type-label, .type-link, .type-badge, .type-nav-link {
+    font-family: Areal, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .type-body     { color: var(--fg); }
+  .type-badge    { color: var(--fg); }
+  .type-label    { font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-secondary); }
+  .type-link     { color: var(--accent); transition: opacity 0.2s; }
+  .type-link:hover { opacity: 0.7; }
+  .type-nav-link { font-weight: 500; color: var(--fg); }
+
+  @media (min-width: 768px) {
+    .type-body, .type-label, .type-link, .type-badge, .type-nav-link { font-size: 20px; }
+  }
 }
 
 /* ─── Noise overlay ───────────────────────────────────────────────────── */
@@ -216,7 +261,6 @@
   background-repeat: repeat;
   background-size: 128px;
 }
-
 
 /* ─── Scrollbar ───────────────────────────────────────────────────────── */
 ::-webkit-scrollbar        { width: 3px; }

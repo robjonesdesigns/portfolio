@@ -37,7 +37,7 @@ export default function Hero() {
 
         {/* ── Headline — word by word, forced line breaks ── */}
         <h1
-          className="font-display font-bold text-display-2xl text-fg leading-[0.95] tracking-tight mb-7"
+          className="type-display-2xl leading-[0.95] tracking-tight mb-7"
           aria-label={LINES.join(' ')}
         >
           {WORDS.map((lineWords, li) => (
@@ -61,7 +61,7 @@ export default function Hero() {
 
         {/* ── Subtext ── */}
         <m.p
-          className="font-body text-body md:text-body-lg text-fg max-w-2xl mb-6 text-pretty"
+          className="type-body max-w-2xl mb-6 text-pretty"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: TOTAL_WORDS * 0.1, ease: EASE }}

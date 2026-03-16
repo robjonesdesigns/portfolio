@@ -35,7 +35,7 @@ export default function Navbar({ theme, toggleTheme }) {
     borderBottom:         '1px solid var(--border)',
   }
 
-  const linkClass = "font-body text-body md:text-body-lg font-medium relative group text-fg transition-opacity duration-300"
+  const linkClass = "type-nav-link relative group transition-opacity duration-300"
 
   return (
     <header style={headerStyle}>

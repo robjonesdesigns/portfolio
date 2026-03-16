@@ -45,7 +45,7 @@ function Placeholder({ color }) {
         border:          `1px solid ${color ? `${color}45` : 'var(--border)'}`,
       }}
     >
-      <span className="font-body text-body md:text-body-lg text-fg" style={{ opacity: 0.25 }}>[ image ]</span>
+      <span className="type-body" style={{ opacity: 0.25 }}>[ image ]</span>
     </div>
   )
 }
@@ -109,7 +109,7 @@ export default function WorkEntry({ project, index = 0 }) {
     >
       {/* Headline */}
       <h3
-        className="font-display font-bold text-display-md text-fg mb-8 md:mb-10"
+        className="type-display-md mb-8 md:mb-10"
       >
         {headline}
       </h3>
@@ -123,7 +123,7 @@ export default function WorkEntry({ project, index = 0 }) {
       <div className="mb-10 md:mb-12">
         <a
           href={`/projects/${slug}`}
-          aria-label={`See more — ${company} case study`}
+          aria-label={`See more — ${headline}`}
           className="font-body text-body md:text-body-lg text-brand-primary hover:opacity-60 transition-opacity"
         >
           See more →
@@ -134,33 +134,33 @@ export default function WorkEntry({ project, index = 0 }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
 
         <div>
-          <p className="font-body font-bold text-body md:text-body-lg mb-2 text-fg-secondary uppercase tracking-wide">
+          <p className="type-badge font-bold mb-2 uppercase tracking-wide">
             Company
           </p>
-          <p className="font-body text-body md:text-body-lg text-fg">{company}</p>
+          <p className="type-body">{company}</p>
         </div>
 
         <div>
-          <p className="font-body font-bold text-body md:text-body-lg mb-2 text-fg-secondary uppercase tracking-wide">
+          <p className="type-badge font-bold mb-2 uppercase tracking-wide">
             Role
           </p>
-          <p className="font-body text-body md:text-body-lg text-fg">{role}</p>
+          <p className="type-body">{role}</p>
         </div>
 
         <div>
-          <p className="font-body font-bold text-body md:text-body-lg mb-2 text-fg-secondary uppercase tracking-wide">
+          <p className="type-badge font-bold mb-2 uppercase tracking-wide">
             Problem
           </p>
-          <p className="font-body text-body md:text-body-lg text-fg">{description}</p>
+          <p className="type-body">{description}</p>
         </div>
 
         <div>
-          <p className="font-body font-bold text-body md:text-body-lg mb-2 text-fg-secondary uppercase tracking-wide">
+          <p className="type-badge font-bold mb-2 uppercase tracking-wide">
             Outcome
           </p>
           <ul className="flex flex-col gap-2">
             {(outcomes || []).map((item, i) => (
-              <li key={i} className="flex gap-2 font-body text-body md:text-body-lg text-fg">
+              <li key={i} className="flex gap-2 type-body">
                 <span className="text-brand-primary shrink-0 leading-relaxed">○</span>
                 <span>{item}</span>
               </li>

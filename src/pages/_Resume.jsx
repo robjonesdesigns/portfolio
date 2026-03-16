@@ -62,7 +62,7 @@ const frameworks = [
 function SectionLabel({ children }) {
   return (
     <div className="mb-8">
-      <span className="font-display font-bold text-display-sm text-fg">{children}</span>
+      <span className="type-display-sm">{children}</span>
     </div>
   )
 }
@@ -71,13 +71,13 @@ function ExperienceBlock({ company, role, period, bullets }) {
   return (
     <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
       <div>
-        <p className="font-body font-bold text-body md:text-body-lg text-fg">{company}</p>
+        <p className="type-body font-bold">{company}</p>
         <p className="font-body text-body md:text-body-lg mt-1 text-brand-primary">{role}</p>
-        <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">{period}</p>
+        <p className="type-badge mt-1">{period}</p>
       </div>
       <ul className="flex flex-col gap-3">
         {bullets.map((b, i) => (
-          <li key={i} className="font-body text-body md:text-body-lg pl-4 relative text-fg-secondary">
+          <li key={i} className="type-badge pl-4 relative">
             <span className="absolute left-0 top-[0.55em] w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--accent)' }} />
             {b}
           </li>
@@ -107,7 +107,7 @@ export default function Resume() {
             initial="hidden"
             animate="show"
           >
-            <m.h1 variants={fadeUp} className="font-display font-bold text-display-2xl text-fg mb-3">
+            <m.h1 variants={fadeUp} className="type-display-2xl mb-3">
               Rob Jones
             </m.h1>
 
@@ -115,7 +115,7 @@ export default function Resume() {
               UX &amp; Product Designer with 4+ years across startups &amp; SaaS enterprise
             </m.p>
 
-            <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body md:text-body-lg text-fg-secondary">
+            <m.div variants={fadeUp} className="flex flex-wrap gap-4 type-badge">
               <a href="mailto:robjonesdesigns@gmail.com" target="_blank" rel="noopener noreferrer"
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--accent)'}
                 onMouseLeave={e => e.currentTarget.style.color = ''}>
@@ -157,13 +157,13 @@ export default function Resume() {
             <SectionLabel>Education</SectionLabel>
             <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-body font-bold text-body md:text-body-lg text-fg">Stony Brook University</p>
-                <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">BA in Studio Arts</p>
+                <p className="type-body font-bold">Stony Brook University</p>
+                <p className="type-badge mt-1">BA in Studio Arts</p>
               </div>
               <div>
-                <p className="font-body font-bold text-body md:text-body-lg text-fg">CareerFoundry</p>
+                <p className="type-body font-bold">CareerFoundry</p>
                 <p className="font-body text-body md:text-body-lg mt-1 text-brand-primary">UX Design Certified Program</p>
-                <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">600+ hours</p>
+                <p className="type-badge mt-1">600+ hours</p>
               </div>
             </div>
           </section>
@@ -173,13 +173,13 @@ export default function Resume() {
             <SectionLabel>Skills</SectionLabel>
             <div className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-body font-bold text-body md:text-body-lg mb-4 text-fg-secondary uppercase tracking-wide">Tools</p>
+                <p className="type-badge font-bold mb-4 uppercase tracking-wide">Tools</p>
                 <div className="flex flex-wrap gap-2">
                   {tools.map(t => <Badge key={t}>{t}</Badge>)}
                 </div>
               </div>
               <div>
-                <p className="font-body font-bold text-body md:text-body-lg mb-4 text-fg-secondary uppercase tracking-wide">Frameworks</p>
+                <p className="type-badge font-bold mb-4 uppercase tracking-wide">Frameworks</p>
                 <div className="flex flex-wrap gap-2">
                   {frameworks.map(f => <Badge key={f}>{f}</Badge>)}
                 </div>

@@ -18,10 +18,10 @@ const stagger = {
 function Section({ label, children }) {
   return (
     <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-3xl">
-      <h2 className="font-display font-bold text-display-md text-fg">
+      <h2 className="type-display-md">
         {label}
       </h2>
-      <div className="font-body text-body md:text-body-lg leading-relaxed text-fg">
+      <div className="type-body leading-relaxed">
         {children}
       </div>
     </m.div>
@@ -31,7 +31,7 @@ function Section({ label, children }) {
 function ProcessMediaCard({ item }) {
   return (
     <m.div variants={fadeUp} className="flex flex-col gap-3">
-      <h2 className="font-display font-bold text-display-sm text-fg">
+      <h2 className="type-display-sm">
         {item.label}
       </h2>
       <div style={{
@@ -52,7 +52,7 @@ function ProcessMediaCard({ item }) {
         )}
       </div>
       {item.caption && (
-        <p className="font-body text-body md:text-body-lg leading-relaxed max-w-3xl text-fg mt-3">
+        <p className="type-body leading-relaxed max-w-3xl mt-3">
           {item.caption}
         </p>
       )}
@@ -75,7 +75,7 @@ export default function CaseStudy({ project }) {
             >
               <m.h1
                 variants={fadeUp}
-                className="font-display font-bold text-display-md text-fg"
+                className="type-display-md"
               >
                 {project.headline}
               </m.h1>
@@ -86,24 +86,24 @@ export default function CaseStudy({ project }) {
                 {/* Left col — Company + Problem */}
                 <div className="flex flex-col gap-8">
                   <div className="flex flex-col gap-1">
-                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">Company</span>
-                    <span className="font-body text-body md:text-body-lg font-medium text-fg">{project.company}</span>
+                    <span className="type-badge font-bold uppercase tracking-wide">Company</span>
+                    <span className="type-body font-medium">{project.company}</span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">Problem</span>
-                    <p className="font-body text-body md:text-body-lg text-fg">{project.metaProblem}</p>
+                    <span className="type-badge font-bold uppercase tracking-wide">Problem</span>
+                    <p className="type-body">{project.metaProblem}</p>
                   </div>
                 </div>
 
                 {/* Right col — Role + Outcome */}
                 <div className="flex flex-col gap-8">
                   <div className="flex flex-col gap-1">
-                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">Role</span>
-                    <span className="font-body text-body md:text-body-lg font-medium text-fg">{project.role}</span>
+                    <span className="type-badge font-bold uppercase tracking-wide">Role</span>
+                    <span className="type-body font-medium">{project.role}</span>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <span className="font-body font-bold text-body md:text-body-lg text-fg-secondary uppercase tracking-wide">Outcome</span>
-                    <p className="font-body text-body md:text-body-lg text-fg">{project.outcomes?.[0]}</p>
+                    <span className="type-badge font-bold uppercase tracking-wide">Outcome</span>
+                    <p className="type-body">{project.outcomes?.[0]}</p>
                   </div>
                 </div>
 
@@ -125,7 +125,7 @@ export default function CaseStudy({ project }) {
 
               {/* Intro */}
               {project.intro && (
-                <m.p variants={fadeUp} className="font-body text-body md:text-body-lg leading-relaxed text-fg max-w-3xl">
+                <m.p variants={fadeUp} className="type-body leading-relaxed max-w-3xl">
                   {project.intro}
                 </m.p>
               )}
@@ -137,9 +137,9 @@ export default function CaseStudy({ project }) {
               {project.ugaContent !== undefined && (
                 <m.div variants={fadeUp} className="max-w-3xl">
                   {project.ugaContent ? (
-                    <p className="font-body text-body md:text-body-lg leading-relaxed text-fg">{project.ugaContent}</p>
+                    <p className="type-body leading-relaxed">{project.ugaContent}</p>
                   ) : (
-                    <p className="font-body text-body md:text-body-lg leading-relaxed text-fg" style={{ opacity: 0.35, fontStyle: 'italic' }}>
+                    <p className="type-body leading-relaxed" style={{ opacity: 0.35, fontStyle: 'italic' }}>
                       Worked with the UGA Business Law Clinic on entity structure, IP ownership, and equity agreements. Content coming soon.
                     </p>
                   )}
@@ -152,14 +152,14 @@ export default function CaseStudy({ project }) {
                 className="flex justify-between items-center pt-8 border-t"
                 style={{ borderColor: 'var(--border)' }}
               >
-                <a href="/" className="font-body text-body-sm font-medium text-brand-primary">
+                <a href="/" className="type-link">
                   ← All Projects
                 </a>
                 {(() => {
                   const idx = projects.findIndex((p) => p.slug === project.slug)
                   const next = projects[(idx + 1) % projects.length]
                   return (
-                    <a href={`/projects/${next.slug}`} className="font-body text-body-sm font-medium text-brand-primary">
+                    <a href={`/projects/${next.slug}`} className="type-link">
                       Next: {next.title} →
                     </a>
                   )

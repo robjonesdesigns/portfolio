@@ -69,7 +69,7 @@ const frameworks = [
 function SectionLabel({ children }) {
   return (
     <div className="mb-8">
-      <h2 className="font-display font-bold text-display-sm text-fg">{children}</h2>
+      <h2 className="type-display-sm">{children}</h2>
     </div>
   )
 }
@@ -78,13 +78,13 @@ function ExperienceBlock({ company, role, period, bullets }) {
   return (
     <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
       <div>
-        <h3 className="font-body font-bold text-body md:text-body-lg text-fg">{company}</h3>
-        <p className="font-body text-body md:text-body-lg mt-1 text-fg">{role}</p>
-        <p className="font-body text-body md:text-body-lg mt-1 text-fg">{period}</p>
+        <h3 className="type-body font-bold">{company}</h3>
+        <p className="type-body mt-1">{role}</p>
+        <p className="type-body mt-1">{period}</p>
       </div>
       <ul className="flex flex-col gap-3">
         {bullets.map((b, i) => (
-          <li key={i} className="font-body text-body md:text-body-lg pl-4 relative text-fg">
+          <li key={i} className="type-body pl-4 relative">
             <span className="absolute left-0 top-[0.55em] w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--accent)' }} />
             {b}
           </li>
@@ -117,15 +117,15 @@ export default function Resume() {
             initial="hidden"
             animate="show"
           >
-            <m.h1 variants={slideUp} className="font-display font-bold text-display-2xl text-fg mb-3">
+            <m.h1 variants={slideUp} className="type-display-2xl mb-3">
               Rob Jones
             </m.h1>
 
-            <m.p variants={slideUp} className="font-display font-bold text-display-md text-fg tracking-tight mb-6">
+            <m.p variants={slideUp} className="type-display-md tracking-tight mb-6">
               UX &amp; Product Designer with 4+ years across startups &amp; SaaS enterprise
             </m.p>
 
-            <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body md:text-body-lg text-fg">
+            <m.div variants={fadeUp} className="flex flex-wrap gap-4 type-body">
               <a href="mailto:robjonesdesigns@gmail.com" target="_blank" rel="noopener noreferrer"
                 className="text-brand-primary hover:opacity-70 transition-opacity duration-200">
                 robjonesdesigns@gmail.com
@@ -166,13 +166,13 @@ export default function Resume() {
             <SectionLabel>Education</SectionLabel>
             <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-body font-bold text-body md:text-body-lg text-fg">Stony Brook University</p>
-                <p className="font-body text-body md:text-body-lg mt-1 text-fg">BA in Studio Arts</p>
+                <p className="type-body font-bold">Stony Brook University</p>
+                <p className="type-body mt-1">BA in Studio Arts</p>
               </div>
               <div>
-                <p className="font-body font-bold text-body md:text-body-lg text-fg">CareerFoundry</p>
-                <p className="font-body text-body md:text-body-lg mt-1 text-fg">UX Design Certified Program</p>
-                <p className="font-body text-body md:text-body-lg mt-1 text-fg">600+ hours</p>
+                <p className="type-body font-bold">CareerFoundry</p>
+                <p className="type-body mt-1">UX Design Certified Program</p>
+                <p className="type-body mt-1">600+ hours</p>
               </div>
             </div>
           </div>
@@ -182,13 +182,13 @@ export default function Resume() {
             <SectionLabel>Skills</SectionLabel>
             <div className="grid md:grid-cols-2 gap-10 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
-                <p className="font-body font-bold text-body md:text-body-lg mb-4 text-fg-secondary uppercase tracking-wide">Tools</p>
+                <p className="type-badge font-bold mb-4 uppercase tracking-wide">Tools</p>
                 <div className="flex flex-wrap gap-2">
                   {tools.map(t => <Badge key={t}>{t}</Badge>)}
                 </div>
               </div>
               <div>
-                <p className="font-body font-bold text-body md:text-body-lg mb-4 text-fg-secondary uppercase tracking-wide">Frameworks</p>
+                <p className="type-badge font-bold mb-4 uppercase tracking-wide">Frameworks</p>
                 <div className="flex flex-wrap gap-2">
                   {frameworks.map(f => <Badge key={f}>{f}</Badge>)}
                 </div>

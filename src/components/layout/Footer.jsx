@@ -31,7 +31,7 @@ export default function Footer() {
                   Available for work
                 </span>
               </div>
-              <h2 className="font-display font-bold text-display-lg text-fg">
+              <h2 className="type-display-lg">
                 Let's build something<br className="hidden md:block" /> great together.
               </h2>
             </div>
@@ -51,7 +51,7 @@ export default function Footer() {
 
           </div>
           <div className="mt-10 pt-6 border-t" style={{ borderColor: 'var(--border)' }}>
-            <a href="/sitemap" className="font-body text-body text-fg-secondary hover:text-brand-primary transition-colors">
+            <a href="/sitemap" className="type-link">
               Sitemap
             </a>
           </div>

@@ -45,17 +45,17 @@ export default function About() {
             viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
           >
-            <h2 className="font-display font-bold text-display-lg text-fg">
+            <h2 className="type-display-lg">
               Designing with intention. Building with&nbsp;care.
             </h2>
 
-            <p className="font-body text-body md:text-body-lg text-fg">
+            <p className="type-body">
               I'm a Product Designer with a passion for creating digital experiences
               that put people first. I bridge the gap between business goals and user
               needs, turning complex problems into elegant, intuitive solutions.
             </p>
 
-            <p className="font-body text-body md:text-body-lg text-fg">
+            <p className="type-body">
               With a background spanning UX research, interaction design, and design
               systems, I work best at the intersection of strategy and craft, where
               thoughtful process meets pixel-perfect execution.
@@ -63,7 +63,7 @@ export default function About() {
 
             {/* Skills */}
             <div>
-              <p className="font-body font-bold text-body md:text-body-lg mb-4 text-fg-secondary uppercase tracking-wide">
+              <p className="type-badge font-bold mb-4 uppercase tracking-wide">
                 Skills &amp; Tools
               </p>
               <div className="flex flex-wrap gap-2">
