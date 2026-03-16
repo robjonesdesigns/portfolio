@@ -21,7 +21,7 @@ function Section({ label, children }) {
       <h2 className="font-display font-bold text-display-md text-fg">
         {label}
       </h2>
-      <div className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary">
+      <div className="font-body text-body md:text-body-lg leading-relaxed text-fg">
         {children}
       </div>
     </m.div>
@@ -52,7 +52,7 @@ function ProcessMediaCard({ item }) {
         )}
       </div>
       {item.caption && (
-        <p className="font-body text-body md:text-body-lg leading-relaxed max-w-3xl text-fg-secondary mt-3">
+        <p className="font-body text-body md:text-body-lg leading-relaxed max-w-3xl text-fg mt-3">
           {item.caption}
         </p>
       )}
@@ -125,7 +125,7 @@ export default function CaseStudy({ project }) {
 
               {/* Intro */}
               {project.intro && (
-                <m.p variants={fadeUp} className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary max-w-3xl">
+                <m.p variants={fadeUp} className="font-body text-body md:text-body-lg leading-relaxed text-fg max-w-3xl">
                   {project.intro}
                 </m.p>
               )}
@@ -137,9 +137,9 @@ export default function CaseStudy({ project }) {
               {project.ugaContent !== undefined && (
                 <m.div variants={fadeUp} className="max-w-3xl">
                   {project.ugaContent ? (
-                    <p className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary">{project.ugaContent}</p>
+                    <p className="font-body text-body md:text-body-lg leading-relaxed text-fg">{project.ugaContent}</p>
                   ) : (
-                    <p className="font-body text-body md:text-body-lg leading-relaxed text-fg-secondary" style={{ opacity: 0.35, fontStyle: 'italic' }}>
+                    <p className="font-body text-body md:text-body-lg leading-relaxed text-fg" style={{ opacity: 0.35, fontStyle: 'italic' }}>
                       Worked with the UGA Business Law Clinic on entity structure, IP ownership, and equity agreements. Content coming soon.
                     </p>
                   )}

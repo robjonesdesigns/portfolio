@@ -61,7 +61,7 @@ export default function Hero() {
 
         {/* ── Subtext ── */}
         <m.p
-          className="font-body text-body md:text-body-lg text-fg-secondary max-w-2xl mb-6 text-pretty"
+          className="font-body text-body md:text-body-lg text-fg max-w-2xl mb-6 text-pretty"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: TOTAL_WORDS * 0.1, ease: EASE }}

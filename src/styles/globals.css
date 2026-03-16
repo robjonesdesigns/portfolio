@@ -94,8 +94,8 @@
   --accent-ring:   rgba(129, 55, 70, 0.20);
 
   /* Component tokens */
-  --fg-secondary: #5c5250;  /* 7.34:1 on --bg ✓ AAA — warm gray-brown */
-  --bg-subtle:    #fdf8f2;  /* 7.17:1 fg-secondary on this bg ✓ AAA — warm section tint */
+  --fg-secondary: #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
+  --bg-subtle:    #fdf8f2;  /* warm section tint */
 
   /* Fluid display type scale */
   --text-display-2xl: clamp(3rem, 8vw, 6rem);          /* 48–96px  Hero h1, Resume name        */
@@ -124,8 +124,8 @@
   --accent-ring:   rgba(227, 111, 134, 0.20);
 
   /* Component tokens */
-  --fg-secondary: #b0a89e;  /* 7.41:1 on --bg dark ✓ AAA — warm sandy gray */
-  --bg-subtle:    #201e1a;  /* 7.09:1 fg-secondary on this bg ✓ AAA — warm section tint */
+  --fg-secondary: #c2bab0;  /* lighter warm sandy gray — used for labels */
+  --bg-subtle:    #201e1a;  /* warm section tint */
 }
 
 /* ─── Skip link ───────────────────────────────────────────────────────── */

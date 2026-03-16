@@ -80,11 +80,11 @@ function ExperienceBlock({ company, role, period, bullets }) {
       <div>
         <p className="font-body font-bold text-body md:text-body-lg text-fg">{company}</p>
         <p className="font-body text-body md:text-body-lg mt-1 text-brand-primary">{role}</p>
-        <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">{period}</p>
+        <p className="font-body text-body md:text-body-lg mt-1 text-fg">{period}</p>
       </div>
       <ul className="flex flex-col gap-3">
         {bullets.map((b, i) => (
-          <li key={i} className="font-body text-body md:text-body-lg pl-4 relative text-fg-secondary">
+          <li key={i} className="font-body text-body md:text-body-lg pl-4 relative text-fg">
             <span className="absolute left-0 top-[0.55em] w-1 h-1 rounded-full" style={{ backgroundColor: 'var(--accent)' }} />
             {b}
           </li>
@@ -125,7 +125,7 @@ export default function Resume() {
               UX &amp; Product Designer with 4+ years across startups &amp; SaaS enterprise
             </m.p>
 
-            <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body md:text-body-lg text-fg-secondary">
+            <m.div variants={fadeUp} className="flex flex-wrap gap-4 font-body text-body md:text-body-lg text-fg">
               <a href="mailto:robjonesdesigns@gmail.com" target="_blank" rel="noopener noreferrer"
                 className="hover:text-brand-primary transition-colors duration-200">
                 robjonesdesigns@gmail.com
@@ -167,12 +167,12 @@ export default function Resume() {
             <div className="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style={{ borderColor: 'var(--border)' }}>
               <div>
                 <p className="font-body font-bold text-body md:text-body-lg text-fg">Stony Brook University</p>
-                <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">BA in Studio Arts</p>
+                <p className="font-body text-body md:text-body-lg mt-1 text-fg">BA in Studio Arts</p>
               </div>
               <div>
                 <p className="font-body font-bold text-body md:text-body-lg text-fg">CareerFoundry</p>
                 <p className="font-body text-body md:text-body-lg mt-1 text-brand-primary">UX Design Certified Program</p>
-                <p className="font-body text-body md:text-body-lg mt-1 text-fg-secondary">600+ hours</p>
+                <p className="font-body text-body md:text-body-lg mt-1 text-fg">600+ hours</p>
               </div>
             </div>
           </div>
