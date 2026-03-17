@@ -59,11 +59,11 @@ export default function CaseStudy({ project }) {
               initial="hidden"
               animate="show"
               variants={stagger}
-              className="flex flex-col gap-6 max-w-3xl"
+              className="flex flex-col gap-6"
             >
               <m.h1
                 variants={fadeUp}
-                className="type-display-md"
+                className="type-display-xl"
               >
                 {project.headline}
               </m.h1>
