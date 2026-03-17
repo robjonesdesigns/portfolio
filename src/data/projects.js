@@ -149,9 +149,9 @@ export const projects = [
     year: '2025',
     tags: ['0→1 Product Design', 'Primary Research', 'B2G + B2C', 'Data-Heavy UI'],
     headline: 'PropTech platform built on 20+ interviews',
-    description: 'Foreclosure data is scattered across county websites, PDFs, and expensive investor platforms. Regular homebuyers have no easy way to find it.',
+    description: 'Two audiences, one data model, and no existing designs on either side.',
     outcomes: [
-      'Designed both sides of the platform from scratch, backed by 20+ county interviews, to give regular homebuyers access to data only investors have had.',
+      'Designed both the government and consumer product sides as the sole designer.',
       'Primary research across 20+ municipalities informed the entire information architecture',
     ],
     video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-demo.mp4',
@@ -223,7 +223,7 @@ export const projects = [
     // Add content here once documents are reviewed
     ugaContent: null,
     outcome: 'Designed most of both the government and consumer product sides before departing. Primary research across 20+ municipalities produced firsthand insights that grounded the entire information architecture.',
-    metaProblem: 'Foreclosure data is scattered across county websites, PDFs, and expensive investor platforms. Regular homebuyers have no easy way to find it.',
+    metaProblem: 'Two audiences, one data model, and no existing designs on either side.',
     role: 'Product Designer (Solo)',
     duration: '5 months',
     team: '1 Designer, Founding Team',
