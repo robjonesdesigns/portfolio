@@ -3,7 +3,7 @@
 Rob Jones. Product Designer. This is a personal portfolio site.
 
 **Path:** `~/Documents/Dev/portfolio/`
-**Dev server:** `npm run dev` → `http://localhost:4321/`
+**Dev server:** `npm run dev` → `http://localhost:4321/` (falls back to 4322, 4323 if port is in use)
 **Stack:** Astro 6 (SSG) + React 19 islands + Tailwind CSS v3.4 + Framer Motion
 
 ---
@@ -157,7 +157,8 @@ Each project can include:
 - `overview`, `problem`, `process`, `solution`, `outcome` — case study text
 - `role`, `duration`, `team` — case study meta
 - `processMedia` — array of `{ id, label, caption, video }` for case study process section
-- `finalMedia` — `{ label, caption, video }` for case study solution section
+- `finalMedia` — `{ label, caption, video }` for case study solution section (defined in data but not currently rendered in CaseStudy.jsx)
+- `designDecisions` — array of `{ title, problem, decision, why }` — renders a "Design decisions" section with Problem/Decision/Why for each entry; omit to hide
 - `ugaContent` — omit to hide section; `null` for placeholder; string to show content
 
 ---
@@ -177,7 +178,8 @@ Each project can include:
 ### CaseStudy.jsx
 - `ProcessMediaCard` renders labeled video cards with captions
 - `processMedia` array → multiple process cards
-- `finalMedia` → single solution card
+- `designDecisions` array → "Design decisions" section, each entry shows title + Problem/Decision/Why
+- `finalMedia` → defined in data but not yet rendered in CaseStudy.jsx
 
 ---
 
