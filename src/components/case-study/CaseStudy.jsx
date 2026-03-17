@@ -18,7 +18,13 @@ const stagger = {
 
 function ProcessMediaCard({ item }) {
   return (
-    <m.div variants={fadeUp} className="flex flex-col gap-3">
+    <m.div
+      className="flex flex-col gap-3"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    >
       <h3 className="type-display-sm">
         {item.label}
       </h3>
@@ -103,17 +109,17 @@ export default function CaseStudy({ project }) {
         {/* Content */}
         <div className="py-20">
           <Container>
-            <m.div
-              className="flex flex-col gap-16"
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}
-              variants={stagger}
-            >
+            <div className="flex flex-col gap-16">
 
               {/* Overview */}
               {project.intro && (
-                <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-3xl">
+                <m.div
+                  className="flex flex-col gap-4 max-w-3xl"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
                   <h2 className="type-display-md">Overview</h2>
                   <p className="type-body leading-relaxed">{project.intro}</p>
                 </m.div>
@@ -123,16 +129,25 @@ export default function CaseStudy({ project }) {
               {project.processMedia?.map(item => (
                 <Fragment key={item.id}>
                   {item.sectionLabel && (
-                    <m.div variants={fadeUp} className="max-w-3xl">
+                    <m.div
+                      className="max-w-3xl"
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    >
                       <h2 className="type-display-md">{item.sectionLabel}</h2>
                     </m.div>
                   )}
                   <ProcessMediaCard item={item} />
                   {item.followedByInsight && project.keyInsight && (
                     <m.div
-                      variants={fadeUp}
                       className="max-w-3xl flex flex-col gap-3"
                       style={{ borderLeft: '3px solid var(--accent)', paddingLeft: '1.5rem' }}
+                      initial={{ opacity: 0, y: 16 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <span className="type-label">Key insight</span>
                       <p className="type-body leading-relaxed">{project.keyInsight}</p>
@@ -143,7 +158,13 @@ export default function CaseStudy({ project }) {
 
               {/* Design Decisions */}
               {project.designDecisions?.length > 0 && (
-                <m.div variants={fadeUp} className="flex flex-col gap-10 max-w-3xl">
+                <m.div
+                  className="flex flex-col gap-10 max-w-3xl"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
                   <h2 className="type-display-md">Design decisions</h2>
                   {project.designDecisions.map((d, i) => (
                     <div key={i} className="flex flex-col gap-6 pt-10 border-t" style={{ borderColor: 'var(--border)' }}>
@@ -169,7 +190,13 @@ export default function CaseStudy({ project }) {
 
               {/* Reflection */}
               {project.reflection && (
-                <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-3xl">
+                <m.div
+                  className="flex flex-col gap-4 max-w-3xl"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
                   <h2 className="type-display-md">Reflection</h2>
                   <p className="type-body leading-relaxed">{project.reflection}</p>
                 </m.div>
@@ -177,7 +204,13 @@ export default function CaseStudy({ project }) {
 
               {/* UGA Business Law Clinic */}
               {project.ugaContent !== undefined && (
-                <m.div variants={fadeUp} className="max-w-3xl">
+                <m.div
+                  className="max-w-3xl"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
                   {project.ugaContent ? (
                     <p className="type-body leading-relaxed">{project.ugaContent}</p>
                   ) : (
@@ -189,8 +222,7 @@ export default function CaseStudy({ project }) {
               )}
 
               {/* Navigation */}
-              <m.div
-                variants={fadeUp}
+              <div
                 className="flex justify-between items-center pt-8 border-t"
                 style={{ borderColor: 'var(--border)' }}
               >
@@ -206,9 +238,9 @@ export default function CaseStudy({ project }) {
                     </a>
                   )
                 })()}
-              </m.div>
+              </div>
 
-            </m.div>
+            </div>
           </Container>
         </div>
       </div>
