@@ -109,7 +109,7 @@ export default function CaseStudy({ project }) {
         {/* Content */}
         <div className="py-20">
           <Container>
-            <div className="flex flex-col gap-16">
+            <div className="flex flex-col gap-20">
 
               {/* Overview */}
               {project.intro && (
@@ -122,6 +122,9 @@ export default function CaseStudy({ project }) {
                 >
                   <h2 className="type-display-md">Overview</h2>
                   <p className="type-body leading-relaxed">{project.intro}</p>
+                  {project.orientationNote && (
+                    <p className="type-body leading-relaxed" style={{ color: 'var(--fg-secondary)' }}>{project.orientationNote}</p>
+                  )}
                 </m.div>
               )}
 
@@ -165,21 +168,21 @@ export default function CaseStudy({ project }) {
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <h2 className="type-display-md">Design decisions</h2>
+                  <h2 className="type-display-md">Key design decisions</h2>
                   {project.designDecisions.map((d, i) => (
-                    <div key={i} className="flex flex-col gap-6 pt-10 border-t" style={{ borderColor: 'var(--border)' }}>
+                    <div key={i} className="flex flex-col gap-8 pt-14 border-t" style={{ borderColor: 'var(--border)' }}>
                       <h3 className="type-display-sm">{d.title}</h3>
-                      <div className="flex flex-col gap-5">
-                        <div className="flex flex-col gap-1">
-                          <span className="type-badge font-bold uppercase tracking-wide">Problem</span>
+                      <div className="flex flex-col gap-8">
+                        <div className="flex flex-col gap-2">
+                          <span className="type-label">Problem</span>
                           <p className="type-body leading-relaxed">{d.problem}</p>
                         </div>
-                        <div className="flex flex-col gap-1">
-                          <span className="type-badge font-bold uppercase tracking-wide">Decision</span>
+                        <div className="flex flex-col gap-2">
+                          <span className="type-label">Decision</span>
                           <p className="type-body leading-relaxed">{d.decision}</p>
                         </div>
-                        <div className="flex flex-col gap-1">
-                          <span className="type-badge font-bold uppercase tracking-wide">Why</span>
+                        <div className="flex flex-col gap-2">
+                          <span className="type-label">Why</span>
                           <p className="type-body leading-relaxed">{d.why}</p>
                         </div>
                       </div>
