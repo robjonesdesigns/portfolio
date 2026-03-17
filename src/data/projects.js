@@ -164,23 +164,29 @@ export const projects = [
     processMedia: [
       {
         id: 'research',
+        sectionLabel: 'Research',
+        followedByInsight: true,
         label: 'Primary Research: Butler County, PA',
-        caption: 'One of 20+ counties researched directly. Call notes were organized in NotebookLM by county, with AI used to summarize patterns and surface inconsistencies. The key finding: every county publishes foreclosure data differently. Some use CSV exports, others send PDFs, some require manual entry one property at a time. That fragmentation directly drove the decision to build a flexible government upload portal instead of simply buying pre-packaged lists.',
+        caption: 'One of 20+ counties researched directly. Call notes were organized in NotebookLM by county, with AI used to summarize patterns and surface inconsistencies across municipalities.',
         video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-notebooklm.mp4',
       },
       {
         id: 'ia-gov',
+        sectionLabel: 'Information Architecture',
         label: 'Information Architecture: Government Portal',
         caption: 'IA for the government-facing data entry tool, mapped in Miro. Structured around the actual workflows county workers use to submit and manage property records across different sale types.',
         video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-miro-ia.mp4',
       },
       {
         id: 'app-arch',
+        sectionLabel: 'System Architecture',
         label: 'App Architecture',
         caption: 'Full platform architecture built in Figma. The dual-sided structure required both products to operate off the same underlying data model while serving completely different user needs.',
         video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-figma-arch.mp4',
       },
     ],
+    keyInsight: 'Every county publishes foreclosure data differently. Some use CSV exports, others send PDFs, and some require records to be entered manually one at a time. Trying to normalize that at the data layer would have taken months and still wouldn\'t have covered every case. The design decision was to build a flexible upload system that worked with however a county already operated, rather than asking them to change their process to fit the platform.',
+    reflection: 'The county research phase generated clearer direction than expected. One question I didn\'t ask was how many people per office actually manage foreclosure listings. That would have directly shaped the user permissions model for the government portal. If the platform moves forward, the next design focus would be the consumer property detail screen: surfacing data progressively based on what each county can provide, and integrating title data once platform coverage justifies the cost. The UGA Business Law Clinic engagement resolved the entity structure and equity questions, so that foundation is already in place.',
     solution: 'Designed the government-facing interface (manual data entry, PDF upload, Excel import, modal-to-data-table flows) and the consumer-facing property browsing experience, accounting for highly variable data across listings including photos, satellite imagery, bed and bath counts, acreage, and legal status.',
     finalMedia: {
       label: 'Consumer App: Final Prototype',

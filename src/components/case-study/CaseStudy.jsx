@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { m } from 'framer-motion'
 import { projects } from '../../data/projects'
 import PageTransition from '../ui/PageTransition'
@@ -15,25 +16,12 @@ const stagger = {
   show: { transition: { staggerChildren: 0.1 } },
 }
 
-function Section({ label, children }) {
-  return (
-    <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-3xl">
-      <h2 className="type-display-md">
-        {label}
-      </h2>
-      <div className="type-body leading-relaxed">
-        {children}
-      </div>
-    </m.div>
-  )
-}
-
 function ProcessMediaCard({ item }) {
   return (
     <m.div variants={fadeUp} className="flex flex-col gap-3">
-      <h2 className="type-display-sm">
+      <h3 className="type-display-sm">
         {item.label}
-      </h2>
+      </h3>
       <div style={{
         background: 'color-mix(in srgb, var(--fg) 6%, var(--surface))',
         border: '1px solid var(--border)',
@@ -66,7 +54,7 @@ export default function CaseStudy({ project }) {
       <div className="min-h-screen">
         {/* Hero */}
         <div className="pt-28 md:pt-36 pb-20 bg-subtle">
-          <Container >
+          <Container>
             <m.div
               initial="hidden"
               animate="show"
@@ -123,15 +111,35 @@ export default function CaseStudy({ project }) {
               variants={stagger}
             >
 
-              {/* Intro */}
+              {/* Overview */}
               {project.intro && (
-                <m.p variants={fadeUp} className="type-body leading-relaxed max-w-3xl">
-                  {project.intro}
-                </m.p>
+                <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-3xl">
+                  <h2 className="type-display-md">Overview</h2>
+                  <p className="type-body leading-relaxed">{project.intro}</p>
+                </m.div>
               )}
 
-              {/* Process media */}
-              {project.processMedia?.map(item => <ProcessMediaCard key={item.id} item={item} />)}
+              {/* Process media — with optional section labels and key insight */}
+              {project.processMedia?.map(item => (
+                <Fragment key={item.id}>
+                  {item.sectionLabel && (
+                    <m.div variants={fadeUp} className="max-w-3xl">
+                      <h2 className="type-display-md">{item.sectionLabel}</h2>
+                    </m.div>
+                  )}
+                  <ProcessMediaCard item={item} />
+                  {item.followedByInsight && project.keyInsight && (
+                    <m.div
+                      variants={fadeUp}
+                      className="max-w-3xl flex flex-col gap-3"
+                      style={{ borderLeft: '3px solid var(--accent)', paddingLeft: '1.5rem' }}
+                    >
+                      <span className="type-label">Key insight</span>
+                      <p className="type-body leading-relaxed">{project.keyInsight}</p>
+                    </m.div>
+                  )}
+                </Fragment>
+              ))}
 
               {/* Design Decisions */}
               {project.designDecisions?.length > 0 && (
@@ -156,6 +164,14 @@ export default function CaseStudy({ project }) {
                       </div>
                     </div>
                   ))}
+                </m.div>
+              )}
+
+              {/* Reflection */}
+              {project.reflection && (
+                <m.div variants={fadeUp} className="flex flex-col gap-4 max-w-3xl">
+                  <h2 className="type-display-md">Reflection</h2>
+                  <p className="type-body leading-relaxed">{project.reflection}</p>
                 </m.div>
               )}
 
