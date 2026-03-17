@@ -156,9 +156,14 @@ Each project can include:
 - `image` — case study hero image
 - `overview`, `problem`, `process`, `solution`, `outcome` — case study text
 - `role`, `duration`, `team` — case study meta
-- `processMedia` — array of `{ id, label, caption, video }` for case study process section
+- `processMedia` — array of `{ id, label, caption, video, sectionLabel?, followedByInsight? }` for case study process section
+  - `sectionLabel` — renders an h2 above the card (e.g. "Research", "Information Architecture")
+  - `followedByInsight: true` — renders `keyInsight` callout after this card
 - `finalMedia` — `{ label, caption, video }` for case study solution section (defined in data but not currently rendered in CaseStudy.jsx)
-- `designDecisions` — array of `{ title, problem, decision, why }` — renders a "Design decisions" section with Problem/Decision/Why for each entry; omit to hide
+- `keyInsight` — string; renders as left-border accent callout after the `followedByInsight` card
+- `designDecisions` — array of `{ title, problem, decision, why }` — renders "Key design decisions" section; omit to hide
+- `reflection` — string; renders as final section before nav
+- `orientationNote` — string; renders below intro paragraph in muted color; use to orient readers about the product and point to homepage for final UI
 - `ugaContent` — omit to hide section; `null` for placeholder; string to show content
 
 ---
@@ -176,10 +181,13 @@ Each project can include:
 - Use everywhere instead of raw `<video>` tags
 
 ### CaseStudy.jsx
-- `ProcessMediaCard` renders labeled video cards with captions
-- `processMedia` array → multiple process cards
-- `designDecisions` array → "Design decisions" section, each entry shows title + Problem/Decision/Why
+- `ProcessMediaCard` renders labeled video cards with captions; has its own `whileInView` (no global stagger parent)
+- `processMedia` array → multiple process cards with optional `sectionLabel` h2 and `keyInsight` callout
+- `designDecisions` array → "Key design decisions" section; PROBLEM/DECISION/WHY use `type-label` class
+- `orientationNote` → muted paragraph below intro, used to orient readers and reference homepage
+- `reflection` → section above nav
 - `finalMedia` → defined in data but not yet rendered in CaseStudy.jsx
+- **Never use a global stagger parent on whileInView content** — each section animates independently
 
 ---
 
@@ -214,6 +222,16 @@ VoiceOver users navigate: `1` → hero, `2` → Work, `3` → cycle all project 
 Applied in:
 - `Hero.jsx` — word spans use `initial={{ opacity: 1, y: 12 }}` (slide only, never hidden)
 - `WorkEntry.jsx` — outer `<m.article>` slides (`y` only), inner `<m.div>` fades so `h3` is always findable
+
+---
+
+## Performance
+
+- Cabinet Grotesk loads from Fontshare CDN — **pending: self-host in `public/fonts/` to eliminate external dependency** (download from fontshare.com, add `@font-face` to globals.css, remove Fontshare `<link>` from Layout.astro)
+- Cloudinary preconnect added to Layout.astro — cuts TCP handshake before first video request
+- Use `http://127.0.0.1:4321` instead of `http://localhost` in dev — avoids macOS IPv6 resolution lag
+- Dev server cache issues: fix with `rm -rf .astro node_modules/.vite` then restart
+- All pages use `client:load` — required because above-fold Framer Motion animations need immediate hydration
 
 ---
 
