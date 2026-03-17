@@ -133,6 +133,32 @@ export default function CaseStudy({ project }) {
               {/* Process media */}
               {project.processMedia?.map(item => <ProcessMediaCard key={item.id} item={item} />)}
 
+              {/* Design Decisions */}
+              {project.designDecisions?.length > 0 && (
+                <m.div variants={fadeUp} className="flex flex-col gap-10 max-w-3xl">
+                  <h2 className="type-display-md">Design decisions</h2>
+                  {project.designDecisions.map((d, i) => (
+                    <div key={i} className="flex flex-col gap-4 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>
+                      <h3 className="type-display-sm">{d.title}</h3>
+                      <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-1">
+                          <span className="type-badge font-bold uppercase tracking-wide">Problem</span>
+                          <p className="type-body leading-relaxed">{d.problem}</p>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <span className="type-badge font-bold uppercase tracking-wide">Decision</span>
+                          <p className="type-body leading-relaxed">{d.decision}</p>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <span className="type-badge font-bold uppercase tracking-wide">Why</span>
+                          <p className="type-body leading-relaxed">{d.why}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </m.div>
+              )}
+
               {/* UGA Business Law Clinic */}
               {project.ugaContent !== undefined && (
                 <m.div variants={fadeUp} className="max-w-3xl">

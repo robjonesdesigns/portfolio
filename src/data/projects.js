@@ -187,6 +187,38 @@ export const projects = [
       caption: 'The consumer-facing property browser, built as an interactive prototype. Designed to surface foreclosure and tax-delinquent listings with variable data across counties.',
       video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-demo.mp4',
     },
+    designDecisions: [
+      {
+        title: 'Build a portal, not just buy the lists',
+        problem: 'The original plan was to purchase county foreclosure lists and pipe them into a consumer app. But lists go stale fast, vary in quality county to county, and buying them one by one doesn\'t scale past Pennsylvania.',
+        decision: 'Build a government upload portal so counties can submit and manage their own data directly, supporting CSV, PDF, manual entry, and batch uploads.',
+        why: 'Fresh data, flexible uploads, and a system that works across states without a county-by-county operation. It also gave counties something useful in return: a dashboard to track their own inventory and monitor neighborhood health. That changed the pitch from "give us your data" to "here\'s a tool that helps you too."',
+      },
+      {
+        title: 'Design for chaos, not perfect data',
+        problem: 'Calling 20+ Pennsylvania counties revealed that foreclosure data is inconsistent across the board. Different sale types, different workflows, different formats. County workers had 5 to 10 minutes and no patience for a complicated tool.',
+        decision: 'Structure the government portal around three areas: Search, Upload, and Management. Left-side navigation to switch between them. Tabs within sections to preserve context between tasks.',
+        why: 'Normalizing the data inconsistency was a long-term infrastructure problem. The design could address it right away by being flexible enough to accept messy data and simple enough for a county worker to get in, upload a batch, and leave without needing training.',
+      },
+      {
+        title: 'Explain the sale type, don\'t just label it',
+        problem: 'Judicial, upset, repository, and sheriff sales mean different things legally and financially. Most homebuyers have no reason to know the difference. Getting it wrong can cost them.',
+        decision: 'Show sale type as a badge on every listing card. On the detail screen, include a plain-language explanation of what that sale type means and what the buyer is getting into.',
+        why: 'The platform\'s purpose was to give regular people access to data that investors have always had. That only works if the data is actually understandable. Showing the label without context would recreate the same problem in a different interface.',
+      },
+      {
+        title: 'Choose trust over growth — blue wins the AB test',
+        problem: 'The platform serves government workers and first-time homebuyers at the same time. It needed to feel credible and approachable to both.',
+        decision: 'Ran AB testing with 30 users across three color options. Dark forest green and navy blue came out nearly tied. Chose blue.',
+        why: 'Green signals growth and community. Blue signals trust and professionalism. For a platform handling financial and legal property data, trust mattered more. The goal was to apply the simplicity and friendliness of something like Airbnb to what could easily have felt like a government form.',
+      },
+      {
+        title: 'Resolve the business structure before going further',
+        problem: 'A non-profit structure made sense for the government portal (counties won\'t work with a company they think is profiting from their data), but the consumer app needed a for-profit model to sustain itself. You can\'t run both under one entity. Co-founders couldn\'t align on ownership or structure.',
+        decision: 'Applied to the UGA Business Law Clinic, a program where law students work on real cases under a practicing attorney, and brought the full problem to them: entity type, IP ownership, and equity agreements.',
+        why: 'Rather than let the stalemate block progress, the decision was to bring in outside counsel. The recommendation: form an LLC, establish early-stage IP protections, and put equity in writing from the start with a plan to distribute once roles were formalized.',
+      },
+    ],
     // UGA Business Law Clinic — entity structure, IP, equity agreements
     // Add content here once documents are reviewed
     ugaContent: null,
