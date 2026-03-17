@@ -165,7 +165,7 @@ export const projects = [
       {
         id: 'research',
         label: 'Primary Research: Butler County, PA',
-        caption: 'One of 20+ counties researched directly. Call notes were organized in NotebookLM by county, with AI used to summarize patterns and surface inconsistencies across municipalities. Every IA and UI decision traces back to these conversations.',
+        caption: 'One of 20+ counties researched directly. Call notes were organized in NotebookLM by county, with AI used to summarize patterns and surface inconsistencies. The key finding: every county publishes foreclosure data differently. Some use CSV exports, others send PDFs, some require manual entry one property at a time. That fragmentation directly drove the decision to build a flexible government upload portal instead of simply buying pre-packaged lists.',
         video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-notebooklm.mp4',
       },
       {

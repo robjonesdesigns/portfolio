@@ -138,9 +138,9 @@ export default function CaseStudy({ project }) {
                 <m.div variants={fadeUp} className="flex flex-col gap-10 max-w-3xl">
                   <h2 className="type-display-md">Design decisions</h2>
                   {project.designDecisions.map((d, i) => (
-                    <div key={i} className="flex flex-col gap-4 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>
+                    <div key={i} className="flex flex-col gap-6 pt-10 border-t" style={{ borderColor: 'var(--border)' }}>
                       <h3 className="type-display-sm">{d.title}</h3>
-                      <div className="flex flex-col gap-3">
+                      <div className="flex flex-col gap-5">
                         <div className="flex flex-col gap-1">
                           <span className="type-badge font-bold uppercase tracking-wide">Problem</span>
                           <p className="type-body leading-relaxed">{d.problem}</p>
