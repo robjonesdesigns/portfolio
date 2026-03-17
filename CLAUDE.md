@@ -197,6 +197,24 @@ Copy files to `/tmp` first if filename has spaces.
 
 ---
 
+## Accessibility
+
+### Heading hierarchy (VoiceOver quick nav: 1/2/3 keys)
+- `h1` — Hero ("I'm Rob.")
+- `h2` — Section headings: Work, About, Footer CTA
+- `h3` — WorkEntry project titles
+
+VoiceOver users navigate: `1` → hero, `2` → Work, `3` → cycle all project cards, `2` → About, `2` → Footer CTA.
+
+### Framer Motion + VoiceOver
+**Never set `initial={{ opacity: 0 }}` on an element that contains a heading.** VoiceOver quick nav cannot find headings inside invisible elements. Fix: animate `y` only on the outer wrapper, fade opacity on an inner `<m.div>` so the heading is always visible in the DOM.
+
+Applied in:
+- `Hero.jsx` — word spans use `initial={{ opacity: 1, y: 12 }}` (slide only, never hidden)
+- `WorkEntry.jsx` — outer `<m.article>` slides (`y` only), inner `<m.div>` fades so `h3` is always findable
+
+---
+
 ## Known Gotchas
 
 - **`@apply` + fontSize tokens**: `@apply text-display-2xl` fails inside `@layer components` — write clamp values as plain CSS instead.

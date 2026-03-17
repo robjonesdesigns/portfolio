@@ -46,8 +46,8 @@ export default function Hero() {
                 <m.span
                   key={index}
                   className="inline-block mr-[0.25em]"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 1, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: EASE }}
                 >
                   {word === 'Rob.' ? (

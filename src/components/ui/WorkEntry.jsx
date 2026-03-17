@@ -102,11 +102,17 @@ export default function WorkEntry({ project, index = 0 }) {
       tabIndex={index === 0 ? -1 : undefined}
       className="py-8 border-t"
       style={{ borderColor: 'var(--border)' }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 20 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.4, ease: EASE, delay: index * 0.06 }}
     >
+      <m.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.4, ease: EASE, delay: index * 0.06 }}
+      >
       {/* Headline */}
       <h3
         className="type-display-md mb-8 md:mb-10"
@@ -169,6 +175,7 @@ export default function WorkEntry({ project, index = 0 }) {
         </div>
 
       </div>
+      </m.div>
     </m.article>
   )
 }
