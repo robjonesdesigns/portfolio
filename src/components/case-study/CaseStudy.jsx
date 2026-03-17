@@ -63,7 +63,7 @@ export default function CaseStudy({ project }) {
             >
               <m.h1
                 variants={fadeUp}
-                className="type-display-xl"
+                className="type-display-lg"
               >
                 {project.headline}
               </m.h1>
