@@ -31,10 +31,11 @@ const experience = [
     role:     'UX Designer',
     period:   '2022 – 2025',
     bullets: [
-      'Led UX design for 3+ Asset Performance Management Dashboards, from discovery to high-fidelity UI and dev handoff.',
-      'Planned and ran user research: wrote screeners and interview guides, recruited participants, and conducted moderated interviews to validate workflows.',
-      'Partnered with PM and engineering to iterate quickly and ship improvements across a data-heavy enterprise platform.',
-      'Increased usability through research-driven iteration, contributing to SUS scores in the 80s.',
+      'Redesigned Asset Health and built Asset Details from scratch for the APM platform — raised SUS scores from the low 70s to the high 80s through moderated usability testing and research-driven iteration.',
+      'Designed the Warehouse Homepage and Merge Dashboard from scratch, giving operations managers real-time visibility into conveyor lane performance and a clear entry point for their shift.',
+      'Conducted a full heuristic evaluation of the Warehouse platform and led UXQA across the team to verify fixes to affordances, typography, labeling, and spacing were correctly implemented.',
+      'Wrote screeners and interview guides, ran moderated sessions on UserTesting, and affinity mapped findings in Miro to ground design decisions in real user behavior.',
+      'Provided iterative design support across peers\' dashboards and contributed to the broader APM platform throughout the engagement.',
     ],
   },
   {
