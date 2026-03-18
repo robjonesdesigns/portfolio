@@ -27,15 +27,23 @@ const stagger = {
 /* ─── Resume data ──────────────────────────────────────────────── */
 const experience = [
   {
-    company:  'Honeywell',
+    company:  'Honeywell — Asset Performance Management (APM)',
     role:     'UX Designer',
     period:   '2022 – 2025',
     bullets: [
-      'Redesigned Asset Health and built Asset Details from scratch for the APM platform — raised SUS scores from the low 70s to the high 80s through moderated usability testing and research-driven iteration.',
+      'Redesigned Asset Health and built Asset Details from scratch — raised SUS scores from the low 70s to the high 80s through research-driven iteration.',
+      'Wrote screeners and interview guides from scratch, ran moderated usability sessions on UserTesting, and affinity mapped findings in Miro after each round to inform design decisions.',
+      'Provided iterative design support across peers\' dashboards and contributed updates across the broader APM platform throughout the engagement.',
+    ],
+  },
+  {
+    company:  'Honeywell — Warehouse Operations',
+    role:     'UX Designer',
+    period:   '2022 – 2025',
+    bullets: [
       'Designed the Warehouse Homepage and Merge Dashboard from scratch, giving operations managers real-time visibility into conveyor lane performance and a clear entry point for their shift.',
-      'Conducted a full heuristic evaluation of the Warehouse platform and led UXQA across the team to verify fixes to affordances, typography, labeling, and spacing were correctly implemented.',
-      'Wrote screeners and interview guides, ran moderated sessions on UserTesting, and affinity mapped findings in Miro to ground design decisions in real user behavior.',
-      'Provided iterative design support across peers\' dashboards and contributed to the broader APM platform throughout the engagement.',
+      'Conducted a full heuristic evaluation of the platform and led UXQA to verify that affordances, typography, labeling, and spacing were correctly implemented across the product.',
+      'Collaborated with a researcher on competitive reviews, affinity mapping, and user flow analysis to establish information hierarchy for the Homepage.',
     ],
   },
   {
