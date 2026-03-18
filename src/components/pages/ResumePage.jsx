@@ -29,7 +29,7 @@ const experience = [
   {
     company:  'Honeywell: Asset Performance Management (APM)',
     role:     'UX Designer',
-    period:   '2022 – 2025',
+    period:   '2024 – 2025',
     bullets: [
       'Wrote screeners and interview guides from scratch, ran moderated usability sessions on UserTesting, and affinity mapped findings in Miro after each round to inform design decisions.',
       'Redesigned Asset Health and built Asset Details from scratch. Raised SUS scores from the low 70s to the high 80s through research-driven iteration.',
@@ -39,7 +39,7 @@ const experience = [
   {
     company:  'Honeywell: Warehouse Operations',
     role:     'UX Designer',
-    period:   '2022 – 2025',
+    period:   '2022 – 2024',
     bullets: [
       'Designed the Warehouse Homepage and Merge Dashboard from scratch, giving operations managers real-time visibility into conveyor lane performance and a clear entry point for their shift.',
       'Conducted a full heuristic evaluation of the platform and led UXQA to verify that affordances, typography, labeling, and spacing were correctly implemented across the product.',
