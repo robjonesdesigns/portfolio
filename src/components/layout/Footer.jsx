@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { m } from 'framer-motion'
+import { motion as m } from 'framer-motion'
 import Container from './Container'
 
 const EMAIL = 'robjonesdesigns@gmail.com'

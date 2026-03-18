@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { m } from 'framer-motion'
+import { motion as m } from 'framer-motion'
 import ThemeToggle from '../ui/ThemeToggle'
 import RJLogo from '../ui/RJLogo'
 
