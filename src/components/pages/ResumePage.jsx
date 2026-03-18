@@ -33,7 +33,7 @@ const experience = [
     bullets: [
       'Wrote screeners and interview guides from scratch, ran moderated usability sessions on UserTesting, and affinity mapped findings in Miro after each round to inform design decisions.',
       'Redesigned Asset Health and built Asset Details from scratch — raised SUS scores from the low 70s to the high 80s through research-driven iteration.',
-      'Provided iterative design support across peers\' dashboards and contributed updates across the broader APM platform throughout the engagement.',
+      'Provided iterative design support across peers\' dashboards and contributed updates across both the APM and Warehouse platforms throughout the engagement.',
     ],
   },
   {
