@@ -39,15 +39,14 @@ const experience = [
   },
   {
     company:  'Freelance',
-    role:     'UX Designer',
-    period:   '2021 – Present',
+    role:     'Product Designer',
+    period:   '2020 – Present',
     bullets: [
-      'Aysa: Shipped a complete MVP from zero to live in 2 weeks, earning 15,000+ views in early rollout. Built a scalable UI kit to keep the product consistent as it scaled.',
-      'Keytrn Technologies: Interviewed 20+ municipalities to understand foreclosure workflows, created the brand and design system, and shipped build-ready designs for the founding team.',
-      'Alonesy: Led UX and UI design end-to-end for a mentorship app, from research and iterations through to final handoff.',
-      'Sinta: Owned the full UX lifecycle for a next-generation HR interview platform, working directly with founders to shape product strategy and core workflows.',
-      'Coffee & Bananaz: Redesigned the agency website as a UX Designer and Webflow Developer, transforming it into a dynamic platform showcasing client work.',
-      'National Political Advocacy Group: Designed and maintained 3 political campaign websites, ensuring best design practices across the team.',
+      'Shipped a corporate transparency app (Aysa) from concept to live in 2 weeks, earning 15,000+ views in its first social rollout. Rebuilt the investor pitch deck from scratch in support of a $2.1M seed round.',
+      'Designed Sinta\'s full HR interview platform from scratch — interview builder, live session screen with competency timestamping, post-interview review, and candidate scorecard. Product shipped, raised significant funding, and was acquired.',
+      'Led primary research across 20+ Pennsylvania county offices for Keytrn (PropTech platform) and designed both the government upload portal and consumer property browser as the sole designer.',
+      'Led the mentee side of Alonesy (mentorship app) — moderated interviews with 11 participants, 3 rounds of iteration, shipped with developers. App still live.',
+      'Designed and built agency and client websites in Webflow for Coffee & Bananaz. Designed and maintained campaign websites for Justice Democrats across senate and congressional races.',
     ],
   },
 ]
