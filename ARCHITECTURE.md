@@ -91,6 +91,8 @@ portfolio/
 │   │   │   ├── PageTransition.jsx
 │   │   │   ├── Marquee.jsx
 │   │   │   ├── CircleLetters.jsx
+│   │   │   ├── HeroName.jsx        Animated hero wordmark component
+│   │   │   ├── SEO.jsx             Head meta/OG tag helper
 │   │   │   ├── RJLogo.jsx
 │   │   │   └── RJLogo3D.jsx
 │   │   └── case-study/
@@ -101,6 +103,8 @@ portfolio/
 │   │   └── useTheme.js
 │   ├── layouts/
 │   │   └── Layout.astro        HTML shell — head, meta, fonts, OG tags
+│   ├── assets/                 Static assets imported by components (e.g. react.svg)
+│   ├── stories/                Storybook stories and MDX docs (not deployed)
 │   └── styles/
 │       └── globals.css         Tokens + composition classes
 ├── public/
@@ -108,6 +112,10 @@ portfolio/
 │   ├── images/                 Static assets (videos gitignored)
 │   └── RobJonesResume.pdf
 ├── vector/                     Investiture research artifacts
+│   ├── audits/
+│   ├── decisions/
+│   ├── research/
+│   └── schemas/                Investiture JSON schema definitions
 ├── VECTOR.md                   Project doctrine
 ├── CLAUDE.md                   Agent briefing + component reference
 ├── ARCHITECTURE.md             This file

@@ -107,18 +107,19 @@ export default function WorkEntry({ project, index = 0 }) {
       viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.4, ease: EASE, delay: index * 0.06 }}
     >
+      {/* Headline — outside fade wrapper so VoiceOver quick nav always finds it */}
+      <h3
+        className="type-display-md mb-8 md:mb-10"
+      >
+        {headline}
+      </h3>
+
       <m.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0 }}
         transition={{ duration: 0.4, ease: EASE, delay: index * 0.06 }}
       >
-      {/* Headline */}
-      <h3
-        className="type-display-md mb-8 md:mb-10"
-      >
-        {headline}
-      </h3>
 
       {/* Images / Video */}
       <div className="mb-5">

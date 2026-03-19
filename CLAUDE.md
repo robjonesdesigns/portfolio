@@ -94,23 +94,30 @@ src/
 ├── components/
 │   ├── layout/
 │   │   ├── Navbar.jsx          Fixed top bar — logo, nav links, theme toggle
-│   │   └── Footer.jsx          CTA + email copy + sitemap link
+│   │   ├── Footer.jsx          CTA + email copy + sitemap link
+│   │   └── Container.jsx       Max-width wrapper used across pages
 │   ├── sections/
 │   │   ├── Hero.jsx            CircleLetters + eyebrow + marquee
 │   │   ├── About.jsx
 │   │   ├── Projects.jsx        WorkEntry list
 │   │   └── Contact.jsx
 │   ├── pages/
-│   │   ├── ResumePage.jsx      Full resume page (Navbar + Footer included)
-│   │   └── SitemapPage.jsx     Sitemap page (Navbar + Footer included)
+│   │   ├── HomePage.jsx        Home — owns LazyMotion wrapper
+│   │   ├── ResumePage.jsx      Resume page — owns LazyMotion wrapper
+│   │   ├── SitemapPage.jsx     Sitemap page — owns LazyMotion wrapper
+│   │   └── CaseStudyPage.jsx   Case study shell — owns LazyMotion wrapper
 │   ├── ui/
 │   │   ├── WorkEntry.jsx       Project card — LaptopFrame or ImageGrid
 │   │   ├── LazyVideo.jsx       IntersectionObserver lazy loader for videos
 │   │   ├── CircleLetters.jsx   SVG circle-fill typography
+│   │   ├── HeroName.jsx        Animated hero wordmark
+│   │   ├── SEO.jsx             Head meta/OG tag helper
 │   │   ├── Badge.jsx
 │   │   ├── Button.jsx
 │   │   ├── PageTransition.jsx
 │   │   ├── Marquee.jsx
+│   │   ├── RJLogo.jsx          SVG logo mark
+│   │   ├── RJLogo3D.jsx        Three.js 3D logo (not currently rendered in prod)
 │   │   └── ThemeToggle.jsx
 │   └── case-study/
 │       └── CaseStudy.jsx

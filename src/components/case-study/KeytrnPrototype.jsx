@@ -119,6 +119,61 @@ const PROPERTIES = [
     parcel: '06 02 28 1 554', owner: 'Linda Thompson', propertyType: 'Home',
     mapPin: { x: '20%', y: '65%' },
   },
+  {
+    id: 7,
+    thumb: IMGS.chestnut, hero: IMGS.chestnut,
+    address: '302 Harrison Avenue', city: 'New Kensington, PA, 15068',
+    crumbs: ['PA', 'Westmoreland', 'New Kensington', '15068', 'Harrison Avenue'],
+    price: '$19,400', beds: 3, baths: 1, sqft: '1,120', acres: '0.41',
+    saleType: 'upset', county: 'Westmoreland County',
+    presenceScore: 28, roofCondition: 55,
+    parcel: '07 14 22 3 771', owner: 'Dorothy Evans', propertyType: 'Home',
+    mapPin: { x: '50%', y: '15%' },
+  },
+  {
+    id: 8,
+    thumb: IMGS.walnut, hero: IMGS.walnutHero,
+    address: '611 Broad Street', city: 'Monessen, PA, 15062',
+    crumbs: ['PA', 'Westmoreland', 'Monessen', '15062', 'Broad Street'],
+    price: '$12,500', beds: 2, baths: 1, sqft: '880', acres: '0.29',
+    saleType: 'judicial', county: 'Westmoreland County',
+    presenceScore: 6, roofCondition: 42,
+    parcel: '08 09 05 1 338', owner: 'Michael Torres', propertyType: 'Home',
+    mapPin: { x: '78%', y: '35%' },
+  },
+  {
+    id: 9,
+    thumb: IMGS.oakwood, hero: IMGS.oakwood,
+    address: '147 Washington Street', city: 'Greensburg, PA, 15601',
+    crumbs: ['PA', 'Westmoreland', 'Greensburg', '15601', 'Washington Street'],
+    price: '$21,300', beds: 4, baths: 2, sqft: '1,244', acres: '0.63',
+    saleType: 'repository', county: 'Westmoreland County',
+    presenceScore: 19, roofCondition: 68,
+    parcel: '03 07 14 2 496', owner: 'Susan Barnes', propertyType: 'Home',
+    mapPin: { x: '14%', y: '42%' },
+  },
+  {
+    id: 10,
+    thumb: IMGS.pine, hero: IMGS.pine,
+    address: '29 Elm Drive', city: 'Latrobe, PA, 15650',
+    crumbs: ['PA', 'Westmoreland', 'Latrobe', '15650', 'Elm Drive'],
+    price: '$17,800', beds: 3, baths: 1, sqft: '1,050', acres: '0.47',
+    saleType: 'private', county: 'Westmoreland County',
+    presenceScore: 33, roofCondition: 31,
+    parcel: '05 13 08 4 215', owner: 'George Mitchell', propertyType: 'Home',
+    mapPin: { x: '56%', y: '65%' },
+  },
+  {
+    id: 11,
+    thumb: IMGS.chestnut, hero: IMGS.chestnut,
+    address: '803 Market Street', city: 'Connellsville, PA, 15425',
+    crumbs: ['PA', 'Westmoreland', 'Connellsville', '15425', 'Market Street'],
+    price: '$13,950', beds: 2, baths: 1, sqft: '912', acres: '0.35',
+    saleType: 'judicial', county: 'Westmoreland County',
+    presenceScore: 12, roofCondition: 49,
+    parcel: '06 04 31 1 664', owner: 'Patricia Kim', propertyType: 'Home',
+    mapPin: { x: '40%', y: '78%' },
+  },
 ]
 
 // Location suggestions for the dropdown
@@ -258,76 +313,81 @@ const Badge = ({ type }) => {
 }
 
 // ─── Property card ────────────────────────────────────────────────────────────
-const PropertyCard = ({ property, onClick }) => (
-  <motion.div
-    role="button"
-    tabIndex={0}
-    aria-label={`View details for ${property.address}, ${property.city.replace(', PA,', ', PA')}, listed at ${property.price}`}
-    whileHover={{ scale: 1.025, y: -3, boxShadow: '0 12px 28px rgba(0,0,0,0.14)' }}
-    whileTap={{ scale: 0.975 }}
-    transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
-    onClick={() => onClick && onClick(property)}
-    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick && onClick(property) } }}
-    style={{
-      background: 'white', borderRadius: '10px', overflow: 'hidden',
-      cursor: 'pointer', boxShadow: '0 4px 8px rgba(0,0,0,0.12)',
-      width: '100%', fontFamily: 'Lato, sans-serif',
-    }}
-  >
-    <div style={{ height: '160px', position: 'relative', overflow: 'hidden' }}>
-      <img src={property.thumb} alt={property.address} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-      <div style={{ position: 'absolute', bottom: '8px', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '4px' }}>
-        {[0, 1, 2, 3, 4].map(i => (
-          <div key={i} style={{ width: '5px', height: '5px', borderRadius: '50%', background: i === 0 ? 'white' : 'rgba(255,255,255,0.45)' }} />
-        ))}
+const PropertyCard = ({ property, onClick }) => {
+  const hasBeds = property.beds != null && property.beds > 0
+  return (
+    <motion.div
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${property.address}, ${property.city.replace(/, /g, ', ')}, listed at ${property.price}`}
+      whileHover={{ scale: 1.025, y: -3, boxShadow: '0 12px 28px rgba(0,0,0,0.14)' }}
+      whileTap={{ scale: 0.975 }}
+      transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
+      onClick={() => onClick && onClick(property)}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick && onClick(property) } }}
+      style={{
+        background: 'white', borderRadius: '10px', overflow: 'hidden',
+        cursor: 'pointer', boxShadow: '0 2px 6px rgba(0,0,0,0.08)',
+        width: '100%', fontFamily: 'Lato, sans-serif',
+      }}
+    >
+      <div style={{ height: '160px', position: 'relative', overflow: 'hidden' }}>
+        <img src={property.thumb} alt={property.address} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </div>
-    </div>
-    <div style={{ padding: '10px 14px 12px' }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '4px' }}>
-        <div>
-          <p style={{ fontSize: '9px', color: '#535862', fontWeight: 600, lineHeight: 1.3 }}>Uploaded by:</p>
-          <p style={{ fontSize: '9px', color: '#535862', fontWeight: 600, lineHeight: 1.3 }}>{property.county}</p>
+      <div style={{ padding: '12px 14px 14px' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '6px' }}>
+          <div style={{ minWidth: 0, flex: 1, paddingRight: '8px' }}>
+            <p style={{ fontSize: '9px', color: '#717680', fontWeight: 600, lineHeight: 1.3, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Uploaded by</p>
+            <p style={{ fontSize: '9px', color: '#535862', fontWeight: 500, lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{property.county}</p>
+          </div>
+          <Badge type={property.saleType} />
         </div>
-        <Badge type={property.saleType} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '3px', marginBottom: '4px' }}>
+          <IconCheck />
+          <p style={{ fontSize: '9px', color: '#039855', fontWeight: 600 }}>County Verified</p>
+        </div>
+        <p style={{ fontSize: '12px', fontWeight: 600, color: '#181d27', lineHeight: 1.4 }}>{property.address}</p>
+        <p style={{ fontSize: '11px', color: '#535862', lineHeight: 1.4, marginBottom: '6px' }}>{property.city.replace(', PA,', ', PA')}</p>
+        {hasBeds
+          ? <p style={{ fontSize: '11px', color: '#535862' }}>{property.beds} Bed · {property.baths} Bath · {property.sqft} ft²</p>
+          : <p style={{ fontSize: '11px', color: '#717680', fontStyle: 'italic' }}>{property.propertyType} · {property.acres} acres</p>
+        }
+        <p style={{ fontSize: '20px', color: '#181d27', fontWeight: 700, marginTop: '6px', lineHeight: 1 }}>{property.price}</p>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '3px', marginBottom: '2px' }}>
-        <IconCheck />
-        <p style={{ fontSize: '9px', color: '#414651' }}>County Verified</p>
-      </div>
-      <p style={{ fontSize: '11px', color: '#414651', lineHeight: 1.5 }}>{property.address}</p>
-      <p style={{ fontSize: '11px', color: '#414651', lineHeight: 1.5, marginBottom: '4px' }}>{property.city.replace(', PA,', ', PA')}</p>
-      <p style={{ fontSize: '11px', color: '#535862' }}>{property.beds} Bed · {property.baths} Bath · {property.sqft} ft²</p>
-      <p style={{ fontSize: '19px', color: '#414651', fontWeight: 700, marginTop: '4px' }}>{property.price}</p>
-    </div>
-  </motion.div>
-)
+    </motion.div>
+  )
+}
 
 // ─── Shared nav ───────────────────────────────────────────────────────────────
 const KeytrnNav = ({ isMobile }) => (
   <nav style={{
     background: '#f5fafc', borderBottom: '1px solid #e0ecf5', height: '58px',
-    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-    padding: isMobile ? '0 20px' : '0 60px', fontFamily: 'Lato, sans-serif',
-    position: 'sticky', top: 0, zIndex: 100,
+    position: 'sticky', top: 0, zIndex: 100, fontFamily: 'Lato, sans-serif',
   }}>
-    <KeytrnLogo height={30} />
-    {!isMobile && (
-      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        {['Browse', 'Educate', 'About', 'Support', 'Account'].map(item => (
-          <button key={item} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: 600, color: '#535862', fontFamily: 'Lato, sans-serif' }}>
-            {item}
+    <div style={{
+      maxWidth: '1400px', margin: '0 auto',
+      padding: isMobile ? '0 20px' : '0 60px',
+      height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    }}>
+      <KeytrnLogo height={30} />
+      {!isMobile && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          {['Browse', 'Educate', 'About', 'Support', 'Account'].map(item => (
+            <button key={item} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: 600, color: '#535862', fontFamily: 'Lato, sans-serif' }}>
+              {item}
+            </button>
+          ))}
+          <button style={{ background: 'white', border: '1px solid #213694', borderRadius: '99px', padding: '6px 14px', fontSize: '14px', fontWeight: 600, color: '#213694', fontFamily: 'Lato, sans-serif', cursor: 'pointer' }}>
+            Sign up/Sign in
           </button>
-        ))}
-        <button style={{ background: 'white', border: '1px solid #213694', borderRadius: '99px', padding: '6px 14px', fontSize: '14px', fontWeight: 600, color: '#213694', fontFamily: 'Lato, sans-serif', cursor: 'pointer' }}>
-          Sign up/Sign in
+        </div>
+      )}
+      {isMobile && (
+        <button style={{ background: '#2e48b0', border: 'none', borderRadius: '99px', padding: '6px 14px', fontSize: '13px', fontWeight: 600, color: 'white', fontFamily: 'Lato, sans-serif', cursor: 'pointer' }}>
+          Sign in
         </button>
-      </div>
-    )}
-    {isMobile && (
-      <button style={{ background: '#2e48b0', border: 'none', borderRadius: '99px', padding: '6px 14px', fontSize: '13px', fontWeight: 600, color: 'white', fontFamily: 'Lato, sans-serif', cursor: 'pointer' }}>
-        Sign in
-      </button>
-    )}
+      )}
+    </div>
   </nav>
 )
 
@@ -636,32 +696,31 @@ function HomeScreen({ onSearch, onSelectProperty, activeFilters, onFiltersChange
   const width = useWindowWidth()
   const isMobile = width < 640
   const isTablet = width >= 640 && width < 1024
-  const px = isMobile ? '20px' : '60px'
 
   const [query, setQuery] = useState('')
 
   const toggleFilter = (key) =>
     onFiltersChange(prev => prev.includes(key) ? prev.filter(k => k !== key) : [...prev, key])
 
-  const cardCols = isMobile ? 2 : isTablet ? 2 : 4
-  const cardWidth = isMobile ? 'calc(50% - 8px)' : isTablet ? 'calc(50% - 12px)' : '272px'
+  const gridCols = isMobile ? 'repeat(2, 1fr)' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)'
+  const ctr = { maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '0 20px' : '0 60px', width: '100%' }
 
   return (
     <div style={{ background: '#f5fafc', minHeight: '100vh', fontFamily: 'Lato, sans-serif' }}>
       <KeytrnNav isMobile={isMobile} />
 
       {/* Hero */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: isMobile ? '40px 20px 0' : '64px 60px 0' }}>
+      <div style={{ ...ctr, paddingTop: isMobile ? '40px' : '64px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 16 }}
+          animate={{ y: 0 }}
           transition={{ delay: 0.08, duration: 0.45 }}
-          style={{ fontSize: isMobile ? '18px' : '24px', fontWeight: 600, color: '#414651', textAlign: 'center', marginBottom: '20px', fontFamily: 'Lato, sans-serif', maxWidth: '600px' }}
+          style={{ fontSize: isMobile ? '20px' : '28px', fontWeight: 700, color: '#181d27', textAlign: 'center', marginBottom: '24px', fontFamily: 'Lato, sans-serif', maxWidth: '600px', lineHeight: 1.3 }}
         >
           Where every home has a second chance.
         </motion.h1>
 
-        {/* Search + filter button */}
+        {/* Search + filter */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -698,7 +757,7 @@ function HomeScreen({ onSearch, onSelectProperty, activeFilters, onFiltersChange
               <motion.button
                 key={st.key}
                 initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: on ? 1 : 0.45, y: 0 }}
+                animate={{ opacity: on ? 1 : 0.65, y: 0 }}
                 transition={{ delay: 0.28 + i * 0.05 }}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
@@ -707,15 +766,16 @@ function HomeScreen({ onSearch, onSelectProperty, activeFilters, onFiltersChange
                 style={{
                   background: on ? '#2e48b0' : '#e5e7eb',
                   border: 'none', borderRadius: '99px',
-                  padding: isMobile ? '7px 12px' : '8px 14px', cursor: 'pointer',
+                  padding: isMobile ? '7px 12px' : '8px 16px', cursor: 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
                   flex: 1, minWidth: 0,
-                  fontSize: isMobile ? '12px' : '14px', fontWeight: 600,
+                  fontSize: isMobile ? '12px' : '13px', fontWeight: 600,
                   color: on ? 'white' : '#535862', fontFamily: 'Lato, sans-serif',
                   transition: 'background 0.2s, color 0.2s',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                {st.label}
+                {isMobile ? st.label.replace(' Sales', '') : st.label}
                 {!isMobile && on && <IconInfo />}
               </motion.button>
             )
@@ -724,43 +784,36 @@ function HomeScreen({ onSearch, onSelectProperty, activeFilters, onFiltersChange
       </div>
 
       {/* Featured Homes */}
-      <div style={{ padding: isMobile ? '40px 20px 0' : isTablet ? '48px 40px 0' : '60px 60px 0' }}>
+      <div style={{ ...ctr, paddingTop: isMobile ? '40px' : '56px', paddingBottom: '64px' }}>
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.32, duration: 0.45 }}>
-          <h2 style={{ fontSize: isMobile ? '16px' : '20px', fontWeight: 600, color: '#414651', marginBottom: '4px', fontFamily: 'Lato, sans-serif' }}>
+          <h2 style={{ fontSize: isMobile ? '16px' : '20px', fontWeight: 700, color: '#181d27', marginBottom: '4px', fontFamily: 'Lato, sans-serif' }}>
             Second-Chance Homes in Westmoreland County
           </h2>
-          <p style={{ fontSize: isMobile ? '14px' : '16px', color: '#414651', marginBottom: '20px', fontFamily: 'Lato, sans-serif' }}>
-            Explore properties made available through local foreclosure sales — affordable, verified, and waiting for the right buyer.
+          <p style={{ fontSize: isMobile ? '13px' : '15px', color: '#535862', marginBottom: '24px', fontFamily: 'Lato, sans-serif' }}>
+            Affordable, county-verified properties available through local foreclosure sales.
           </p>
 
-          {/* Cards — wrap on mobile/tablet, row on desktop */}
-          <div style={{
-            display: 'flex',
-            flexWrap: cardCols < 4 ? 'wrap' : 'nowrap',
-            gap: isMobile ? '12px' : '20px',
-          }}>
-            {PROPERTIES.slice(0, 4).map((p, i) => (
+          <div style={{ display: 'grid', gridTemplateColumns: gridCols, gap: isMobile ? '12px' : '20px' }}>
+            {PROPERTIES.slice(0, 8).map((p, i) => (
               <motion.div
                 key={p.id}
-                initial={{ opacity: 0, y: 32 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 * i + 0.38, duration: 0.4 }}
-                style={{ width: cardCols < 4 ? cardWidth : '272px', flexShrink: 0 }}
+                transition={{ delay: 0.06 * i + 0.38, duration: 0.38 }}
               >
                 <PropertyCard property={p} onClick={() => onSearch('Westmoreland County, PA')} />
               </motion.div>
             ))}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '36px', paddingBottom: '60px' }}>
-            <p style={{ fontSize: '16px', color: '#414651', fontFamily: 'Lato, sans-serif', marginBottom: '12px' }}>Continue exploring</p>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '36px' }}>
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => onSearch('Westmoreland County, PA')}
-              style={{ background: 'white', border: '1px solid #213694', borderRadius: '99px', padding: '8px 14px', fontSize: '14px', fontWeight: 600, color: '#213694', fontFamily: 'Lato, sans-serif', cursor: 'pointer' }}
+              style={{ background: 'white', border: '1.5px solid #213694', borderRadius: '99px', padding: '10px 24px', fontSize: '14px', fontWeight: 600, color: '#213694', fontFamily: 'Lato, sans-serif', cursor: 'pointer' }}
             >
-              Explore more homes
+              Explore all homes
             </motion.button>
           </div>
         </motion.div>
@@ -773,7 +826,7 @@ function HomeScreen({ onSearch, onSelectProperty, activeFilters, onFiltersChange
 function ResultsScreen({ query, onCardClick, initialFilters, onBackHome, advFilters, onAdvFilters }) {
   const width = useWindowWidth()
   const isMobile = width < 640
-  const showMap = width >= 1000
+  const showMap = width >= 1100
   const px = isMobile ? '16px' : '40px'
 
   const [active, setActive] = useState(initialFilters ?? ['judicial', 'upset', 'private', 'repository'])
@@ -792,8 +845,8 @@ function ResultsScreen({ query, onCardClick, initialFilters, onBackHome, advFilt
       <KeytrnNav isMobile={isMobile} />
 
       {/* Search + filter bar */}
-      <div style={{ background: 'white', borderBottom: '1px solid #e0ecf5', padding: isMobile ? '10px 16px' : '12px 40px', flexShrink: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
+      <div style={{ background: 'white', borderBottom: '1px solid #e0ecf5', flexShrink: 0 }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: isMobile ? '10px 16px' : '12px 60px', display: 'flex', alignItems: 'center', gap: '10px', flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
           <motion.button
             onClick={onBackHome}
             whileHover={{ x: -3 }}
@@ -846,12 +899,12 @@ function ResultsScreen({ query, onCardClick, initialFilters, onBackHome, advFilt
 
         {/* Cards panel — always visible, full width when no map */}
         <div style={{
-          width: showMap ? '560px' : '100%',
+          width: showMap ? '640px' : '100%',
           flexShrink: 0, overflowY: 'auto',
           padding: isMobile ? '16px' : `20px 20px 20px ${showMap ? '40px' : px}`,
           display: (!showMap && mapView) ? 'none' : 'block',
         }}>
-          <p role="status" aria-live="polite" style={{ fontSize: '13px', color: '#717680', marginBottom: '14px', fontFamily: 'Lato, sans-serif' }}>
+          <p role="status" aria-live="polite" style={{ fontSize: '13px', color: '#717680', marginBottom: '14px', fontFamily: 'Lato, sans-serif', paddingTop: '4px' }}>
             <strong style={{ color: '#414651' }}>{filtered.length} properties</strong> in Westmoreland County, PA
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: isMobile ? '10px' : '14px' }}>
@@ -1113,7 +1166,7 @@ function DetailScreen({ property, onBack }) {
   const isMobile = width < 640
   const isTablet = width >= 640 && width < 1000
   const stacked = width < 1000
-  const px = isMobile ? '16px' : '35px'
+  const px = isMobile ? '16px' : '60px'
 
   const [saved, setSaved] = useState(false)
   if (!property) return null
@@ -1126,7 +1179,7 @@ function DetailScreen({ property, onBack }) {
       <KeytrnNav isMobile={isMobile} />
 
       {/* Top bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: isMobile ? '10px 16px' : '14px 35px', flexWrap: 'wrap', gap: '8px' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: isMobile ? '10px 16px' : '14px 60px', flexWrap: 'wrap', gap: '8px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '12px' : '32px', flexWrap: 'wrap', minWidth: 0 }}>
           <motion.button
             onClick={onBack}
@@ -1163,7 +1216,7 @@ function DetailScreen({ property, onBack }) {
       </div>
 
       {/* Main content */}
-      <div style={{ padding: `0 ${px}` }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: `0 ${px}` }}>
 
         {/* Hero card: side-by-side on desktop, stacked on mobile */}
         {stacked ? (
@@ -1257,7 +1310,7 @@ function DetailScreen({ property, onBack }) {
 
         {/* Bottom panels */}
         <div style={{ display: 'grid', gridTemplateColumns: stacked ? '1fr' : '1fr 1fr', gap: stacked ? '12px' : '24px', marginTop: stacked ? '0' : '24px', paddingBottom: '48px' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ background: 'white', borderRadius: '10px', padding: '20px 24px', overflow: 'hidden' }}>
+          <motion.div initial={{ y: 20 }} animate={{ y: 0 }} transition={{ delay: 0.3 }} style={{ background: 'white', borderRadius: '10px', padding: '20px 24px', overflow: 'hidden' }}>
             <h2 style={{ fontSize: '16px', fontWeight: 600, color: '#414651', marginBottom: '12px', fontFamily: 'Lato, sans-serif' }}>Property Details</h2>
             {[
               { label: 'Sale Type', val: <Badge type={property.saleType} /> },
@@ -1275,7 +1328,7 @@ function DetailScreen({ property, onBack }) {
               </div>
             ))}
           </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.36 }} style={{ background: 'white', borderRadius: '10px', padding: '20px 24px', overflow: 'hidden' }}>
+          <motion.div initial={{ y: 20 }} animate={{ y: 0 }} transition={{ delay: 0.36 }} style={{ background: 'white', borderRadius: '10px', padding: '20px 24px', overflow: 'hidden' }}>
             <h2 style={{ fontSize: '16px', fontWeight: 600, color: '#414651', marginBottom: '12px', fontFamily: 'Lato, sans-serif' }}>Listing Information</h2>
             {[
               { label: 'Uploaded by', val: property.county },

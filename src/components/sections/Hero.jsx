@@ -5,8 +5,8 @@ const EASE = [0.76, 0, 0.24, 1]
 
 const LINES = [
   "I'm Rob.",
-  "Enterprise SaaS UX Designer.",
-  "Startup products, built from scratch.",
+  "3 years designing enterprise SaaS.",
+  "0→1 products for startups.",
 ]
 
 let _i = 0
@@ -66,7 +66,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: TOTAL_WORDS * 0.1, ease: EASE }}
         >
-          3 years at Honeywell designing dashboards used by industrial engineers. Also shipped products for early-stage founders from scratch.<br />Currently available for new roles.
+          3 years at Honeywell designing for industrial engineers. Shipped 0→1 products for early-stage founders in parallel. Currently available.
         </m.p>
 
         {/* ── Arrow — offset right to sit above center of "Work" heading ── */}

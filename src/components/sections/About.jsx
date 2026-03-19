@@ -46,19 +46,15 @@ export default function About() {
             transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
           >
             <h2 className="type-display-lg">
-              Designing with intention. Building with&nbsp;care.
+              Painter. Behavioral tech. Product designer.
             </h2>
 
             <p className="type-body">
-              I'm a Product Designer with a passion for creating digital experiences
-              that put people first. I bridge the gap between business goals and user
-              needs, turning complex problems into elegant, intuitive solutions.
+              Before design, I worked as a behavioral technician with kids who had severe autism. You show up even when it's hard, because the work matters. That drive carried into art school at 30 and eventually into product design. The through line is making things that help people.
             </p>
 
             <p className="type-body">
-              With a background spanning UX research, interaction design, and design
-              systems, I work best at the intersection of strategy and craft, where
-              thoughtful process meets pixel-perfect execution.
+              I'm research-first because I've seen what happens when you skip it. For Keytrn, I built a spreadsheet of every county in Pennsylvania and cold-called them before I opened Figma. At Honeywell, I pushed back on accessibility shortcuts over calls and emails with the Head of Product Design and senior engineers until it stuck. I built this site myself for the same reason: full control, and to speak the same language as the engineers I work with.
             </p>
 
             {/* Skills */}

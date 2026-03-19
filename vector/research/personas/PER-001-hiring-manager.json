@@ -1,0 +1,39 @@
+{
+  "id": "PER-001",
+  "version": "0.1",
+  "created": "2026-03-18",
+  "status": "confirmed",
+  "name": "Jordan — Design Hiring Manager",
+  "role": "Head of Design or Senior Product Designer leading hiring at a mid-size product company (50–500 employees, Series B or later)",
+  "goals": [
+    "Fill a mid-level UX/Product Designer role without a long sourcing cycle",
+    "Find someone who can ship — not just design in Figma but hand off and iterate with engineers",
+    "Confirm the candidate has real research ownership, not just participation",
+    "Reduce risk: hire someone who has worked in a similar context (enterprise SaaS or startup) and can ramp quickly"
+  ],
+  "frustrations": [
+    "Portfolios that show only polished final screens — no process, no decisions, no tradeoffs",
+    "Case studies where the designer says 'we' for everything — can't tell what they actually owned",
+    "Long case studies that take 10 minutes to read and bury the outcome at the bottom",
+    "Designers who can't explain why they made a design decision, only what they made",
+    "Portfolios that look like Figma template showcases rather than real shipped product",
+    "No quantified outcomes — 'improved usability' with no number attached"
+  ],
+  "behaviors": [
+    "Spends 30–60 seconds on the first pass — skims for signal: outcomes, company names, product type",
+    "Clicks one case study — usually the most recent or the most recognizable company",
+    "Reads the intro and the outcome first, then scrolls through process if they're still interested",
+    "Looks for evidence of research ownership: screeners, moderated sessions, affinity mapping",
+    "Checks if the designer understood the problem before they opened Figma",
+    "Forwards the portfolio link to a PM or lead engineer before the panel interview",
+    "Compares 15–30 portfolios per role — attention is scarce"
+  ],
+  "tools_used": [
+    "LinkedIn (initial sourcing)",
+    "Greenhouse or Lever (ATS)",
+    "Direct portfolio URL shared by recruiter",
+    "Figma (to review design files during technical screen)",
+    "Slack (to share candidate impressions with team)"
+  ],
+  "quote": "I can tell in 45 seconds if someone has shipped real product or just designed pretty screens. I'm looking for someone who can tell me what they learned, not just what they built."
+}

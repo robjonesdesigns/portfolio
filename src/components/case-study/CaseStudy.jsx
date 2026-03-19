@@ -38,9 +38,10 @@ function ProcessMediaCard({ item }) {
         {item.video ? (
           <LazyVideo src={item.video} style={{ width: '100%', display: 'block' }} />
         ) : (
-          <div style={{ aspectRatio: '16/9', lineHeight: 1.6, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-            <p className="font-body text-body md:text-body-lg leading-relaxed text-center" style={{ color: 'var(--fg)', opacity: 0.4 }}>
-              {item.note || '[ asset coming soon ]'}
+          <div style={{ aspectRatio: '16/9', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem', gap: '0.75rem' }}>
+            <span className="type-label" style={{ opacity: 0.35 }}>Asset coming soon</span>
+            <p className="font-body text-body leading-relaxed text-center max-w-md" style={{ color: 'var(--fg)', opacity: 0.4 }}>
+              {item.note || '[ screenshot or recording ]'}
             </p>
           </div>
         )}
@@ -125,6 +126,48 @@ export default function CaseStudy({ project }) {
                   {project.orientationNote && (
                     <p className="type-body leading-relaxed" style={{ color: 'var(--fg-secondary)' }}>{project.orientationNote}</p>
                   )}
+                </m.div>
+              )}
+
+              {/* Problem — shown when no processMedia */}
+              {!project.processMedia?.length && project.problem && (
+                <m.div
+                  className="flex flex-col gap-4 max-w-3xl"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <h2 className="type-display-md">The problem</h2>
+                  <p className="type-body leading-relaxed">{project.problem}</p>
+                </m.div>
+              )}
+
+              {/* Process — shown when no processMedia */}
+              {!project.processMedia?.length && project.process && (
+                <m.div
+                  className="flex flex-col gap-4 max-w-3xl"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <h2 className="type-display-md">The work</h2>
+                  <p className="type-body leading-relaxed">{project.process}</p>
+                </m.div>
+              )}
+
+              {/* Outcome — shown when no processMedia and no reflection */}
+              {!project.processMedia?.length && !project.reflection && project.outcome && (
+                <m.div
+                  className="flex flex-col gap-4 max-w-3xl"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <h2 className="type-display-md">Outcome</h2>
+                  <p className="type-body leading-relaxed">{project.outcome}</p>
                 </m.div>
               )}
 

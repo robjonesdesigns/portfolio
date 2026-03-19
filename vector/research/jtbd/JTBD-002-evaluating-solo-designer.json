@@ -1,0 +1,25 @@
+{
+  "id": "JTBD-002",
+  "version": "0.1",
+  "created": "2026-03-18",
+  "status": "confirmed",
+  "job_statement": "When I need to hire a first designer or a freelancer for my early-stage product, I want to see evidence that this person can work independently from research through to shipped UI, so I can feel confident they won't need constant direction from me.",
+  "context": "A founder has decided they need design help but has no design team to interview alongside them. They are evaluating whether to hire full-time, contract, or freelance. They are looking for proof of autonomy — can this person own the design process without being managed? The portfolio is usually discovered via a warm intro or LinkedIn and reviewed before a first call.",
+  "current_solutions": [
+    "Warm intros from other founders or designers",
+    "LinkedIn outreach with portfolio review",
+    "Design communities (Layers, Cosmos, Twitter/X)",
+    "Agencies as a fallback when a solo hire seems too risky",
+    "Take-home project or paid trial to de-risk"
+  ],
+  "desired_outcome": "After reviewing the portfolio, the founder is confident enough to schedule a call. The portfolio proves: this person has worked in resource-constrained environments, owned the full design process, and shipped something real.",
+  "importance": "high",
+  "satisfaction": "underserved",
+  "portfolio_implications": [
+    "0→1 work is more valuable than big-company contribution — Aysa (2-week MVP) and Keytrn (sole designer) are the lead stories for this audience",
+    "Breadth matters more than depth — showing research + systems + UI tells the founder they won't need to hire three people",
+    "The fact that Rob built this site himself (Astro, React, Framer Motion) is a differentiator — make it visible",
+    "Copy should be direct and first-person — founders respond to a clear point of view, not polished corporate language",
+    "Outcomes need business context: 15k views, $2.1M pitch deck, acquisition — not just design metrics"
+  ]
+}

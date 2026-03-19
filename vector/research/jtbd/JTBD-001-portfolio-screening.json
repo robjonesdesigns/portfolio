@@ -1,0 +1,26 @@
+{
+  "id": "JTBD-001",
+  "version": "0.1",
+  "created": "2026-03-18",
+  "status": "confirmed",
+  "job_statement": "When I'm screening 20+ designer portfolios for a mid-level role, I want to quickly determine if this person has shipped real product and can explain their decisions, so I can confidently put them in the 'yes' pile for a phone screen.",
+  "context": "A hiring manager has a stack of portfolios sent by a recruiter or sourced on LinkedIn. They have maybe 20 minutes to cut the list from 20 to 5. Each portfolio gets 45–90 seconds before a decision is made. The candidate is not present to explain anything — the portfolio has to do the work alone.",
+  "current_solutions": [
+    "Portfolio websites (personal, Notion, Cargo, Readymag)",
+    "LinkedIn profiles with featured work sections",
+    "Dribbble or Behance for visual work",
+    "PDF case study decks shared over email",
+    "Take-home challenge to supplement the portfolio review"
+  ],
+  "desired_outcome": "In under 2 minutes, the hiring manager can answer: Does this person do real research? Can they ship? Do they understand the problem they were solving? If yes to all three, they move forward.",
+  "importance": "critical",
+  "satisfaction": "underserved",
+  "portfolio_implications": [
+    "The homepage must communicate seniority and type of work in the first scroll — no burying the lead",
+    "Case study titles need to signal outcomes, not just project names",
+    "The first paragraph of each case study must answer: what was the problem and what did Rob own?",
+    "Outcomes need numbers — SUS scores, views, funding, acquisition — not adjectives",
+    "Process must be scannable — headers, visuals, and callouts for key decisions",
+    "The site itself must look professional — a poorly designed portfolio disqualifies before the work is read"
+  ]
+}

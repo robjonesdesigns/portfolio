@@ -1,0 +1,38 @@
+{
+  "id": "PER-002",
+  "version": "0.1",
+  "created": "2026-03-18",
+  "status": "confirmed",
+  "name": "Marcus — Early-Stage Founder",
+  "role": "Founder or co-founder of a seed-to-Series A startup, usually technical or business background, no design team yet",
+  "goals": [
+    "Find a designer who can own end-to-end product design without being managed",
+    "Ship fast — go from user feedback to testable design in days, not weeks",
+    "Get design that engineers can actually build from without constant back-and-forth",
+    "Find someone who treats design as problem-solving, not aesthetic decoration"
+  ],
+  "frustrations": [
+    "Designers who need a fully built design system before they can ship anything",
+    "Designers who only do UI — won't touch research, strategy, or copywriting",
+    "Agency rates for work that doesn't move fast enough for an early-stage pace",
+    "Designers who present options instead of a recommendation — 'here are three directions'",
+    "Portfolios that show big-company work with no evidence the designer drove decisions",
+    "Not knowing if a designer can handle ambiguity — most portfolios are too polished to tell"
+  ],
+  "behaviors": [
+    "Usually reaches out via LinkedIn, Twitter/X, or a warm intro from another founder",
+    "Reads the About section or bio before the case studies — wants to understand the person first",
+    "Looks for evidence of 0→1 work: has the designer shipped something from nothing?",
+    "Checks for breadth: research + systems + UI — wants a generalist, not a specialist",
+    "Asks 'could this person run a design sprint with our team next week?' while reading",
+    "Often decides in the first conversation, not after a formal process",
+    "Looks at the portfolio site itself as a design artifact — how it's built says something"
+  ],
+  "tools_used": [
+    "LinkedIn (outbound sourcing)",
+    "Twitter/X and designer communities (Dribbble, Layers, Cosmos)",
+    "Notion or Linear (to evaluate if the designer can work in their stack)",
+    "Direct email or DM — often skips formal recruiting"
+  ],
+  "quote": "I don't need a junior designer with a manager. I need someone who can walk into a user interview Monday and show me a testable prototype by Thursday."
+}
