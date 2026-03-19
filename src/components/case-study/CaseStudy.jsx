@@ -234,6 +234,26 @@ export default function CaseStudy({ project }) {
                 </m.div>
               )}
 
+              {/* UGA Business Law Clinic */}
+              {project.ugaContent !== undefined && (
+                <m.div
+                  className="flex flex-col gap-4 max-w-3xl"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <h2 className="type-display-md">UGA Business Law Clinic</h2>
+                  {project.ugaContent ? (
+                    <p className="type-body leading-relaxed">{project.ugaContent}</p>
+                  ) : (
+                    <p className="type-body leading-relaxed" style={{ opacity: 0.35, fontStyle: 'italic' }}>
+                      Content coming soon.
+                    </p>
+                  )}
+                </m.div>
+              )}
+
               {/* Reflection */}
               {project.reflection && (
                 <m.div
@@ -245,25 +265,6 @@ export default function CaseStudy({ project }) {
                 >
                   <h2 className="type-display-md">Reflection</h2>
                   <p className="type-body leading-relaxed">{project.reflection}</p>
-                </m.div>
-              )}
-
-              {/* UGA Business Law Clinic */}
-              {project.ugaContent !== undefined && (
-                <m.div
-                  className="max-w-3xl"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  {project.ugaContent ? (
-                    <p className="type-body leading-relaxed">{project.ugaContent}</p>
-                  ) : (
-                    <p className="type-body leading-relaxed" style={{ opacity: 0.35, fontStyle: 'italic' }}>
-                      Worked with the UGA Business Law Clinic on entity structure, IP ownership, and equity agreements. Content coming soon.
-                    </p>
-                  )}
                 </m.div>
               )}
 
