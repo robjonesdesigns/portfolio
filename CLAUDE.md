@@ -62,7 +62,8 @@ type-display-2xl   type-display-xl   type-display-lg   type-display-md   type-di
 **Body** (Areal, 16px mobile → 20px desktop):
 | Class | Color | Weight | Notes |
 |---|---|---|---|
-| `type-body` | `text-fg` | 400 | Body paragraphs |
+| `type-body` | `text-fg` | 400 | Body paragraphs — 16px mobile → 20px desktop |
+| `type-intro` | `text-fg` | 400 | Opening paragraphs, key insights — always 20px, no step-down |
 | `type-label` | `text-fg-secondary` | 700 | Uppercase section labels |
 | `type-link` | `text-brand-primary` | 400 | Inline links, opacity on hover |
 | `type-badge` | `text-fg` | 400 | Metadata / tag text |
@@ -239,6 +240,16 @@ Applied in:
 - Use `http://127.0.0.1:4321` instead of `http://localhost` in dev — avoids macOS IPv6 resolution lag
 - Dev server cache issues: fix with `rm -rf .astro node_modules/.vite` then restart
 - All pages use `client:load` — required because above-fold Framer Motion animations need immediate hydration
+
+---
+
+## Case Study Copy Rules
+
+- **No em dashes** — use commas, colons, or periods instead
+- **Statements over explanations**: "the design addressed it" not "the design could address it"
+- **No hedging softeners**: avoid "the goal was", "this helped", "the idea was", "the plan was"
+- **First person, active**: "I ran a moderated interview" not "research included a moderated interview"
+- **No redundant labels**: when a `processMedia` item has `sectionLabel`, the card h3 label is suppressed — the h2 already names the section
 
 ---
 

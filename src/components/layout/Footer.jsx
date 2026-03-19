@@ -75,7 +75,7 @@ export default function Footer() {
 
           </div>
           <div className="mt-10 pt-6 border-t" style={{ borderColor: 'var(--border)' }}>
-            <a href="/sitemap" className="type-link">
+            <a href="/sitemap" className="type-link inline-block py-2 -mx-2 px-2">
               Sitemap
             </a>
           </div>

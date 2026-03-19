@@ -3,30 +3,37 @@ import LazyVideo from './LazyVideo'
 
 const EASE = [0.16, 1, 0.3, 1]
 
+// Stable shell values — intentionally dark regardless of theme (simulates real hardware)
+const SCREEN_SHELL = {
+  background: '#1c1c1e',
+  border: '1px solid rgba(255,255,255,0.09)',
+  borderRadius: '10px',
+  padding: '16px 16px 12px',
+}
+const SCREEN_SHADOW = {
+  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))',
+  transform: 'translateY(30px)',
+}
+
 // ── Laptop mockup ─────────────────────────────────────────────────────────────
 function LaptopFrame({ src, color }) {
   return (
-    <div style={{
-      background: 'color-mix(in srgb, var(--fg) 6%, var(--surface))',
-      border: '1px solid var(--border)',
-      borderRadius: '16px',
-      padding: '32px 3% 0',
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
-      {/* Gradient accent wash from project color */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        background: `radial-gradient(ellipse 80% 50% at 50% 0%, ${color}22 0%, transparent 70%)`,
-        pointerEvents: 'none',
-      }} />
+    <div
+      className="relative overflow-hidden rounded-2xl border border-token pt-8 px-[3%]"
+      style={{ background: 'color-mix(in srgb, var(--fg) 6%, var(--surface))' }}
+    >
+      {/* Dynamic color glow — inline only because it's driven by project color */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: `radial-gradient(ellipse 80% 50% at 50% 0%, ${color}22 0%, transparent 70%)` }}
+      />
 
-      {/* Laptop screen only */}
-      <div style={{ position: 'relative', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))', transform: 'translateY(30px)' }}>
-        <div style={{ background: '#1c1c1e', borderRadius: '10px', padding: '16px 16px 12px', border: '1px solid rgba(255,255,255,0.09)', position: 'relative' }}>
-          <div style={{ position: 'absolute', top: '7px', left: '50%', transform: 'translateX(-50%)', width: '6px', height: '6px', borderRadius: '50%', background: '#3d3d3d' }} />
-          <div style={{ overflow: 'hidden', borderRadius: '4px', background: '#000', lineHeight: 0, aspectRatio: '16/9' }}>
+      {/* Screen */}
+      <div className="relative" style={SCREEN_SHADOW}>
+        <div className="relative" style={SCREEN_SHELL}>
+          {/* Camera dot */}
+          <div className="absolute left-1/2 -translate-x-1/2" style={{ top: '7px', width: '6px', height: '6px', borderRadius: '50%', background: '#3d3d3d' }} />
+          <div className="overflow-hidden rounded-sm bg-black" style={{ lineHeight: 0, aspectRatio: '16/9' }}>
             <LazyVideo src={src} style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }} />
           </div>
         </div>
@@ -94,7 +101,7 @@ function ImageGrid({ images, color }) {
 
 // ── WorkEntry ─────────────────────────────────────────────────────────────────
 export default function WorkEntry({ project, index = 0 }) {
-  const { slug, headline, company, role, description, outcomes, images, color, video } = project
+  const { slug, headline, company, role, description, metaProblem, outcomes, images, color, video } = project
 
   return (
     <m.article
@@ -131,9 +138,10 @@ export default function WorkEntry({ project, index = 0 }) {
         <a
           href={`/projects/${slug}`}
           aria-label={`See more — ${headline}`}
-          className="font-body text-body md:text-body-lg text-brand-primary hover:opacity-60 transition-opacity"
+          className="group inline-flex items-center gap-1.5 py-2 -mx-2 px-2 font-body font-medium text-body md:text-body-lg text-brand-primary transition-opacity hover:opacity-75"
         >
-          See more →
+          <span>See more</span>
+          <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
         </a>
       </div>
 
@@ -158,7 +166,7 @@ export default function WorkEntry({ project, index = 0 }) {
           <p className="type-badge font-bold mb-2 uppercase tracking-wide">
             Problem
           </p>
-          <p className="type-body">{description}</p>
+          <p className="type-body">{metaProblem || description}</p>
         </div>
 
         <div>

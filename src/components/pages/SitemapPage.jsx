@@ -21,17 +21,17 @@ export default function SitemapPage() {
             <nav aria-label="Site map">
               <h2 className="type-label mb-3">Pages</h2>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2rem' }}>
-                <li className="mb-2"><a href="/" className="type-link">Home</a></li>
-                <li className="mb-2"><a href="/resume" className="type-link">Resume</a></li>
+                <li className="mb-2"><a href="/" className="type-link inline-block py-2 -mx-2 px-2">Home</a></li>
+                <li className="mb-2"><a href="/resume" className="type-link inline-block py-2 -mx-2 px-2">Resume</a></li>
               </ul>
 
               <h2 className="type-label mb-3">Case Studies</h2>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                <li className="mb-2"><a href="/projects/keytrn-proptech" className="type-link">Keytrn - PropTech Platform</a></li>
-                <li className="mb-2"><a href="/projects/honeywell-apm" className="type-link">Honeywell - Asset Performance Management</a></li>
-                <li className="mb-2"><a href="/projects/honeywell-warehouse" className="type-link">Honeywell - Warehouse Operations</a></li>
-                <li className="mb-2"><a href="/projects/aysa-mvp" className="type-link">Aysa - MVP Launch</a></li>
-                <li className="mb-2"><a href="/projects/sinta-hr-platform" className="type-link">Sinta - HR Interview Platform</a></li>
+                <li className="mb-2"><a href="/projects/keytrn-proptech" className="type-link inline-block py-2 -mx-2 px-2">Keytrn - PropTech Platform</a></li>
+                <li className="mb-2"><a href="/projects/honeywell-apm" className="type-link inline-block py-2 -mx-2 px-2">Honeywell - Asset Performance Management</a></li>
+                <li className="mb-2"><a href="/projects/honeywell-warehouse" className="type-link inline-block py-2 -mx-2 px-2">Honeywell - Warehouse Operations</a></li>
+                <li className="mb-2"><a href="/projects/aysa-mvp" className="type-link inline-block py-2 -mx-2 px-2">Aysa - MVP Launch</a></li>
+                <li className="mb-2"><a href="/projects/sinta-hr-platform" className="type-link inline-block py-2 -mx-2 px-2">Sinta - HR Interview Platform</a></li>
               </ul>
             </nav>
 

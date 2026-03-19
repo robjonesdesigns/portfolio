@@ -46,6 +46,9 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
     <meta name="twitter:description" content={metaDesc} />
     <meta name="twitter:image"       content={metaImage} />
 
+    <!-- Preload Ogg Italic (used for "Rob" in hero — prevents FOUT) -->
+    <link rel="preload" href="/fonts/Ogg-Italic-Trial.otf" as="font" type="font/otf" crossorigin />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link rel="dns-prefetch" href="https://api.fontshare.com" />

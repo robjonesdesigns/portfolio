@@ -13,7 +13,6 @@ export default function ThemeToggle({ theme, toggle }) {
       }}
       whileTap={{ scale: 0.95 }}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-      tabIndex={-1}
       suppressHydrationWarning
     >
       {/* Sun — filled burst, reads clearly at larger size */}

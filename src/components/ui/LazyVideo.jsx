@@ -24,6 +24,7 @@ export default function LazyVideo({ src, style, className }) {
       loop
       playsInline
       preload="none"
+      aria-hidden="true"
       style={style}
       className={className}
     />
