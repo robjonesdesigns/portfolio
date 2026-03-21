@@ -1,6 +1,6 @@
 # ARCHITECTURE.md
 
-> Last Updated: 2026-03-18
+> Last Updated: 2026-03-21
 > This file is the technical specification. Read VECTOR.md for philosophy. Read CLAUDE.md for agent briefing and component reference.
 
 ---
@@ -15,6 +15,7 @@
 | Layout Components | `src/components/layout/` | Shared across all pages. Use `motion` (not `m`) — self-contained, no `LazyMotion` dependency. |
 | UI Primitives | `src/components/ui/` | Shared building blocks. If used in layout components (Navbar, Footer), use `motion`. If used only inside page components, use `m`. |
 | Case Study | `src/components/case-study/` | Feature component. Uses `m`. Always rendered inside `CaseStudyPage` which owns `LazyMotion`. |
+| Experiments | `src/components/experiments/` | Isolated experimental components. Not imported by any production layer. Not shipped. |
 | Data | `src/data/projects.js` | Single source of truth for all project content. No content in components. |
 | Styles | `src/styles/globals.css` | Design tokens as CSS custom properties. Composition classes in `@layer components`. |
 | Research | `vector/` | Investiture knowledge artifacts. Not shipped. |
@@ -62,9 +63,11 @@ Pages import page components. Page components import sections, layout, UI, and d
 portfolio/
 ├── src/
 │   ├── pages/                  SSG routes (Astro)
-│   │   ├── index.astro         Home → HomePage.jsx
-│   │   ├── resume.astro        Resume → ResumePage.jsx
-│   │   ├── sitemap.astro       Sitemap → SitemapPage.jsx
+│   │   ├── index.astro                 Home → HomePage.jsx
+│   │   ├── resume.astro                Resume → ResumePage.jsx
+│   │   ├── sitemap.astro               Sitemap → SitemapPage.jsx
+│   │   ├── keytrn-prototype.astro      Keytrn interactive prototype (non-production route)
+│   │   ├── rippleeffectonpink.astro    WebGL ripple experiment (non-production route)
 │   │   └── projects/
 │   │       └── [slug].astro    Dynamic case study → CaseStudyPage.jsx
 │   ├── components/
@@ -95,8 +98,11 @@ portfolio/
 │   │   │   ├── SEO.jsx             Head meta/OG tag helper
 │   │   │   ├── RJLogo.jsx
 │   │   │   └── RJLogo3D.jsx
-│   │   └── case-study/
-│   │       └── CaseStudy.jsx
+│   │   ├── case-study/
+│   │   │   ├── CaseStudy.jsx
+│   │   │   └── KeytrnPrototype.jsx     Self-contained interactive prototype
+│   │   └── experiments/                Isolated experiments — not imported by production layers
+│   │       └── RippleEffectOnPink.jsx
 │   ├── data/
 │   │   └── projects.js         All project content and case study data
 │   ├── hooks/
@@ -143,6 +149,16 @@ All color tokens defined on `:root` and `.dark` in `globals.css`. Never hardcode
 
 ```
 --bg, --fg, --accent, --on-accent, --surface, --border, --fg-secondary, --bg-subtle
+
+/* Interactive states */
+--accent-hover, --accent-bg-10, --accent-ring
+
+/* Component tokens */
+--hover-overlay   (tertiary button hover — flips light/dark via .dark)
+--shadow-button   (primary button shadow)
+
+/* Laptop mockup — intentionally theme-independent hardware colors */
+--laptop-bezel, --laptop-border, --laptop-camera, --laptop-shadow
 ```
 
 ### Tailwind Token Classes
