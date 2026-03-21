@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="self-start md:self-end relative">
               <m.button
                 onClick={handleEmailCopy}
-                aria-label={copied ? 'Email address copied' : `${EMAIL} — copy email address`}
+                aria-label={copied ? 'Email address copied' : `${EMAIL}: copy email address`}
                 className="flex items-center rounded border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-on-accent transition-colors duration-200 whitespace-nowrap"
                 animate={copied ? { scale: [1, 0.96, 1] } : {}}
                 transition={{ duration: 0.18, ease: EASE }}

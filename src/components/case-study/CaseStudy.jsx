@@ -121,8 +121,8 @@ export default function CaseStudy({ project }) {
                 </m.div>
               )}
 
-              {/* Problem — shown when no processMedia */}
-              {!project.processMedia?.length && project.problem && (
+              {/* Problem */}
+              {project.problem && (
                 <m.div
                   className="flex flex-col gap-4 max-w-3xl"
                   initial={{ opacity: 0, y: 16 }}
@@ -135,8 +135,8 @@ export default function CaseStudy({ project }) {
                 </m.div>
               )}
 
-              {/* Process — shown when no processMedia */}
-              {!project.processMedia?.length && project.process && (
+              {/* Process */}
+              {project.process && (
                 <m.div
                   className="flex flex-col gap-4 max-w-3xl"
                   initial={{ opacity: 0, y: 16 }}
@@ -149,8 +149,8 @@ export default function CaseStudy({ project }) {
                 </m.div>
               )}
 
-              {/* Outcome — shown when no processMedia and no reflection */}
-              {!project.processMedia?.length && !project.reflection && project.outcome && (
+              {/* Outcome — shown when no reflection */}
+              {!project.reflection && project.outcome && (
                 <m.div
                   className="flex flex-col gap-4 max-w-3xl"
                   initial={{ opacity: 0, y: 16 }}

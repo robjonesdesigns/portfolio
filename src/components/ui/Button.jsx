@@ -19,9 +19,9 @@ function cn(...classes) {
 }
 
 const variants = {
-  primary:   'bg-brand-primary text-on-accent shadow-[0_1px_2px_0_rgba(10,13,18,0.05)] hover:bg-[var(--accent-hover)]',
+  primary:   'bg-brand-primary text-on-accent shadow-[0_1px_2px_0_var(--shadow-button)] hover:bg-[var(--accent-hover)]',
   secondary: 'border border-brand-primary text-brand-primary bg-transparent hover:bg-[var(--accent-bg-10)]',
-  tertiary:  'bg-surface text-fg hover:bg-[rgba(0,0,0,0.05)] dark:hover:bg-[rgba(255,255,255,0.05)]',
+  tertiary:  'bg-surface text-fg hover:bg-[var(--hover-overlay)]',
   link:      'text-brand-primary hover:opacity-75',
 }
 

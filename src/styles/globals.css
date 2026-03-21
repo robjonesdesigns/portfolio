@@ -91,9 +91,17 @@
   --accent-bg-10:  rgba(129, 55, 70, 0.10);
   --accent-ring:   rgba(129, 55, 70, 0.20);
 
+  /* Laptop mockup — fixed hardware colors, intentionally theme-independent */
+  --laptop-bezel:  #1c1c1e;
+  --laptop-border: rgba(255, 255, 255, 0.09);
+  --laptop-camera: #3d3d3d;
+  --laptop-shadow: rgba(0, 0, 0, 0.4);
+
   /* Component tokens */
-  --fg-secondary: #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
-  --bg-subtle:    #fdf8f2;  /* warm section tint */
+  --fg-secondary:   #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
+  --bg-subtle:      #fdf8f2;  /* warm section tint */
+  --hover-overlay:  rgba(0, 0, 0, 0.05);    /* tertiary button hover */
+  --shadow-button:  rgba(10, 13, 18, 0.05); /* primary button shadow */
 }
 
 .dark {
@@ -115,8 +123,10 @@
   --accent-ring:   rgba(227, 111, 134, 0.20);
 
   /* Component tokens */
-  --fg-secondary: #c2bab0;  /* lighter warm sandy gray — used for labels */
-  --bg-subtle:    #201e1a;  /* warm section tint */
+  --fg-secondary:   #c2bab0;  /* lighter warm sandy gray — used for labels */
+  --bg-subtle:      #201e1a;  /* warm section tint */
+  --hover-overlay:  rgba(255, 255, 255, 0.05); /* tertiary button hover */
+  --shadow-button:  rgba(10, 13, 18, 0.05);    /* primary button shadow */
 }
 
 /* ─── Skip link ───────────────────────────────────────────────────────── */

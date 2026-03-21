@@ -2,6 +2,7 @@ import { LazyMotion, domAnimation, MotionConfig } from 'framer-motion'
 import { useTheme } from '../../hooks/useTheme'
 import Navbar from '../layout/Navbar'
 import Footer from '../layout/Footer'
+import { projects } from '../../data/projects'
 
 export default function SitemapPage() {
   const { theme, toggle } = useTheme()
@@ -27,11 +28,13 @@ export default function SitemapPage() {
 
               <h2 className="type-label mb-3">Case Studies</h2>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                <li className="mb-2"><a href="/projects/keytrn-proptech" className="type-link inline-block py-2 -mx-2 px-2">Keytrn - PropTech Platform</a></li>
-                <li className="mb-2"><a href="/projects/honeywell-apm" className="type-link inline-block py-2 -mx-2 px-2">Honeywell - Asset Performance Management</a></li>
-                <li className="mb-2"><a href="/projects/honeywell-warehouse" className="type-link inline-block py-2 -mx-2 px-2">Honeywell - Warehouse Operations</a></li>
-                <li className="mb-2"><a href="/projects/aysa-mvp" className="type-link inline-block py-2 -mx-2 px-2">Aysa - MVP Launch</a></li>
-                <li className="mb-2"><a href="/projects/sinta-hr-platform" className="type-link inline-block py-2 -mx-2 px-2">Sinta - HR Interview Platform</a></li>
+                {projects.map(p => (
+                  <li key={p.slug} className="mb-2">
+                    <a href={`/projects/${p.slug}`} className="type-link inline-block py-2 -mx-2 px-2">
+                      {p.company}: {p.title}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
 

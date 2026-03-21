@@ -83,7 +83,7 @@ void main() {
 
 // ── Component ────────────────────────────────────────────────────────────────
 
-export default function PracticeHero() {
+export default function RippleEffectOnPink() {
   const glRef = useRef(null)
   const bgRef = useRef(null)
 

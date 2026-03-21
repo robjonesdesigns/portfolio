@@ -5,7 +5,7 @@ const OG_IMAGE  = `${SITE_URL}/images/og-image.jpg`
 const TWITTER   = '@robjonesdesigns'
 
 export default function SEO({ title, description, canonical, ogImage }) {
-  const fullTitle   = title ? `${title} — Rob Jones` : 'Rob Jones — Product Designer'
+  const fullTitle   = title ? `${title} | Rob Jones` : 'Rob Jones | Product Designer'
   const metaDesc    = description ?? 'UX & Product Designer with 5+ years across enterprise SaaS and 0→1 startups. Currently available for new roles.'
   const metaImage   = ogImage ?? OG_IMAGE
   const metaUrl     = canonical ? `${SITE_URL}${canonical}` : SITE_URL

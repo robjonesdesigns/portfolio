@@ -188,8 +188,8 @@ const LOCATION_SUGGESTIONS = [
   { label: 'Allegheny County, PA',       count: 'Browse listings' },
   { label: 'Philadelphia County, PA',    count: 'Browse listings' },
   { label: 'Pittsburgh, PA',             count: 'Browse listings' },
-  { label: 'Judicial Sales — PA',        count: '4 properties' },
-  { label: 'Upset Sales — PA',           count: '2 properties' },
+  { label: 'Judicial Sales: PA',        count: '4 properties' },
+  { label: 'Upset Sales: PA',           count: '2 properties' },
 ]
 
 function getSuggestions(query) {

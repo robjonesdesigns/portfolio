@@ -5,13 +5,13 @@ const EASE = [0.16, 1, 0.3, 1]
 
 // Stable shell values — intentionally dark regardless of theme (simulates real hardware)
 const SCREEN_SHELL = {
-  background: '#1c1c1e',
-  border: '1px solid rgba(255,255,255,0.09)',
+  background: 'var(--laptop-bezel)',
+  border: '1px solid var(--laptop-border)',
   borderRadius: '10px',
   padding: '16px 16px 12px',
 }
 const SCREEN_SHADOW = {
-  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))',
+  filter: 'drop-shadow(0 20px 40px var(--laptop-shadow))',
   transform: 'translateY(30px)',
 }
 
@@ -32,7 +32,7 @@ function LaptopFrame({ src, color }) {
       <div className="relative" style={SCREEN_SHADOW}>
         <div className="relative" style={SCREEN_SHELL}>
           {/* Camera dot */}
-          <div className="absolute left-1/2 -translate-x-1/2" style={{ top: '7px', width: '6px', height: '6px', borderRadius: '50%', background: '#3d3d3d' }} />
+          <div className="absolute left-1/2 -translate-x-1/2" style={{ top: '7px', width: '6px', height: '6px', borderRadius: '50%', background: 'var(--laptop-camera)' }} />
           <div className="overflow-hidden rounded-sm bg-black" style={{ lineHeight: 0, aspectRatio: '16/9' }}>
             <LazyVideo src={src} style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }} />
           </div>
@@ -137,7 +137,7 @@ export default function WorkEntry({ project, index = 0 }) {
       <div className="mb-10 md:mb-12">
         <a
           href={`/projects/${slug}`}
-          aria-label={`See more — ${headline}`}
+          aria-label={`See more: ${headline}`}
           className="group inline-flex items-center gap-1.5 py-2 -mx-2 px-2 font-body font-medium text-body md:text-body-lg text-brand-primary transition-opacity hover:opacity-75"
         >
           <span>See more</span>
