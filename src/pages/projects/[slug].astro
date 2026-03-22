@@ -20,16 +20,16 @@ const creativeWorkSchema = {
   author: {
     '@type': 'Person',
     name: 'Rob Jones',
-    url: 'https://robjonesportfolio.vercel.app',
+    url: 'https://designedbyrob.com',
   },
-  url: `https://robjonesportfolio.vercel.app/projects/${project.slug}`,
+  url: `https://designedbyrob.com/projects/${project.slug}`,
   dateCreated: project.year,
   keywords: project.tags?.join(', '),
 }
 ---
 
 <Layout
-  title={`${project.title} — ${project.company}`}
+  title={`${project.title} - ${project.company}`}
   description={project.description}
   canonical={`/projects/${project.slug}`}
 >
