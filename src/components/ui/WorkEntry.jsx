@@ -135,8 +135,8 @@ function VideoGrid({ videos, color }) {
                 </div>
               </div>
             ) : (
-              <div key={i} className="overflow-hidden rounded-2xl">
-                <LazyVideo src={src} style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }} />
+              <div key={i} className="overflow-hidden rounded-2xl bg-media">
+                <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
               </div>
             )
           ))}
