@@ -4,7 +4,6 @@ import Navbar from '../layout/Navbar'
 import Footer from '../layout/Footer'
 import Hero from '../sections/Hero'
 import Projects from '../sections/Projects'
-import About from '../sections/About'
 
 export default function HomePage() {
   const { theme, toggle } = useTheme()
@@ -28,7 +27,6 @@ export default function HomePage() {
           <main id="main" tabIndex="-1">
             <Hero />
             <Projects />
-            <About />
           </main>
           <Footer />
         </div>
