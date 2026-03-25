@@ -49,22 +49,12 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
     <!-- Preload Ogg Italic (used for "Rob" in hero — prevents FOUT) -->
     <link rel="preload" href="/fonts/Ogg-Italic-Trial.otf" as="font" type="font/otf" crossorigin />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="dns-prefetch" href="https://api.fontshare.com" />
+    <!-- Fonts — Cabinet Grotesk self-hosted (was Fontshare CDN) -->
+    <link rel="preload" href="/fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Cloudinary (video assets) -->
     <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
-    <link
-      rel="stylesheet"
-      href="https://api.fontshare.com/v2/css?f%5B%5D=cabinet-grotesk@800,700,500,400&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=cabinet-grotesk@800,700,500,400&display=swap" />
-    </noscript>
 
     <!-- Theme init: runs sync before paint to prevent flash of wrong theme -->
     <script is:inline>

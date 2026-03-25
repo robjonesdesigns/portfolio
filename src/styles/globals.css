@@ -32,6 +32,15 @@
   font-display: swap;
 }
 
+/* ─── Cabinet Grotesk — self-hosted variable font ────────────────────── */
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/CabinetGrotesk-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ─── Ogg — local trial fonts ─────────────────────────────────────────── */
 @font-face {
   font-family: 'Ogg';
