@@ -126,7 +126,7 @@ function VideoGrid({ videos, color }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {rest.map((src, i) => (
             <div key={i} className="flex items-center justify-center rounded-2xl border border-token bg-media p-6">
-              <div className="overflow-hidden rounded-lg bg-black" style={{ maxWidth: '220px', width: '100%' }}>
+              <div className="overflow-hidden rounded-lg bg-black" style={{ width: '100%' }}>
                 <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
               </div>
             </div>
