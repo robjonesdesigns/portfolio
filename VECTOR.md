@@ -45,7 +45,9 @@ The site is also a demonstration of technical capability — Rob built it himsel
 
 **Secondary:** Founders and early-stage teams looking for a solo product designer who can move fast and own end-to-end design.
 
-**Not for:** Other designers critiquing the code. Agency creative directors (different portfolio needed). Junior roles.
+**Tertiary:** Agency creative directors evaluating senior designers for client-facing product work. The portfolio demonstrates range (enterprise, consumer, 0-to-1), stakeholder navigation, and the ability to present decisions to non-designers.
+
+**Not for:** Other designers critiquing the code. Junior roles.
 
 ---
 
@@ -127,7 +129,7 @@ Rob's work is research-driven, systems-aware, and ships. The portfolio demonstra
 | Type | Location | Status |
 |------|----------|--------|
 | Project interviews | `~/.claude/projects/-Users-robjones/memory/interviews.md` | Keytrn complete, Honeywell complete, Aysa complete, Sinta complete |
-| Personas | `./vector/research/personas/` | PER-001 (hiring manager), PER-002 (founder) — confirmed |
+| Personas | `./vector/research/personas/` | PER-001 (hiring manager), PER-002 (founder) — confirmed. PER-003 (agency creative director) — draft |
 | JTBD | `./vector/research/jtbd/` | JTBD-001 (portfolio screening), JTBD-002 (evaluating solo designer) — confirmed |
 | Competitive | `./vector/research/competitive/` | Draft (COMP-001 senior portfolio analysis) |
 | Assumptions | `./vector/research/assumptions/` | Draft (ASM-001, ASM-002) |

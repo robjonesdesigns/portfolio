@@ -1,0 +1,36 @@
+{
+  "id": "PER-003",
+  "version": "0.1",
+  "created": "2026-03-25",
+  "status": "draft",
+  "name": "Sarah — Agency Creative Director",
+  "role": "Creative Director or Design Director at a mid-to-large agency (50-500 people), evaluating senior designers or design leads for client-facing product work",
+  "goals": [
+    "Find a designer who can own a client engagement end-to-end without heavy oversight",
+    "Confirm the candidate can navigate client stakeholder dynamics, not just internal team collaboration",
+    "See evidence of strategic thinking: research, systems, and business context alongside strong visual execution",
+    "Hire someone who can present work to clients confidently and defend design decisions under pressure"
+  ],
+  "frustrations": [
+    "Portfolios that show only in-house product work with no evidence of client-facing skills",
+    "Designers who can execute but cannot articulate the 'why' behind decisions to non-designers",
+    "Case studies that read as individual contributor work with no sign of leadership or mentorship",
+    "No evidence of working across multiple projects simultaneously or managing competing priorities",
+    "Portfolios where every project looks the same, suggesting the designer applies one approach to everything"
+  ],
+  "behaviors": [
+    "Reviews portfolios looking for range: enterprise, consumer, 0-to-1, redesign, research-led",
+    "Values designers who have worked with real constraints (NDA, stakeholder overrule, tight timelines)",
+    "Looks for evidence of client communication skills in case study framing",
+    "Checks if the designer can translate complex problems into clear narratives for non-technical audiences",
+    "Often shares portfolio with a client before making the hire, so the portfolio must be client-presentable",
+    "Values the portfolio site itself as a craft signal"
+  ],
+  "tools_used": [
+    "LinkedIn (sourcing)",
+    "Portfolio URL shared by recruiter or internal referral",
+    "Figma (to review design files or component libraries)",
+    "Slack or Teams (to share candidate impressions with leadership)"
+  ],
+  "quote": "I need someone who can walk into a client kickoff on Monday and run a research debrief by Friday. The portfolio tells me if they can do both."
+}
