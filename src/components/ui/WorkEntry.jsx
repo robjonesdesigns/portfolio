@@ -122,7 +122,7 @@ function VideoGrid({ videos, color }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="overflow-hidden rounded-lg bg-black">
+      <div className="overflow-hidden rounded-lg border border-token">
         <LazyVideo src={first} style={{ width: '100%', display: 'block' }} />
       </div>
       {rest.length > 0 && (
@@ -135,7 +135,7 @@ function VideoGrid({ videos, color }) {
                 </div>
               </div>
             ) : (
-              <div key={i} className="overflow-hidden rounded-2xl bg-media">
+              <div key={i} className="overflow-hidden rounded-2xl border border-token bg-media">
                 <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
               </div>
             )
