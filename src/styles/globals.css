@@ -97,6 +97,9 @@
   --laptop-camera: #3d3d3d;
   --laptop-shadow: rgba(0, 0, 0, 0.4);
 
+  /* Media card — dark surface for video/image containers, fixed across themes */
+  --media-bg: #252220;
+
   /* Component tokens */
   --fg-secondary:   #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
   --bg-subtle:      #fdf8f2;  /* warm section tint */
@@ -193,6 +196,7 @@
   .text-accent       { color: var(--accent); }
   .bg-bg             { background-color: var(--bg); }
   .bg-surface        { background-color: var(--surface); }
+  .bg-media          { background-color: var(--media-bg); }
   .bg-accent         { background-color: var(--accent); }
   .border-token        { border-color: var(--border); }
   .border-token-strong { border-color: var(--border-strong); }
