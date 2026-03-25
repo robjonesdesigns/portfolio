@@ -162,31 +162,6 @@ export default function AboutContent() {
                 ))}
               </m.div>
 
-              {/* Closing */}
-              <m.div
-                className="max-w-2xl"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, ease: EASE }}
-              >
-                <p className="type-body leading-relaxed">
-                  If you want to talk about any of this, or about the work itself, <a href="/contact" className="type-link">get in touch</a>.
-                </p>
-              </m.div>
-
-              {/* Navigation */}
-              <div
-                className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center pt-8 border-t"
-                style={{ borderColor: 'var(--border)' }}
-              >
-                <a href="/" className="type-link inline-block py-2 -mx-2 px-2">
-                  &larr; All Projects
-                </a>
-                <a href="/resume" className="type-link inline-block py-2 -mx-2 px-2 sm:text-right">
-                  Resume &rarr;
-                </a>
-              </div>
 
             </div>
           </Container>
