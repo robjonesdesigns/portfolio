@@ -7,7 +7,7 @@ const EASE = [0.16, 1, 0.3, 1]
 const skills = [
   'UX Research', 'Product Strategy', 'Interaction Design',
   'Design Systems', 'Prototyping', 'User Testing',
-  'Figma', 'Framer', 'React', 'Accessibility',
+  'Figma', 'React', 'Astro', 'Accessibility', 'Front-End Development',
 ]
 
 export default function About() {
@@ -46,15 +46,15 @@ export default function About() {
             transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
           >
             <h2 className="type-display-lg">
-              Painter. Behavioral tech. Product designer.
+              Behavioral tech. Painter. Product designer who codes.
             </h2>
 
             <p className="type-body">
-              Before design, I worked as a behavioral technician with kids who had severe autism. You show up even when it's hard, because the work matters. That drive carried into art school at 30 and eventually into product design. The through line is making things that help people.
+              Before design, I worked as a behavioral technician with kids who had severe autism. That work taught me to show up, adapt in real time, and focus on what actually helps. I went to art school at 30, then moved into product design. The through line is the same: understand the person in front of you, then build something that works for them.
             </p>
 
             <p className="type-body">
-              I'm research-first because I've seen what happens when you skip it. For Keytrn, I built a spreadsheet of every county in Pennsylvania and cold-called them before I opened Figma. At Honeywell, I pushed back on accessibility shortcuts over calls and emails with the Head of Product Design and senior engineers until it stuck. I built this site myself for the same reason: full control, and to speak the same language as the engineers I work with.
+              I am research-first because I have seen what happens when you skip it. For Keytrn, I built a spreadsheet of every county in Pennsylvania and cold-called 20+ offices before opening Figma. At Honeywell, I pushed back on accessibility shortcuts over calls and emails with the Head of Product Design until the fixes stuck. I have worked with early-stage founders at Aysa and Sinta where there was no team, no system, and no existing screens. I built this portfolio myself in Astro and React for the same reason I do everything: full control, and to speak the same language as the engineers I work with.
             </p>
 
             {/* Skills */}
