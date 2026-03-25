@@ -102,7 +102,7 @@ function ImageGrid({ images, color }) {
 // ── Video grid — 1, 2, or 3+ raw videos (no laptop frame) ───────────────────
 // Videos scale naturally without cropping. Screen recordings keep their
 // original aspect ratio at any viewport size.
-function VideoGrid({ videos }) {
+function VideoGrid({ videos, color }) {
   if (!videos || videos.length === 0) return null
 
   const validVideos = videos.filter(Boolean)
@@ -125,7 +125,7 @@ function VideoGrid({ videos }) {
       {rest.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {rest.map((src, i) => (
-            <div key={i} className="flex items-center justify-center rounded-2xl border border-token bg-surface p-6">
+            <div key={i} className="flex items-center justify-center rounded-2xl p-6" style={{ background: color || 'var(--surface)' }}>
               <div className="overflow-hidden rounded-lg bg-black" style={{ maxWidth: '220px', width: '100%' }}>
                 <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
               </div>
@@ -168,7 +168,7 @@ export default function WorkEntry({ project, index = 0 }) {
 
       {/* Images / Video */}
       <div className="mb-5">
-        {videoGrid ? <VideoGrid videos={videoGrid} /> : video ? <LaptopFrame src={video} color={color} /> : <ImageGrid images={images} color={color} />}
+        {videoGrid ? <VideoGrid videos={videoGrid} color={color} /> : video ? <LaptopFrame src={video} color={color} /> : <ImageGrid images={images} color={color} />}
       </div>
 
       {/* See more */}
