@@ -55,7 +55,7 @@ export const projects = [
       video: null,
     },
     solution: 'Redesigned Asset Health by fixing the affordances, reorganizing the KPI hierarchy, and correcting the color usage. Those changes drove the SUS improvement directly. Designed Asset Details from scratch as a three-level modular dashboard: Reliability (failure risk, remaining useful life), Maintenance (alerts, case management), and Performance (OEE, operational metrics). Sub-asset drill-down let engineers isolate which components were affected without leaving the page. Also designed the Compressor Load dashboard for the Performance Suite, used in oil and gas and chemical manufacturing.',
-    outcome: 'Shipped to reliability engineers at Shell and other industrial operators. The three-level modular structure became the organizing pattern for deep-dive asset analysis across the platform. The research process I built for this project, from screeners through SUS tracking, was reused on subsequent dashboard work.',
+    outcome: 'Shipped to reliability engineers at Shell and other industrial operators. The three-level information architecture (Reliability, Maintenance, Performance) used existing Forge design system cards to solve the tab vs. single-page conflict without adding new components. The research process I built for this project, from screeners through SUS tracking, was reused on subsequent dashboard work.',
     designDecisions: [
       {
         title: 'Push back with data, then redirect when the call is made',
