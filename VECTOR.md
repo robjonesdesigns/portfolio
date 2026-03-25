@@ -94,7 +94,7 @@ Rob's work is research-driven, systems-aware, and ships. The portfolio demonstra
 
 1. **Process over polish.** Case studies show thinking, not just final screens. How a decision was made matters more than how it looks.
 
-2. **Conversational but professional.** Copy reads like Rob explaining his work in an interview — direct, plain language, no corporate buzzwords, no em dashes.
+2. **Conversational but professional.** Copy reads like Rob explaining his work in an interview. Direct, plain language, no corporate buzzwords, no em dashes.
 
 3. **Accessibility is not optional.** WCAG AA minimum. VoiceOver-navigable. Framer Motion animations never hide headings from screen readers.
 
