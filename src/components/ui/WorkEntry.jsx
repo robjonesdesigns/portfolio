@@ -99,9 +99,45 @@ function ImageGrid({ images, color }) {
   )
 }
 
+// ── Video grid — 1, 2, or 3+ raw videos (no laptop frame) ───────────────────
+// Videos scale naturally without cropping. Screen recordings keep their
+// original aspect ratio at any viewport size.
+function VideoGrid({ videos }) {
+  if (!videos || videos.length === 0) return null
+
+  const validVideos = videos.filter(Boolean)
+  if (validVideos.length === 0) return null
+
+  if (validVideos.length === 1) {
+    return (
+      <div className="w-full overflow-hidden rounded-lg bg-black">
+        <LazyVideo src={validVideos[0]} style={{ width: '100%', display: 'block' }} />
+      </div>
+    )
+  }
+
+  const [first, ...rest] = validVideos
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="overflow-hidden rounded-lg bg-black">
+        <LazyVideo src={first} style={{ width: '100%', display: 'block' }} />
+      </div>
+      {rest.length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {rest.map((src, i) => (
+            <div key={i} className="overflow-hidden rounded-lg bg-black">
+              <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ── WorkEntry ─────────────────────────────────────────────────────────────────
 export default function WorkEntry({ project, index = 0 }) {
-  const { slug, headline, company, role, description, metaProblem, outcomes, images, color, video } = project
+  const { slug, headline, company, role, description, metaProblem, outcomes, images, color, video, videoGrid } = project
 
   return (
     <m.article
@@ -130,7 +166,7 @@ export default function WorkEntry({ project, index = 0 }) {
 
       {/* Images / Video */}
       <div className="mb-5">
-        {video ? <LaptopFrame src={video} color={color} /> : <ImageGrid images={images} color={color} />}
+        {videoGrid ? <VideoGrid videos={videoGrid} /> : video ? <LaptopFrame src={video} color={color} /> : <ImageGrid images={images} color={color} />}
       </div>
 
       {/* See more */}

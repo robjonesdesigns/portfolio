@@ -235,7 +235,11 @@ export const projects = [
     outcomes: [
       'Designed both product sides and built the consumer app with live statewide data, a design token system, and a municipality outreach strategy.',
     ],
-    video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-demo.mp4',
+    videoGrid: [
+      'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-desktop',
+      'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-mobile',
+      null,  // placeholder for third video (user will add later)
+    ],
     images: [null, null, null],
     image: null,
     intro: 'Before opening Figma, I spent weeks calling Pennsylvania county offices. What data did they have? What format? Where did the process break down? Everything that followed came from those calls: the IA, the upload system, how the consumer side surfaced property data.',
