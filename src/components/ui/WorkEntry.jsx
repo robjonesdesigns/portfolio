@@ -122,20 +122,20 @@ function VideoGrid({ videos, color }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="overflow-hidden rounded-lg border border-token">
+      <div className="overflow-hidden rounded-lg border border-media">
         <LazyVideo src={first} style={{ width: '100%', display: 'block' }} />
       </div>
       {rest.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" style={{ minHeight: 0 }}>
           {rest.map((src, i) => (
             isMobileVideo(src) ? (
-              <div key={i} className="flex items-center justify-center rounded-2xl border border-token bg-media p-6">
+              <div key={i} className="flex items-center justify-center rounded-2xl border border-media bg-media p-6">
                 <div className="overflow-hidden rounded-lg bg-black" style={{ maxWidth: '180px', width: '100%' }}>
                   <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
                 </div>
               </div>
             ) : (
-              <div key={i} className="overflow-hidden rounded-2xl border border-token bg-media">
+              <div key={i} className="overflow-hidden rounded-2xl border border-media bg-media">
                 <LazyVideo src={src} style={{ width: '100%', display: 'block' }} />
               </div>
             )
