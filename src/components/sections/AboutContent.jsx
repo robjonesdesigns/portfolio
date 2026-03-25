@@ -142,23 +142,25 @@ export default function AboutContent() {
                 </p>
               </m.div>
 
-              {/* Decision cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Design decisions */}
+              <m.div
+                className="flex flex-col gap-10 max-w-3xl"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.6, ease: EASE }}
+              >
                 {siteDecisions.map((d, i) => (
-                  <m.div
+                  <div
                     key={d.title}
-                    className="flex flex-col gap-3 p-6 rounded-2xl bg-surface border"
+                    className={`flex flex-col gap-3 border-t ${i === 0 ? 'pt-10' : 'pt-10'}`}
                     style={{ borderColor: 'var(--border)' }}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.5, ease: EASE, delay: (i % 2) * 0.08 }}
                   >
                     <h3 className="type-display-sm">{d.title}</h3>
                     <p className="type-body leading-relaxed">{d.body}</p>
-                  </m.div>
+                  </div>
                 ))}
-              </div>
+              </m.div>
 
               {/* Closing */}
               <m.div
