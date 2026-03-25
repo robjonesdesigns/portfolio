@@ -4,6 +4,7 @@ import ThemeToggle from '../ui/ThemeToggle'
 import RJLogo from '../ui/RJLogo'
 
 const navLinks = [
+  { label: 'About', href: '/about' },
   { label: 'Resume', href: '/resume' },
 ]
 

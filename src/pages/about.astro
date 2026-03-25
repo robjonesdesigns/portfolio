@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro'
+import AboutPage from '../components/pages/AboutPage.jsx'
+---
+
+<Layout
+  title="About | Rob Jones"
+  description="Product designer who codes. Research-first. Former behavioral technician. Built this portfolio in Astro and React for full control."
+  canonical="/about"
+>
+  <AboutPage client:load />
+</Layout>
