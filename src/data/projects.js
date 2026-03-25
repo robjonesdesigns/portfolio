@@ -237,7 +237,7 @@ export const projects = [
     ],
     videoGrid: [
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-desktop',
-      'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto/portfolio/keytrn-mobile',
+      'https://res.cloudinary.com/dlqvgithx/video/upload/v1774470067/f_auto,q_auto/portfolio/keytrn-mobile',
       null,  // placeholder for third video (user will add later)
     ],
     images: [null, null, null],
