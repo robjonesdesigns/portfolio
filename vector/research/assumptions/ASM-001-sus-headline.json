@@ -1,0 +1,11 @@
+{
+  "id": "ASM-001",
+  "version": "0.1",
+  "created": "2026-03-25",
+  "status": "draft",
+  "assumption": "Putting a real SUS score improvement in the headline converts better than a descriptive headline for the hiring manager audience.",
+  "evidence_for": "JTBD-001 says outcomes need numbers. PER-001 frustration: 'improved usability with no number attached.' COMP-001: Simon Pan puts metrics in homepage cards.",
+  "evidence_against": "SUS is a niche metric. A recruiter at Google may not know if 'high 80s' is good. The story (tab vs modular) may be a stronger signal than the number.",
+  "test": "Ship both versions. Track which version gets more case study clicks if analytics are added. Or ask hiring managers directly during interviews.",
+  "confidence": "medium"
+}

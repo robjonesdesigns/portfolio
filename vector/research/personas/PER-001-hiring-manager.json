@@ -9,7 +9,8 @@
     "Fill a mid-level UX/Product Designer role without a long sourcing cycle",
     "Find someone who can ship — not just design in Figma but hand off and iterate with engineers",
     "Confirm the candidate has real research ownership, not just participation",
-    "Reduce risk: hire someone who has worked in a similar context (enterprise SaaS or startup) and can ramp quickly"
+    "Reduce risk: hire someone who has worked in a similar context (enterprise SaaS or startup) and can ramp quickly",
+    "Confirm the candidate understands business context, not just user pain"
   ],
   "frustrations": [
     "Portfolios that show only polished final screens — no process, no decisions, no tradeoffs",
@@ -17,7 +18,10 @@
     "Long case studies that take 10 minutes to read and bury the outcome at the bottom",
     "Designers who can't explain why they made a design decision, only what they made",
     "Portfolios that look like Figma template showcases rather than real shipped product",
-    "No quantified outcomes — 'improved usability' with no number attached"
+    "No quantified outcomes — 'improved usability' with no number attached",
+    "Case studies that bury outcomes at the bottom after 10 minutes of process documentation",
+    "Metrics that sound inflated or forced rather than earned",
+    "Portfolios with identical case study structure on every project regardless of context"
   ],
   "behaviors": [
     "Spends 30–60 seconds on the first pass — skims for signal: outcomes, company names, product type",
@@ -26,7 +30,11 @@
     "Looks for evidence of research ownership: screeners, moderated sessions, affinity mapping",
     "Checks if the designer understood the problem before they opened Figma",
     "Forwards the portfolio link to a PM or lead engineer before the panel interview",
-    "Compares 15–30 portfolios per role — attention is scarce"
+    "Compares 15–30 portfolios per role — attention is scarce",
+    "Looks at homepage cards for signal before clicking into any case study",
+    "Reads outcomes and intro first, scrolls through process only if still interested",
+    "Compares against 15-30 other portfolios for the same role",
+    "Forwards portfolio to PM or lead engineer before panel if it passes the first screen"
   ],
   "tools_used": [
     "LinkedIn (initial sourcing)",
@@ -35,5 +43,5 @@
     "Figma (to review design files during technical screen)",
     "Slack (to share candidate impressions with team)"
   ],
-  "quote": "I can tell in 45 seconds if someone has shipped real product or just designed pretty screens. I'm looking for someone who can tell me what they learned, not just what they built."
+  "quote": "I can tell in 45 seconds if someone has shipped real product or just designed pretty screens. Show me what you learned, not just what you built."
 }

@@ -1,0 +1,11 @@
+{
+  "id": "ASM-002",
+  "version": "0.1",
+  "created": "2026-03-25",
+  "status": "draft",
+  "assumption": "Varying case study structure per project type (enterprise vs. startup) reads as more senior than using the same template for all.",
+  "evidence_for": "COMP-001: senior portfolios vary structure. Junior signal: follows the same template for every case study. Tobias van Schneider's analysis confirms.",
+  "evidence_against": "Consistency in structure makes the portfolio feel cohesive and reduces cognitive load for the reader.",
+  "test": "Get feedback from 3-5 hiring managers on whether the current uniform structure feels junior.",
+  "confidence": "medium-high"
+}

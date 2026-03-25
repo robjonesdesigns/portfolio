@@ -21,6 +21,11 @@
     "The first paragraph of each case study must answer: what was the problem and what did Rob own?",
     "Outcomes need numbers — SUS scores, views, funding, acquisition — not adjectives",
     "Process must be scannable — headers, visuals, and callouts for key decisions",
-    "The site itself must look professional — a poorly designed portfolio disqualifies before the work is read"
+    "The site itself must look professional — a poorly designed portfolio disqualifies before the work is read",
+    "Headlines should signal outcomes, not just project descriptions. Put the number in the title when one exists.",
+    "Use the Minto Pyramid: answer first (what happened), evidence second (how). Hiring managers read outcomes before process.",
+    "Metrics must be real and defensible. Forced or weak numbers undercut credibility. If no metric exists, use specific descriptive outcomes instead of vague adjectives.",
+    "Vary case study structure per project type. Enterprise SaaS reads differently from a consumer product you built yourself.",
+    "Video of real interactions is more effective than static screenshot grids."
   ]
 }

@@ -9,7 +9,8 @@
     "Find a designer who can own end-to-end product design without being managed",
     "Ship fast — go from user feedback to testable design in days, not weeks",
     "Get design that engineers can actually build from without constant back-and-forth",
-    "Find someone who treats design as problem-solving, not aesthetic decoration"
+    "Find someone who treats design as problem-solving, not aesthetic decoration",
+    "See evidence the designer has worked in ambiguous, resource-constrained environments"
   ],
   "frustrations": [
     "Designers who need a fully built design system before they can ship anything",
@@ -17,7 +18,8 @@
     "Agency rates for work that doesn't move fast enough for an early-stage pace",
     "Designers who present options instead of a recommendation — 'here are three directions'",
     "Portfolios that show big-company work with no evidence the designer drove decisions",
-    "Not knowing if a designer can handle ambiguity — most portfolios are too polished to tell"
+    "Not knowing if a designer can handle ambiguity — most portfolios are too polished to tell",
+    "Portfolios that only show big-company work with no evidence the designer drove decisions independently"
   ],
   "behaviors": [
     "Usually reaches out via LinkedIn, Twitter/X, or a warm intro from another founder",
@@ -26,7 +28,9 @@
     "Checks for breadth: research + systems + UI — wants a generalist, not a specialist",
     "Asks 'could this person run a design sprint with our team next week?' while reading",
     "Often decides in the first conversation, not after a formal process",
-    "Looks at the portfolio site itself as a design artifact — how it's built says something"
+    "Looks at the portfolio site itself as a design artifact — how it's built says something",
+    "Looks at the portfolio site itself as a design artifact and signal of technical capability",
+    "Values breadth (research + systems + UI + code) over depth in one area"
   ],
   "tools_used": [
     "LinkedIn (outbound sourcing)",

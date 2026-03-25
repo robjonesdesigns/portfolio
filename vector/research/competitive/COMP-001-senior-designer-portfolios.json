@@ -1,0 +1,96 @@
+{
+  "id": "COMP-001",
+  "version": "0.1",
+  "created": "2026-03-25",
+  "status": "draft",
+  "title": "Senior/Staff Designer Portfolio Analysis",
+  "summary": "Analysis of 8 portfolios from designers at Google, Apple, Meta, Airbnb, OpenAI, Stripe, Uber, and Amazon. Identifies patterns that signal seniority and separate strong portfolios from weak ones.",
+  "portfolios_analyzed": [
+    {
+      "name": "Simon Pan",
+      "company": "prev. Uber, Amazon",
+      "url": "simonpan.com",
+      "strengths": ["Metrics on homepage cards", "Problem reframing as narrative climax", "Credits collaborators by name", "70% process / 30% outcome split in body, but metrics front-loaded"],
+      "takeaway": "The homepage is a metrics dashboard. Every card shows quantified impact before the click."
+    },
+    {
+      "name": "Sebastien Gabriel",
+      "company": "Google (Chrome, Chrome OS)",
+      "url": "sebastien-gabriel.com",
+      "strengths": ["Multi-year scope signals staff-level work", "Separate writing section signals thought leadership", "Product scale (billions of users) replaces explicit metrics"],
+      "takeaway": "At staff level, the product name IS the metric. Writing signals strategic influence."
+    },
+    {
+      "name": "Angela Li",
+      "company": "Airbnb (prev. Meta, Dropbox)",
+      "url": "liangela.com",
+      "strengths": ["Extreme minimalism", "Company names do the talking", "No thumbnails on homepage"],
+      "takeaway": "Confidence in substance over portfolio aesthetics is itself a seniority signal."
+    },
+    {
+      "name": "Karolis Kosas",
+      "company": "OpenAI (prev. Stripe)",
+      "url": "karoliskosas.com",
+      "strengths": ["Selectivity and restraint", "Writing section + conference talks", "Metrics woven contextually"],
+      "takeaway": "Letting 'previously Stripe, now OpenAI' establish credibility instantly."
+    },
+    {
+      "name": "Pratibha Joshi",
+      "company": "Google (prev. Sprinklr)",
+      "url": "pratibhajoshi.com",
+      "strengths": ["Design system project alongside product work", "Shows systems thinking"],
+      "takeaway": "Showing design system work alongside product work signals systems thinking."
+    },
+    {
+      "name": "Elise Fu",
+      "company": "Product Designer, Bay Area",
+      "url": "elisefu.com",
+      "strengths": ["Impact/Metrics section BEFORE background and process", "Minto Pyramid structure"],
+      "takeaway": "Results-first structure captures attention in the first 10 seconds."
+    },
+    {
+      "name": "Tom Petty",
+      "company": "Design Leader, Co-founder Design Club",
+      "url": "tom.pe",
+      "strengths": ["Design principles as a named section", "Challenges and frameworks documented"],
+      "takeaway": "Articulating design principles per project signals strategic thinking."
+    }
+  ],
+  "patterns": {
+    "senior_signals": [
+      "Lead with impact, not process (Minto Pyramid)",
+      "Problem reframing is the hero moment, not the final UI",
+      "Business context opens the case study, not user frustration alone",
+      "Constraints and tradeoffs are featured, not hidden",
+      "Collaborators named by role",
+      "2-5 case studies maximum, quality over quantity",
+      "Case study structure varies per project type",
+      "Writing or talks section signals organizational influence"
+    ],
+    "junior_signals": [
+      "Shows all work exhaustively",
+      "Follows the same template for every case study",
+      "Explains everything in detail rather than curating",
+      "No quantified outcomes",
+      "Says 'we' for everything without clarifying ownership",
+      "Only shows final polished screens",
+      "No evidence of failed approaches or pivots"
+    ],
+    "nda_strategies": [
+      "Directional metrics without exact numbers",
+      "De-branded recreations (Rob's current approach)",
+      "Focus on process artifacts (screeners, affinity maps, architecture)",
+      "Password-protected deep dives shared during interviews",
+      "Explicitly state the NDA constraint (builds trust)"
+    ]
+  },
+  "implications_for_rob": [
+    "SUS score (low 70s to high 80s) is the strongest real metric. Put it in the APM headline.",
+    "Aysa numbers (15k views, $2.1M seed round) are strong. Keep them prominent.",
+    "Don't force metrics on Warehouse, Keytrn, or Sinta. Use specific descriptive outcomes instead.",
+    "The tab vs. single-page story in APM is a senior signal (problem reframing). Make it more prominent.",
+    "Keytrn implementation (built the scraper, design system) is a major differentiator. Keep it visible.",
+    "The portfolio site itself (built in Astro/React) is a signal. Make it visible somewhere.",
+    "Before/after comparisons on Honeywell work would be high impact when assets are available."
+  ]
+}

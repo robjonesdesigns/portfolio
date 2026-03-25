@@ -129,6 +129,7 @@ Rob's work is research-driven, systems-aware, and ships. The portfolio demonstra
 | Project interviews | `~/.claude/projects/-Users-robjones/memory/interviews.md` | Keytrn complete, Honeywell complete, Aysa complete, Sinta complete |
 | Personas | `./vector/research/personas/` | PER-001 (hiring manager), PER-002 (founder) — confirmed |
 | JTBD | `./vector/research/jtbd/` | JTBD-001 (portfolio screening), JTBD-002 (evaluating solo designer) — confirmed |
-| Competitive | `./vector/research/competitive/` | Not yet created |
-| Assumptions | `./vector/research/assumptions/` | Not yet created |
+| Competitive | `./vector/research/competitive/` | Draft (COMP-001 senior portfolio analysis) |
+| Assumptions | `./vector/research/assumptions/` | Draft (ASM-001, ASM-002) |
 | Decisions | `./vector/decisions/` | Not yet created |
+| Desk research | `./vector/research/DESK-RESEARCH-001-senior-portfolio-analysis.md` | Complete |
