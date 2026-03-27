@@ -3,12 +3,6 @@ import Container from '../layout/Container'
 
 const EASE = [0.76, 0, 0.24, 1]
 
-const LINES = [
-  "I'm Rob.",
-  "3 years designing enterprise SaaS.",
-  "0→1 products for startups.",
-]
-
 export default function Hero() {
   return (
     <section id="hero" className="relative overflow-hidden">
@@ -28,25 +22,15 @@ export default function Hero() {
       <Container className="relative z-10 pt-28 md:pt-36 pb-10 md:pb-14">
         <div className="relative z-10">
 
-          {/* ── Headline — line by line ── */}
-          <h1
-            className="type-display-2xl leading-[0.95] tracking-tight mb-7"
-            aria-label={LINES.join(' ')}
+          {/* ── Headline — continuous block, no forced line breaks ── */}
+          <m.h1
+            className="type-display-2xl leading-[0.95] tracking-tight mb-7 text-pretty"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
           >
-            {LINES.map((line, li) => (
-              <m.span
-                key={li}
-                className="block"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 + li * 0.12, ease: EASE }}
-              >
-                {line === "I'm Rob." ? (
-                  <>I'm <span className="font-editorial italic text-brand-primary" style={{ fontSize: '0.85em', letterSpacing: '-0.04em' }}>Rob</span>.</>
-                ) : line}
-              </m.span>
-            ))}
-          </h1>
+            I'm <span className="font-editorial italic text-brand-primary" style={{ fontSize: '0.85em', letterSpacing: '-0.04em' }}>Rob</span>. 3 years designing enterprise SaaS. 0→1 products for startups.
+          </m.h1>
 
           {/* ── Subtext ── */}
           <m.p
