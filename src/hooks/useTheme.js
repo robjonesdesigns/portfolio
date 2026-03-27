@@ -23,13 +23,12 @@ export function useTheme() {
     localStorage.setItem('theme', theme)
   }, [theme])
 
-  // Listen for OS preference changes
+  // Listen for OS preference changes -- system setting always wins on change
   useEffect(() => {
     const media = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = (e) => {
-      if (!localStorage.getItem('theme')) {
-        setTheme(e.matches ? 'dark' : 'light')
-      }
+      const newTheme = e.matches ? 'dark' : 'light'
+      setTheme(newTheme)
     }
     media.addEventListener('change', handleChange)
     return () => media.removeEventListener('change', handleChange)
