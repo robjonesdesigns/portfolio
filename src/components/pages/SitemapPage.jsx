@@ -23,6 +23,7 @@ export default function SitemapPage() {
               <h2 className="type-label mb-3">Pages</h2>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 2rem' }}>
                 <li className="mb-2"><a href="/" className="type-link inline-block py-2 -mx-2 px-2">Home</a></li>
+                <li className="mb-2"><a href="/about" className="type-link inline-block py-2 -mx-2 px-2">About</a></li>
                 <li className="mb-2"><a href="/resume" className="type-link inline-block py-2 -mx-2 px-2">Resume</a></li>
               </ul>
 
