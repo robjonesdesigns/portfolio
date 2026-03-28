@@ -124,12 +124,14 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
         localStorage.setItem('theme', e.matches ? 'dark' : 'light')
       })
 
-      // Initial load
+      // Enable animations only after JS confirms observer works
+      document.documentElement.classList.add('js-ready')
       initScrollObserver()
 
       // After ViewTransitions swap
       document.addEventListener('astro:after-swap', () => {
         restoreTheme()
+        document.documentElement.classList.add('js-ready')
         window.scrollTo({ left: 0, top: 0, behavior: 'instant' })
         initScrollObserver()
       })
