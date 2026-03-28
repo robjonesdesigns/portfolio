@@ -152,7 +152,7 @@
   background: var(--accent);
   color: var(--on-accent);
   font-family: 'Areal', Arial, sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   border-radius: 0 0 8px 8px;
   transition: top 0.2s ease;
 }
@@ -336,7 +336,7 @@
   height: 64px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background-color: color-mix(in srgb, var(--surface) 65%, transparent);
+  background-color: color-mix(in srgb, var(--surface) 85%, transparent);
   border-bottom: 1px solid var(--border);
   animation: navbar-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
