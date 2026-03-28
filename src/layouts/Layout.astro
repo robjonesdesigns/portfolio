@@ -89,52 +89,59 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
     </div>
 
     <!-- Scroll animation observer + navigation helpers -->
-    <script>
-      function initScrollObserver() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible')
-              observer.unobserve(entry.target)
-            }
-          })
-        }, { threshold: 0.1 })
-
-        document.querySelectorAll('[data-animate],[data-animate-y]').forEach(el => {
-          observer.observe(el)
-        })
-      }
-
-      // Re-apply theme after ViewTransitions swap (swap replaces <html> classes)
-      function restoreTheme() {
-        try {
-          const stored = localStorage.getItem('theme')
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-          if (stored === 'dark' || (!stored && prefersDark)) {
-            document.documentElement.classList.add('dark')
-          } else {
-            document.documentElement.classList.remove('dark')
+    <script is:inline>
+      (function() {
+        function initScrollObserver() {
+          if (!('IntersectionObserver' in window)) {
+            document.querySelectorAll('[data-animate],[data-animate-y]').forEach(function(el) {
+              el.classList.add('visible');
+            });
+            return;
           }
-        } catch(e) {}
-      }
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1 });
 
-      // System preference change listener
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        document.documentElement.classList.toggle('dark', e.matches)
-        localStorage.setItem('theme', e.matches ? 'dark' : 'light')
-      })
+          document.querySelectorAll('[data-animate],[data-animate-y]').forEach(function(el) {
+            observer.observe(el);
+          });
+        }
 
-      // Enable animations only after JS confirms observer works
-      document.documentElement.classList.add('js-ready')
-      initScrollObserver()
+        function restoreTheme() {
+          try {
+            var stored = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (stored === 'dark' || (!stored && prefersDark)) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
+          } catch(e) {}
+        }
 
-      // After ViewTransitions swap
-      document.addEventListener('astro:after-swap', () => {
-        restoreTheme()
-        document.documentElement.classList.add('js-ready')
-        window.scrollTo({ left: 0, top: 0, behavior: 'instant' })
-        initScrollObserver()
-      })
+        // System preference change listener
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          document.documentElement.classList.toggle('dark', e.matches);
+          localStorage.setItem('theme', e.matches ? 'dark' : 'light');
+        });
+
+        // Enable animations and observe
+        document.documentElement.classList.add('js-ready');
+        initScrollObserver();
+
+        // After ViewTransitions swap
+        document.addEventListener('astro:after-swap', function() {
+          restoreTheme();
+          document.documentElement.classList.add('js-ready');
+          window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+          initScrollObserver();
+        });
+      })();
     </script>
   </body>
 </html>

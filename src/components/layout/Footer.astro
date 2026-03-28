@@ -56,35 +56,36 @@ import Container from './Container.astro'
   </div>
 </footer>
 
-<script>
-  function initFooter() {
-    const btn = document.querySelector('[data-email-copy]')
-    const toast = document.querySelector('[data-copied-toast]')
-    const copyIcon = document.querySelector('.copy-icon')
-    const checkIcon = document.querySelector('.check-icon')
-    if (!btn || !toast) return
+<script is:inline>
+  (function() {
+    var btn = document.querySelector('[data-email-copy]');
+    var toast = document.querySelector('[data-copied-toast]');
+    var copyIcon = document.querySelector('.copy-icon');
+    var checkIcon = document.querySelector('.check-icon');
+    if (!btn || !toast || btn.dataset.bound) return;
+    btn.dataset.bound = 'true';
 
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText('robjonesdesigns@gmail.com')
-        btn.classList.add('copied')
-        btn.setAttribute('aria-label', 'Email address copied')
-        toast.classList.add('show')
-        if (copyIcon) copyIcon.style.display = 'none'
-        if (checkIcon) checkIcon.style.display = 'block'
-        setTimeout(() => {
-          btn.classList.remove('copied')
-          btn.setAttribute('aria-label', 'robjonesdesigns@gmail.com: copy email address')
-          toast.classList.remove('show')
-          if (copyIcon) copyIcon.style.display = 'block'
-          if (checkIcon) checkIcon.style.display = 'none'
-        }, 2200)
-      } catch {
-        window.location.href = 'mailto:robjonesdesigns@gmail.com'
+    btn.addEventListener('click', function() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText('robjonesdesigns@gmail.com').then(function() {
+          btn.classList.add('copied');
+          btn.setAttribute('aria-label', 'Email address copied');
+          toast.classList.add('show');
+          if (copyIcon) copyIcon.style.display = 'none';
+          if (checkIcon) checkIcon.style.display = 'block';
+          setTimeout(function() {
+            btn.classList.remove('copied');
+            btn.setAttribute('aria-label', 'robjonesdesigns@gmail.com: copy email address');
+            toast.classList.remove('show');
+            if (copyIcon) copyIcon.style.display = 'block';
+            if (checkIcon) checkIcon.style.display = 'none';
+          }, 2200);
+        }).catch(function() {
+          window.location.href = 'mailto:robjonesdesigns@gmail.com';
+        });
+      } else {
+        window.location.href = 'mailto:robjonesdesigns@gmail.com';
       }
-    })
-  }
-
-  initFooter()
-  document.addEventListener('astro:after-swap', initFooter)
+    });
+  })();
 </script>

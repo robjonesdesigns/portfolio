@@ -73,28 +73,25 @@ const navLinks = [
   </div>
 </header>
 
-<script>
-  function initThemeToggle() {
-    const toggle = document.querySelector('[data-theme-toggle]')
-    if (!toggle || toggle.dataset.bound) return
-    toggle.dataset.bound = 'true'
+<script is:inline>
+  (function() {
+    var toggle = document.querySelector('[data-theme-toggle]');
+    if (!toggle || toggle.dataset.bound) return;
+    toggle.dataset.bound = 'true';
 
     function updateLabel() {
-      const isDark = document.documentElement.classList.contains('dark')
-      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode')
+      var isDark = document.documentElement.classList.contains('dark');
+      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
     }
 
-    toggle.addEventListener('click', () => {
-      const isDark = document.documentElement.classList.contains('dark')
-      const next = isDark ? 'light' : 'dark'
-      document.documentElement.classList.toggle('dark', next === 'dark')
-      localStorage.setItem('theme', next)
-      updateLabel()
-    })
+    toggle.addEventListener('click', function() {
+      var isDark = document.documentElement.classList.contains('dark');
+      var next = isDark ? 'light' : 'dark';
+      document.documentElement.classList.toggle('dark', next === 'dark');
+      localStorage.setItem('theme', next);
+      updateLabel();
+    });
 
-    updateLabel()
-  }
-
-  initThemeToggle()
-  document.addEventListener('astro:page-load', initThemeToggle)
+    updateLabel();
+  })();
 </script>

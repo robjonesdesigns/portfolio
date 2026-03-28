@@ -20,28 +20,45 @@ const { src, style = '', class: className = '' } = Astro.props
   class={className}
 />
 
-<script>
-  function initLazyVideos() {
-    const videos = document.querySelectorAll('video[data-lazy-video]:not([src])')
-    if (!videos.length) return
+<script is:inline>
+  (function() {
+    if (window.__lazyVideoInit) return;
+    window.__lazyVideoInit = true;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const video = entry.target as HTMLVideoElement
-          const src = video.dataset.src
+    function initLazyVideos() {
+      var videos = document.querySelectorAll('video[data-lazy-video]:not([src])');
+      if (!videos.length) return;
+
+      if (!('IntersectionObserver' in window)) {
+        // Fallback: load all videos immediately
+        videos.forEach(function(video) {
+          var src = video.getAttribute('data-src');
           if (src) {
-            video.src = src
-            video.autoplay = true
+            video.src = src;
+            video.autoplay = true;
           }
-          observer.unobserve(video)
-        }
-      })
-    }, { rootMargin: '600px' })
+        });
+        return;
+      }
 
-    videos.forEach(v => observer.observe(v))
-  }
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var video = entry.target;
+            var src = video.getAttribute('data-src');
+            if (src) {
+              video.src = src;
+              video.autoplay = true;
+            }
+            observer.unobserve(video);
+          }
+        });
+      }, { rootMargin: '600px' });
 
-  initLazyVideos()
-  document.addEventListener('astro:after-swap', initLazyVideos)
+      videos.forEach(function(v) { observer.observe(v); });
+    }
+
+    initLazyVideos();
+    document.addEventListener('astro:after-swap', initLazyVideos);
+  })();
 </script>
