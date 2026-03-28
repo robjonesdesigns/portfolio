@@ -48,7 +48,7 @@ export const projects = [
       },
       {
         id: 'before-after',
-        label: 'Plant Overview: Before & After',
+        sectionLabel: 'Plant Overview: Before & After',
         beforeAfter: {
           beforeImage: 'https://res.cloudinary.com/dlqvgithx/image/upload/f_auto,q_auto/portfolio/apm-before',
           afterVideo: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-risk-matrix',
