@@ -38,18 +38,16 @@ export const projects = [
     ],
     processMedia: [
       {
-        id: 'screener',
-        label: 'Research: Screener & Interview Script',
-        note: 'Photo: recreated screener or interview script in Figma or Notion',
-        caption: 'I wrote the screener and interview script from scratch, using the research team\'s past work as a starting point. I took a Dovetail course on writing moderated test scripts specifically to sharpen this. I wanted to make sure I was testing the right things and asking questions that didn\'t lead participants.',
-        video: null,
+        id: 'usability-session',
+        label: 'Research: Moderated Usability Session',
+        image: 'https://res.cloudinary.com/dlqvgithx/image/upload/f_auto,q_auto/portfolio/apm-usability-session',
+        caption: 'I wrote screeners and interview scripts from scratch, took a Dovetail course on moderated test design, and ran sessions at each major iteration. I wanted to make sure I was testing the right things and asking questions that didn\'t lead participants.',
       },
       {
         id: 'affinity-map',
         label: 'Synthesis: Affinity Mapping',
-        note: 'Video: Miro affinity map walkthrough',
+        image: 'https://res.cloudinary.com/dlqvgithx/image/upload/f_auto,q_auto/portfolio/apm-affinity-map',
         caption: 'After each round of sessions I\'d pull all the observations into Miro and run an affinity mapping exercise, grouping findings by theme to surface patterns across participants. This is where the actual design decisions got made. If users kept stumbling on the same thing, that became a priority.',
-        video: null,
       },
       {
         id: 'asset-details-structure',
