@@ -88,7 +88,7 @@ export const projects = [
     duration: '3 years',
     team: 'UX Designer, Researcher, SMEs, Engineering, PM (Agile)',
     color: '#1e3a5f',
-    darkUI: true,
+    mobileCardColor: '#2dd4bf',
   },
   {
     slug: 'honeywell-warehouse',
@@ -365,6 +365,7 @@ export const projects = [
     duration: '5 months',
     team: '1 Designer, Founding Team',
     color: '#4a2c1e',
+    mobileCardColor: '#1c2f5e',
   },
   {
     slug: 'sinta-hr-platform',
