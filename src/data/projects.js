@@ -53,6 +53,15 @@ export const projects = [
         caption: 'Plant Overview already existed when I got to it: broken affordances, unclear hierarchy, KPIs organized in a way that buried the most important signals. I redesigned it, updated the color usage, fixed affordances, and reorganized the KPI hierarchy. Mid-fidelity designs started in the low 70s on the SUS. Each round of testing pushed them higher, reaching the high 80s.',
         video: null,
       },
+      {
+        id: 'before-after',
+        sectionLabel: 'Before & After',
+        beforeAfter: {
+          beforeImage: 'https://res.cloudinary.com/dlqvgithx/image/upload/f_auto,q_auto/portfolio/apm-before',
+          afterVideo: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-risk-matrix',
+        },
+        caption: 'Left: the original Honeywell Forge Asset Health dashboard. Right: my de-branded recreation, redesigned with clear section hierarchy, a tokenized design system, and five distinct visual languages for status indicators.',
+      },
     ],
     finalMedia: {
       label: 'Asset Inspection: Final Design',

@@ -99,7 +99,36 @@ const next = projects[(idx + 1) % projects.length]
         {/* Process media — with optional section labels and key insight */}
         {project.processMedia?.map((item: any) => (
           <>
-            {item.sectionLabel ? (
+            {item.beforeAfter ? (
+              <div class="flex flex-col gap-3">
+                {item.sectionLabel && (
+                  <h2 class="type-display-md" data-animate-y>{item.sectionLabel}</h2>
+                )}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3" data-animate>
+                  {/* Before */}
+                  <div class="flex flex-col gap-2">
+                    <span class="type-label">Before</span>
+                    <div style="background: color-mix(in srgb, var(--fg) 6%, var(--surface)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0;">
+                      <img src={item.beforeAfter.beforeImage} alt="Before: original design" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                    </div>
+                  </div>
+                  {/* After */}
+                  <div class="flex flex-col gap-2">
+                    <span class="type-label">After</span>
+                    <div style="background: color-mix(in srgb, var(--fg) 6%, var(--surface)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0;">
+                      {item.beforeAfter.afterVideo ? (
+                        <LazyVideo src={item.beforeAfter.afterVideo} style="width: 100%; display: block;" />
+                      ) : item.beforeAfter.afterImage ? (
+                        <img src={item.beforeAfter.afterImage} alt="After: redesigned" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+                {item.caption && (
+                  <p class="type-body leading-relaxed max-w-3xl mt-2">{item.caption}</p>
+                )}
+              </div>
+            ) : item.sectionLabel ? (
               <div class="flex flex-col gap-3">
                 <h2 class="type-display-md" data-animate-y>{item.sectionLabel}</h2>
                 <div data-animate>
