@@ -51,7 +51,21 @@ const placeholderStyle = `background-color: ${color ? `${color}28` : 'var(--bord
             <LazyVideo src={validVideos[0]} style="width: 100%; display: block;" />
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" style="min-height: 0;">
-            {validVideos.slice(1).map((src: string) =>
+            {(() => {
+              const secondRow = validVideos.slice(1)
+              // Alternate mobile card position: even index = mobile left, odd = mobile right
+              const mobileIdx = secondRow.findIndex((s: string) => s && s.includes('mobile'))
+              if (mobileIdx >= 0 && index % 2 === 1) {
+                // Move mobile to end for odd-indexed projects
+                const mobile = secondRow.splice(mobileIdx, 1)[0]
+                secondRow.push(mobile)
+              } else if (mobileIdx > 0 && index % 2 === 0) {
+                // Move mobile to start for even-indexed projects
+                const mobile = secondRow.splice(mobileIdx, 1)[0]
+                secondRow.unshift(mobile)
+              }
+              return secondRow
+            })().map((src: string) =>
               src && src.includes('mobile') ? (
                 <div class="flex items-center justify-center rounded-lg p-6" style={`min-height: 100%; background-color: ${mobileCardColor || 'var(--media-bg)'};`}>
                   <div class="overflow-hidden rounded-lg bg-black" style="max-width: 180px; width: 100%;">
