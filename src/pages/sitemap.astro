@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import SitemapPage from '../components/pages/SitemapPage.jsx'
+import { projects } from '../data/projects'
 ---
 
 <Layout
@@ -8,5 +8,31 @@ import SitemapPage from '../components/pages/SitemapPage.jsx'
   description="Site map for Rob Jones - Product Designer portfolio."
   canonical="/sitemap"
 >
-  <SitemapPage client:load />
+  <div class="min-h-screen pt-28 md:pt-36 pb-24">
+    <div style="max-width: 640px; margin: 0 auto; padding: 0 2rem;">
+
+      <h1 class="type-display-md mb-8">Sitemap</h1>
+
+      <nav aria-label="Site map">
+        <h2 class="type-label mb-3">Pages</h2>
+        <ul style="list-style: none; padding: 0; margin: 0 0 2rem;">
+          <li class="mb-2"><a href="/" class="type-link inline-block py-2 -mx-2 px-2">Home</a></li>
+          <li class="mb-2"><a href="/about" class="type-link inline-block py-2 -mx-2 px-2">About</a></li>
+          <li class="mb-2"><a href="/resume" class="type-link inline-block py-2 -mx-2 px-2">Resume</a></li>
+        </ul>
+
+        <h2 class="type-label mb-3">Case Studies</h2>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          {projects.map(p => (
+            <li class="mb-2">
+              <a href={`/projects/${p.slug}`} class="type-link inline-block py-2 -mx-2 px-2">
+                {p.company}: {p.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+    </div>
+  </div>
 </Layout>

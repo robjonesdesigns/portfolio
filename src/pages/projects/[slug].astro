@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import CaseStudyPage from '../../components/pages/CaseStudyPage.jsx'
+import CaseStudy from '../../components/case-study/CaseStudy.astro'
 import { projects } from '../../data/projects.js'
 
 export function getStaticPaths() {
@@ -34,5 +34,5 @@ const creativeWorkSchema = {
   canonical={`/projects/${project.slug}`}
 >
   <script type="application/ld+json" set:html={JSON.stringify(creativeWorkSchema)} />
-  <CaseStudyPage project={project} client:load />
+  <CaseStudy project={project} />
 </Layout>

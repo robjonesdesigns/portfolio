@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import HomePage from '../components/pages/HomePage.jsx'
+import Container from '../components/layout/Container.astro'
+import WorkEntry from '../components/ui/WorkEntry.astro'
+import { projects } from '../data/projects'
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -18,5 +20,74 @@ const personSchema = {
   canonical="/"
 >
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-  <HomePage client:load />
+
+  {/* Hero */}
+  <section id="hero" class="relative overflow-hidden">
+    {/* Grid */}
+    <div
+      class="absolute inset-0 pointer-events-none select-none opacity-[0.028]"
+      style="background-image: linear-gradient(var(--fg) 1px, transparent 1px), linear-gradient(90deg, var(--fg) 1px, transparent 1px); background-size: 24px 24px;"
+    />
+
+    <Container class="relative z-10 pt-28 md:pt-36 pb-10 md:pb-14">
+      <div class="relative z-10">
+        <h1
+          class="type-display-2xl leading-[0.95] tracking-tight mb-7 text-pretty hero-headline"
+          data-animate-y
+        >
+          I'm <span class="font-editorial italic text-brand-primary" style="font-size: 0.85em; letter-spacing: -0.04em;">Rob</span>. 3 years designing enterprise SaaS. 0&rarr;1 products for startups.
+        </h1>
+
+        <p
+          class="type-body max-w-2xl mb-6 text-pretty hero-subtext"
+          data-animate
+          data-animate-delay="3"
+        >
+          3 years at Honeywell designing for industrial engineers. Shipped 0&rarr;1 products for early-stage founders in parallel. Currently available.
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  {/* Projects */}
+  <section id="projects" class="relative py-12 md:py-24 bg-subtle">
+    {/* Dot grid */}
+    <div
+      class="absolute inset-0 pointer-events-none select-none opacity-[0.06]"
+      style="background-image: radial-gradient(circle, var(--fg) 1px, transparent 1px); background-size: 24px 24px;"
+    />
+    <Container>
+      <div class="mb-8">
+        <h2 class="type-display-xl" data-animate-y>
+          Work
+        </h2>
+      </div>
+
+      <div>
+        {projects.map((project, i) => (
+          <WorkEntry project={project} index={i} />
+        ))}
+      </div>
+    </Container>
+  </section>
 </Layout>
+
+<style>
+  .hero-headline {
+    animation: hero-in 0.7s cubic-bezier(0.76, 0, 0.24, 1) 0.1s both;
+  }
+  .hero-subtext {
+    animation: hero-in 0.6s cubic-bezier(0.76, 0, 0.24, 1) 0.46s both;
+  }
+  @keyframes hero-in {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-headline, .hero-subtext {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>

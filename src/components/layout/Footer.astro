@@ -1,0 +1,90 @@
+---
+import Container from './Container.astro'
+---
+
+<footer class="border-t border-token text-fg">
+  <div class="py-16 md:py-24">
+    <Container>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-10">
+
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <span class="inline-block w-7 h-px flex-shrink-0 bg-brand-primary" />
+            <span class="font-body text-label text-brand-primary">
+              Available for work
+            </span>
+          </div>
+          <h2 class="type-display-lg">
+            Let's build something<br class="hidden md:block" /> great together.
+          </h2>
+        </div>
+
+        <div class="self-start md:self-end relative">
+          <button
+            data-email-copy
+            aria-label="robjonesdesigns@gmail.com: copy email address"
+            class="email-copy-btn flex items-center rounded border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-on-accent transition-colors duration-200 whitespace-nowrap"
+          >
+            <span class="font-body text-body md:text-body-lg px-5 py-3">robjonesdesigns@gmail.com</span>
+            <span class="self-stretch w-px bg-current opacity-30" />
+            <span class="px-4 py-3 flex items-center justify-center">
+              {/* Copy icon (default) */}
+              <svg class="copy-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <rect x="5" y="1" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9 9v2.5A1.5 1.5 0 0 1 7.5 13h-6A1.5 1.5 0 0 1 0 11.5v-6A1.5 1.5 0 0 1 1.5 4H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              {/* Check icon (shown after copy) */}
+              <svg class="check-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="display: none;">
+                <path d="M2 7l3.5 3.5L12 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="sr-only">Copy email address</span>
+            </span>
+          </button>
+
+          <span data-copied-toast class="copied-toast absolute -bottom-7 left-0 font-body text-body-sm text-fg-secondary">
+            Copied to clipboard
+          </span>
+        </div>
+
+      </div>
+      <div class="mt-10 pt-6 border-t" style="border-color: var(--border);">
+        <a href="/sitemap" class="type-link inline-block py-2 -mx-2 px-2">
+          Sitemap
+        </a>
+      </div>
+    </Container>
+  </div>
+</footer>
+
+<script>
+  function initFooter() {
+    const btn = document.querySelector('[data-email-copy]')
+    const toast = document.querySelector('[data-copied-toast]')
+    const copyIcon = document.querySelector('.copy-icon')
+    const checkIcon = document.querySelector('.check-icon')
+    if (!btn || !toast) return
+
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('robjonesdesigns@gmail.com')
+        btn.classList.add('copied')
+        btn.setAttribute('aria-label', 'Email address copied')
+        toast.classList.add('show')
+        if (copyIcon) copyIcon.style.display = 'none'
+        if (checkIcon) checkIcon.style.display = 'block'
+        setTimeout(() => {
+          btn.classList.remove('copied')
+          btn.setAttribute('aria-label', 'robjonesdesigns@gmail.com: copy email address')
+          toast.classList.remove('show')
+          if (copyIcon) copyIcon.style.display = 'block'
+          if (checkIcon) checkIcon.style.display = 'none'
+        }, 2200)
+      } catch {
+        window.location.href = 'mailto:robjonesdesigns@gmail.com'
+      }
+    })
+  }
+
+  initFooter()
+  document.addEventListener('astro:after-swap', initFooter)
+</script>

@@ -1,0 +1,214 @@
+---
+import { projects } from '../../data/projects'
+import Container from '../layout/Container.astro'
+import LazyVideo from '../ui/LazyVideo.astro'
+
+interface Props {
+  project: any
+}
+
+const { project } = Astro.props
+
+// Next project navigation
+const idx = projects.findIndex((p: any) => p.slug === project.slug)
+const next = projects[(idx + 1) % projects.length]
+---
+
+<div class="min-h-screen">
+  {/* Hero */}
+  <div class="pt-28 md:pt-36 pb-20 bg-subtle">
+    <Container>
+      <div class="flex flex-col gap-10 md:gap-14">
+        <h1 class="type-display-xl" data-animate-y>
+          {project.headline}
+        </h1>
+
+        {/* Meta strip */}
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-animate data-animate-delay="1">
+          <div class="flex flex-col gap-1">
+            <span class="type-badge font-bold uppercase tracking-wide">Company</span>
+            <span class="type-body font-medium">{project.company}</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span class="type-badge font-bold uppercase tracking-wide">Role</span>
+            <span class="type-body font-medium">{project.role}</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span class="type-badge font-bold uppercase tracking-wide">Problem</span>
+            <p class="type-body">{project.metaProblem}</p>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span class="type-badge font-bold uppercase tracking-wide">Outcome</span>
+            <p class="type-body">{project.outcomes?.[0]}</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </div>
+
+  {/* Content */}
+  <div class="py-20">
+    <Container>
+      <div class="flex flex-col gap-20">
+
+        {/* Overview */}
+        {project.intro && (
+          <div class="flex flex-col gap-5 max-w-2xl" data-animate>
+            <p class="type-intro leading-relaxed">{project.intro}</p>
+            {project.orientationNote && (
+              <p class="type-body leading-relaxed" style="color: var(--fg-secondary);">{project.orientationNote}</p>
+            )}
+          </div>
+        )}
+
+        {/* Problem */}
+        {project.problem && (
+          <div class="flex flex-col gap-4 max-w-3xl" data-animate>
+            <h2 class="type-display-md" data-animate-y>The problem</h2>
+            <p class="type-body leading-relaxed">{project.problem}</p>
+          </div>
+        )}
+
+        {/* Process */}
+        {project.process && (
+          <div class="flex flex-col gap-4 max-w-3xl" data-animate>
+            <h2 class="type-display-md" data-animate-y>The work</h2>
+            <p class="type-body leading-relaxed">{project.process}</p>
+          </div>
+        )}
+
+        {/* Outcome — shown when no reflection */}
+        {!project.reflection && project.outcome && (
+          <div class="flex flex-col gap-4 max-w-3xl" data-animate>
+            <h2 class="type-display-md" data-animate-y>Outcome</h2>
+            <p class="type-body leading-relaxed">{project.outcome}</p>
+          </div>
+        )}
+
+        {/* Process media — with optional section labels and key insight */}
+        {project.processMedia?.map((item: any) => (
+          <>
+            {item.sectionLabel ? (
+              <div class="flex flex-col gap-3">
+                <h2 class="type-display-md" data-animate-y>{item.sectionLabel}</h2>
+                <div data-animate>
+                  {!item.sectionLabel && (
+                    <h3 class="type-display-sm mb-5">{item.label}</h3>
+                  )}
+                  <div style="background: color-mix(in srgb, var(--fg) 6%, var(--surface)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0;">
+                    {item.video ? (
+                      <LazyVideo src={item.video} style="width: 100%; display: block;" />
+                    ) : (
+                      <div style="aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; gap: 0.75rem;">
+                        <span class="type-label" style="opacity: 0.35;">Asset coming soon</span>
+                        <p class="font-body text-body leading-relaxed text-center max-w-md" style="color: var(--fg); opacity: 0.4;">
+                          {item.note || '[ screenshot or recording ]'}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                  {item.caption && (
+                    <p class="type-body leading-relaxed max-w-3xl mt-2">{item.caption}</p>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div data-animate>
+                <h3 class="type-display-sm mb-5">{item.label}</h3>
+                <div style="background: color-mix(in srgb, var(--fg) 6%, var(--surface)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0;">
+                  {item.video ? (
+                    <LazyVideo src={item.video} style="width: 100%; display: block;" />
+                  ) : (
+                    <div style="aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; gap: 0.75rem;">
+                      <span class="type-label" style="opacity: 0.35;">Asset coming soon</span>
+                      <p class="font-body text-body leading-relaxed text-center max-w-md" style="color: var(--fg); opacity: 0.4;">
+                        {item.note || '[ screenshot or recording ]'}
+                      </p>
+                    </div>
+                  )}
+                </div>
+                {item.caption && (
+                  <p class="type-body leading-relaxed max-w-3xl mt-2">{item.caption}</p>
+                )}
+              </div>
+            )}
+
+            {/* Key insight callout */}
+            {item.followedByInsight && project.keyInsight && (
+              <div
+                class="flex flex-col gap-5 py-4 mt-8"
+                style="border-left: 4px solid var(--accent); padding-left: 2rem;"
+                data-animate
+              >
+                <span class="type-label">Key insight</span>
+                <p class="type-intro leading-relaxed max-w-2xl">{project.keyInsight}</p>
+              </div>
+            )}
+          </>
+        ))}
+
+        {/* Design Decisions */}
+        {project.designDecisions?.length > 0 && (
+          <div class="flex flex-col gap-10 max-w-3xl mt-12" data-animate>
+            <h2 class="type-display-md" data-animate-y>Key design decisions</h2>
+            {project.designDecisions.map((d: any, i: number) => (
+              <div class={`flex flex-col gap-10 border-t ${i === 0 ? 'pt-16' : 'pt-14'}`} style="border-color: var(--border);">
+                <h3 class={i === 0 ? 'type-display-md' : 'type-display-sm'}>{d.title}</h3>
+                <div class="flex flex-col gap-10">
+                  <div class="flex flex-col gap-2">
+                    <span class="type-label">Problem</span>
+                    <p class="type-body leading-relaxed">{d.problem}</p>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <span class="type-label">Decision</span>
+                    <p class="type-body leading-relaxed">{d.decision}</p>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <span class="type-label">Why</span>
+                    <p class="type-body leading-relaxed">{d.why}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* UGA Business Law Clinic */}
+        {project.ugaContent !== undefined && (
+          <div class="flex flex-col gap-4 max-w-2xl mt-8" data-animate>
+            <h2 class="type-display-md" data-animate-y>UGA Business Law Clinic</h2>
+            {project.ugaContent ? (
+              <p class="type-body leading-relaxed">{project.ugaContent}</p>
+            ) : (
+              <p class="type-body leading-relaxed" style="opacity: 0.35; font-style: italic;">
+                Content coming soon.
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Reflection */}
+        {project.reflection && (
+          <div class="flex flex-col gap-4 max-w-2xl mt-16" data-animate>
+            <h2 class="type-display-md" data-animate-y>Reflection</h2>
+            <p class="type-body leading-relaxed">{project.reflection}</p>
+          </div>
+        )}
+
+        {/* Navigation */}
+        <div
+          class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center pt-8 border-t"
+          style="border-color: var(--border);"
+        >
+          <a href="/" class="type-link inline-block py-2 -mx-2 px-2">
+            &larr; All Projects
+          </a>
+          <a href={`/projects/${next.slug}`} class="type-link inline-block py-2 -mx-2 px-2 sm:text-right">
+            Next: {next.title} &rarr;
+          </a>
+        </div>
+
+      </div>
+    </Container>
+  </div>
+</div>

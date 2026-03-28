@@ -1,0 +1,130 @@
+---
+import Container from '../layout/Container.astro'
+import Badge from '../ui/Badge.astro'
+
+const skills = [
+  'UX Research', 'Product Strategy', 'Interaction Design',
+  'Design Systems', 'Prototyping', 'User Testing',
+  'Figma', 'React', 'Astro', 'Accessibility', 'Front-End Development',
+]
+
+const siteDecisions = [
+  {
+    title: 'Cream, not white',
+    body: 'I researched drunk-tank pink, found out the calming claims were debunked, and landed on a warm cream that pairs with burgundy without being too stark. The palette matches my photo: pink hat, cream sweater, leather jacket.',
+  },
+  {
+    title: 'The font with the human signature',
+    body: 'The body font is Areal, discovered through 99% Invisible. It includes an am dash: a character that looks like an em dash but with serifs. A small statement about human touch in an era where AI writes everything with em dashes.',
+  },
+  {
+    title: 'Dark mode as a design artifact',
+    body: 'The portfolio respects your system preference and lets you toggle. It is not a feature. It is a demonstration that the token system works across both themes.',
+  },
+  {
+    title: 'Video loops, not screenshots',
+    body: "A static screenshot shows one moment. A loop shows how the product actually behaves. Inspired by a coworker's portfolio. The homepage should tell the full story without requiring a single click.",
+  },
+  {
+    title: 'Burgundy and rose',
+    body: 'Pink is my favorite color but it carries weight I did not want. Burgundy for light mode, rose for dark. Same family, no baggage. 7.78:1 contrast ratio on light, 4.81:1 on dark.',
+  },
+  {
+    title: 'Built from scratch',
+    body: 'Astro for the HTML and accessibility. React for interactions. Framer Motion for subtle scroll animations that never hide content from screen readers. No Webflow. No template. Full control.',
+  },
+  {
+    title: 'Process over polish',
+    body: 'The homepage shows craft. The case studies show thinking. A recruiter sees the product in the first scroll. A hiring manager sees the decisions in the case study. Two audiences, two surfaces, one portfolio.',
+  },
+  {
+    title: 'Fluid type, not snapping breakpoints',
+    body: 'Headlines use CSS clamp() so they scale smoothly across every viewport. Body text steps at one breakpoint for readability. The headers should feel natural to every screen, not just the ones they were designed for.',
+  },
+]
+---
+
+<div class="min-h-screen">
+
+  {/* Hero */}
+  <div class="pt-28 md:pt-36 pb-20 bg-subtle">
+    <Container>
+      <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-start">
+
+        {/* Headshot */}
+        <div class="relative" data-animate>
+          <div class="aspect-[3/4] rounded-2xl overflow-hidden">
+            <img
+              src="/images/headshot.jpg"
+              alt="Rob Jones, Product Designer"
+              width="533"
+              height="800"
+              class="w-full h-full object-cover object-top"
+            />
+          </div>
+          <div class="absolute -bottom-4 -right-4 w-32 h-32 rounded-2xl -z-10 bg-brand-primary opacity-15" />
+        </div>
+
+        {/* Bio */}
+        <div class="flex flex-col gap-8" data-animate-y data-animate-delay="1">
+          <h1 class="type-display-lg">
+            Behavioral tech. Painter. Product designer who codes.
+          </h1>
+
+          <div class="flex flex-col gap-8" data-animate data-animate-delay="2">
+            <p class="type-body leading-relaxed">
+              Before design, I worked as a behavioral technician with kids who had severe autism. That work taught me to show up, adapt in real time, and focus on what actually helps. I went to art school at 30, then moved into product design. The through line is the same: understand the person in front of you, then build something that works for them.
+            </p>
+
+            <p class="type-body leading-relaxed">
+              I am research-first because I have seen what happens when you skip it. For Keytrn, I built a spreadsheet of every county in Pennsylvania and cold-called 20+ offices before opening Figma. At Honeywell, I pushed back on accessibility shortcuts over calls and emails with the Head of Product Design until the fixes stuck. I have worked with early-stage founders at Aysa and Sinta where there was no team, no system, and no existing screens. I built this portfolio myself in Astro and React for the same reason I do everything: full control, and to speak the same language as the engineers I work with.
+            </p>
+
+            {/* Skills */}
+            <div>
+              <p class="type-badge font-bold mb-4 uppercase tracking-wide">
+                Skills &amp; Tools
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <Badge>{skill}</Badge>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </Container>
+  </div>
+
+  {/* Why this site exists */}
+  <div class="py-20">
+    <Container>
+      <div class="flex flex-col gap-20">
+
+        <div class="flex flex-col gap-5 max-w-2xl" data-animate>
+          <h2 class="type-display-md" data-animate-y>Why this site looks the way it does</h2>
+          <p class="type-intro leading-relaxed">
+            I built this portfolio from scratch in Astro and React. Not because I needed to prove I could code, but because I wanted complete control over how the work is presented. Every decision on this site, from the color palette to the font choice to the animation timing, was deliberate. Here is why.
+          </p>
+        </div>
+
+        {/* Design decisions */}
+        <div class="flex flex-col gap-10 max-w-3xl" data-animate>
+          {siteDecisions.map((d, i) => (
+            <div
+              class={`flex flex-col gap-3 border-t ${i === 0 ? 'pt-10' : 'pt-10'}`}
+              style="border-color: var(--border);"
+            >
+              <h3 class="type-display-sm">{d.title}</h3>
+              <p class="type-body leading-relaxed">{d.body}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </Container>
+  </div>
+
+</div>

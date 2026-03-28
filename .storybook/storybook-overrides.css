@@ -1,6 +1,0 @@
-/* Restore cursor in Storybook — globals.css sets cursor:none for the portfolio's
-   custom cursor component, which isn't rendered here. */
-html,
-a, button, [role="button"] {
-  cursor: auto !important;
-}

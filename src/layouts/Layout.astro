@@ -1,11 +1,15 @@
 ---
+import { ClientRouter } from 'astro:transitions'
 import '../styles/globals.css'
+import Navbar from '../components/layout/Navbar.astro'
+import Footer from '../components/layout/Footer.astro'
 
 interface Props {
   title?: string
   description?: string
   canonical?: string
   ogImage?: string
+  mainClass?: string
 }
 
 const {
@@ -13,6 +17,7 @@ const {
   description,
   canonical,
   ogImage,
+  mainClass = '',
 } = Astro.props
 
 const SITE_URL  = 'https://designedbyrob.com'
@@ -49,7 +54,7 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
     <!-- Preload Ogg Italic (used for "Rob" in hero — prevents FOUT) -->
     <link rel="preload" href="/fonts/Ogg-Italic-Trial.otf" as="font" type="font/otf" crossorigin />
 
-    <!-- Fonts — Cabinet Grotesk self-hosted (was Fontshare CDN) -->
+    <!-- Fonts — Cabinet Grotesk self-hosted -->
     <link rel="preload" href="/fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Cloudinary (video assets) -->
@@ -66,8 +71,68 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
         }
       } catch(e) {}
     </script>
+
+    <ClientRouter />
   </head>
   <body>
-    <slot />
+    <div class="noise">
+      <!-- Skip link -->
+      <a href="#main" class="skip-link">Skip to main content</a>
+
+      <Navbar />
+
+      <main id="main" class={mainClass} tabindex="-1">
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+
+    <!-- Scroll animation observer + navigation helpers -->
+    <script>
+      function initScrollObserver() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible')
+              observer.unobserve(entry.target)
+            }
+          })
+        }, { threshold: 0.1 })
+
+        document.querySelectorAll('[data-animate],[data-animate-y]').forEach(el => {
+          observer.observe(el)
+        })
+      }
+
+      // Re-apply theme after ViewTransitions swap (swap replaces <html> classes)
+      function restoreTheme() {
+        try {
+          const stored = localStorage.getItem('theme')
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark')
+          } else {
+            document.documentElement.classList.remove('dark')
+          }
+        } catch(e) {}
+      }
+
+      // System preference change listener
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        document.documentElement.classList.toggle('dark', e.matches)
+        localStorage.setItem('theme', e.matches ? 'dark' : 'light')
+      })
+
+      // Initial load
+      initScrollObserver()
+
+      // After ViewTransitions swap
+      document.addEventListener('astro:after-swap', () => {
+        restoreTheme()
+        window.scrollTo({ left: 0, top: 0, behavior: 'instant' })
+        initScrollObserver()
+      })
+    </script>
   </body>
 </html>

@@ -1,0 +1,55 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link'
+  size?: 'sm' | 'md' | 'lg'
+  as?: string
+  class?: string
+  href?: string
+  download?: string
+  'aria-label'?: string
+  [key: string]: any
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  as: Tag = 'button',
+  class: className = '',
+  ...attrs
+} = Astro.props
+
+const variants: Record<string, string> = {
+  primary:   'bg-brand-primary text-on-accent shadow-[0_1px_2px_0_var(--shadow-button)] hover:bg-[var(--accent-hover)]',
+  secondary: 'border border-brand-primary text-brand-primary bg-transparent hover:bg-[var(--accent-bg-10)]',
+  tertiary:  'bg-surface text-fg hover:bg-[var(--hover-overlay)]',
+  link:      'text-brand-primary hover:opacity-75',
+}
+
+const sizes: Record<string, string> = {
+  sm: 'px-4 py-2 text-body',
+  md: 'px-7 py-3.5 text-body md:text-body-lg',
+  lg: 'px-9 py-5 text-body md:text-body-lg',
+}
+
+const linkSizes: Record<string, string> = {
+  sm: 'py-2 text-body',
+  md: 'py-3.5 text-body md:text-body-lg',
+  lg: 'py-5 text-body md:text-body-lg',
+}
+
+const isLink = variant === 'link'
+const sizeClass = isLink ? linkSizes[size] : `rounded-full active:scale-[0.97] ${sizes[size]}`
+
+const classes = [
+  'inline-flex items-center justify-center gap-2 font-medium transition-all duration-200',
+  'focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--accent-ring)] focus-visible:ring-offset-0',
+  'disabled:opacity-40 disabled:pointer-events-none',
+  sizeClass,
+  variants[variant],
+  className,
+].filter(Boolean).join(' ')
+---
+
+<Tag class={classes} {...attrs}>
+  <slot />
+</Tag>

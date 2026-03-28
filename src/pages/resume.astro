@@ -1,6 +1,55 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import ResumePage from '../components/pages/ResumePage.jsx'
+import Container from '../components/layout/Container.astro'
+import Badge from '../components/ui/Badge.astro'
+import Button from '../components/ui/Button.astro'
+
+const experience = [
+  {
+    company:  'Honeywell: Asset Performance Management (APM)',
+    role:     'UX Designer',
+    period:   '2024 – 2025',
+    bullets: [
+      'Wrote screeners and interview guides from scratch, ran moderated usability sessions on UserTesting, and affinity mapped findings in Miro after each round to inform design decisions.',
+      'Redesigned Asset Health and built Asset Details from scratch. Raised SUS scores from the low 70s to the high 80s through research-driven iteration.',
+      "Provided iterative design support across peers' dashboards and contributed updates across both the APM and Warehouse platforms throughout the engagement.",
+    ],
+  },
+  {
+    company:  'Honeywell: Warehouse Operations',
+    role:     'UX Designer',
+    period:   '2022 – 2024',
+    bullets: [
+      'Designed the Warehouse Homepage and Merge Dashboard from scratch, giving operations managers real-time visibility into conveyor lane performance and a clear entry point for their shift.',
+      'Conducted a full heuristic evaluation of the platform and led UXQA to verify that affordances, typography, labeling, and spacing were correctly implemented across the product.',
+      'Collaborated with a researcher on competitive reviews, affinity mapping, and user flow analysis to establish information hierarchy for the Homepage.',
+    ],
+  },
+  {
+    company:  'Freelance',
+    role:     'Product Designer',
+    period:   '2020 – Present',
+    bullets: [
+      'Shipped a corporate transparency app (Aysa) from concept to live in 2 weeks, earning 15,000+ views in its first social rollout. Rebuilt the investor pitch deck from scratch in support of a $2.1M seed round.',
+      "Designed Sinta's full HR interview platform from scratch: interview builder, live session screen with competency timestamping, post-interview review, and candidate scorecard. Product shipped, raised significant funding, and was acquired.",
+      'Led primary research across 20+ Pennsylvania county offices for Keytrn (PropTech platform) and designed both the government upload portal and consumer property browser as the sole designer.',
+      'Led the mentee side of Alonesy (mentorship app): moderated interviews with 11 participants, 3 rounds of iteration, shipped with developers. App still live.',
+      'Designed and built agency and client websites in Webflow for Coffee & Bananaz. Designed and maintained campaign websites for Justice Democrats across senate and congressional races.',
+    ],
+  },
+]
+
+const tools = ['Figma', 'Balsamiq', 'Framer', 'Webflow', 'WordPress', 'Miro', 'Jira', 'Confluence', 'UserTesting']
+
+const frameworks = [
+  'Human-Centered Design',
+  'User Interviews + Screener Design',
+  'Usability Testing',
+  'Affinity Mapping',
+  'Information Architecture',
+  'Design Systems',
+  'Agile / Iterative Design',
+]
 ---
 
 <Layout
@@ -8,5 +57,110 @@ import ResumePage from '../components/pages/ResumePage.jsx'
   description="Resume of Rob Jones - UX Designer for enterprise SaaS and product builder for early-stage founders. Available for new roles."
   canonical="/resume"
 >
-  <ResumePage client:load />
+  <div class="min-h-screen pt-28 md:pt-36 pb-24" style="background-color: var(--bg);">
+    <Container>
+
+      {/* Header */}
+      <div class="mb-16">
+        <h1 class="type-display-2xl mb-3" data-animate-y>
+          Rob Jones
+        </h1>
+
+        <p class="type-display-md tracking-tight mb-6" data-animate-y data-animate-delay="1">
+          UX &amp; Product Designer with 4+ years across startups &amp; SaaS enterprise
+        </p>
+
+        <div class="flex flex-wrap gap-4 type-body" data-animate data-animate-delay="2">
+          <a href="mailto:robjonesdesigns@gmail.com" target="_blank" rel="noopener noreferrer"
+            class="text-brand-primary hover:opacity-70 transition-opacity duration-200">
+            robjonesdesigns@gmail.com
+          </a>
+          <span style="opacity: 0.3;">·</span>
+          <span>470-382-0603</span>
+          <span style="opacity: 0.3;">·</span>
+          <a href="https://linkedin.com/in/robjonesdesigner" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn profile (opens in new tab)"
+            class="text-brand-primary hover:opacity-70 transition-opacity duration-200">
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="mt-8" data-animate data-animate-delay="3">
+          <Button as="a" href="/RobJonesResume.pdf" download="RobJonesResume.pdf" aria-label="Download Rob Jones resume as PDF">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M7 1v8M3.5 6l3.5 3.5L10.5 6M1 11.5h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Download PDF
+          </Button>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div class="h-px mb-16" style="background-color: var(--border);" />
+
+      {/* Experience */}
+      <div class="mb-16">
+        <div class="mb-8">
+          <h2 class="type-display-sm">Experience</h2>
+        </div>
+        {experience.map((job) => (
+          <div class="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style="border-color: var(--border);">
+            <div>
+              <h3 class="type-body font-bold">{job.company}</h3>
+              <p class="type-body mt-1">{job.role}</p>
+              <p class="type-body mt-1">{job.period}</p>
+            </div>
+            <ul class="flex flex-col gap-3">
+              {job.bullets.map((b) => (
+                <li class="type-body pl-4 relative">
+                  <span class="absolute left-0 top-[0.55em] w-1 h-1 rounded-full" style="background-color: var(--accent);" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {/* Education */}
+      <div class="mb-16">
+        <div class="mb-8">
+          <h2 class="type-display-sm">Education</h2>
+        </div>
+        <div class="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t" style="border-color: var(--border);">
+          <div>
+            <p class="type-body font-bold">Stony Brook University</p>
+            <p class="type-body mt-1">BA in Studio Arts</p>
+          </div>
+          <div>
+            <p class="type-body font-bold">CareerFoundry</p>
+            <p class="type-body mt-1">UX Design Certified Program</p>
+            <p class="type-body mt-1">600+ hours</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Skills */}
+      <div class="mb-16">
+        <div class="mb-8">
+          <h2 class="type-display-sm">Skills</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10 py-8 border-t" style="border-color: var(--border);">
+          <div>
+            <p class="type-badge font-bold mb-4 uppercase tracking-wide">Tools</p>
+            <div class="flex flex-wrap gap-2">
+              {tools.map(t => <Badge>{t}</Badge>)}
+            </div>
+          </div>
+          <div>
+            <p class="type-badge font-bold mb-4 uppercase tracking-wide">Frameworks</p>
+            <div class="flex flex-wrap gap-2">
+              {frameworks.map(f => <Badge>{f}</Badge>)}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </Container>
+  </div>
 </Layout>

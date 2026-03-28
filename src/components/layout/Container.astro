@@ -1,0 +1,14 @@
+---
+interface Props {
+  as?: string
+  size?: 'lg' | 'md' | 'sm'
+  class?: string
+}
+
+const { as: Tag = 'div', size = 'lg', class: className = '' } = Astro.props
+const widths = { lg: 'max-w-7xl', md: 'max-w-4xl', sm: 'max-w-3xl' }
+---
+
+<Tag class:list={[widths[size], 'mx-auto px-6', className]}>
+  <slot />
+</Tag>
