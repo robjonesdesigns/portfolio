@@ -58,6 +58,17 @@ const next = projects[(idx + 1) % projects.length]
             {project.orientationNote && (
               <p class="type-body leading-relaxed" style="color: var(--fg-secondary);">{project.orientationNote}</p>
             )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="type-link inline-flex items-center gap-1.5 py-2 -mx-2 px-2 font-medium"
+              >
+                View live site
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            )}
           </div>
         )}
 
