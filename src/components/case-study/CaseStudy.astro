@@ -108,18 +108,18 @@ const next = projects[(idx + 1) % projects.length]
                   {/* Before */}
                   <div class="flex flex-col gap-2">
                     <span class="type-label">Before</span>
-                    <div style="background: color-mix(in srgb, var(--fg) 6%, var(--surface)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0;">
-                      <img src={item.beforeAfter.beforeImage} alt="Before: original design" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                    <div style="background: color-mix(in srgb, var(--fg) 6%, var(--surface)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0; aspect-ratio: 16/10;">
+                      <img src={item.beforeAfter.beforeImage} alt="Before: original design" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;" loading="lazy" />
                     </div>
                   </div>
                   {/* After */}
                   <div class="flex flex-col gap-2">
                     <span class="type-label">After</span>
-                    <div style="background: color-mix(in srgb, var(--fg) 6%, var(--surface)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0;">
+                    <div style="background: color-mix(in srgb, var(--fg) 6%, var(--surface)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; line-height: 0; aspect-ratio: 16/10;">
                       {item.beforeAfter.afterVideo ? (
-                        <LazyVideo src={item.beforeAfter.afterVideo} style="width: 100%; display: block;" />
+                        <LazyVideo src={item.beforeAfter.afterVideo} style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                       ) : item.beforeAfter.afterImage ? (
-                        <img src={item.beforeAfter.afterImage} alt="After: redesigned" style="width: 100%; height: auto; display: block;" loading="lazy" />
+                        <img src={item.beforeAfter.afterImage} alt="After: redesigned" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" />
                       ) : null}
                     </div>
                   </div>
