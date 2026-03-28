@@ -112,6 +112,10 @@
   --media-bg-light: #f4f4f4;
   --media-border-light: rgba(244, 244, 244, 0.2);
 
+  /* Project card backgrounds (branded, fixed across themes) */
+  --card-bg-apm: #95d1c9;
+  --card-bg-keytrn: #1b2745;
+
   /* Component tokens */
   --fg-secondary:   #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
   --bg-subtle:      #fdf8f2;  /* warm section tint */
