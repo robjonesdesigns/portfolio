@@ -130,9 +130,36 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
           localStorage.setItem('theme', e.matches ? 'dark' : 'light');
         });
 
-        // Enable animations and observe
+        function initLazyVideos() {
+          var videos = document.querySelectorAll('video[data-lazy-video]:not([src])');
+          if (!videos.length) return;
+
+          if (!('IntersectionObserver' in window)) {
+            videos.forEach(function(video) {
+              var src = video.getAttribute('data-src');
+              if (src) { video.src = src; video.autoplay = true; }
+            });
+            return;
+          }
+
+          var videoObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                var video = entry.target;
+                var src = video.getAttribute('data-src');
+                if (src) { video.src = src; video.autoplay = true; }
+                videoObserver.unobserve(video);
+              }
+            });
+          }, { rootMargin: '600px' });
+
+          videos.forEach(function(v) { videoObserver.observe(v); });
+        }
+
+        // Enable animations, observe scroll elements, lazy load videos
         document.documentElement.classList.add('js-ready');
         initScrollObserver();
+        initLazyVideos();
 
         // After ViewTransitions swap
         document.addEventListener('astro:after-swap', function() {
@@ -140,6 +167,7 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
           document.documentElement.classList.add('js-ready');
           window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
           initScrollObserver();
+          initLazyVideos();
         });
       })();
     </script>
