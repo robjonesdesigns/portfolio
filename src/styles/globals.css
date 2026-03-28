@@ -109,6 +109,8 @@
   /* Media card — dark surface for video/image containers, fixed across themes */
   --media-bg: #252220;
   --media-border: rgba(37, 34, 32, 0.2);
+  --media-bg-light: #f4f4f4;
+  --media-border-light: rgba(244, 244, 244, 0.2);
 
   /* Component tokens */
   --fg-secondary:   #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
@@ -198,7 +200,9 @@
   .bg-bg             { background-color: var(--bg); }
   .bg-surface        { background-color: var(--surface); }
   .bg-media          { background-color: var(--media-bg); }
+  .bg-media-light    { background-color: var(--media-bg-light); }
   .border-media      { border-color: var(--media-border); }
+  .border-media-light { border-color: var(--media-border-light); }
   .bg-accent         { background-color: var(--accent); }
   .border-token        { border-color: var(--border); }
   .border-token-strong { border-color: var(--border-strong); }

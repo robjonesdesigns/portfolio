@@ -88,6 +88,7 @@ export const projects = [
     duration: '3 years',
     team: 'UX Designer, Researcher, SMEs, Engineering, PM (Agile)',
     color: '#1e3a5f',
+    darkUI: true,
   },
   {
     slug: 'honeywell-warehouse',
