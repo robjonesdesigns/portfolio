@@ -46,7 +46,7 @@ export const projects = [
       {
         id: 'affinity-map',
         label: 'Synthesis: Affinity Mapping',
-        image: 'https://res.cloudinary.com/dlqvgithx/image/upload/f_auto,q_auto/portfolio/apm-affinity-map',
+        image: 'https://res.cloudinary.com/dlqvgithx/image/upload/f_auto,q_auto/v1774740843/portfolio/apm-affinity-map',
         caption: 'After each round of sessions I\'d pull all the observations into Miro and run an affinity mapping exercise, grouping findings by theme to surface patterns across participants. This is where the actual design decisions got made. If users kept stumbling on the same thing, that became a priority.',
       },
       {
