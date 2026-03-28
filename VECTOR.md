@@ -96,7 +96,7 @@ Rob's work is research-driven, systems-aware, and ships. The portfolio demonstra
 
 2. **Conversational but professional.** Copy reads like Rob explaining his work in an interview. Direct, plain language, no corporate buzzwords, no em dashes.
 
-3. **Accessibility is not optional.** WCAG AA minimum. VoiceOver-navigable. Framer Motion animations never hide headings from screen readers.
+3. **Accessibility is not optional.** WCAG AA minimum. VoiceOver-navigable. CSS scroll animations use `data-animate-y` on headings (translateY only, never opacity) so screen readers always find them.
 
 4. **Performance is respect.** Fast load times signal care. Videos are lazy-loaded. Fonts are non-blocking. Every asset has a reason to exist.
 
@@ -116,11 +116,14 @@ Rob's work is research-driven, systems-aware, and ships. The portfolio demonstra
 
 ## Quality Gates
 
-- WCAG AA on all pages (axe-core verified)
-- No `initial={{ opacity: 0 }}` on elements containing headings (VoiceOver quick nav)
+- WCAG AA on all pages
+- No `data-animate` (opacity: 0) on elements containing headings — use `data-animate-y` (VoiceOver quick nav)
+- Animations gated behind `.js-ready` class — all content visible without JS
 - No hardcoded colors outside CSS custom properties
+- Font sizes in `rem`, not `px`
 - All copy reviewed for em dashes, AI-sounding phrasing, and passive voice before shipping
 - Case study copy reviewed against interview notes in `memory/interviews.md` for accuracy
+- Security headers configured in `vercel.json` (CSP, X-Frame-Options, nosniff, referrer policy)
 
 ---
 
