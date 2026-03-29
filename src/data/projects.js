@@ -27,10 +27,10 @@ export const projects = [
       { type: 'p', text: 'Led research for both Plant Overview and Asset Inspection. Wrote screeners and interview scripts from scratch, completed Dovetail\'s course on moderated test design, and ran usability sessions at each major iteration to validate decisions before moving forward.' },
       { type: 'p', text: 'For Plant Overview, the redesign is structured around the reliability engineer\'s 7 AM workflow. The original dashboard put everything at the same visual priority. Research showed engineers scan in a specific sequence, so each section of the redesign answers the next question:' },
       { type: 'bullets', items: [
-        'Plant Health surfaces KPI drops and threshold breaches',
+        'System Health surfaces KPI drops and threshold breaches',
         'What Happened tells the three-act story of an overnight compressor trip',
-        'Current Response shows open work orders and active investigations',
-        'Requires Attention highlights the assets that still need decisions',
+        'In Progress shows open work orders and active investigations',
+        'Needs Action highlights the assets that still need decisions',
         'The asset table at the bottom is the drill-down into individual equipment',
       ]},
       { type: 'p', text: 'For Asset Inspection, research supported a tab-based information architecture. Users in testing valued the ability to scan one domain at a time without visual interference from the others. The PM and subject matter experts pushed for a single-page layout showing all data at once.' },
@@ -72,7 +72,7 @@ export const projects = [
       caption: 'The final Asset Inspection design, reimagined without Honeywell branding. Shows the three-level modular structure, sub-asset drill-down, and the metric hierarchy across Reliability, Maintenance, and Performance.',
       video: null,
     },
-    solution: 'Redesigned Plant Overview by fixing the affordances, reorganizing the KPI hierarchy, and correcting the color usage. Those changes drove the SUS improvement directly. Designed Asset Inspection from scratch as a three-level modular dashboard: Reliability (failure risk, remaining useful life), Maintenance (alerts, case management), and Performance (OEE, operational metrics). Sub-asset drill-down let engineers isolate which components were affected without leaving the page. Also designed a compressor performance dashboard for the Performance Suite, covering load analysis, surge detection, and efficiency curves for oil and gas and chemical manufacturing.',
+    solution: 'Redesigned Plant Overview by fixing the affordances, reorganizing the KPI hierarchy, and correcting the color usage. Those changes drove the SUS improvement directly. Designed Asset Inspection from scratch as a three-level modular dashboard: Reliability (failure risk, remaining useful life), Maintenance (alerts, case management), and Performance (OEE, operational metrics). Sub-asset drill-down let engineers isolate which components were affected without leaving the page. Also designed a compressor performance dashboard for the Performance Suite, covering load analysis, surge detection, and efficiency curves for oil and gas and chemical manufacturing.\n\nThe recreation is built to WCAG 2.1 AA. Every chart, filter, and table row is keyboard-navigable with visible focus indicators. Screen readers can navigate the asset table by row and column. Panels trap focus when open, and all animations respect reduced motion preferences. The original product relied on mouse interaction for most data visualization. Engineers working 12-hour shifts in control rooms shouldn\'t have to.',
     outcome: 'Shipped as part of Honeywell\'s APM platform, built for reliability engineers at companies like Shell and other industrial operators. The three-level information architecture (Reliability, Maintenance, Performance) used existing Forge design system cards to solve the tab vs. single-page conflict without adding new components.',
     designDecisions: [
       {
