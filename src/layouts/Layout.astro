@@ -161,9 +161,33 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
         initScrollObserver();
         initLazyVideos();
 
+        function initThemeToggle() {
+          var toggle = document.querySelector('[data-theme-toggle]');
+          if (!toggle) return;
+          // Remove old binding flag so we always rebind after swap
+          delete toggle.dataset.bound;
+          toggle.dataset.bound = 'true';
+
+          function updateLabel() {
+            var isDark = document.documentElement.classList.contains('dark');
+            toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          }
+
+          toggle.addEventListener('click', function() {
+            var isDark = document.documentElement.classList.contains('dark');
+            var next = isDark ? 'light' : 'dark';
+            document.documentElement.classList.toggle('dark', next === 'dark');
+            localStorage.setItem('theme', next);
+            updateLabel();
+          });
+
+          updateLabel();
+        }
+
         // After ViewTransitions swap
         document.addEventListener('astro:after-swap', function() {
           restoreTheme();
+          initThemeToggle();
           document.documentElement.classList.add('js-ready');
           window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
           initScrollObserver();
