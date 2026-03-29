@@ -8,8 +8,8 @@ export const projects = [
     headline: 'SUS from the low 70s to high 80s across two enterprise dashboards',
     description: 'Led UX research and design across Honeywell\'s APM (Asset Performance Management) platform, redesigning Plant Overview and building Asset Inspection from scratch. Iterated designs from mid-fidelity through SUS testing, reaching the high 80s.',
     outcomes: [
-      'Led research and design on Plant Overview and Asset Inspection for Honeywell\'s APM (Asset Performance Management) platform, built for reliability engineers at companies like Shell',
-      'Advocated for a tab-based IA with research data. When the call went the other way, designed a modular structure that solved the problem better.',
+      'SUS from the low 70s to high 80s across Plant Overview and Asset Inspection.',
+      'Three-level modular IA shipped as the final architecture for Honeywell\'s APM platform.',
     ],
     liveUrl: 'https://apm-dashboard-eosin.vercel.app',
     videoGrid: [
@@ -112,8 +112,8 @@ export const projects = [
     headline: 'Called 20+ county offices, then built what they couldn\'t',
     description: 'Called 20+ county offices to understand foreclosure workflows, designed both sides of the platform, then built the consumer app with live data scraped from public legal records. Sole designer and implementer.',
     outcomes: [
-      'Designed both the government portal and consumer app as sole designer',
-      'Built the consumer side live with statewide data scraped from public legal records',
+      'Live demo with geocoding, Street View, and automated sale type classification.',
+      'Research across 20+ county offices shaped the IA, upload system, and outreach playbook.',
     ],
     videoGrid: [
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/keytrn-desktop',
@@ -241,8 +241,8 @@ export const projects = [
     headline: 'Audited the platform, then fixed years of usability debt',
     description: 'Designed the Merge Dashboard and Homepage for Honeywell\'s Warehouse Operations platform from the ground up, and led a heuristic review that drove platform-wide UXQA improvements.',
     outcomes: [
-      'Ran a full heuristic evaluation and drove UXQA fixes across the platform',
-      'Sole designer on the Merge Dashboard and Homepage, both from scratch',
+      'Both dashboards shipped as part of Honeywell\'s Warehouse Operations platform.',
+      'Heuristic evaluation drove platform-wide UXQA fixes across affordances, typography, and spacing.',
     ],
     images: [null, null],
     image: null,
@@ -318,8 +318,8 @@ export const projects = [
     headline: 'From nothing to 15,000+ views in two weeks',
     description: 'Took a founder\'s concept from nothing to a working MVP in under 2 weeks. 15,000+ views in the first social rollout on LinkedIn and Instagram.',
     outcomes: [
-      '15,000+ views in the first social rollout on LinkedIn and Instagram',
-      'Pitch deck actively used in $2.1M seed round investor outreach',
+      '15,000+ views in the first social rollout on LinkedIn and Instagram.',
+      'Pitch deck actively used in $2.1M seed round investor outreach.',
     ],
     images: [null, null],
     image: null,
@@ -388,8 +388,8 @@ export const projects = [
     headline: 'Five flows from founder conversations to investor pitch in one month',
     description: 'Took a founder\'s concept to a complete HR interview management platform. One month of close collaboration with two founders, zero existing screens.',
     outcomes: [
-      'Designed the full product as sole designer: interview builder, scheduling, live annotation, review, and scorecard',
-      'Founders built and pitched investors directly from the designs',
+      'Founders built and pitched investors directly from the designs.',
+      'Sinta still operating. Design agency brought in to build on the foundation.',
     ],
     images: [null, null],
     image: null,
