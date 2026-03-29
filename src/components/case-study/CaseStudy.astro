@@ -248,13 +248,10 @@ const next = projects[(idx + 1) % projects.length]
 
         {/* Navigation */}
         <div
-          class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center pt-8 border-t"
+          class="flex justify-end pt-8 border-t"
           style="border-color: var(--border);"
         >
-          <a href="/" class="type-link inline-block py-2 -mx-2 px-2">
-            &larr; All Projects
-          </a>
-          <a href={`/projects/${next.slug}`} class="type-link inline-block py-2 -mx-2 px-2 sm:text-right">
+          <a href={`/projects/${next.slug}`} class="type-link inline-block py-2 -mx-2 px-2">
             Next: {next.title} &rarr;
           </a>
         </div>
