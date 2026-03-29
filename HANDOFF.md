@@ -9,15 +9,15 @@ https://designedbyrob.com
 ## Next session priorities
 
 ### 1. APM case study assets
+The "coming soon" placeholder looks unfinished. Depends on Asset Inspection screen being built in APM dashboard first.
 - Asset Inspection processMedia image/video (id: asset-details-structure, currently "coming soon")
 - Final Asset Inspection video (finalMedia, currently null)
-- Both depend on the Asset Inspection screen being built in APM dashboard first
 
 ### 2. `/design-system` route
-Content in `.reference/` (old Storybook stories + MDX docs for Color, Typography, Spacing, etc.)
+Differentiator for technical hiring managers. Content in `.reference/` (old Storybook stories + MDX docs for Color, Typography, Spacing, etc.)
 
 ### 3. CSP hash-based script-src (backlog)
-Any change to inline theme script requires hash update in `vercel.json`.
+Any change to inline theme script requires hash update in `vercel.json`. No one will notice this.
 
 ## What was completed this session
 
