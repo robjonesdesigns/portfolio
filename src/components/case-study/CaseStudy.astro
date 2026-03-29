@@ -2,6 +2,7 @@
 import { projects } from '../../data/projects'
 import Container from '../layout/Container.astro'
 import LazyVideo from '../ui/LazyVideo.astro'
+import Button from '../ui/Button.astro'
 
 interface Props {
   project: any
@@ -59,15 +60,19 @@ const next = projects[(idx + 1) % projects.length]
               <p class="type-body leading-relaxed" style="color: var(--fg-secondary);">{project.orientationNote}</p>
             )}
             {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="type-link inline-flex items-center gap-1.5 py-2 -mx-2 px-2 font-medium"
-              >
-                View demo
-                <span aria-hidden="true">&rarr;</span>
-              </a>
+              <div>
+                <Button
+                  as="a"
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
+                  size="sm"
+                >
+                  View demo
+                  <span aria-hidden="true">&rarr;</span>
+                </Button>
+              </div>
             )}
           </div>
         )}
