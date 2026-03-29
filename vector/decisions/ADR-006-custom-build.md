@@ -1,4 +1,4 @@
-# ADR-006: Custom Build (Astro + React) Over Design Tools
+# ADR-006: Custom Build (Astro SSG) Over Design Tools
 
 **Date:** 2026-03-25
 **Status:** accepted
@@ -10,7 +10,7 @@ Design portfolios are commonly built with Framer, Webflow, Squarespace, or templ
 
 ## Decision
 
-Build the portfolio from scratch using Astro 6 (SSG), React 19 (islands), Tailwind CSS v3, and Framer Motion. No drag-and-drop. No design tool export. Production code written by the designer.
+Build the portfolio from scratch using Astro 6 (SSG) and Tailwind CSS v3. Zero React, zero Framer Motion, zero client-side frameworks. All animations are CSS. Interactivity is vanilla JS. No drag-and-drop. No design tool export. Production code written by the designer.
 
 ## Consequences
 
@@ -19,11 +19,11 @@ Build the portfolio from scratch using Astro 6 (SSG), React 19 (islands), Tailwi
 - A strong differentiator for founder audiences (PER-002) who value designers that can ship without engineers
 - The portfolio site itself becomes a design artifact and craft signal (PER-003)
 - Higher maintenance cost than a managed platform
-- Astro SSG means fast static pages with React interactivity only where needed
+- Astro SSG means fast static pages with zero JavaScript frameworks shipped to the browser
 
 ## Alternatives Considered
 
 - **Framer:** Fast, beautiful, but limited control over accessibility and HTML structure.
 - **Webflow:** Good for marketing sites, but the code export is messy and hard to maintain.
 - **Squarespace/template:** Would not demonstrate technical capability. Looks generic.
-- **Next.js:** Considered, but Astro's SSG-first approach with React islands is lighter and faster for a portfolio.
+- **Next.js:** Considered, but Astro's SSG-first approach is lighter and faster for a portfolio. No hydration needed.

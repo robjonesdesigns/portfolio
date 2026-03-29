@@ -1,16 +1,33 @@
-# React + Vite
+# designedbyrob.com
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site. Case studies for Honeywell APM, Keytrn, Warehouse Operations, Aysa, and Sinta.
 
-Currently, two official plugins are available:
+**Live:** https://designedbyrob.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+Astro 6 (SSG), Tailwind CSS v3. Zero React, zero Framer Motion, zero client-side frameworks. All animations are CSS. Interactivity is vanilla JS. Single dependency: `astro`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What's here
 
-## Expanding the ESLint configuration
+- **5 case studies** with structured process documentation, design decisions, and media
+- **9 ADRs** documenting portfolio design decisions (`vector/decisions/`)
+- **Dark/light theme** with system preference detection and smooth transitions
+- **WCAG AA** accessible: VoiceOver-navigable headings, reduced motion support, progressive enhancement
+- **3 fonts**: Cabinet Grotesk (display), Areal (body), Ogg (editorial accent)
+- **Fluid type** with `clamp()` for display sizes, fixed step for body
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Case studies
+
+| Project | Company | Live demo |
+|---------|---------|-----------|
+| Asset Performance Management | Honeywell | [apm-dashboard-eosin.vercel.app](https://apm-dashboard-eosin.vercel.app) |
+| PropTech Property Data | Keytrn | [keytrn.vercel.app](https://keytrn.vercel.app) |
+| Warehouse Operations | Honeywell | -- |
+| Corporate Transparency App | Aysa | -- |
+| Interview Platform | Sinta | -- |
+
+## Author
+
+Rob Jones -- Product Designer
+https://designedbyrob.com

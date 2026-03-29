@@ -21,7 +21,7 @@ Three fonts, each with a distinct purpose:
 ## Consequences
 
 - Three fonts requires careful hierarchy to avoid visual noise: display, body, and accent roles are strict
-- Cabinet Grotesk loads from Fontshare CDN (pending self-hosting)
+- Cabinet Grotesk self-hosted in `/public/fonts/` (variable woff2)
 - Areal is self-hosted in `/public/fonts/`
 - Ogg is a trial font, restricted to one-off use
 - The am dash in Areal is a conversation starter in interviews

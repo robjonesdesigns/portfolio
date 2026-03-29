@@ -10,11 +10,11 @@ Animation can enhance or distract. Flashy page transitions and entrance effects 
 
 ## Decision
 
-Use Framer Motion for subtle slide-up animations triggered by scroll position. No flashy page transitions, no parallax, no bouncing elements. Each section animates independently with `whileInView`. Graceful, not performative.
+Use CSS animations with vanilla JS IntersectionObserver for subtle slide-up effects triggered by scroll position. No flashy page transitions, no parallax, no bouncing elements. Each section animates independently via `data-animate` / `data-animate-y` attributes. Graceful, not performative. Animations gated behind `.js-ready` class for progressive enhancement.
 
 ## Consequences
 
-- Content is never hidden from screen readers (no `initial={{ opacity: 0 }}` on heading containers)
+- Content is never hidden from screen readers (`data-animate-y` on headings uses translateY only, no opacity)
 - Animations feel natural to the scroll, not imposed on it
 - Reduced motion preferences are respected
 - The restraint itself signals design maturity: knowing when not to animate
