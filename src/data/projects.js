@@ -40,7 +40,7 @@ export const projects = [
       {
         id: 'usability-session',
         label: 'Research: Moderated Usability Session',
-        image: 'https://res.cloudinary.com/dlqvgithx/image/upload/f_auto,q_auto/portfolio/apm-usability-session',
+        image: 'https://res.cloudinary.com/dlqvgithx/image/upload/f_auto,q_auto/v1774744769/portfolio/apm-usability-session',
         caption: 'I wrote screeners and interview scripts from scratch, took a Dovetail course on moderated test design, and ran sessions at each major iteration. I wanted to make sure I was testing the right things and asking questions that didn\'t lead participants.',
       },
       {
