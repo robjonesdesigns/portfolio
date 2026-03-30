@@ -1,60 +1,92 @@
-## Architecture Audit
+# Architecture Audit
 
-**Scope:** `src/` (all source files)
-**Doctrine source:** ARCHITECTURE.md (last updated 2026-03-21)
-**Audit date:** 2026-03-21
-**Files scanned:** ~60 source files across pages, components, data, styles, stories
+**Scope:** src/
+**Doctrine source:** CLAUDE.md
+**Date:** 2026-03-30 (rewritten -- previous audit 2026-03-21 was pre-Astro rewrite)
+**Files scanned:** 17 source files (Astro, JS, CSS)
 
----
+## Summary
 
-### Violations
+Architecture health: **Excellent**
 
-#### CONTENT — medium
+Complete rewrite from React + Framer Motion to pure Astro SSG (session 10, 2026-03-27). Zero React, zero client-side frameworks. All animations are CSS. Interactivity is vanilla JS. Token system fully adopted. No violations.
 
-- `src/components/pages/SitemapPage.jsx:30-34` — Project slugs and display names hardcoded as strings. Doctrine: "No content in components. All copy lives in src/data/projects.js." Fix: import `projects` from `../../data/projects` and derive the sitemap links from `project.slug`, `project.title`, and `project.company`.
+## Violations
 
-#### TOKENS — medium
+None.
 
-- `src/components/ui/WorkEntry.jsx:8` — `background: '#1c1c1e'` in SCREEN_SHELL. Intentionally fixed (laptop bezel hardware simulation, noted in comment) but hardcoded hex in a production component. Acceptable as a named exception — define `--laptop-bezel: #1c1c1e` in globals.css and reference it here, so it's documented rather than invisible.
-- `src/components/ui/WorkEntry.jsx:9` — `rgba(255,255,255,0.09)` border on SCREEN_SHELL. Same context — laptop hardware simulation. Same fix: name it.
-- `src/components/ui/WorkEntry.jsx:14` — `rgba(0,0,0,0.4)` drop shadow in SCREEN_SHADOW. Same context.
-- `src/components/ui/WorkEntry.jsx:35` — `background: '#3d3d3d'` on camera dot. Same context.
-- `src/components/ui/Button.jsx:22,24` — `rgba(10,13,18,0.05)` and `rgba(0,0,0,0.05)` for shadow/hover states. No shadow or hover-state tokens exist in the system. Either add `--shadow-button` and `--hover-overlay` to globals.css, or accept as one-off values with a comment.
+## Full Results
 
-#### SIZE — info
+### CONTENT: PASS
+- All project data centralized in src/data/projects.js
+- No content hardcoded in components
+- Sitemap page (sitemap.astro) is pure Astro, no hardcoded slugs
 
-- `src/components/case-study/KeytrnPrototype.jsx` — 1,417 lines. Experimental prototype, not production. Acceptable as a self-contained file.
-- `src/components/ui/NoHero.jsx` — 605 lines. Experimental/undeclared. Resolve status (keep or delete) before next architecture audit.
-- `src/components/ui/PracticeHero.jsx` — 384 lines. Experimental/undeclared. Same.
-- `src/components/experiments/RippleEffectOnPink.jsx` — 384 lines. Declared experimental layer, acceptable.
-- `src/components/case-study/CaseStudy.jsx` — 292 lines. Production component slightly over the 200-line doctrine limit. Not urgent.
-- `src/components/ui/RJLogo3D.jsx` — 262 lines. Production, slightly over limit. Not urgent.
+### TOKENS: PASS
+- Zero hardcoded hex colors in components
+- All colors via CSS custom properties (--bg, --fg, --accent, --surface, etc.)
+- Dark mode via .dark class on html, variables swap in globals.css
+- WorkEntry laptop-shell colors now use CSS variables in globals.css
 
----
+### SIZE: PASS
+All files under 400 lines except data and CSS token files (acceptable):
 
-### Clean
+| File | Lines | Role |
+|------|-------|------|
+| src/data/projects.js | 461 | Project data (no logic) |
+| src/styles/globals.css | 428 | Tokens, type classes, animations |
+| src/components/case-study/CaseStudy.astro | 273 | Case study renderer |
+| src/components/ui/WorkEntry.astro | ~200 | Project card |
+| All others | <200 | |
 
-- No `initial={{ opacity: 0 }}` on heading containers — VoiceOver rule respected throughout.
-- No `gap-space-*` / `p-space-*` Tailwind classes — spacing uses standard numeric scale as declared.
-- Motion imports correct — `Navbar.jsx`, `Footer.jsx`, `ThemeToggle.jsx` all use `motion`, not `m`.
-- No reverse import direction violations — `ui/` and `data/` do not import from pages or sections.
-- All copy in section components (Hero, About) is site-level bio content, not project data — acceptable exception to the "no content in components" rule.
+### NAMING: PASS
+- PascalCase for components, camelCase for variables
+- File names match component purpose
+- Consistent Tailwind class usage
 
----
+### INLINE STYLES: PASS
+- Inline styles are CSS custom property references (theme-aware, cannot be extracted without breaking maintainability)
+- Zero hardcoded hex, rgba, or pixel values in inline styles
+- All font sizes use type composition classes or Tailwind tokens
 
-### Summary
+### IMPORTS: PASS
+- No reverse import direction violations
+- ui/ and data/ do not import from pages or sections
+- Only import: ClientRouter from astro:transitions (used)
 
-- High: 0 | Medium: 5 | Low: 0 | Info: 6
-- Architecture health: **NEEDS ATTENTION**
+### ACCESSIBILITY: PASS
+- data-animate-y on heading containers (VoiceOver safe)
+- data-animate on non-heading content
+- Skip link present
+- Semantic HTML throughout (header, nav, main, article, section, footer)
+- prefers-reduced-motion disables all animations
+- Theme toggle is semantic button with aria-label
 
-The portfolio is structurally sound. No heading-in-opacity violations, no import direction violations, no token system ignored. The medium findings are all cosmetic or low-risk: one real content violation in SitemapPage (fixable in 10 lines) and four WorkEntry laptop-shell colors that are intentional but undocumented. The info findings are all experimental/undeclared files that the doctrine audit already flagged.
+### SECURITY: PASS
+- CSP headers in vercel.json (script-src, style-src, img-src, frame-ancestors)
+- X-Frame-Options: DENY
+- X-Content-Type-Options: nosniff
+- Referrer-Policy: strict-origin-when-cross-origin
+- Permissions-Policy restricts camera, microphone, geolocation
+- Zero API keys or secrets in source
 
----
+### PERFORMANCE: PASS
+- Zero JavaScript frameworks shipped to browser
+- ~30 lines vanilla JS total (theme, clipboard, scroll observer)
+- Cabinet Grotesk self-hosted woff2, preloaded
+- Cloudinary preconnect for video assets
+- LazyVideo with IntersectionObserver (preload="none", rootMargin 600px)
 
-### Recommended Actions
+### DEPENDENCIES: PASS
+- 1 production dep (astro)
+- 6 dev deps (eslint, autoprefixer, globals, postcss, tailwindcss, @eslint/js)
+- Zero unused dependencies (cleaned 2026-03-30: removed 8 stale React/Storybook deps)
 
-1. **Fix `SitemapPage.jsx:30-34`** — derive project links from `projects` array. One import, a `.map()`, and the hardcoded strings are gone. Ensures sitemap stays in sync if project slugs or titles ever change.
+### GIT HYGIENE: PASS
+- Clean semantic commit messages (prefix + description)
+- No embarrassing messages
+- Linear history, no force pushes
 
-2. **Document the WorkEntry laptop-shell colors** — add four CSS custom properties to globals.css (`--laptop-bezel`, `--laptop-camera`, `--laptop-screen`, `--laptop-border`) so the hardcoded hex values in SCREEN_SHELL become named, intentional exceptions. This takes the TOKENS findings from "violation" to "documented decision."
+## Previous Audit (2026-03-21) -- Superseded
 
-3. **Resolve `NoHero.jsx` and `PracticeHero.jsx`** — these are the only undeclared production-layer files. Move to `src/components/experiments/` if keeping, or delete. Keeps `ui/` clean and the architecture audit accurate.
+The previous audit flagged 5 medium violations in React components (SitemapPage.jsx, WorkEntry.jsx, Button.jsx). All of those files were deleted during the Astro rewrite (session 10). The entire React component tree, Storybook, and Framer Motion were removed. This audit replaces that one entirely.
