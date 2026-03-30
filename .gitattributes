@@ -1,2 +1,5 @@
-# Exclude reference files from GitHub language detection
+# Ensure GitHub detects Astro as the primary language
+*.astro linguist-language=Astro
+
+# Exclude reference files from language stats
 .reference/** linguist-vendored
