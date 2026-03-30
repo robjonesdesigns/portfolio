@@ -212,6 +212,13 @@
   .border-token        { border-color: var(--border); }
   .border-token-strong { border-color: var(--border-strong); }
   .bg-subtle           { background-color: var(--bg-subtle); }
+
+  /* Depth — subtle shadow for layered sections */
+  /* Light: warm tint matching bg-subtle (#fdf8f2). Dark: warm tint matching bg-subtle (#201e1a). */
+  .shadow-section-down  { box-shadow: 0 4px 12px rgba(92, 82, 80, 0.07); }
+  .shadow-section-up    { box-shadow: 0 -4px 12px rgba(92, 82, 80, 0.07); }
+  :root.dark .shadow-section-down { box-shadow: 0 4px 12px rgba(32, 30, 26, 0.7); }
+  :root.dark .shadow-section-up   { box-shadow: 0 -4px 12px rgba(32, 30, 26, 0.7); }
 }
 
 /* ─── Type composition classes ───────────────────────────────────────── */

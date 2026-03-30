@@ -57,11 +57,10 @@ const frameworks = [
   description="Resume of Rob Jones - UX Designer for enterprise SaaS and product builder for early-stage founders. Available for new roles."
   canonical="/resume"
 >
-  <div class="min-h-screen pt-28 md:pt-36 pb-24" style="background-color: var(--bg);">
+  {/* Hero */}
+  <div class="relative z-10 pt-28 md:pt-36 pb-20 shadow-section-down">
     <Container>
-
-      {/* Header */}
-      <div class="mb-16">
+      <div>
         <h1 class="type-display-2xl mb-3" data-animate-y>
           Rob Jones
         </h1>
@@ -100,9 +99,12 @@ const frameworks = [
           </Button>
         </div>
       </div>
+    </Container>
+  </div>
 
-      {/* Divider */}
-      <div class="h-px mb-16" style="background-color: var(--border);" />
+  {/* Content */}
+  <div class="bg-subtle py-24">
+    <Container>
 
       {/* Experience */}
       <div class="mb-16">
