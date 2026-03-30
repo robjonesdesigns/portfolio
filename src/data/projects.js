@@ -226,7 +226,7 @@ export const projects = [
     ugaContent: 'I applied to the UGA Business Law Clinic after the co-founders couldn\'t agree on entity structure. The conflict was straightforward: a non-profit made sense for the government portal (counties won\'t work with a company profiting from their data), but the consumer app needed a for-profit model to sustain itself. You can\'t run both under one entity. I brought the full problem to the clinic: entity type, IP ownership, equity structure. Their recommendation: form an LLC, establish early-stage IP protections, and put equity in writing with a plan to distribute once the team formalized roles. That gave the project a legal foundation it didn\'t have before.',
     outcome: 'Designed both sides of the platform and built the consumer app with live data from a statewide scraper. 40+ active listings with geocoding, Street View imagery, and sale type classification. Created a full design token system with zero hardcoded values for handoff. Research across 20+ municipalities produced the outreach playbook for the first county pilot.',
     metaProblem: 'Homebuyers had nothing. Counties had no way to reach them. Both sides needed a product that didn\'t exist.',
-    role: 'Product Designer (Solo)',
+    role: 'Founding Product Designer',
     duration: '5 months',
     team: '1 Designer, Founding Team',
     color: '#4a2c1e',
