@@ -385,11 +385,11 @@ export const projects = [
     company: 'Sinta',
     year: '2022',
     tags: ['0→1 Product Design', 'HR Tech', 'Startup', 'Figma'],
-    headline: 'Designing a full interview platform from founder conversations in one month',
+    headline: 'Giving interviewers a way to capture structured data without breaking eye contact',
     description: 'Took a founder\'s concept to a complete HR interview management platform. One month of close collaboration with two founders, zero existing screens.',
     outcomes: [
       'Founders pitched investors directly from the designs.',
-      'Design agency later hired to build on the 0-to-1 foundation.',
+      'Five complete flows designed from scratch with zero existing screens.',
     ],
     images: [null, null],
     image: null,
