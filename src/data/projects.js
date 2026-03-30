@@ -109,7 +109,7 @@ export const projects = [
     year: '2025',
     tags: ['0→1 Product Design', 'Primary Research', 'B2G + B2C', 'Data-Heavy UI', 'Implementation'],
     liveUrl: 'https://keytrn.vercel.app',
-    headline: 'Called 20+ county offices, then built what they couldn\'t',
+    headline: 'Making foreclosure data accessible for the first time in Pennsylvania',
     description: 'Called 20+ county offices to understand foreclosure workflows, designed both sides of the platform, then built the consumer app with live data scraped from public legal records. Sole designer and implementer.',
     outcomes: [
       'Live demo with geocoding, Street View, and automated sale type classification.',
