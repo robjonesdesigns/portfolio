@@ -9,7 +9,7 @@ export const projects = [
     description: 'Led UX research and design across Honeywell\'s APM (Asset Performance Management) platform, redesigning Plant Overview and building Asset Inspection from scratch. Iterated designs from mid-fidelity through SUS testing, reaching the high 80s.',
     outcomes: [
       'SUS from the low 70s to high 80s across Plant Overview and Asset Inspection.',
-      'Three-level modular IA shipped as the final architecture for Honeywell\'s APM platform.',
+      'Owned 3 shipped dashboards, contributed to 2 more across the APM platform.',
     ],
     liveUrl: 'https://apm-dashboard-eosin.vercel.app',
     videoGrid: [
@@ -73,7 +73,7 @@ export const projects = [
       video: null,
     },
     solution: 'Redesigned Plant Overview by fixing the affordances, reorganizing the KPI hierarchy, and correcting the color usage. Those changes drove the SUS improvement directly. Designed Asset Inspection from scratch as a three-level modular dashboard: Reliability (failure risk, remaining useful life), Maintenance (alerts, case management), and Performance (OEE, operational metrics). Sub-asset drill-down let engineers isolate which components were affected without leaving the page. Also designed a compressor performance dashboard for the Performance Suite, covering load analysis, surge detection, and efficiency curves for oil and gas and chemical manufacturing.\n\nThe recreation is built to WCAG 2.1 AA. Every chart, filter, and table row is keyboard-navigable with visible focus indicators. Screen readers can navigate the asset table by row and column. Panels trap focus when open, and all animations respect reduced motion preferences. The original product relied on mouse interaction for most data visualization. Engineers working 12-hour shifts in control rooms shouldn\'t have to.',
-    outcome: 'Shipped three dashboards on Honeywell\'s APM platform: Plant Overview, Asset Inspection, and a compressor performance dashboard for the Performance Suite. Built for reliability engineers at companies like Shell and other industrial operators. The three-level information architecture (Reliability, Maintenance, Performance) used existing Forge design system cards to solve the tab vs. single-page conflict without adding new components.',
+    outcome: 'Owned and shipped three dashboards: Plant Overview, Asset Inspection, and a compressor performance dashboard for the Performance Suite. Contributed iterative design support on two others (Trends and Performance View) that also shipped. Built for reliability engineers at companies like Shell and other industrial operators. The three-level information architecture (Reliability, Maintenance, Performance) used existing Forge design system cards to solve the tab vs. single-page conflict without adding new components.',
     designDecisions: [
       {
         title: 'Push back with data, then redirect when the call is made',
