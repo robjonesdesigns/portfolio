@@ -40,7 +40,14 @@ const next = projects[(idx + 1) % projects.length]
           </div>
           <div class="flex flex-col gap-1">
             <span class="type-badge font-bold uppercase tracking-wide">Outcome</span>
-            <p class="type-body">{project.outcomes?.[0]}</p>
+            <ul class="flex flex-col gap-1" style="list-style: none; padding: 0; margin: 0;">
+              {project.outcomes?.map((o: string) => (
+                <li class="type-body flex gap-2">
+                  <span class="text-brand-primary shrink-0">&#9675;</span>
+                  <span>{o}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
