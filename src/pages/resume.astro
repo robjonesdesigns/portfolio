@@ -39,16 +39,24 @@ const experience = [
   },
 ]
 
-const tools = ['Figma', 'Balsamiq', 'Framer', 'Webflow', 'WordPress', 'Miro', 'Jira', 'Confluence', 'UserTesting']
+const tools = ['Figma', 'Balsamiq', 'Framer', 'Webflow', 'WordPress', 'Miro', 'Jira', 'Confluence', 'UserTesting', 'React', 'Astro']
 
-const frameworks = [
+const methods = [
   'Human-Centered Design',
   'User Interviews + Screener Design',
   'Usability Testing',
   'Affinity Mapping',
   'Information Architecture',
-  'Design Systems',
   'Agile / Iterative Design',
+]
+
+const skills = [
+  'Product Strategy',
+  'Interaction Design',
+  'Prototyping',
+  'Design Systems',
+  'Accessibility',
+  'Front-End Development',
 ]
 ---
 
@@ -155,15 +163,15 @@ const frameworks = [
         </div>
         <div class="grid md:grid-cols-2 gap-10 py-8 border-t" style="border-color: var(--border);">
           <div>
-            <p class="type-badge font-bold mb-4 uppercase tracking-wide">Tools</p>
+            <p class="type-badge font-bold mb-4 uppercase tracking-wide">What I Use</p>
             <div class="flex flex-wrap gap-2">
               {tools.map(t => <Badge>{t}</Badge>)}
             </div>
           </div>
           <div>
-            <p class="type-badge font-bold mb-4 uppercase tracking-wide">Frameworks</p>
+            <p class="type-badge font-bold mb-4 uppercase tracking-wide">What I Do</p>
             <div class="flex flex-wrap gap-2">
-              {frameworks.map(f => <Badge>{f}</Badge>)}
+              {[...methods, ...skills].map(s => <Badge>{s}</Badge>)}
             </div>
           </div>
         </div>
