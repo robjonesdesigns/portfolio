@@ -112,8 +112,8 @@ export const projects = [
     headline: 'Making foreclosure data accessible for the first time in Pennsylvania',
     description: 'Called 20+ county offices to understand foreclosure workflows, designed both sides of the platform, then built the consumer app with live data scraped from public legal records. Sole designer and implementer.',
     outcomes: [
-      'Live product with real scraped data from PA county records. Sole designer and developer.',
-      'Pipeline processing foreclosure listings across multiple PA counties with automated enrichment.',
+      'Live product with real data scraped from PA county records. Sole designer and developer.',
+      'Primary research across 20+ county offices defined the IA and data model.',
     ],
     videoGrid: [
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/keytrn-desktop',
