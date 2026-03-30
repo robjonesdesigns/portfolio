@@ -1,40 +1,49 @@
-# Portfolio Handoff -- Session 15 End
+# Portfolio Handoff -- Session 18 End
 
 ## START HERE
-Case study outcomes rewritten. Project order updated. Theme toggle fixed. READMEs and ADRs updated across all three repos. View demo is a primary button. All pushed.
+Three-layer layout system, section depth shadows, APM case study copy updates. Design token cleanup planned (backlog).
 
 ## Deployed
 https://designedbyrob.com
 
 ## Next session priorities
 
-### 1. APM case study assets
-The "coming soon" placeholder looks unfinished. Depends on Asset Inspection screen being built in APM dashboard first.
+### 1. Design token consolidation
+Tokens are split across three places with some redundancy. Plan:
+- Move `bg-subtle`, `border-token`, `border-token-strong`, `media`, `media-light`, `media-border`, `media-border-light` into Tailwind config colors so Tailwind auto-generates all utility variants.
+- Remove hand-written utilities that duplicate what Tailwind config already generates (`text-fg`, `text-fg-secondary`, `text-accent`, `bg-bg`, `bg-surface`, `bg-accent`).
+- Keep in `@layer utilities`: only `shadow-section-down` / `shadow-section-up` (theme-aware compound shadows Tailwind can't generate).
+- Keep in `@layer components`: all 11 `type-*` composition classes.
+- Consider adding: z-index scale (`z-nav`, `z-overlay`, `z-modal`).
+- End state: zero redundancy, all tokens in Tailwind config, utilities only for things Tailwind can't do.
+- No HTML changes needed -- class names stay the same.
+
+### 2. APM case study assets
+Depends on Asset Inspection screen being built in APM dashboard.
 - Asset Inspection processMedia image/video (id: asset-details-structure, currently "coming soon")
 - Final Asset Inspection video (finalMedia, currently null)
 
-### 2. `/design-system` route
-Differentiator for technical hiring managers. Content in `.reference/` (old Storybook stories + MDX docs for Color, Typography, Spacing, etc.)
+### 3. `/design-system` route
+Differentiator for technical hiring managers. Content in `.reference/` (old Storybook stories + MDX docs).
 
-### 3. CSP hash-based script-src (backlog)
-Any change to inline theme script requires hash update in `vercel.json`. No one will notice this.
+### 4. CSP hash-based script-src (backlog)
+Any change to inline theme script requires hash update in `vercel.json`.
 
-## What was completed this session
+## What was completed this session (18)
 
-### Session 13 (2026-03-28)
-- APM case study link live with videos, before/after, research images
-- CaseStudy.astro: processMedia with item.image, beforeAfter rendering, array format for process
-- mobileCardColor per project, alternating mobile card positions
+### Three-layer layout system
+- Consistent hero (`--bg`) / content (`bg-subtle`) / footer (`--bg`) sandwich on all pages.
+- Case study and about heroes flipped from `bg-subtle` to `--bg`.
+- Resume split into hero (name + contact + PDF button) and content section (`bg-subtle`).
+- `shadow-section-down` and `shadow-section-up` utility classes replace border dividers.
+- Theme-aware shadow opacity: light 7% warm tint, dark 25% black.
+- `relative z-10` on hero/footer so shadows paint above adjacent content sections.
 
-### Session 15 (2026-03-29)
-- APM case study: section names updated (System Health, In Progress, Needs Action)
-- APM case study: WCAG 2.1 AA accessibility paragraph in solution section
-- Project order: APM, Keytrn, Warehouse, Aysa, Sinta
-- "All Projects" nav link removed from case study footer
-- "View demo" primary button (md size, matches resume Download PDF)
-- Theme toggle fix: initThemeToggle() in astro:after-swap handler
-- Smooth theme transition: color/background-color/border-color 0.3s on all elements
-- Outcomes rewritten to reflect actual results, not scope
-- GitHub link added to resume contact row
-- README.md written
-- 3 stale ADRs updated (002: self-hosted fonts, 006: zero React/Framer Motion, 007: CSS animations)
+### APM case study copy
+- Headline: "Turning equipment data into decisions for reliability engineers" (was repeating SUS scores from outcomes).
+- Problem: "Engineers couldn't quickly see what was failing, why, or what to do next." (was an assumption).
+- Outcome: names all three shipped dashboards (Plant Overview, Asset Inspection, compressor performance).
+
+## Previous sessions
+- Session 13: APM case study live with videos, before/after, research images
+- Session 15: Outcomes rewritten, theme toggle fix, view demo button, GitHub link

@@ -65,6 +65,12 @@ All animations are CSS. No JS animation libraries.
 ### Tailwind Color Classes
 `text-fg`, `text-fg-secondary`, `text-brand-primary`, `bg-brand-primary`, `text-on-accent`, `bg-surface`, `bg-subtle`, `border-token`, `border-token-strong`
 
+### Section Depth Shadows
+`shadow-section-down` (hero bottom edge), `shadow-section-up` (footer top edge). Theme-aware: light 7% warm tint, dark 25% black. Requires `relative z-10` on the shadow element so it paints above adjacent sections.
+
+### Three-Layer Layout
+Every page follows: hero (`--bg`) / content (`bg-subtle`) / footer (`--bg`). Shadow utilities create depth between layers. No border dividers.
+
 ---
 
 ## Typography System
