@@ -315,7 +315,7 @@ export const projects = [
     company: 'Aysa',
     year: '2025',
     tags: ['0→1 Product Design', 'Brand', 'UI Systems', 'Social Impact'],
-    headline: 'Shipping a corporate transparency app from zero to 15,000 views in two weeks',
+    headline: 'Helping consumers see how ethically companies operate before they buy',
     description: 'Took a founder\'s concept from nothing to a working MVP in under 2 weeks. 15,000+ views in the first social rollout on LinkedIn and Instagram.',
     outcomes: [
       '15,000+ views in the first social rollout on LinkedIn and Instagram.',
