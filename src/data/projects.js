@@ -5,7 +5,7 @@ export const projects = [
     company: 'Honeywell',
     year: '2024–2025',
     tags: ['Enterprise SaaS', 'UX Research', 'Data Visualization', 'Agile', 'Industrial'],
-    headline: 'SUS from the low 70s to high 80s across two enterprise dashboards',
+    headline: 'Turning equipment data into decisions for reliability engineers',
     description: 'Led UX research and design across Honeywell\'s APM (Asset Performance Management) platform, redesigning Plant Overview and building Asset Inspection from scratch. Iterated designs from mid-fidelity through SUS testing, reaching the high 80s.',
     outcomes: [
       'SUS from the low 70s to high 80s across Plant Overview and Asset Inspection.',
@@ -73,7 +73,7 @@ export const projects = [
       video: null,
     },
     solution: 'Redesigned Plant Overview by fixing the affordances, reorganizing the KPI hierarchy, and correcting the color usage. Those changes drove the SUS improvement directly. Designed Asset Inspection from scratch as a three-level modular dashboard: Reliability (failure risk, remaining useful life), Maintenance (alerts, case management), and Performance (OEE, operational metrics). Sub-asset drill-down let engineers isolate which components were affected without leaving the page. Also designed a compressor performance dashboard for the Performance Suite, covering load analysis, surge detection, and efficiency curves for oil and gas and chemical manufacturing.\n\nThe recreation is built to WCAG 2.1 AA. Every chart, filter, and table row is keyboard-navigable with visible focus indicators. Screen readers can navigate the asset table by row and column. Panels trap focus when open, and all animations respect reduced motion preferences. The original product relied on mouse interaction for most data visualization. Engineers working 12-hour shifts in control rooms shouldn\'t have to.',
-    outcome: 'Shipped as part of Honeywell\'s APM platform, built for reliability engineers at companies like Shell and other industrial operators. The three-level information architecture (Reliability, Maintenance, Performance) used existing Forge design system cards to solve the tab vs. single-page conflict without adding new components.',
+    outcome: 'Shipped three dashboards on Honeywell\'s APM platform: Plant Overview, Asset Inspection, and a compressor performance dashboard for the Performance Suite. Built for reliability engineers at companies like Shell and other industrial operators. The three-level information architecture (Reliability, Maintenance, Performance) used existing Forge design system cards to solve the tab vs. single-page conflict without adding new components.',
     designDecisions: [
       {
         title: 'Push back with data, then redirect when the call is made',
@@ -95,7 +95,7 @@ export const projects = [
       },
     ],
     reflection: 'The tab vs. single-page debate is the decision I think about most from this project. I had the data. I had quotes from engineers saying they wanted their domains separated. I pushed back on multiple calls and in writing. The decision still went the other way. What I learned is that research advocacy and stakeholder decision-making operate on different timelines, and sometimes the right move is to stop fighting the constraint and start designing through it. The modular structure was a better answer to the real problem than tabs would have been anyway.',
-    metaProblem: 'Engineers couldn\'t see what was failing or why. The dashboards they depended on were getting in the way.',
+    metaProblem: 'Engineers couldn\'t quickly see what was failing, why, or what to do next.',
     role: 'UX Designer',
     duration: '1 year',
     team: 'UX Designer, Researcher, SMEs, Engineering, PM (Agile)',
