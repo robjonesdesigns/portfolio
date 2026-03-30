@@ -353,9 +353,12 @@
   height: 64px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background-color: color-mix(in srgb, var(--surface) 85%, transparent);
-  border-bottom: 1px solid var(--border);
+  background-color: color-mix(in srgb, var(--bg) 85%, transparent);
+  box-shadow: 0 4px 12px rgba(92, 82, 80, 0.07);
   animation: navbar-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+:root.dark .navbar-header {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes navbar-enter {
