@@ -315,7 +315,7 @@ export const projects = [
     company: 'Aysa',
     year: '2025',
     tags: ['0→1 Product Design', 'Brand', 'UI Systems', 'Social Impact'],
-    headline: 'From nothing to 15,000+ views in two weeks',
+    headline: 'Shipping a corporate transparency app from zero to 15,000 views in two weeks',
     description: 'Took a founder\'s concept from nothing to a working MVP in under 2 weeks. 15,000+ views in the first social rollout on LinkedIn and Instagram.',
     outcomes: [
       '15,000+ views in the first social rollout on LinkedIn and Instagram.',
@@ -385,11 +385,11 @@ export const projects = [
     company: 'Sinta',
     year: '2022',
     tags: ['0→1 Product Design', 'HR Tech', 'Startup', 'Figma'],
-    headline: 'Five flows from founder conversations to investor pitch in one month',
+    headline: 'Designing a full interview platform from founder conversations in one month',
     description: 'Took a founder\'s concept to a complete HR interview management platform. One month of close collaboration with two founders, zero existing screens.',
     outcomes: [
-      'Founders built and pitched investors directly from the designs.',
-      'Sinta still operating. Design agency brought in to build on the foundation.',
+      'Founders pitched investors directly from the designs.',
+      'Design agency later hired to build on the 0-to-1 foundation.',
     ],
     images: [null, null],
     image: null,
