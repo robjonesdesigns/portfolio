@@ -15,14 +15,14 @@ import { projects } from '../data/projects'
 
       <nav aria-label="Site map">
         <h2 class="type-label mb-3">Pages</h2>
-        <ul style="list-style: none; padding: 0; margin: 0 0 2rem;">
+        <ul class="list-reset mb-8">
           <li class="mb-2"><a href="/" class="type-link inline-block py-2 -mx-2 px-2">Home</a></li>
           <li class="mb-2"><a href="/about" class="type-link inline-block py-2 -mx-2 px-2">About</a></li>
           <li class="mb-2"><a href="/resume" class="type-link inline-block py-2 -mx-2 px-2">Resume</a></li>
         </ul>
 
         <h2 class="type-label mb-3">Case Studies</h2>
-        <ul style="list-style: none; padding: 0; margin: 0;">
+        <ul class="list-reset">
           {projects.map(p => (
             <li class="mb-2">
               <a href={`/projects/${p.slug}`} class="type-link inline-block py-2 -mx-2 px-2">

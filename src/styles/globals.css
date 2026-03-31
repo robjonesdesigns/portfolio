@@ -202,12 +202,9 @@
   .text-fg           { color: var(--fg); }
   .text-fg-secondary { color: var(--fg-secondary); }
   .text-accent       { color: var(--accent); }
-  .bg-bg             { background-color: var(--bg); }
   .bg-surface        { background-color: var(--surface); }
   .bg-media          { background-color: var(--media-bg); }
-  .bg-media-light    { background-color: var(--media-bg-light); }
   .border-media      { border-color: var(--media-border); }
-  .border-media-light { border-color: var(--media-border-light); }
   .bg-accent         { background-color: var(--accent); }
   .border-token        { border-color: var(--border); }
   .border-token-strong { border-color: var(--border-strong); }
@@ -219,6 +216,18 @@
   .shadow-section-up    { box-shadow: 0 -4px 12px rgba(92, 82, 80, 0.07); }
   :root.dark .shadow-section-down { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25); }
   :root.dark .shadow-section-up   { box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.25); }
+
+  /* Media container — image/video wrapper with tinted bg and border */
+  .media-card {
+    background: color-mix(in srgb, var(--fg) 6%, var(--surface));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  /* List reset — strip default list styling */
+  .list-reset { list-style: none; padding: 0; margin: 0; }
 }
 
 /* ─── Type composition classes ───────────────────────────────────────── */

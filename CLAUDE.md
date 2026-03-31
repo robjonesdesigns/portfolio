@@ -65,8 +65,11 @@ All animations are CSS. No JS animation libraries.
 ### Tailwind Color Classes
 `text-fg`, `text-fg-secondary`, `text-brand-primary`, `bg-brand-primary`, `text-on-accent`, `bg-surface`, `bg-subtle`, `border-token`, `border-token-strong`
 
-### Section Depth Shadows
-`shadow-section-down` (hero bottom edge), `shadow-section-up` (footer top edge). Theme-aware: light 7% warm tint, dark 25% black. Requires `relative z-10` on the shadow element so it paints above adjacent sections.
+### Utility Classes
+- `shadow-section-down` / `shadow-section-up` — theme-aware depth shadows. Requires `relative z-10`.
+- `media-card` — tinted image/video container (color-mix bg, border, rounded-xl, overflow hidden)
+- `list-reset` — strip list-style, padding, margin
+- `border-token` / `border-token-strong` — theme-aware border colors
 
 ### Three-Layer Layout
 Every page follows: hero (`--bg`) / content (`bg-subtle`) / footer (`--bg`). Shadow utilities create depth between layers. No border dividers.
@@ -95,7 +98,6 @@ Display sizes use fluid `clamp()`. Body sizes are fixed with a responsive step a
 | `text-body-lg` | 20px | Body text — desktop |
 | `text-body` | 16px | Body text — mobile |
 | `text-body-sm` | 14px | Small body |
-| `text-caption` | 12px | Captions |
 
 ### Type Composition Classes (`globals.css` → `@layer components`)
 Use these everywhere — one class handles font, size, weight, and color.
@@ -119,18 +121,8 @@ type-display-2xl   type-display-xl   type-display-lg   type-display-md   type-di
 
 ---
 
-## Spacing — 4px/8px grid (`tailwind.config.js` → `spacing`)
-| Token | px | Tailwind class |
-|---|---|---|
-| space-xs | 4px | `p-space-xs`, `gap-space-xs` |
-| space-sm | 8px | `p-space-sm` |
-| space-md | 16px | `p-space-md` |
-| space-lg | 24px | `p-space-lg` |
-| space-xl | 32px | `p-space-xl` |
-| space-2xl | 48px | `p-space-2xl` |
-| space-3xl | 64px | `p-space-3xl` |
-| space-4xl | 96px | `p-space-4xl` |
-| space-5xl | 128px | `p-space-5xl` |
+## Spacing
+Uses Tailwind's standard numeric scale on a 4px grid (`gap-2` = 8px, `gap-6` = 24px, etc.). No custom spacing tokens.
 
 ---
 

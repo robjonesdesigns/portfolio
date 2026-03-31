@@ -26,8 +26,7 @@ const placeholderStyle = `background-color: ${color ? `${color}28` : 'var(--bord
 <article
   id={index === 0 ? 'first-project' : undefined}
   tabindex={index === 0 ? -1 : undefined}
-  class="py-8 border-t"
-  style="border-color: var(--border);"
+  class="py-8 border-t border-token"
   data-animate-y
 >
   <h3 class="type-display-md mb-8 md:mb-10">
@@ -85,8 +84,8 @@ const placeholderStyle = `background-color: ${color ? `${color}28` : 'var(--bord
       {/* LaptopFrame */}
       {hasLaptop && (
         <div
-          class="relative overflow-hidden rounded-2xl border border-token pt-8 px-[3%]"
-          style="background: color-mix(in srgb, var(--fg) 6%, var(--surface));"
+          class="media-card relative rounded-2xl border border-token pt-8 px-[3%]"
+          style="line-height: normal;"
         >
           <div
             class="absolute inset-0 pointer-events-none"
