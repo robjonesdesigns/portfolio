@@ -132,15 +132,13 @@ const spacingSteps = [
           <h2 class="type-display-sm mb-3">Spacing</h2>
           <p class="type-body text-fg-secondary mb-8">4px base grid using the standard Tailwind numeric scale. All spacing in markup uses Tailwind utility classes (<code>gap-4</code>, <code>p-6</code>, <code>mb-8</code>, etc.) rather than custom tokens.</p>
           <div class="flex flex-col gap-3">
-            <div class="flex flex-wrap gap-8">
+            <div class="flex flex-wrap items-end gap-6">
               {spacingSteps.map(s => (
                 <div class="flex flex-col items-center gap-2">
-                  <div class="flex items-end" style="height: 96px;">
-                    <div
-                      class="rounded-sm opacity-30"
-                      style={`width: 48px; height: ${s.px}px; background-color: var(--accent);`}
-                    />
-                  </div>
+                  <div
+                    class="rounded-sm opacity-30"
+                    style={`width: ${s.px}px; height: ${s.px}px; background-color: var(--accent);`}
+                  />
                   <code class="type-meta">{s.px}px</code>
                   <code class="type-meta">t-{s.tw}</code>
                 </div>
