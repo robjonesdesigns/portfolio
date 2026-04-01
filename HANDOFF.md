@@ -1,84 +1,84 @@
-# Portfolio Handoff -- Session 18 End
+# Portfolio Handoff -- Session 21 End
 
 ## START HERE
-Three-layer layout, section shadows, navbar elevation, skills restructure, full copy pass across all 5 case studies. Design token cleanup planned (backlog).
+Nielsen heuristic audit complete (22 findings). All enforced fixes implemented and pushed. Design system page rewritten to use its own system. Next: visual review in browser, surface token decision, missing media assets.
 
 ## Deployed
 https://designedbyrob.com
 
 ## Next session priorities
 
-### 1. Design token consolidation
-Tokens split across three places with redundancy. Plan:
-- Move `bg-subtle`, `border-token`, `border-token-strong`, `media`, `media-light`, `media-border`, `media-border-light` into Tailwind config colors so Tailwind auto-generates all utility variants.
-- Remove hand-written utilities that duplicate what Tailwind config already generates (`text-fg`, `text-fg-secondary`, `text-accent`, `bg-bg`, `bg-surface`, `bg-accent`).
-- Keep in `@layer utilities`: only `shadow-section-down` / `shadow-section-up` (theme-aware compound shadows Tailwind can't generate).
-- Keep in `@layer components`: all 11 `type-*` composition classes.
-- Consider adding: z-index scale (`z-nav`, `z-overlay`, `z-modal`).
-- End state: zero redundancy, all tokens in Tailwind config, utilities only for things Tailwind can't do.
-- No HTML changes needed -- class names stay the same.
+### 1. Visual review
+Spin up dev server and walk through every change in the browser:
+- Hamburger menu on mobile (animated lines to X, full-viewport overlay, links top-aligned)
+- Theme toggle visible on all breakpoints
+- Case study bottom nav (All projects + Next, stacks on mobile)
+- 404 page
+- Design system page (standard container, section intros, type-meta class)
+- Footer dot separator between Sitemap and Design System links
+- Email clipboard (should now work after ViewTransition navigation)
+- Placeholder media hidden (captions preserved)
+- Hero: "4+ years designing enterprise SaaS and 0->1 products for startups"
+- About: "The color palette" (merged cream + burgundy entries), "Built from scratch" (Astro, not React)
 
-### 2. APM case study assets
-Depends on Asset Inspection screen being built in APM dashboard.
-- Asset Inspection processMedia image/video (id: asset-details-structure, currently "coming soon")
-- Final Asset Inspection video (finalMedia, currently null)
+### 2. Surface token review
+Light theme `--surface` is #f4f1ec (warm cream). Rob wants to evaluate whether this is the right value. Dark `--surface` #28251f is fine.
 
-### 3. `/design-system` route
-Differentiator for technical hiring managers. Content in `.reference/` (old Storybook stories + MDX docs).
+### 3. Missing media assets
+Portfolio case studies have null media entries hidden in rendering. Data preserved for later. See memory file `portfolio_missing_media.md` for which assets to add:
+- honeywell-warehouse: 2 null images on home card, multiple null videos in processMedia
+- honeywell-apm: 1 null processMedia video (Asset Inspection 3-level structure)
 
-### 4. `--surface` color review
-Current `#f7f3f5` has a cool/pink undertone that clashes with the warm palette. Used in navbar theme toggle, media containers, tertiary buttons. Needs a warmer replacement (e.g. `#f5f1eb`). Dark mode `#252220` is fine.
+### 4. Resume PDF
+Updated and pushed this session (2021 freelance start date). Verify it matches web resume on next visual review.
 
 ### 5. CSP hash-based script-src (backlog)
-Any change to inline theme script requires hash update in `vercel.json`.
+Any change to inline theme script requires hash update in vercel.json.
 
-## What was completed this session (18)
+## What was completed this session (21)
 
-### Three-layer layout system
-- Consistent hero (`--bg`) / content (`bg-subtle`) / footer (`--bg`) sandwich on all pages.
-- Case study and about heroes flipped from `bg-subtle` to `--bg`.
-- Resume split into hero (name + contact + PDF button) and content section (`bg-subtle`).
-- `shadow-section-down` and `shadow-section-up` utility classes (theme-aware: light 7% warm tint, dark 25% black).
-- `relative z-10` on hero/footer so shadows paint above adjacent content sections.
+### Nielsen Heuristic Audit
+- HEURISTICS.md doctrine (547-line reference) researched and added to project root
+- HEURISTIC-AUDIT.md written (22 findings: 0 catastrophic, 4 major, 10 minor, 8 cosmetic)
+- All major + selected minor/cosmetic findings fixed
 
-### Navbar elevation
-- Background switched from `--surface` to `--bg` (matches hero/footer dark frame).
-- Border-bottom replaced with warm shadow (theme-aware dark override).
-- Navbar is now the highest elevation layer in the visual hierarchy.
+### Copy fixes
+- Hero: "4+ years designing enterprise SaaS and 0->1 products for startups" (was "3 years")
+- Resume subtitle: "4+ years across startups & SaaS enterprise" (matches hero)
+- Freelance start: 2021 (was 2020)
+- About page: React/Framer Motion references removed, now correctly says Astro + CSS
+- About page: "Cream, not white" + "Burgundy and rose" merged into "The color palette"
+- Resume PDF updated and pushed
 
-### Skills restructure
-- Skills section removed from about page (about is the story, resume is credentials).
-- Resume skills section: two columns -- "What I Use" (tools) and "What I Do" (methods + skills merged).
-- Added to resume: React, Astro, Product Strategy, Interaction Design, Prototyping, Accessibility, Front-End Development.
-- Renamed "Frameworks" to split across "Methods" and "Skills" categories.
+### Mobile nav (hamburger menu)
+- CSS-animated hamburger (3 lines to X) visible below md (768px)
+- Full-viewport overlay with links top-aligned (6rem padding, not centered)
+- Theme toggle stays visible in navbar on mobile (not buried in overlay)
+- Vanilla JS: toggle, Escape close, link-click close, focus trap
+- Accessible: aria-expanded, aria-label, aria-hidden, aria-controls
+- Reduced motion media query disables all transitions
 
-### Full copy pass -- all 5 case studies
-Headlines rewritten to ground recruiter in domain (what the product is), not process or metrics:
-- **APM**: "Turning equipment data into decisions for reliability engineers"
-- **Keytrn**: "Making foreclosure data accessible for the first time in Pennsylvania"
-- **Warehouse**: "Two dashboards and a platform-wide usability audit for warehouse operations"
-- **Aysa**: "Helping consumers see how ethically companies operate before they buy"
-- **Sinta**: "Giving interviewers a way to capture structured data without breaking eye contact"
+### Design system additions
+- `type-meta` -- 14px Areal, secondary color, no responsive step. For small metadata.
+- `type-meta-bold` -- same but 700 weight, fg color. For small bold labels.
+- `code` base style -- Areal (not monospace), 0.875em, surface bg, subtle border, 4px radius.
 
-Outcomes rewritten to reflect actual deliverables:
-- **APM**: Owned 3 shipped dashboards, contributed to 2 more. SUS low 70s to high 80s.
-- **Keytrn**: Live product with real scraped data. Primary research across 20+ counties defined IA.
-- **Warehouse**: Shipped Merge Dashboard and Homepage. Heuristic eval led to platform-wide UXQA.
-- **Aysa**: 15,000+ views first rollout. Pitch deck used in $2.1M seed round outreach.
-- **Sinta**: Founders pitched investors from designs. Five complete flows from zero existing screens.
+### Design system page rewrite
+- Standard container (was md/896px, now lg/1280px)
+- Section intros explaining where each piece lives (globals.css vs tailwind.config.js)
+- All text uses composition classes only (zero frankenstein utility combos, zero inline styles)
+- type-meta added to type scale specimens
 
-### Sinta correction
-- Removed unconfirmed acquisition/funding claims from headline, outcomes, and resume bullet.
-- Per interview notes: no confirmed acquisition or VC raise. Founders pitched from designs, design agency later hired to continue the work.
-
-### Case study hero
-- Now renders all outcome bullets (was only showing first one).
-- Matches WorkEntry card format.
-
-### APM case study
-- Problem rewritten: grounded in observation, not assumption.
-- Outcome: names all 5 dashboards (3 owned, 2 contributed).
+### Other fixes
+- Placeholder media: null entries hidden in rendering (WorkEntry filters, CaseStudy conditionals). Data preserved.
+- Case study nav: "All projects" link (type-link, not gray) + "Next" -- stacks on mobile
+- Custom 404 page
+- Consistent design decision headings (all type-display-sm)
+- "See more" uses type-link class
+- Design system added to sitemap + footer (dot separator)
+- Email clipboard: moved to Layout.astro central init, re-initializes after ViewTransition swap
 
 ## Previous sessions
-- Session 13: APM case study live with videos, before/after, research images
-- Session 15: Outcomes rewritten, theme toggle fix, view demo button, GitHub link
+See git log for sessions 1-20. Key milestones:
+- Session 18: Three-layer layout, navbar elevation, skills restructure
+- Session 20: Design token consolidation, --surface warm cream, /design-system page built
