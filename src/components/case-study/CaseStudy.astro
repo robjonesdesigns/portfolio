@@ -150,47 +150,34 @@ const next = projects[(idx + 1) % projects.length]
               <div class="flex flex-col gap-3">
                 <h2 class="type-display-md" data-animate-y>{item.sectionLabel}</h2>
                 <div data-animate>
-                  {!item.sectionLabel && (
-                    <h3 class="type-display-sm mb-5">{item.label}</h3>
+                  {(item.video || item.image) && (
+                    <div class="media-card">
+                      {item.video ? (
+                        <LazyVideo src={item.video} style="width: 100%; display: block;" />
+                      ) : (
+                        <img src={item.image} alt={item.label || ''} style="width: 100%; display: block;" loading="lazy" />
+                      )}
+                    </div>
                   )}
-                  <div class="media-card">
-                    {item.video ? (
-                      <LazyVideo src={item.video} style="width: 100%; display: block;" />
-                    ) : item.image ? (
-                      <img src={item.image} alt={item.label || ''} style="width: 100%; display: block;" loading="lazy" />
-                    ) : (
-                      <div style="aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; gap: 0.75rem;">
-                        <span class="type-label" style="opacity: 0.35;">Asset coming soon</span>
-                        <p class="font-body text-body leading-relaxed text-center max-w-md" style="color: var(--fg); opacity: 0.4;">
-                          {item.note || '[ screenshot or recording ]'}
-                        </p>
-                      </div>
-                    )}
-                  </div>
                   {item.caption && (
-                    <p class="type-body leading-relaxed max-w-3xl mt-2">{item.caption}</p>
+                    <p class={`type-body leading-relaxed max-w-3xl ${(item.video || item.image) ? 'mt-2' : ''}`}>{item.caption}</p>
                   )}
                 </div>
               </div>
             ) : (
               <div data-animate>
                 <h3 class="type-display-sm mb-5">{item.label}</h3>
-                <div class="media-card">
-                  {item.video ? (
-                    <LazyVideo src={item.video} style="width: 100%; display: block;" />
-                  ) : item.image ? (
-                    <img src={item.image} alt={item.label || ''} style="width: 100%; display: block;" loading="lazy" />
-                  ) : (
-                    <div style="aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; gap: 0.75rem;">
-                      <span class="type-label" style="opacity: 0.35;">Asset coming soon</span>
-                      <p class="font-body text-body leading-relaxed text-center max-w-md" style="color: var(--fg); opacity: 0.4;">
-                        {item.note || '[ screenshot or recording ]'}
-                      </p>
-                    </div>
-                  )}
-                </div>
+                {(item.video || item.image) && (
+                  <div class="media-card">
+                    {item.video ? (
+                      <LazyVideo src={item.video} style="width: 100%; display: block;" />
+                    ) : (
+                      <img src={item.image} alt={item.label || ''} style="width: 100%; display: block;" loading="lazy" />
+                    )}
+                  </div>
+                )}
                 {item.caption && (
-                  <p class="type-body leading-relaxed max-w-3xl mt-2">{item.caption}</p>
+                  <p class={`type-body leading-relaxed max-w-3xl ${(item.video || item.image) ? 'mt-2' : ''}`}>{item.caption}</p>
                 )}
               </div>
             )}
@@ -215,7 +202,7 @@ const next = projects[(idx + 1) % projects.length]
             <h2 class="type-display-md" data-animate-y>Key design decisions</h2>
             {project.designDecisions.map((d: any, i: number) => (
               <div class={`flex flex-col gap-10 border-t border-token ${i === 0 ? 'pt-16' : 'pt-14'}`} data-animate>
-                <h3 class={i === 0 ? 'type-display-md' : 'type-display-sm'}>{d.title}</h3>
+                <h3 class="type-display-sm">{d.title}</h3>
                 <div class="flex flex-col gap-10">
                   <div class="flex flex-col gap-2">
                     <span class="type-label">Problem</span>
@@ -259,8 +246,11 @@ const next = projects[(idx + 1) % projects.length]
 
         {/* Navigation */}
         <div
-          class="flex justify-end pt-8 border-t border-token"
+          class="flex flex-col sm:flex-row sm:justify-between gap-4 pt-8 border-t border-token"
         >
+          <a href="/#projects" class="type-link inline-block py-2 -mx-2 px-2">
+            &larr; All projects
+          </a>
           <a href={`/projects/${next.slug}`} class="type-link inline-block py-2 -mx-2 px-2">
             Next: {next.title} &rarr;
           </a>

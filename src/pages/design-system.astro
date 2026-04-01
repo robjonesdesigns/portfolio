@@ -25,6 +25,7 @@ const typeScale = [
   { class: 'type-label',       label: 'Label',        size: '16px / 20px',    font: 'Areal', note: 'Uppercase, bold' },
   { class: 'type-link',        label: 'Link',         size: '16px / 20px',    font: 'Areal' },
   { class: 'type-badge',       label: 'Badge',        size: '16px',           font: 'Areal' },
+  { class: 'type-meta',        label: 'Meta',         size: '14px',           font: 'Areal', note: 'Secondary color, no responsive step' },
 ]
 
 const spacingSteps = [
@@ -42,31 +43,30 @@ const spacingSteps = [
 
 <Layout title="Design System | Rob Jones">
   <div class="bg-subtle">
-    <Container size="md">
+    <Container>
       <div class="py-16 md:py-24">
 
         {/* Header */}
         <div class="mb-16" data-animate-y>
           <h1 class="type-display-xl mb-4">Design System</h1>
-          <p class="type-body max-w-xl" style="line-height: 1.7;">
-            Tokens, typography, and components used across this portfolio. Everything adapts between light and dark themes via CSS custom properties. Toggle the theme to see both modes.
+          <p class="type-body max-w-2xl">
+            The design system behind this portfolio. Color tokens and typography are defined as CSS custom properties and composition classes in <code>globals.css</code>. Layout, spacing, and responsive behavior use Tailwind v3 utility classes. Toggle the theme to see both modes.
           </p>
         </div>
 
         {/* Colors */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-sm mb-8">Color Tokens</h2>
+          <h2 class="type-display-sm mb-3">Color Tokens</h2>
+          <p class="type-body text-fg-secondary mb-8">Defined as CSS custom properties in <code>globals.css</code> with light and dark values. Mapped to Tailwind via <code>tailwind.config.js</code> so utilities like <code>text-fg</code> and <code>bg-surface</code> resolve to the active theme.</p>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             {colors.map(c => (
               <div class="flex flex-col gap-2">
                 <div
-                  class="rounded-lg border border-token-strong"
-                  style={`background-color: var(${c.name}); height: 80px;`}
+                  class="rounded-lg border border-token-strong h-20"
+                  style={`background-color: var(${c.name});`}
                 />
-                <p class="font-bold text-body-sm">{c.label}</p>
-                <p class="text-body-sm" style="color: var(--fg-secondary);">
-                  <code>{c.name}</code>
-                </p>
+                <p class="type-meta-bold">{c.label}</p>
+                <p class="type-meta"><code>{c.name}</code></p>
               </div>
             ))}
           </div>
@@ -74,12 +74,12 @@ const spacingSteps = [
           {/* Three-layer demo */}
           <div class="mt-10">
             <p class="type-label mb-4">Three-layer layout</p>
-            <div class="rounded-xl p-6 border border-token" style="background-color: var(--bg);">
-              <p class="text-body-sm mb-3" style="color: var(--fg-secondary);">--bg (page background)</p>
+            <div class="rounded-xl p-6 border border-token bg-[var(--bg)]">
+              <p class="type-meta mb-3">--bg (page background)</p>
               <div class="bg-subtle rounded-lg p-5 border border-token">
-                <p class="text-body-sm mb-3" style="color: var(--fg-secondary);">--bg-subtle (section)</p>
+                <p class="type-meta mb-3">--bg-subtle (section)</p>
                 <div class="bg-surface rounded-md p-4 border border-token">
-                  <p class="text-body-sm" style="color: var(--fg-secondary);">--surface (card)</p>
+                  <p class="type-meta">--surface (card)</p>
                 </div>
               </div>
             </div>
@@ -88,13 +88,17 @@ const spacingSteps = [
 
         {/* Typography */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-sm mb-8">Typography</h2>
+          <h2 class="type-display-sm mb-3">Typography</h2>
+          <p class="type-body text-fg-secondary mb-8">Composition classes defined in <code>@layer components</code> in <code>globals.css</code>. Display sizes use fluid <code>clamp()</code> for smooth scaling across viewports. Body sizes step at the <code>md</code> breakpoint (16px to 20px).</p>
           <div class="flex flex-col gap-6">
             {typeScale.map(t => (
               <div class="border-t border-token pt-5">
-                <p class="type-label mb-3">{t.label}<span style="color: var(--fg-secondary); font-weight: 400; text-transform: none; letter-spacing: normal;"> / {t.font} / {t.size}</span></p>
+                <p class="type-label mb-3">
+                  {t.label}
+                </p>
+                <p class="type-meta mb-3">{t.font} / {t.size}</p>
                 <p class={t.class}>
-                  {t.class === 'type-label' ? 'UPPERCASE LABEL TEXT' : t.class === 'type-link' ? 'Inline link style' : 'The quick brown fox'}
+                  {t.class === 'type-label' ? 'UPPERCASE LABEL TEXT' : t.class === 'type-link' ? 'Inline link style' : t.class === 'type-meta' ? 'Small metadata text' : 'The quick brown fox'}
                 </p>
               </div>
             ))}
@@ -105,19 +109,19 @@ const spacingSteps = [
             <p class="type-label mb-4">Font families</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div class="bg-surface rounded-lg p-5 border border-token">
-                <p class="font-display font-bold text-display-md mb-2">Aa</p>
-                <p class="font-bold text-body-sm">Cabinet Grotesk</p>
-                <p class="text-body-sm" style="color: var(--fg-secondary);">Display headings</p>
+                <p class="type-display-md mb-2">Aa</p>
+                <p class="type-meta-bold">Cabinet Grotesk</p>
+                <p class="type-meta">Display headings</p>
               </div>
               <div class="bg-surface rounded-lg p-5 border border-token">
-                <p class="font-body font-bold text-display-md mb-2">Aa</p>
-                <p class="font-bold text-body-sm">Areal</p>
-                <p class="text-body-sm" style="color: var(--fg-secondary);">Body, UI, labels</p>
+                <p class="type-display-md mb-2" style="font-family: Areal, Arial, sans-serif; font-weight: 700;">Aa</p>
+                <p class="type-meta-bold">Areal</p>
+                <p class="type-meta">Body, UI, labels</p>
               </div>
               <div class="bg-surface rounded-lg p-5 border border-token">
-                <p class="font-editorial italic text-display-md mb-2">Aa</p>
-                <p class="font-bold text-body-sm">Ogg</p>
-                <p class="text-body-sm" style="color: var(--fg-secondary);">Editorial accent</p>
+                <p class="type-display-md mb-2" style="font-family: Ogg, Georgia, serif; font-style: italic; font-weight: 400;">Aa</p>
+                <p class="type-meta-bold">Ogg</p>
+                <p class="type-meta">Editorial accent</p>
               </div>
             </div>
           </div>
@@ -126,18 +130,18 @@ const spacingSteps = [
         {/* Spacing */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-sm mb-3">Spacing</h2>
-          <p class="type-body mb-8" style="color: var(--fg-secondary);">4px base grid. Standard Tailwind numeric scale.</p>
+          <p class="type-body text-fg-secondary mb-8">4px base grid using the standard Tailwind numeric scale. All spacing in markup uses Tailwind utility classes (<code>gap-4</code>, <code>p-6</code>, <code>mb-8</code>, etc.) rather than custom tokens.</p>
           <div class="flex flex-col gap-3">
             {spacingSteps.map(s => (
               <div class="flex items-center gap-4">
-                <div class="flex items-center justify-end" style="width: 60px;">
-                  <code class="text-body-sm" style="color: var(--fg-secondary);">{s.px}px</code>
+                <div class="flex items-center justify-end w-16">
+                  <code class="type-meta">{s.px}px</code>
                 </div>
                 <div
-                  class="rounded-sm"
-                  style={`width: ${s.px}px; height: 24px; background-color: var(--accent); opacity: 0.3;`}
+                  class="rounded-sm opacity-30"
+                  style={`width: ${s.px}px; height: 24px; background-color: var(--accent);`}
                 />
-                <code class="text-body-sm">{s.tw}</code>
+                <p class="type-meta">{s.tw}</p>
               </div>
             ))}
           </div>
@@ -145,7 +149,8 @@ const spacingSteps = [
 
         {/* Components */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-sm mb-8">Components</h2>
+          <h2 class="type-display-sm mb-3">Components</h2>
+          <p class="type-body text-fg-secondary mb-8">Astro components in <code>src/components/ui/</code>. Styled with Tailwind utilities and design tokens. No client-side JavaScript shipped for any component.</p>
 
           {/* Buttons */}
           <div class="mb-12">
@@ -181,11 +186,11 @@ const spacingSteps = [
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="bg-surface rounded-xl p-6 border border-token shadow-section-down relative z-10">
                 <p class="type-display-sm mb-2">Card with shadow</p>
-                <p class="type-body" style="color: var(--fg-secondary);">Surface background with section shadow for depth.</p>
+                <p class="type-body text-fg-secondary">Surface background with section shadow for depth.</p>
               </div>
-              <div class="media-card p-6" style="line-height: normal;">
+              <div class="media-card p-6">
                 <p class="type-display-sm mb-2">Media card</p>
-                <p class="type-body" style="color: var(--fg-secondary);">Tinted container for images and video.</p>
+                <p class="type-body text-fg-secondary">Tinted container for images and video.</p>
               </div>
             </div>
           </div>
@@ -194,17 +199,17 @@ const spacingSteps = [
         {/* Animations */}
         <section data-animate>
           <h2 class="type-display-sm mb-3">Animations</h2>
-          <p class="type-body mb-8" style="color: var(--fg-secondary);">CSS only. No JS animation libraries. Respects <code>prefers-reduced-motion</code>.</p>
+          <p class="type-body text-fg-secondary mb-8">CSS only. No JS animation libraries. Respects <code>prefers-reduced-motion</code>.</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-surface rounded-xl p-6 border border-token">
               <p class="type-label mb-3">Scroll reveal</p>
-              <p class="type-body" style="color: var(--fg-secondary);">
+              <p class="type-body text-fg-secondary">
                 <code>data-animate</code> (fade + translateY) and <code>data-animate-y</code> (translateY only, VoiceOver safe for headings).
               </p>
             </div>
             <div class="bg-surface rounded-xl p-6 border border-token">
               <p class="type-label mb-3">Theme transition</p>
-              <p class="type-body" style="color: var(--fg-secondary);">
+              <p class="type-body text-fg-secondary">
                 All color properties transition over 300ms. Toggle the theme to see it.
               </p>
             </div>

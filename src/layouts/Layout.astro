@@ -162,32 +162,129 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
         initLazyVideos();
 
         function initThemeToggle() {
-          var toggle = document.querySelector('[data-theme-toggle]');
-          if (!toggle) return;
-          // Remove old binding flag so we always rebind after swap
-          delete toggle.dataset.bound;
-          toggle.dataset.bound = 'true';
+          var toggles = document.querySelectorAll('[data-theme-toggle]');
+          if (!toggles.length) return;
 
-          function updateLabel() {
+          function updateAllLabels() {
             var isDark = document.documentElement.classList.contains('dark');
-            toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            var label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+            toggles.forEach(function(t) { t.setAttribute('aria-label', label); });
+            // Also sync overlay toggle if present
+            var mobileToggle = document.querySelector('[data-mobile-theme-toggle]');
+            if (mobileToggle) mobileToggle.setAttribute('aria-label', label);
           }
 
-          toggle.addEventListener('click', function() {
-            var isDark = document.documentElement.classList.contains('dark');
-            var next = isDark ? 'light' : 'dark';
-            document.documentElement.classList.toggle('dark', next === 'dark');
-            localStorage.setItem('theme', next);
-            updateLabel();
+          toggles.forEach(function(toggle) {
+            delete toggle.dataset.bound;
+            toggle.dataset.bound = 'true';
+            toggle.addEventListener('click', function() {
+              var isDark = document.documentElement.classList.contains('dark');
+              var next = isDark ? 'light' : 'dark';
+              document.documentElement.classList.toggle('dark', next === 'dark');
+              localStorage.setItem('theme', next);
+              updateAllLabels();
+            });
           });
 
-          updateLabel();
+          updateAllLabels();
         }
+
+        function initMobileNav() {
+          var btn = document.querySelector('.mobile-nav-toggle');
+          var overlay = document.getElementById('mobile-nav-overlay');
+          if (!btn || !overlay) return;
+          // Remove old binding so we rebind after swap
+          delete btn.dataset.bound;
+
+          btn.dataset.bound = 'true';
+          var focusableEls = overlay.querySelectorAll('a[data-mobile-nav-link]');
+          var isOpen = false;
+
+          function openNav() {
+            isOpen = true;
+            btn.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.setAttribute('aria-label', 'Close menu');
+            overlay.classList.add('is-open');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            setTimeout(function() { if (focusableEls.length) focusableEls[0].focus(); }, 100);
+          }
+
+          function closeNav() {
+            isOpen = false;
+            btn.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Open menu');
+            overlay.classList.remove('is-open');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            btn.focus();
+          }
+
+          btn.addEventListener('click', function() {
+            if (isOpen) { closeNav(); } else { openNav(); }
+          });
+
+          overlay.querySelectorAll('[data-mobile-nav-link]').forEach(function(link) {
+            link.addEventListener('click', function() { closeNav(); });
+          });
+
+          document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isOpen) { closeNav(); }
+          });
+
+          overlay.addEventListener('keydown', function(e) {
+            if (e.key !== 'Tab' || !isOpen) return;
+            var allFocusable = [btn].concat(Array.from(focusableEls));
+            var first = allFocusable[0];
+            var last = allFocusable[allFocusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+          });
+        }
+
+        function initEmailCopy() {
+          var btn = document.querySelector('[data-email-copy]');
+          var toast = document.querySelector('[data-copied-toast]');
+          var copyIcon = document.querySelector('.copy-icon');
+          var checkIcon = document.querySelector('.check-icon');
+          if (!btn || !toast) return;
+          delete btn.dataset.bound;
+          btn.dataset.bound = 'true';
+
+          btn.addEventListener('click', function() {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText('robjonesdesigns@gmail.com').then(function() {
+                btn.classList.add('copied');
+                btn.setAttribute('aria-label', 'Email address copied');
+                toast.classList.add('show');
+                if (copyIcon) copyIcon.style.display = 'none';
+                if (checkIcon) checkIcon.style.display = 'block';
+                setTimeout(function() {
+                  btn.classList.remove('copied');
+                  btn.setAttribute('aria-label', 'robjonesdesigns@gmail.com: copy email address');
+                  toast.classList.remove('show');
+                  if (copyIcon) copyIcon.style.display = 'block';
+                  if (checkIcon) checkIcon.style.display = 'none';
+                }, 2200);
+              }).catch(function() {
+                window.location.href = 'mailto:robjonesdesigns@gmail.com';
+              });
+            } else {
+              window.location.href = 'mailto:robjonesdesigns@gmail.com';
+            }
+          });
+        }
+
+        initEmailCopy();
 
         // After ViewTransitions swap
         document.addEventListener('astro:after-swap', function() {
           restoreTheme();
           initThemeToggle();
+          initMobileNav();
+          initEmailCopy();
           document.documentElement.classList.add('js-ready');
           window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
           initScrollObserver();

@@ -6,6 +6,8 @@ Rob Jones. Product Designer. This is a personal portfolio site.
 **Dev server:** `npm run dev` → `http://localhost:4321/` (falls back to 4322, 4323 if port is in use)
 **Stack:** Astro 6 (SSG) + Tailwind CSS v3.4 — zero React, zero Framer Motion, zero client-side frameworks
 
+**Doctrine:** `VECTOR.md`, `HANDOFF.md`, `HEURISTICS.md` (Nielsen's 10 heuristic evaluation reference)
+
 ---
 
 ## Architecture

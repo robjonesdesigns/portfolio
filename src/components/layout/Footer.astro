@@ -48,44 +48,17 @@ import Container from './Container.astro'
 
       </div>
       <div class="mt-10 pt-6 border-t border-token">
-        <a href="/sitemap" class="type-link inline-block py-2 -mx-2 px-2">
-          Sitemap
-        </a>
+        <div class="flex items-center gap-4">
+          <a href="/sitemap" class="type-link inline-block py-2">
+            Sitemap
+          </a>
+          <span style="opacity: 0.3;">&middot;</span>
+          <a href="/design-system" class="type-link inline-block py-2">
+            Design System
+          </a>
+        </div>
       </div>
     </Container>
   </div>
 </footer>
 
-<script is:inline>
-  (function() {
-    var btn = document.querySelector('[data-email-copy]');
-    var toast = document.querySelector('[data-copied-toast]');
-    var copyIcon = document.querySelector('.copy-icon');
-    var checkIcon = document.querySelector('.check-icon');
-    if (!btn || !toast || btn.dataset.bound) return;
-    btn.dataset.bound = 'true';
-
-    btn.addEventListener('click', function() {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText('robjonesdesigns@gmail.com').then(function() {
-          btn.classList.add('copied');
-          btn.setAttribute('aria-label', 'Email address copied');
-          toast.classList.add('show');
-          if (copyIcon) copyIcon.style.display = 'none';
-          if (checkIcon) checkIcon.style.display = 'block';
-          setTimeout(function() {
-            btn.classList.remove('copied');
-            btn.setAttribute('aria-label', 'robjonesdesigns@gmail.com: copy email address');
-            toast.classList.remove('show');
-            if (copyIcon) copyIcon.style.display = 'block';
-            if (checkIcon) checkIcon.style.display = 'none';
-          }, 2200);
-        }).catch(function() {
-          window.location.href = 'mailto:robjonesdesigns@gmail.com';
-        });
-      } else {
-        window.location.href = 'mailto:robjonesdesigns@gmail.com';
-      }
-    });
-  })();
-</script>

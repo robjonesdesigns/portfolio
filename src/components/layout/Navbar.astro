@@ -35,8 +35,8 @@ const navLinks = [
       </div>
     </a>
 
-    {/* Nav links + toggle */}
-    <nav class="flex items-center gap-8" aria-label="Main">
+    {/* Desktop nav links + toggle */}
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main">
       {navLinks.map(({ label, href }) => {
         const isActive = currentPath === href || currentPath === href + '/'
         return (
@@ -50,47 +50,212 @@ const navLinks = [
         )
       })}
 
-      {/* Theme toggle */}
+      {/* Theme toggle (desktop -- inside nav for even spacing) */}
       <button
         data-theme-toggle
         class="theme-toggle relative w-16 h-8 rounded-full flex items-center px-1.5 border bg-surface border-token"
         aria-label="Switch color theme"
       >
-        {/* Sun */}
         <svg class="absolute left-2 w-4 h-4" style="color: var(--fg); opacity: 0.9;" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zm10-6a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zM4 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zm15.07-7.07a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0zM6.34 17.66a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0zm12.73 1.41a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 1 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41zM6.34 6.34a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7z"/>
         </svg>
-        {/* Moon */}
         <svg class="absolute right-2 w-4 h-4" style="color: var(--fg); opacity: 0.9;" viewBox="0 0 24 24" fill="currentColor">
           <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
         </svg>
-        {/* Thumb */}
         <span class="theme-thumb w-5 h-5 rounded-full z-10" style="background-color: var(--accent); display: block;" />
       </button>
     </nav>
 
+    {/* Mobile controls: theme toggle + hamburger */}
+    <div class="flex md:hidden items-center gap-4">
+      <button
+        data-theme-toggle
+        class="theme-toggle relative w-16 h-8 rounded-full flex items-center px-1.5 border bg-surface border-token"
+        aria-label="Switch color theme"
+      >
+        <svg class="absolute left-2 w-4 h-4" style="color: var(--fg); opacity: 0.9;" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zm10-6a1 1 0 0 1-1 1h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zM4 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h1a1 1 0 0 1 1 1zm15.07-7.07a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0zM6.34 17.66a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0zm12.73 1.41a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 1 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41zM6.34 6.34a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41zM12 7a5 5 0 1 1 0 10A5 5 0 0 1 12 7z"/>
+        </svg>
+        <svg class="absolute right-2 w-4 h-4" style="color: var(--fg); opacity: 0.9;" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+        </svg>
+        <span class="theme-thumb w-5 h-5 rounded-full z-10" style="background-color: var(--accent); display: block;" />
+      </button>
+
+      <button
+        class="mobile-nav-toggle relative w-10 h-10 flex items-center justify-center"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav-overlay"
+      >
+        <span class="hamburger-line hamburger-line-1"></span>
+        <span class="hamburger-line hamburger-line-2"></span>
+        <span class="hamburger-line hamburger-line-3"></span>
+      </button>
+    </div>
+
   </div>
 </header>
 
+{/* Mobile nav overlay */}
+<div
+  id="mobile-nav-overlay"
+  class="mobile-nav-overlay"
+  aria-hidden="true"
+>
+  <nav class="mobile-nav-content" aria-label="Mobile">
+    {navLinks.map(({ label, href }) => (
+      <a href={href} class="mobile-nav-link type-display-md" data-mobile-nav-link>
+        {label}
+      </a>
+    ))}
+
+  </nav>
+</div>
+
 <script is:inline>
   (function() {
-    var toggle = document.querySelector('[data-theme-toggle]');
-    if (!toggle || toggle.dataset.bound) return;
-    toggle.dataset.bound = 'true';
+    function initNavbar() {
+      // Desktop theme toggle
+      var toggle = document.querySelector('[data-theme-toggle]');
+      if (toggle && !toggle.dataset.bound) {
+        toggle.dataset.bound = 'true';
 
-    function updateLabel() {
-      var isDark = document.documentElement.classList.contains('dark');
-      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        function updateLabel() {
+          var isDark = document.documentElement.classList.contains('dark');
+          toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+
+        toggle.addEventListener('click', function() {
+          var isDark = document.documentElement.classList.contains('dark');
+          var next = isDark ? 'light' : 'dark';
+          document.documentElement.classList.toggle('dark', next === 'dark');
+          localStorage.setItem('theme', next);
+          updateLabel();
+          // Sync mobile toggle label
+          var mobileToggle = document.querySelector('[data-mobile-theme-toggle]');
+          if (mobileToggle) {
+            mobileToggle.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+          }
+        });
+
+        updateLabel();
+      }
+
+      // Mobile theme toggle
+      var mobileToggle = document.querySelector('[data-mobile-theme-toggle]');
+      if (mobileToggle && !mobileToggle.dataset.bound) {
+        mobileToggle.dataset.bound = 'true';
+
+        function updateMobileLabel() {
+          var isDark = document.documentElement.classList.contains('dark');
+          mobileToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+
+        mobileToggle.addEventListener('click', function() {
+          var isDark = document.documentElement.classList.contains('dark');
+          var next = isDark ? 'light' : 'dark';
+          document.documentElement.classList.toggle('dark', next === 'dark');
+          localStorage.setItem('theme', next);
+          updateMobileLabel();
+          // Sync desktop toggle label
+          var desktopToggle = document.querySelector('[data-theme-toggle]');
+          if (desktopToggle) {
+            desktopToggle.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+          }
+        });
+
+        updateMobileLabel();
+      }
+
+      // Mobile nav
+      var btn = document.querySelector('.mobile-nav-toggle');
+      var overlay = document.getElementById('mobile-nav-overlay');
+      if (!btn || !overlay || btn.dataset.bound) return;
+      btn.dataset.bound = 'true';
+
+      var focusableEls = overlay.querySelectorAll('a[data-mobile-nav-link], button[data-mobile-theme-toggle]');
+      var isOpen = false;
+
+      function openNav() {
+        isOpen = true;
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.setAttribute('aria-label', 'Close menu');
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        // Focus first link after transition
+        setTimeout(function() {
+          if (focusableEls.length) focusableEls[0].focus();
+        }, 100);
+      }
+
+      function closeNav() {
+        isOpen = false;
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Open menu');
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        btn.focus();
+      }
+
+      btn.addEventListener('click', function() {
+        if (isOpen) { closeNav(); } else { openNav(); }
+      });
+
+      // Close on link click
+      var links = overlay.querySelectorAll('[data-mobile-nav-link]');
+      links.forEach(function(link) {
+        link.addEventListener('click', function() { closeNav(); });
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+          closeNav();
+        }
+      });
+
+      // Focus trap
+      overlay.addEventListener('keydown', function(e) {
+        if (e.key !== 'Tab' || !isOpen) return;
+        // Include the hamburger button in the trap
+        var allFocusable = [btn].concat(Array.from(focusableEls));
+        var first = allFocusable[0];
+        var last = allFocusable[allFocusable.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      // Also trap from the hamburger button itself
+      btn.addEventListener('keydown', function(e) {
+        if (e.key !== 'Tab' || !isOpen) return;
+        var allFocusable = [btn].concat(Array.from(focusableEls));
+        var first = allFocusable[0];
+        var last = allFocusable[allFocusable.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        }
+      });
     }
 
-    toggle.addEventListener('click', function() {
-      var isDark = document.documentElement.classList.contains('dark');
-      var next = isDark ? 'light' : 'dark';
-      document.documentElement.classList.toggle('dark', next === 'dark');
-      localStorage.setItem('theme', next);
-      updateLabel();
-    });
-
-    updateLabel();
+    initNavbar();
   })();
 </script>
