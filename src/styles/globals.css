@@ -88,7 +88,7 @@
   --fg:        #222222;
   --accent:    #813746;
   --on-accent: #fffbf5;   /* text on brand-primary bg — 7.78:1 AAA */
-  --surface:   #f7f3f5;
+  --surface:   #f4f1ec;
   --border:        rgba(92, 82, 80, 0.1);
   --border-strong: rgba(92, 82, 80, 0.25);
   --grad-from: #1c1a16;
@@ -129,7 +129,7 @@
   --fg:        #fffbf5;
   --accent:    #e36f86;
   --on-accent: #1c1a16;   /* text on brand-primary bg — 4.81:1 AA */
-  --surface:   #252220;
+  --surface:   #28251f;
   --border:        rgba(176, 168, 158, 0.1);
   --border-strong: rgba(176, 168, 158, 0.25);
   --grad-from: #fffbf5;
