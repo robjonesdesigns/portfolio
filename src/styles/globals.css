@@ -344,9 +344,9 @@
 /* Used in the APM case study architecture diagram.                       */
 /* Nodes, connectors, layers, and arrows for data flow visualization.    */
 
-/* Map layer -- groups related nodes with subtle background */
+/* Map layer -- groups related nodes with accent-tinted background */
 .map-layer {
-  background-color: var(--bg);
+  background-color: color-mix(in srgb, var(--accent) 10%, var(--surface));
   border-radius: 8px;
   padding: 24px;
   display: flex;
@@ -370,21 +370,20 @@
   border-left: 3px solid var(--accent);
 }
 
-/* Map connector -- vertical line between layers */
+/* Map connector -- vertical line between layers, centered */
 .map-connector {
   display: flex;
-  justify-content: flex-start;
-  padding-left: 32px;
+  justify-content: center;
   height: 32px;
   position: relative;
 }
 
 .map-connector::before {
   content: '';
-  width: 1px;
+  width: 4px;
   height: 100%;
   background-color: var(--accent);
-  opacity: 0.3;
+  border-radius: 2px;
 }
 
 /* Map arrow -- chevron at the end of a connector */
@@ -392,13 +391,13 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 28px;
-  width: 8px;
-  height: 8px;
-  border-right: 1px solid var(--accent);
-  border-bottom: 1px solid var(--accent);
-  transform: rotate(45deg);
-  opacity: 0.3;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  border-right: 4px solid var(--accent);
+  border-bottom: 4px solid var(--accent);
+  border-radius: 0 0 2px 0;
 }
 
 /* Map node row -- horizontal layout for multiple nodes in a layer */

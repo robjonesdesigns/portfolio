@@ -117,6 +117,19 @@ const next = projects[(idx + 1) % projects.length]
           </div>
         )}
 
+        {/* System Architecture Map — APM only, after The Work, before screens */}
+        {project.slug === 'honeywell-apm' && (
+          <div class="flex flex-col gap-4 max-w-3xl">
+            <h2 class="type-display-md" data-animate-y>System architecture</h2>
+            <p class="type-body leading-relaxed mb-4" data-animate>
+              Every entity in the dashboard traces back to a physical sensor reading.
+              This is how the data model connects. Follow K-101 from the plant floor
+              to the engineer's morning triage.
+            </p>
+            <SystemMap />
+          </div>
+        )}
+
         {/* Outcome — shown when no reflection */}
         {!project.reflection && project.outcome && (
           <div class="flex flex-col gap-4 max-w-3xl" data-animate>
@@ -197,18 +210,6 @@ const next = projects[(idx + 1) % projects.length]
           </>
         ))}
 
-        {/* System Architecture Map — APM only */}
-        {project.slug === 'honeywell-apm' && (
-          <div class="flex flex-col gap-4 max-w-3xl mt-12">
-            <h2 class="type-display-md" data-animate-y>System architecture</h2>
-            <p class="type-body leading-relaxed mb-4" data-animate>
-              Before walking through individual screens, here is how the entire data model
-              connects. Every entity in the dashboard traces back to a physical sensor reading.
-              Follow K-101 from the plant floor to the engineer's morning triage.
-            </p>
-            <SystemMap />
-          </div>
-        )}
 
         {/* Design Decisions */}
         {project.designDecisions?.length > 0 && (

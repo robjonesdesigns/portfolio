@@ -49,7 +49,9 @@
     <p class="type-body leading-relaxed">
       When a sensor value crosses its threshold, the system creates an event.
       The severity is computed, not assigned -- it comes from a matrix of what
-      happened crossed with how critical the asset is.
+      happened crossed with how critical the asset is. Every event carries
+      structured metadata: cause, consequence, and recommendation, each tracked
+      with its source (human or system), confidence level, and confirmation status.
     </p>
 
     <div class="map-node map-node--highlight">
@@ -67,9 +69,9 @@
           <thead>
             <tr>
               <th class="type-meta font-bold text-left p-2"></th>
-              <th class="type-meta font-bold text-left p-2">A</th>
-              <th class="type-meta font-bold text-left p-2">B</th>
-              <th class="type-meta font-bold text-left p-2">C</th>
+              <th class="type-meta font-bold text-left p-2">A (Safety)</th>
+              <th class="type-meta font-bold text-left p-2">B (Production)</th>
+              <th class="type-meta font-bold text-left p-2">C (Support)</th>
             </tr>
           </thead>
           <tbody>
@@ -111,8 +113,10 @@
   <div class="map-layer" data-animate>
     <span class="type-label">Incident + Narrative Layer</span>
     <p class="type-body leading-relaxed">
-      Related events group into incidents. The dashboard tells the story as a
-      three-act narrative: what triggered it, what it caused, and what confirmed it.
+      The system correlates events by asset, timing, and causal chain. An engineer
+      confirms the grouping and identifies the root cause. This turns scattered alerts
+      into a single incident with a clear story. The dashboard surfaces that story as
+      a three-act narrative: what triggered it, what it caused, and what confirmed it.
     </p>
 
     <div class="map-node map-node--highlight">
