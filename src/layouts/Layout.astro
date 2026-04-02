@@ -169,20 +169,21 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
             var isDark = document.documentElement.classList.contains('dark');
             var label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
             toggles.forEach(function(t) { t.setAttribute('aria-label', label); });
-            // Also sync overlay toggle if present
-            var mobileToggle = document.querySelector('[data-mobile-theme-toggle]');
-            if (mobileToggle) mobileToggle.setAttribute('aria-label', label);
           }
 
           toggles.forEach(function(toggle) {
-            delete toggle.dataset.bound;
-            toggle.dataset.bound = 'true';
-            toggle.addEventListener('click', function() {
+            // Clone and replace to remove any stale listeners
+            var fresh = toggle.cloneNode(true);
+            toggle.parentNode.replaceChild(fresh, toggle);
+            fresh.addEventListener('click', function() {
               var isDark = document.documentElement.classList.contains('dark');
               var next = isDark ? 'light' : 'dark';
               document.documentElement.classList.toggle('dark', next === 'dark');
               localStorage.setItem('theme', next);
-              updateAllLabels();
+              // Re-query all toggles since we cloned them
+              document.querySelectorAll('[data-theme-toggle]').forEach(function(t) {
+                t.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+              });
             });
           });
 
