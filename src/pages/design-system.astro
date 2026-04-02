@@ -12,7 +12,7 @@ const colors = [
   { name: '--fg-secondary', label: 'Secondary',         light: '#6e6562', dark: '#c2bab0' },
   { name: '--accent',       label: 'Accent',            light: '#813746', dark: '#e36f86' },
   { name: '--on-accent',    label: 'On Accent',         light: '#fffbf5', dark: '#1c1a16' },
-  { name: '--border',       label: 'Border',            light: 'rgba(92,82,80,0.1)', dark: 'rgba(176,168,158,0.1)' },
+  { name: '--border',       label: 'Border',            light: 'rgba(92,82,80,0.1)', dark: 'rgba(176,168,158,0.1)', note: 'Uses alpha transparency so one token works on all three background layers.' },
 ]
 
 const typeScale = [
@@ -69,6 +69,7 @@ const spacingSteps = [
                 <p class="type-meta"><code>{c.name}</code></p>
                 <p class="type-meta">Light: {c.light}</p>
                 <p class="type-meta">Dark: {c.dark}</p>
+                {c.note && <p class="type-meta text-fg-secondary mt-1">{c.note}</p>}
               </div>
             ))}
           </div>
