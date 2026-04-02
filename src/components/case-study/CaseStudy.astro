@@ -3,7 +3,6 @@ import { projects } from '../../data/projects'
 import Container from '../layout/Container.astro'
 import LazyVideo from '../ui/LazyVideo.astro'
 import Button from '../ui/Button.astro'
-import SystemMap from './SystemMap.astro'
 
 interface Props {
   project: any
@@ -115,11 +114,6 @@ const next = projects[(idx + 1) % projects.length]
               <p class="type-body leading-relaxed">{project.process}</p>
             )}
           </div>
-        )}
-
-        {/* System Map — APM case study only */}
-        {project.slug === 'honeywell-apm' && (
-          <SystemMap />
         )}
 
         {/* Outcome — shown when no reflection */}
