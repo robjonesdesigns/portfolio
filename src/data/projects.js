@@ -11,11 +11,11 @@ export const projects = [
       'SUS from the low 70s to high 80s across Plant Overview and Asset Inspection.',
       'Owned 3 shipped dashboards, contributed to 2 more across the APM platform.',
     ],
-    liveUrl: 'https://apm-dashboard-eosin.vercel.app',
+    liveUrl: 'https://apm.designedbyrob.com',
     videoGrid: [
-      'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-sidebar-search',
-      'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-mobile-notifications',
+      'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-dashboard-overview',
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-risk-matrix',
+      'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-mobile-notifications',
     ],
     images: [null, null, null],
     image: null,
@@ -108,7 +108,7 @@ export const projects = [
     company: 'Keytrn',
     year: '2025',
     tags: ['0→1 Product Design', 'Primary Research', 'B2G + B2C', 'Data-Heavy UI', 'Implementation'],
-    liveUrl: 'https://keytrn.vercel.app',
+    liveUrl: 'https://keytrn.designedbyrob.com',
     headline: 'Making foreclosure data accessible for the first time in Pennsylvania',
     description: 'Called 20+ county offices to understand foreclosure workflows, designed both sides of the platform, then built the consumer app with live data scraped from public legal records. Sole designer and implementer.',
     outcomes: [
