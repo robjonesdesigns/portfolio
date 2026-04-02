@@ -201,7 +201,7 @@
   .map-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 0;
     width: 100%;
   }
@@ -210,7 +210,7 @@
   .map-layer {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     gap: 8px;
   }
@@ -228,7 +228,7 @@
   .map-layer__row {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     width: 100%;
   }
@@ -236,14 +236,14 @@
   @media (min-width: 768px) {
     .map-layer__row {
       flex-direction: row;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
     }
   }
 
   .map-layer__row--dense {
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   @media (min-width: 768px) {
@@ -256,13 +256,13 @@
   .map-node {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 2px;
     padding: 12px 20px;
     background-color: var(--surface);
     border: 1px solid var(--border);
     border-radius: 8px;
-    text-align: center;
+    text-align: left;
     min-width: 140px;
     width: 100%;
     max-width: 280px;
@@ -339,7 +339,7 @@
   .map-inspection-sections {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 4px;
   }
 
@@ -357,8 +357,9 @@
   /* ── Connectors ── */
   .map-connector {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 4px 0;
+    padding-left: 100px;
   }
 
   .map-connector__line {
@@ -372,7 +373,7 @@
   .map-matrix {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     width: 100%;
     max-width: 420px;
