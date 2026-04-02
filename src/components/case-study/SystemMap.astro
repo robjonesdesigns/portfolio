@@ -1,0 +1,250 @@
+---
+/* SystemMap.astro — APM system architecture map for the honeywell-apm case study.
+   Vertical flow chart: Physical → Event → Incident → Response → Health → Dashboard.
+   Uses map-* component classes from globals.css. Zero inline styles except dynamic values. */
+---
+
+<div class="flex flex-col gap-0 max-w-3xl">
+
+  {/* ── Layer 1: Physical ── */}
+  <div class="map-layer" data-animate>
+    <span class="type-label">Physical Layer</span>
+    <p class="type-body leading-relaxed">
+      Everything starts with a physical asset. K-101 is a centrifugal compressor
+      classified as Safety-critical. It has sub-assets, and each sub-asset has
+      sensors with thresholds.
+    </p>
+
+    <div class="map-node map-node--highlight">
+      <span class="type-label">Asset</span>
+      <span class="type-body font-bold">K-101 -- Centrifugal Compressor</span>
+      <span class="type-meta">Criticality: <code>A (Safety)</code> · Production Weight: <code>0.20</code></span>
+    </div>
+
+    <div class="map-node-row">
+      <div class="map-node">
+        <span class="type-label">Sub-asset</span>
+        <span class="type-body font-bold">Drive End Bearing</span>
+        <span class="type-meta">Vibration: <code>7.8 mm/s</code> (threshold: <code>7.1</code>)</span>
+        <span class="type-meta">Temperature: <code>108 C</code> (threshold: <code>95</code>)</span>
+      </div>
+      <div class="map-node">
+        <span class="type-label">Sub-asset</span>
+        <span class="type-body font-bold">Lube Oil System</span>
+        <span class="type-meta">Oil Pressure: <code>1.0 bar</code> (threshold: <code>1.5</code>)</span>
+      </div>
+      <div class="map-node">
+        <span class="type-label">Sub-asset</span>
+        <span class="type-body font-bold">Anti-Surge</span>
+        <span class="type-meta">Surge Margin: <code>7%</code> (threshold: <code>10%</code>)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-connector" aria-hidden="true"></div>
+
+  {/* ── Layer 2: Event ── */}
+  <div class="map-layer" data-animate>
+    <span class="type-label">Event Layer</span>
+    <p class="type-body leading-relaxed">
+      When a sensor value crosses its threshold, the system creates an event.
+      The severity is computed, not assigned -- it comes from a matrix of what
+      happened crossed with how critical the asset is.
+    </p>
+
+    <div class="map-node map-node--highlight">
+      <span class="type-label">Event</span>
+      <span class="type-body font-bold">EVT-005 -- High Vibration Trip</span>
+      <span class="type-meta">eventType: <code>trip</code> · Asset: <code>K-101 (A Safety)</code></span>
+      <span class="type-meta">Severity derivation: <code>trip</code> x <code>A (Safety)</code> = <code>Critical</code></span>
+    </div>
+
+    {/* Severity matrix */}
+    <div class="map-node">
+      <span class="type-label">Severity Matrix</span>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="type-meta font-bold text-left p-2"></th>
+              <th class="type-meta font-bold text-left p-2">A</th>
+              <th class="type-meta font-bold text-left p-2">B</th>
+              <th class="type-meta font-bold text-left p-2">C</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="type-meta font-bold p-2">trip</td>
+              <td class="p-2"><code>Critical</code></td>
+              <td class="p-2"><code>High</code></td>
+              <td class="p-2"><code>Medium</code></td>
+            </tr>
+            <tr>
+              <td class="type-meta font-bold p-2">alarm</td>
+              <td class="p-2"><code>High</code></td>
+              <td class="p-2"><code>Medium</code></td>
+              <td class="p-2"><code>Low</code></td>
+            </tr>
+            <tr>
+              <td class="type-meta font-bold p-2">alert</td>
+              <td class="p-2"><code>Medium</code></td>
+              <td class="p-2"><code>Low</code></td>
+              <td class="p-2"><code>Low</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="map-node">
+      <span class="type-label">Event Metadata</span>
+      <span class="type-meta">Cause: bearing wear from oil starvation</span>
+      <span class="type-meta">Consequence: compressor trip, production loss</span>
+      <span class="type-meta">Recommendation: inspect bearing, flush lube oil</span>
+      <span class="type-meta mt-2">Status lifecycle: <code>new</code> → <code>in-progress</code> → <code>closed</code></span>
+    </div>
+  </div>
+
+  <div class="map-connector" aria-hidden="true"></div>
+
+  {/* ── Layer 3: Incident + Narrative ── */}
+  <div class="map-layer" data-animate>
+    <span class="type-label">Incident + Narrative Layer</span>
+    <p class="type-body leading-relaxed">
+      Related events group into incidents. The dashboard tells the story as a
+      three-act narrative: what triggered it, what it caused, and what confirmed it.
+    </p>
+
+    <div class="map-node map-node--highlight">
+      <span class="type-label">Incident</span>
+      <span class="type-body font-bold">INC-001 -- K-101 Bearing Failure</span>
+      <span class="type-meta"><code>7</code> events · Status: <code>investigating</code></span>
+    </div>
+
+    <div class="map-node-row">
+      <div class="map-node">
+        <span class="type-label">Trigger</span>
+        <span class="type-body font-bold">EVT-002</span>
+        <span class="type-meta">Oil pressure drop (first signal)</span>
+      </div>
+      <div class="map-node">
+        <span class="type-label">Consequence</span>
+        <span class="type-body font-bold">EVT-005</span>
+        <span class="type-meta">High vibration trip (the failure)</span>
+      </div>
+      <div class="map-node">
+        <span class="type-label">Confirmation</span>
+        <span class="type-body font-bold">EVT-011</span>
+        <span class="type-meta">Manual inspection (bearing damage confirmed)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-connector" aria-hidden="true"></div>
+
+  {/* ── Layer 4: Response ── */}
+  <div class="map-layer" data-animate>
+    <span class="type-label">Response Layer</span>
+    <p class="type-body leading-relaxed">
+      Events spawn work orders and investigations. Work orders fix the problem.
+      Investigations understand it. An investigation can span multiple events and
+      reach back into history.
+    </p>
+
+    <div class="map-node-row">
+      <div class="map-node">
+        <span class="type-label">Work Orders</span>
+        <span class="type-body font-bold">WO-4481</span>
+        <span class="type-meta">Bearing inspection · Urgency: <code>Emergency</code></span>
+        <span class="type-body font-bold mt-2">WO-4482</span>
+        <span class="type-meta">Oil flush · Urgency: <code>Emergency</code></span>
+      </div>
+      <div class="map-node">
+        <span class="type-label">Investigation</span>
+        <span class="type-body font-bold">IN-0891</span>
+        <span class="type-meta">Root cause analysis · Status: <code>Investigating</code></span>
+        <span class="type-meta">Spans <code>5</code> events · References historical events</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-connector" aria-hidden="true"></div>
+
+  {/* ── Layer 5: Health ── */}
+  <div class="map-layer" data-animate>
+    <span class="type-label">Health Layer</span>
+    <p class="type-body leading-relaxed">
+      All of this activity flows into the health metrics. OEE breaks down into
+      availability, performance, and quality. MTBF, MTTR, and RUL tell the
+      reliability story. Every number derives from the events and work orders above.
+    </p>
+
+    <div class="map-node-row">
+      <div class="map-node map-node--highlight">
+        <span class="type-label">Asset Health</span>
+        <span class="type-body font-bold">K-101</span>
+        <span class="type-meta">OEE: <code>64.2%</code></span>
+        <span class="type-meta">Availability: derived from trips x MTTR</span>
+        <span class="type-meta">Performance: <code>0.649</code> (MES in production)</span>
+        <span class="type-meta">Quality: <code>0.990</code> (MES in production)</span>
+      </div>
+      <div class="map-node">
+        <span class="type-label">Reliability</span>
+        <span class="type-meta">MTBF: derived from trip count</span>
+        <span class="type-meta">MTTR: derived from WO completion times</span>
+        <span class="type-meta">RUL: <code>5 days</code> (projected from trend)</span>
+      </div>
+    </div>
+
+    <div class="map-node-row">
+      <div class="map-node">
+        <span class="type-label">Plant Health</span>
+        <span class="type-meta">OEE: <code>76.3%</code> (weighted average)</span>
+        <span class="type-meta">Availability: <code>78.4%</code></span>
+        <span class="type-meta">Performance: <code>93.8%</code></span>
+        <span class="type-meta">Quality: <code>99.1%</code></span>
+      </div>
+      <div class="map-node">
+        <span class="type-label">Thresholds</span>
+        <span class="type-meta">OEE: warning <code>&lt; 85%</code> / critical <code>&lt; 75%</code></span>
+        <span class="type-meta">Availability: warning <code>&lt; 90%</code> / critical <code>&lt; 80%</code></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-connector" aria-hidden="true"></div>
+
+  {/* ── Layer 6: Dashboard ── */}
+  <div class="map-layer" data-animate>
+    <span class="type-label">Dashboard Layer</span>
+    <p class="type-body leading-relaxed">
+      The engineer sees all of this at 7 AM, ordered by the morning triage
+      workflow: check health, understand cause, check response, identify remaining
+      work, then drill into specifics.
+    </p>
+
+    <div class="map-node-row">
+      <div class="map-node">
+        <span class="type-body font-bold">System Health</span>
+        <span class="type-meta">"is something wrong?"</span>
+      </div>
+      <div class="map-node">
+        <span class="type-body font-bold">What Happened</span>
+        <span class="type-meta">"what caused it?"</span>
+      </div>
+      <div class="map-node">
+        <span class="type-body font-bold">In Progress</span>
+        <span class="type-meta">"is anyone on it?"</span>
+      </div>
+      <div class="map-node">
+        <span class="type-body font-bold">Needs Action</span>
+        <span class="type-meta">"what still needs me?"</span>
+      </div>
+      <div class="map-node">
+        <span class="type-body font-bold">Assets</span>
+        <span class="type-meta">"show me everything"</span>
+      </div>
+    </div>
+  </div>
+
+</div>

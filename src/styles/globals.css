@@ -340,6 +340,84 @@
   background-size: 128px;
 }
 
+/* ─── System map components ──────────────────────────────────────────── */
+/* Used in the APM case study architecture diagram.                       */
+/* Nodes, connectors, layers, and arrows for data flow visualization.    */
+
+/* Map layer -- groups related nodes with subtle background */
+.map-layer {
+  background-color: var(--bg);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Map node -- a data entity card */
+.map-node {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Highlighted node -- the primary entity in each layer */
+.map-node--highlight {
+  border-left: 3px solid var(--accent);
+}
+
+/* Map connector -- vertical line between layers */
+.map-connector {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.map-connector::before {
+  content: '';
+  width: 1px;
+  height: 100%;
+  background-color: var(--accent);
+  opacity: 0.3;
+}
+
+/* Map arrow -- chevron at the end of a connector */
+.map-connector::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 28px;
+  width: 8px;
+  height: 8px;
+  border-right: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  transform: rotate(45deg);
+  opacity: 0.3;
+}
+
+/* Map node row -- horizontal layout for multiple nodes in a layer */
+.map-node-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .map-node-row {
+    flex-direction: row;
+    gap: 12px;
+  }
+  .map-node-row > .map-node {
+    flex: 1;
+  }
+}
+
 /* ─── Scroll animations ──────────────────────────────────────────────── */
 /* Animations only activate when JS adds .js-ready to <html>.
    Without JS (or if the observer fails), all content is fully visible. */
