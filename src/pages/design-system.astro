@@ -58,7 +58,7 @@ const spacingSteps = [
         {/* Colors */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Color Tokens</h2>
-          <p class="type-body text-fg-secondary mb-8">Defined as CSS custom properties in <code>globals.css</code> with light and dark values. Mapped to Tailwind via <code>tailwind.config.js</code> so utilities like <code>text-fg</code> and <code>bg-surface</code> resolve to the active theme.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Defined as CSS custom properties in <code>globals.css</code> with light and dark values. Mapped to Tailwind via <code>tailwind.config.js</code> so utilities like <code>text-fg</code> and <code>bg-surface</code> resolve to the active theme.</p>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             {colors.map(c => (
               <div class="flex flex-col gap-2">
@@ -86,7 +86,7 @@ const spacingSteps = [
         {/* Accessibility */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Accessibility</h2>
-          <p class="type-body text-fg-secondary mb-8">Every text and background combination used on this site meets WCAG 2.1 AA. Accessibility is structural, not an afterthought.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Every text and background combination used on this site meets WCAG 2.1 AA. Accessibility is structural, not an afterthought.</p>
 
           <p class="type-label mb-4">Light theme</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
@@ -207,7 +207,7 @@ const spacingSteps = [
         {/* Typography */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Typography</h2>
-          <p class="type-body text-fg-secondary mb-8">Composition classes defined in <code>@layer components</code> in <code>globals.css</code>. Display sizes use fluid <code>clamp()</code> for smooth scaling across viewports. Body sizes step at the <code>md</code> breakpoint (16px to 20px).</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Composition classes defined in <code>@layer components</code> in <code>globals.css</code>. Display sizes use fluid <code>clamp()</code> for smooth scaling across viewports. Body sizes step at the <code>md</code> breakpoint (16px to 20px).</p>
           <div class="flex flex-col gap-6">
             {typeScale.map(t => (
               <div class="border-t border-token pt-5">
@@ -261,12 +261,12 @@ const spacingSteps = [
         {/* Layout */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Layout</h2>
-          <p class="type-body text-fg-secondary mb-8">Responsive layout using Tailwind utilities. No custom grid system.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Responsive layout using Tailwind utilities. No custom grid system.</p>
 
           {/* Container */}
           <div class="mb-10">
             <p class="type-label mb-4">Container</p>
-            <p class="type-body text-fg-secondary mb-4">All page content wraps in a <code>Container</code> component: <code>max-w-7xl</code> (1280px), centered with <code>mx-auto</code>, and <code>px-6</code> (24px) side padding. On viewports narrower than 1280px, the max-width has no effect and the padding creates the gutter.</p>
+            <p class="type-body text-fg-secondary mb-4 max-w-3xl">All page content wraps in a <code>Container</code> component: <code>max-w-7xl</code> (1280px), centered with <code>mx-auto</code>, and <code>px-6</code> (24px) side padding. On viewports narrower than 1280px, the max-width has no effect and the padding creates the gutter.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="bg-surface rounded-lg p-5 border border-token">
                 <p class="type-body mb-2">Default (lg)</p>
@@ -286,7 +286,7 @@ const spacingSteps = [
           {/* Viewport Preview */}
           <div class="mb-10">
             <p class="type-label mb-4">Viewport preview</p>
-            <p class="type-body text-fg-secondary mb-4">Drag the handle to resize the preview and see how the layout responds. Cards reflow from 1 column (mobile) to 2 columns (sm, 640px) to 4 columns (md, 768px). The highlighted edges show the 24px gutters. When the width exceeds 1280px, a dashed line marks the container boundary.</p>
+            <p class="type-body text-fg-secondary mb-4 max-w-3xl">Drag the handle to resize the preview and see how the layout responds. Cards reflow from 1 column (mobile) to 2 columns (sm, 640px) to 4 columns (md, 768px). The highlighted edges show the 24px gutters. When the width exceeds 1280px, a dashed line marks the container boundary.</p>
             <ViewportPreview />
           </div>
 
@@ -308,7 +308,7 @@ const spacingSteps = [
           {/* Three-layer structure */}
           <div class="mb-10">
             <p class="type-label mb-4">Three-layer structure</p>
-            <p class="type-body text-fg-secondary mb-4">Every page uses three background layers. Shadows mark the transitions between them. Cards sit on the middle layer.</p>
+            <p class="type-body text-fg-secondary mb-4 max-w-3xl">Every page uses three background layers. Shadows mark the transitions between them. Cards sit on the middle layer.</p>
             <div class="rounded-xl p-6 border border-token bg-[var(--bg)]">
               <p class="type-meta mb-3">--bg (nav, hero, footer)</p>
               <div class="bg-subtle rounded-lg p-5 border border-token">
@@ -323,7 +323,7 @@ const spacingSteps = [
           {/* Spacing */}
           <div>
             <p class="type-label mb-4">Spacing</p>
-            <p class="type-body text-fg-secondary mb-4">4px base grid using the standard Tailwind numeric scale. All spacing uses utility classes (<code>gap-4</code>, <code>p-6</code>, <code>mb-8</code>).</p>
+            <p class="type-body text-fg-secondary mb-4 max-w-3xl">4px base grid using the standard Tailwind numeric scale. All spacing uses utility classes (<code>gap-4</code>, <code>p-6</code>, <code>mb-8</code>).</p>
             <div class="flex flex-wrap items-end gap-6">
               {spacingSteps.map(s => (
                 <div class="flex flex-col items-center gap-2">
@@ -342,7 +342,7 @@ const spacingSteps = [
         {/* Components */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Components</h2>
-          <p class="type-body text-fg-secondary mb-8">Astro components in <code>src/components/ui/</code>. Styled with Tailwind utilities and design tokens. No client-side JavaScript shipped for any component.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Astro components in <code>src/components/ui/</code>. Styled with Tailwind utilities and design tokens. No client-side JavaScript shipped for any component.</p>
 
           {/* Buttons */}
           <div class="mb-12">
@@ -391,7 +391,7 @@ const spacingSteps = [
         {/* Animations */}
         <section data-animate>
           <h2 class="type-display-md mb-3">Animations</h2>
-          <p class="type-body text-fg-secondary mb-8">CSS only. No JS animation libraries. Respects <code>prefers-reduced-motion</code>.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">CSS only. No JS animation libraries. Respects <code>prefers-reduced-motion</code>.</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-surface rounded-xl p-6 border border-token">
               <p class="type-label mb-3">Scroll reveal</p>
