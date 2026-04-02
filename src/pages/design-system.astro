@@ -24,7 +24,7 @@ const typeScale = [
   { class: 'type-body',        label: 'Body',         size: '16px / 20px',    font: 'Areal' },
   { class: 'type-label',       label: 'Label',        size: '16px / 20px',    font: 'Areal', note: 'Uppercase, bold' },
   { class: 'type-link',        label: 'Link',         size: '16px / 20px',    font: 'Areal' },
-  { class: 'type-badge',       label: 'Badge',        size: '16px',           font: 'Areal' },
+  { class: 'type-badge',       label: 'Badge',        size: '16px / 20px',    font: 'Areal' },
   { class: 'type-meta',        label: 'Meta',         size: '14px',           font: 'Areal', note: 'Secondary color, no responsive step' },
 ]
 
@@ -65,8 +65,10 @@ const spacingSteps = [
                   class="rounded-lg border border-token-strong h-20"
                   style={`background-color: var(${c.name});`}
                 />
-                <p class="type-meta-bold">{c.label}</p>
+                <p class="type-body">{c.label}</p>
                 <p class="type-meta"><code>{c.name}</code></p>
+                <p class="type-meta">Light: {c.light}</p>
+                <p class="type-meta">Dark: {c.dark}</p>
               </div>
             ))}
           </div>
@@ -82,6 +84,127 @@ const spacingSteps = [
                   <p class="type-meta">--surface (card)</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Accessibility */}
+        <section class="mb-20" data-animate>
+          <h2 class="type-display-sm mb-3">Accessibility</h2>
+          <p class="type-body text-fg-secondary mb-8">Every text and background combination used on this site meets WCAG 2.1 AA. Accessibility is structural, not an afterthought.</p>
+
+          <p class="type-label mb-4">Light theme</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
+              <span class="type-body" style="color: #222222;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--fg on --bg</p>
+                <p class="type-meta">15.43:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
+              <span class="type-body" style="color: #6e6562;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--fg-secondary on --bg</p>
+                <p class="type-meta">5.50:1 -- AA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fdf8f2;">
+              <span class="type-body" style="color: #6e6562;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--fg-secondary on --bg-subtle</p>
+                <p class="type-meta">5.37:1 -- AA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #f4f1ec;">
+              <span class="type-body" style="color: #6e6562;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--fg-secondary on --surface</p>
+                <p class="type-meta">5.04:1 -- AA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
+              <span class="type-body" style="color: #813746;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--accent on --bg</p>
+                <p class="type-meta">7.93:1 -- AAA</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="type-label mb-4">Dark theme</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #1c1a16;">
+              <span class="type-body" style="color: #fffbf5;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--fg on --bg</p>
+                <p class="type-meta">16.85:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #1c1a16;">
+              <span class="type-body" style="color: #c2bab0;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--fg-secondary on --bg</p>
+                <p class="type-meta">9.05:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #201e1a;">
+              <span class="type-body" style="color: #c2bab0;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--fg-secondary on --bg-subtle</p>
+                <p class="type-meta">8.67:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #28251f;">
+              <span class="type-body" style="color: #c2bab0;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--fg-secondary on --surface</p>
+                <p class="type-meta">7.96:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #1c1a16;">
+              <span class="type-body" style="color: #e36f86;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta">--accent on --bg</p>
+                <p class="type-meta">5.70:1 -- AA</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Accessibility features */}
+          <p class="type-label mt-10 mb-4">Implementation</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-2">Skip link</p>
+              <p class="type-body text-fg-secondary">"Skip to main content" hidden until keyboard focus. Lets screen reader and keyboard users bypass the nav.</p>
+            </div>
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-2">Focus-visible</p>
+              <p class="type-body text-fg-secondary">Accent-colored ring on keyboard focus only. No ring on mouse click. Consistent across all interactive elements.</p>
+            </div>
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-2">Reduced motion</p>
+              <p class="type-body text-fg-secondary">All animations and transitions disabled via <code>prefers-reduced-motion: reduce</code>. No partial reductions.</p>
+            </div>
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-2">VoiceOver-safe animations</p>
+              <p class="type-body text-fg-secondary"><code>data-animate-y</code> uses translateY only (no opacity) so headings are always discoverable by screen readers.</p>
+            </div>
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-2">ARIA labels</p>
+              <p class="type-body text-fg-secondary">Dynamic labels on theme toggle, hamburger menu, and email copy button. States update on interaction.</p>
+            </div>
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-2">Semantic landmarks</p>
+              <p class="type-body text-fg-secondary"><code>nav</code>, <code>main</code>, <code>footer</code> with <code>aria-label</code> on navigation regions. Sitemap uses labeled nav.</p>
+            </div>
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-2">Focus trap</p>
+              <p class="type-body text-fg-secondary">Mobile nav overlay traps keyboard focus within links and the hamburger button. Escape closes the overlay.</p>
+            </div>
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-2">Color never alone</p>
+              <p class="type-body text-fg-secondary">Status and emphasis always pair color with text or shape. No information conveyed through color alone (WCAG 1.4.1).</p>
             </div>
           </div>
         </section>
@@ -110,19 +233,32 @@ const spacingSteps = [
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div class="bg-surface rounded-lg p-5 border border-token">
                 <p class="type-display-md mb-2">Aa</p>
-                <p class="type-meta-bold">Cabinet Grotesk</p>
-                <p class="type-meta">Display headings</p>
+                <p class="type-body">Cabinet Grotesk</p>
+                <p class="type-body text-fg-secondary">Display headings</p>
               </div>
               <div class="bg-surface rounded-lg p-5 border border-token">
                 <p class="type-display-md mb-2" style="font-family: Areal, Arial, sans-serif; font-weight: 700;">Aa</p>
-                <p class="type-meta-bold">Areal</p>
-                <p class="type-meta">Body, UI, labels</p>
+                <p class="type-body">Areal</p>
+                <p class="type-body text-fg-secondary">Body, UI, labels</p>
               </div>
               <div class="bg-surface rounded-lg p-5 border border-token">
                 <p class="type-display-md mb-2" style="font-family: Ogg, Georgia, serif; font-style: italic; font-weight: 400;">Aa</p>
-                <p class="type-meta-bold">Ogg</p>
-                <p class="type-meta">Editorial accent</p>
+                <p class="type-body">Ogg</p>
+                <p class="type-body text-fg-secondary">Editorial accent</p>
               </div>
+            </div>
+          </div>
+
+          {/* Code element */}
+          <div class="mt-10">
+            <p class="type-label mb-4">Code</p>
+            <div class="bg-surface rounded-lg p-5 border border-token">
+              <p class="type-body mb-4">
+                The <code>code</code> element inherits its parent's font size and uses --fg-secondary text on a --surface background with a subtle border.
+              </p>
+              <p class="type-body">
+                Example: use <code>globals.css</code> for token definitions and <code>tailwind.config.js</code> for utility mapping.
+              </p>
             </div>
           </div>
         </section>
