@@ -1,0 +1,367 @@
+---
+/**
+ * ViewportPreview -- interactive draggable width preview
+ * Demonstrates responsive layout behavior at different viewport widths.
+ * Vanilla JS drag interaction, zero frameworks.
+ */
+---
+
+<div class="bg-surface rounded-xl border border-token overflow-hidden" data-viewport-preview>
+
+  {/* Top bar -- width readout and breakpoint label */}
+  <div class="flex items-center justify-between px-4 py-3 border-b border-token">
+    <div class="flex items-center gap-3">
+      <span class="type-meta" data-vp-width>375px</span>
+      <span class="vp-divider"></span>
+      <span class="type-meta text-accent" data-vp-breakpoint>mobile</span>
+    </div>
+    <span class="type-meta">Drag to resize</span>
+  </div>
+
+  {/* Preview area */}
+  <div class="relative p-4 md:p-6 vp-stage">
+    <div class="relative vp-track">
+
+      {/* Resizable inner container */}
+      <div class="vp-resizable" data-vp-resizable>
+
+        {/* Gutter overlays -- left and right */}
+        <div class="vp-gutter vp-gutter-left"></div>
+        <div class="vp-gutter vp-gutter-right"></div>
+
+        {/* Container boundary (dashed line, shown when width exceeds max) */}
+        <div class="vp-container-boundary" data-vp-boundary></div>
+
+        {/* Nav strip */}
+        <div class="vp-block-nav"></div>
+
+        {/* Hero block */}
+        <div class="vp-block-hero"></div>
+
+        {/* Content section with reflowing cards */}
+        <div class="vp-block-content">
+          <div class="vp-card-grid" data-vp-grid>
+            <div class="vp-card"></div>
+            <div class="vp-card"></div>
+            <div class="vp-card"></div>
+            <div class="vp-card"></div>
+          </div>
+        </div>
+
+        {/* Footer strip */}
+        <div class="vp-block-footer"></div>
+
+        {/* Drag handle */}
+        <div
+          class="vp-handle"
+          role="separator"
+          aria-orientation="vertical"
+          aria-valuenow="375"
+          aria-valuemin="280"
+          aria-valuemax="1400"
+          aria-label="Resize viewport preview"
+          tabindex="0"
+          data-vp-handle
+        >
+          <div class="vp-handle-grip">
+            <span class="vp-grip-line"></span>
+            <span class="vp-grip-line"></span>
+            <span class="vp-grip-line"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ── Stage and track ── */
+  .vp-stage {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .vp-track {
+    min-width: 280px;
+  }
+
+  /* ── Resizable container ── */
+  .vp-resizable {
+    position: relative;
+    width: 375px;
+    min-width: 280px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 24px;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border);
+  }
+
+  /* ── Gutter highlights ── */
+  .vp-gutter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 24px;
+    background-color: var(--accent);
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .vp-gutter-left {
+    left: 0;
+  }
+
+  .vp-gutter-right {
+    right: 0;
+  }
+
+  /* ── Container boundary (shown when width > max container) ── */
+  .vp-container-boundary {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-right: 2px dashed var(--accent);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .vp-container-boundary.is-visible {
+    display: block;
+  }
+
+  /* ── Preview blocks ── */
+  .vp-block-nav {
+    height: 12px;
+    background-color: var(--bg);
+    border-radius: 4px 4px 0 0;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .vp-block-hero {
+    height: 48px;
+    background-color: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .vp-block-content {
+    background-color: var(--bg-subtle);
+    border-radius: 4px;
+    padding: 8px;
+    flex-shrink: 0;
+  }
+
+  .vp-block-footer {
+    height: 16px;
+    background-color: var(--bg);
+    border-radius: 0 0 4px 4px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+
+  /* ── Card grid -- JS toggles data-cols attribute ── */
+  .vp-card-grid {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: 1fr;
+  }
+
+  .vp-card-grid[data-cols="2"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vp-card-grid[data-cols="4"] {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .vp-card {
+    height: 32px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  /* ── Drag handle ── */
+  .vp-handle {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    bottom: 0;
+    width: 20px;
+    cursor: col-resize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: var(--accent);
+    opacity: 0.15;
+    transition: opacity 0.15s ease;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .vp-handle:hover,
+  .vp-handle:focus-visible {
+    opacity: 0.3;
+  }
+
+  .vp-handle:active {
+    opacity: 0.4;
+  }
+
+  .vp-handle-grip {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .vp-grip-line {
+    display: block;
+    width: 8px;
+    height: 2px;
+    background-color: var(--accent);
+    border-radius: 1px;
+    opacity: 0.8;
+  }
+
+  /* ── Divider between width and breakpoint ── */
+  .vp-divider {
+    display: block;
+    width: 1px;
+    height: 14px;
+    background-color: var(--border-strong);
+  }
+
+  /* ── Active drag state (disable text selection globally) ── */
+  :global(.vp-dragging) {
+    cursor: col-resize !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+  }
+</style>
+
+<script>
+  function initViewportPreview() {
+    const previews = document.querySelectorAll('[data-viewport-preview]');
+    previews.forEach(setupPreview);
+  }
+
+  function setupPreview(root) {
+    const handle = root.querySelector('[data-vp-handle]');
+    const resizable = root.querySelector('[data-vp-resizable]');
+    const widthDisplay = root.querySelector('[data-vp-width]');
+    const breakpointDisplay = root.querySelector('[data-vp-breakpoint]');
+    const grid = root.querySelector('[data-vp-grid]');
+    const boundary = root.querySelector('[data-vp-boundary]');
+
+    if (!handle || !resizable) return;
+
+    const MIN_WIDTH = 280;
+    const MAX_CONTAINER = 1280;
+    const GUTTER = 24;
+    let isDragging = false;
+    let startX = 0;
+    let startWidth = 0;
+
+    function getBreakpointLabel(width) {
+      if (width >= 768) return 'md';
+      if (width >= 640) return 'sm';
+      return 'mobile';
+    }
+
+    function getGridCols(innerWidth) {
+      if (innerWidth >= 768) return '4';
+      if (innerWidth >= 640) return '2';
+      return '1';
+    }
+
+    function updateDisplay(width) {
+      const w = Math.round(width);
+      widthDisplay.textContent = w + 'px';
+      breakpointDisplay.textContent = getBreakpointLabel(w);
+      handle.setAttribute('aria-valuenow', String(w));
+
+      // Card grid columns based on inner content width
+      const innerWidth = w - (GUTTER * 2);
+      grid.setAttribute('data-cols', getGridCols(innerWidth));
+
+      // Container boundary
+      if (w > MAX_CONTAINER) {
+        boundary.classList.add('is-visible');
+        // Position the boundary at the max container width (accounting for gutters)
+        boundary.style.left = MAX_CONTAINER + 'px';
+      } else {
+        boundary.classList.remove('is-visible');
+      }
+    }
+
+    function onPointerDown(e) {
+      e.preventDefault();
+      isDragging = true;
+      startX = e.clientX;
+      startWidth = resizable.offsetWidth;
+      document.documentElement.classList.add('vp-dragging');
+
+      document.addEventListener('pointermove', onPointerMove);
+      document.addEventListener('pointerup', onPointerUp);
+    }
+
+    function onPointerMove(e) {
+      if (!isDragging) return;
+      const delta = e.clientX - startX;
+      const track = resizable.parentElement;
+      const maxWidth = track ? track.offsetWidth : 1400;
+      const newWidth = Math.max(MIN_WIDTH, Math.min(maxWidth, startWidth + delta));
+      resizable.style.width = newWidth + 'px';
+      updateDisplay(newWidth);
+    }
+
+    function onPointerUp() {
+      isDragging = false;
+      document.documentElement.classList.remove('vp-dragging');
+      document.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('pointerup', onPointerUp);
+    }
+
+    // Keyboard support
+    function onKeyDown(e) {
+      const step = e.shiftKey ? 50 : 10;
+      let currentWidth = resizable.offsetWidth;
+      const track = resizable.parentElement;
+      const maxWidth = track ? track.offsetWidth : 1400;
+
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        currentWidth = Math.min(maxWidth, currentWidth + step);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        currentWidth = Math.max(MIN_WIDTH, currentWidth - step);
+      } else {
+        return;
+      }
+
+      resizable.style.width = currentWidth + 'px';
+      updateDisplay(currentWidth);
+    }
+
+    handle.addEventListener('pointerdown', onPointerDown);
+    handle.addEventListener('keydown', onKeyDown);
+
+    // Initial state
+    updateDisplay(375);
+  }
+
+  // Init on load and after Astro view transitions
+  initViewportPreview();
+  document.addEventListener('astro:after-swap', initViewportPreview);
+</script>

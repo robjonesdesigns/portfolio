@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Container from '../components/layout/Container.astro'
 import Button from '../components/ui/Button.astro'
 import Badge from '../components/ui/Badge.astro'
+import ViewportPreview from '../components/ui/ViewportPreview.astro'
 
 const colors = [
   { name: '--bg',           label: 'Background',       light: '#fffbf5', dark: '#1c1a16' },
@@ -280,6 +281,13 @@ const spacingSteps = [
                 <p class="type-meta">max-w-3xl / 768px</p>
               </div>
             </div>
+          </div>
+
+          {/* Viewport Preview */}
+          <div class="mb-10">
+            <p class="type-label mb-4">Viewport preview</p>
+            <p class="type-body text-fg-secondary mb-4">Drag the handle to resize the preview and see how the layout responds. Cards reflow from 1 column (mobile) to 2 columns (sm, 640px) to 4 columns (md, 768px). The highlighted edges show the 24px gutters. When the width exceeds 1280px, a dashed line marks the container boundary.</p>
+            <ViewportPreview />
           </div>
 
           {/* Breakpoints */}
