@@ -56,7 +56,7 @@ const spacingSteps = [
 
         {/* Colors */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-sm mb-3">Color Tokens</h2>
+          <h2 class="type-display-md mb-3">Color Tokens</h2>
           <p class="type-body text-fg-secondary mb-8">Defined as CSS custom properties in <code>globals.css</code> with light and dark values. Mapped to Tailwind via <code>tailwind.config.js</code> so utilities like <code>text-fg</code> and <code>bg-surface</code> resolve to the active theme.</p>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             {colors.map(c => (
@@ -73,8 +73,14 @@ const spacingSteps = [
             ))}
           </div>
 
+          {/* Noise overlay note */}
+          <div class="mt-10 mb-10">
+            <p class="type-label mb-4">Noise overlay</p>
+            <p class="type-body text-fg-secondary">A fractal noise SVG texture covers all surfaces at 2.5% opacity via <code>.noise::after</code>, adding analog grain to flat backgrounds. Color picker values will differ from token hex values by 1-2 units due to compositing.</p>
+          </div>
+
           {/* Three-layer demo */}
-          <div class="mt-10">
+          <div>
             <p class="type-label mb-4">Three-layer layout</p>
             <div class="rounded-xl p-6 border border-token bg-[var(--bg)]">
               <p class="type-meta mb-3">--bg (page background)</p>
@@ -90,7 +96,7 @@ const spacingSteps = [
 
         {/* Accessibility */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-sm mb-3">Accessibility</h2>
+          <h2 class="type-display-md mb-3">Accessibility</h2>
           <p class="type-body text-fg-secondary mb-8">Every text and background combination used on this site meets WCAG 2.1 AA. Accessibility is structural, not an afterthought.</p>
 
           <p class="type-label mb-4">Light theme</p>
@@ -98,35 +104,35 @@ const spacingSteps = [
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
               <span class="type-body" style="color: #222222; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--fg on --bg</p>
+                <p class="type-meta" style="color: #6e6562;">--fg on --bg (#fffbf5)</p>
                 <p class="type-meta" style="color: #6e6562;">15.43:1 -- AAA</p>
               </div>
             </div>
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
               <span class="type-body" style="color: #6e6562; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --bg</p>
+                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --bg (#fffbf5)</p>
                 <p class="type-meta" style="color: #6e6562;">5.50:1 -- AA</p>
               </div>
             </div>
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fdf8f2;">
               <span class="type-body" style="color: #6e6562; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --bg-subtle</p>
+                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --bg-subtle (#fdf8f2)</p>
                 <p class="type-meta" style="color: #6e6562;">5.37:1 -- AA</p>
               </div>
             </div>
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #f4f1ec;">
               <span class="type-body" style="color: #6e6562; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --surface</p>
+                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --surface (#f4f1ec)</p>
                 <p class="type-meta" style="color: #6e6562;">5.04:1 -- AA</p>
               </div>
             </div>
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
               <span class="type-body" style="color: #813746; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--accent on --bg</p>
+                <p class="type-meta" style="color: #6e6562;">--accent on --bg (#fffbf5)</p>
                 <p class="type-meta" style="color: #6e6562;">7.93:1 -- AAA</p>
               </div>
             </div>
@@ -134,38 +140,38 @@ const spacingSteps = [
 
           <p class="type-label mb-4">Dark theme</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #1c1a16;">
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #fffbf5; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg on --bg</p>
+                <p class="type-meta" style="color: #c2bab0;">--fg on --bg (#1c1a16)</p>
                 <p class="type-meta" style="color: #c2bab0;">16.85:1 -- AAA</p>
               </div>
             </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #1c1a16;">
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg</p>
+                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg (#1c1a16)</p>
                 <p class="type-meta" style="color: #c2bab0;">9.05:1 -- AAA</p>
               </div>
             </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #201e1a;">
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #201e1a; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg-subtle</p>
+                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg-subtle (#201e1a)</p>
                 <p class="type-meta" style="color: #c2bab0;">8.67:1 -- AAA</p>
               </div>
             </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #28251f;">
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #28251f; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --surface</p>
+                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --surface (#28251f)</p>
                 <p class="type-meta" style="color: #c2bab0;">7.96:1 -- AAA</p>
               </div>
             </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #1c1a16;">
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #e36f86; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--accent on --bg</p>
+                <p class="type-meta" style="color: #c2bab0;">--accent on --bg (#1c1a16)</p>
                 <p class="type-meta" style="color: #c2bab0;">5.70:1 -- AA</p>
               </div>
             </div>
@@ -211,7 +217,7 @@ const spacingSteps = [
 
         {/* Typography */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-sm mb-3">Typography</h2>
+          <h2 class="type-display-md mb-3">Typography</h2>
           <p class="type-body text-fg-secondary mb-8">Composition classes defined in <code>@layer components</code> in <code>globals.css</code>. Display sizes use fluid <code>clamp()</code> for smooth scaling across viewports. Body sizes step at the <code>md</code> breakpoint (16px to 20px).</p>
           <div class="flex flex-col gap-6">
             {typeScale.map(t => (
@@ -265,7 +271,7 @@ const spacingSteps = [
 
         {/* Spacing */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-sm mb-3">Spacing</h2>
+          <h2 class="type-display-md mb-3">Spacing</h2>
           <p class="type-body text-fg-secondary mb-8">4px base grid using the standard Tailwind numeric scale. All spacing in markup uses Tailwind utility classes (<code>gap-4</code>, <code>p-6</code>, <code>mb-8</code>, etc.) rather than custom tokens.</p>
           <div class="flex flex-col gap-3">
             <div class="flex flex-wrap items-end gap-6">
@@ -285,7 +291,7 @@ const spacingSteps = [
 
         {/* Components */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-sm mb-3">Components</h2>
+          <h2 class="type-display-md mb-3">Components</h2>
           <p class="type-body text-fg-secondary mb-8">Astro components in <code>src/components/ui/</code>. Styled with Tailwind utilities and design tokens. No client-side JavaScript shipped for any component.</p>
 
           {/* Buttons */}
@@ -334,7 +340,7 @@ const spacingSteps = [
 
         {/* Animations */}
         <section data-animate>
-          <h2 class="type-display-sm mb-3">Animations</h2>
+          <h2 class="type-display-md mb-3">Animations</h2>
           <p class="type-body text-fg-secondary mb-8">CSS only. No JS animation libraries. Respects <code>prefers-reduced-motion</code>.</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-surface rounded-xl p-6 border border-token">
@@ -347,12 +353,6 @@ const spacingSteps = [
               <p class="type-label mb-3">Theme transition</p>
               <p class="type-body text-fg-secondary">
                 All color properties transition over 300ms. Toggle the theme to see it.
-              </p>
-            </div>
-            <div class="bg-surface rounded-xl p-6 border border-token">
-              <p class="type-label mb-3">Noise overlay</p>
-              <p class="type-body text-fg-secondary">
-                A fractal noise SVG texture covers the entire site at 2.5% opacity via <code>.noise::after</code>. Adds analog grain to flat digital backgrounds. Fixed position, no pointer events. Color picker values will differ from token hex values by 1-2 units due to compositing.
               </p>
             </div>
           </div>
