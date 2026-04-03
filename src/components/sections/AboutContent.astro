@@ -4,31 +4,27 @@ import Container from '../layout/Container.astro'
 const siteDecisions = [
   {
     title: 'The color palette',
-    body: 'Pink is my favorite color but it carries history I did not want as a background. I researched it, found the calming claims were debunked, and passed on it. The background is a warm cream -- soft, easy on the eyes, and a lush foundation for the rest of the palette. Burgundy for light mode, rose for dark. Same family, no baggage. 7.78:1 contrast ratio on light, 4.81:1 on dark. The whole palette traces back to the photo: pink hat, cream sweater, leather jacket.',
+    body: 'Pink was my starting point. I love the color, but it carries a lot of history: the gender role reversal, Drunk-Tank Pink, its role in LGBTQIA+ symbolism. There\'s a heaviness to it I didn\'t want sitting behind my work. Burgundy and rose keep the warmth and sophistication without the baggage. The cream background came from wanting something soft that lets the case studies be the focus. I styled the headshot to match the palette, not the other way around.',
   },
   {
-    title: 'The font with the human signature',
-    body: 'The body font is Areal, discovered through 99% Invisible. It includes an am dash: a character that looks like an em dash but with serifs. A small statement about human touch in an era where AI writes everything with em dashes.',
+    title: 'The body font',
+    body: 'Areal, found through 99% Invisible. It was designed as a statement on AI-generated text. The am dash is a character that looks like an em dash but with serifs, a small human signature baked into the typeface. I built this portfolio with Claude Code, so using a font made as a commentary on AI felt appropriately meta.',
   },
   {
-    title: 'Dark mode as a design artifact',
-    body: 'The portfolio respects your system preference and lets you toggle. It is not a feature. It is a demonstration that the token system works across both themes.',
+    title: 'Video loops instead of screenshots',
+    body: 'A screenshot shows a screen. A loop shows how someone actually uses the product. I wanted the homepage to answer "how does a user solve a problem" without needing a click.',
   },
   {
-    title: 'Video loops, not screenshots',
-    body: "A static screenshot shows one moment. A loop shows how the product actually behaves. Inspired by a coworker's portfolio. The homepage should tell the full story without requiring a single click.",
+    title: 'Dark mode',
+    body: 'I look at screens all day and dark mode is easier on my eyes. I wanted anyone visiting to have the same option. It follows your system preference and you can toggle it.',
   },
   {
-    title: 'Built from scratch',
-    body: 'Astro for the HTML and accessibility. CSS for all animations, with scroll-triggered reveals that never hide content from screen readers.',
+    title: 'No frameworks',
+    body: 'Framer felt flat. I couldn\'t get deep into the details. Astro let me control everything and it\'s HTML-first, which made accessibility straightforward. I learned a ton building it.',
   },
   {
-    title: 'Process over polish',
-    body: 'The homepage shows craft. The case studies show thinking. A recruiter sees the product in the first scroll. A hiring manager sees the decisions in the case study. Two audiences, two surfaces, one portfolio.',
-  },
-  {
-    title: 'Fluid type, not snapping breakpoints',
-    body: 'Headlines use CSS clamp() so they scale smoothly across every viewport. Body text steps at one breakpoint for readability. The headers should feel natural to every screen, not just the ones they were designed for.',
+    title: 'Fluid type',
+    body: 'Some sites just look right at every viewport. I want that. Headlines were the natural place to start experimenting with fluid scaling. Body text is next. I want the site to hold up at any size, not just the ones I designed for.',
   },
 ]
 ---
@@ -57,16 +53,16 @@ const siteDecisions = [
         {/* Bio */}
         <div class="flex flex-col gap-8" data-animate-y data-animate-delay="1">
           <h1 class="type-display-lg">
-            I have been making things my whole life. Now I design products.
+            I've been making things my whole life. Now I design products.
           </h1>
 
           <div class="flex flex-col gap-8" data-animate data-animate-delay="2">
             <p class="type-body leading-relaxed">
-              I started with crayons my parents kept on a high shelf. I climbed the cabinets to get them. Then it was painting and writing music. Product design is the same impulse pointed at a different medium. I think in systems, not screens. How the data flows, how the hierarchy holds up when the content changes, how the whole thing feels when someone actually uses it.
+              I started with crayons my parents kept on a high shelf. I climbed the cabinets to get them. Then it was painting and music. During COVID I took a UX course, started freelancing, and worked my way into enterprise design at Honeywell. That's where I fell in love with it: understanding problems, working with people to solve them, and seeing the product get better because of it.
             </p>
 
             <p class="type-body leading-relaxed">
-              I ask hard questions, I hyperfocus until the work is done, and I show up as a person, not a persona.
+              I love the iteration. Looking at what I've shipped, questioning my own decisions, and digging through every detail until it's right. I used to be uncomfortable with ambiguity. Now I see it as a signal that it's an actual problem worth solving.
             </p>
 
           </div>
@@ -85,7 +81,7 @@ const siteDecisions = [
         <div class="flex flex-col gap-5 max-w-2xl" data-animate>
           <h2 class="type-display-md" data-animate-y>Why this site looks the way it does</h2>
           <p class="type-intro leading-relaxed">
-            Every decision on this site was deliberate. The color palette, the font choice, the animation timing. Here is why.
+            A few of the decisions behind the design.
           </p>
         </div>
 
