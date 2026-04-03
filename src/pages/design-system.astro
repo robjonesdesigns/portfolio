@@ -103,79 +103,135 @@ const spacingSteps = [
           <p class="type-body text-fg-secondary mb-8 max-w-3xl">Every text and background combination passes WCAG 2.1 AA. Most hit AAA.</p>
 
           <p class="type-label mb-4">Light theme</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
               <span class="type-body" style="color: #1c1a16; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--fg on --bg (#fffbf5)</p>
+                <p class="type-meta" style="color: #6e6562;">--fg on --bg</p>
                 <p class="type-meta" style="color: #6e6562;">16.85:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fdf8f2;">
+              <span class="type-body" style="color: #1c1a16; font-size: 2rem;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta" style="color: #6e6562;">--fg on --bg-subtle</p>
+                <p class="type-meta" style="color: #6e6562;">16.45:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #f5f0e8;">
+              <span class="type-body" style="color: #1c1a16; font-size: 2rem;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta" style="color: #6e6562;">--fg on --surface</p>
+                <p class="type-meta" style="color: #6e6562;">15.32:1 -- AAA</p>
               </div>
             </div>
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
               <span class="type-body" style="color: #6e6562; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --bg (#fffbf5)</p>
+                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --bg</p>
                 <p class="type-meta" style="color: #6e6562;">5.50:1 -- AA</p>
               </div>
             </div>
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fdf8f2;">
               <span class="type-body" style="color: #6e6562; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --bg-subtle (#fdf8f2)</p>
+                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --bg-subtle</p>
                 <p class="type-meta" style="color: #6e6562;">5.37:1 -- AA</p>
               </div>
             </div>
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #f5f0e8;">
               <span class="type-body" style="color: #6e6562; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --surface (#f5f0e8)</p>
+                <p class="type-meta" style="color: #6e6562;">--fg-secondary on --surface</p>
                 <p class="type-meta" style="color: #6e6562;">5.00:1 -- AA</p>
               </div>
             </div>
             <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
               <span class="type-body" style="color: #813746; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6e6562;">--accent on --bg (#fffbf5)</p>
+                <p class="type-meta" style="color: #6e6562;">--accent on --bg</p>
                 <p class="type-meta" style="color: #6e6562;">7.93:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fdf8f2;">
+              <span class="type-body" style="color: #813746; font-size: 2rem;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta" style="color: #6e6562;">--accent on --bg-subtle</p>
+                <p class="type-meta" style="color: #6e6562;">7.74:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #f5f0e8;">
+              <span class="type-body" style="color: #813746; font-size: 2rem;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta" style="color: #6e6562;">--accent on --surface</p>
+                <p class="type-meta" style="color: #6e6562;">7.21:1 -- AAA</p>
               </div>
             </div>
           </div>
 
           <p class="type-label mb-4">Dark theme</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #fffbf5; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg on --bg (#1c1a16)</p>
+                <p class="type-meta" style="color: #c2bab0;">--fg on --bg</p>
                 <p class="type-meta" style="color: #c2bab0;">16.85:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #201e1a; border: 1px solid rgba(176,168,158,0.2);">
+              <span class="type-body" style="color: #fffbf5; font-size: 2rem;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta" style="color: #c2bab0;">--fg on --bg-subtle</p>
+                <p class="type-meta" style="color: #c2bab0;">16.14:1 -- AAA</p>
+              </div>
+            </div>
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #28251f; border: 1px solid rgba(176,168,158,0.2);">
+              <span class="type-body" style="color: #fffbf5; font-size: 2rem;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta" style="color: #c2bab0;">--fg on --surface</p>
+                <p class="type-meta" style="color: #c2bab0;">14.82:1 -- AAA</p>
               </div>
             </div>
             <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg (#1c1a16)</p>
+                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg</p>
                 <p class="type-meta" style="color: #c2bab0;">9.05:1 -- AAA</p>
               </div>
             </div>
             <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #201e1a; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg-subtle (#201e1a)</p>
+                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg-subtle</p>
                 <p class="type-meta" style="color: #c2bab0;">8.67:1 -- AAA</p>
               </div>
             </div>
             <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #28251f; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --surface (#28251f)</p>
+                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --surface</p>
                 <p class="type-meta" style="color: #c2bab0;">7.96:1 -- AAA</p>
               </div>
             </div>
             <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,158,0.2);">
               <span class="type-body" style="color: #e36f86; font-size: 2rem;">Aa</span>
               <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--accent on --bg (#1c1a16)</p>
+                <p class="type-meta" style="color: #c2bab0;">--accent on --bg</p>
                 <p class="type-meta" style="color: #c2bab0;">5.70:1 -- AA</p>
+              </div>
+            </div>
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #201e1a; border: 1px solid rgba(176,168,158,0.2);">
+              <span class="type-body" style="color: #e36f86; font-size: 2rem;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta" style="color: #c2bab0;">--accent on --bg-subtle</p>
+                <p class="type-meta" style="color: #c2bab0;">5.45:1 -- AA</p>
+              </div>
+            </div>
+            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #28251f; border: 1px solid rgba(176,168,158,0.2);">
+              <span class="type-body" style="color: #e36f86; font-size: 2rem;">Aa</span>
+              <div class="flex flex-col gap-2">
+                <p class="type-meta" style="color: #c2bab0;">--accent on --surface</p>
+                <p class="type-meta" style="color: #c2bab0;">5.01:1 -- AA</p>
               </div>
             </div>
           </div>
