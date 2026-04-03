@@ -57,7 +57,7 @@ const spacingSteps = [
         {/* Colors */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Color Tokens</h2>
-          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Eight tokens cover both themes. Light and dark values swap automatically. The palette comes from the about page photo: cream, burgundy, and rose.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Eight tokens cover both themes. The palette comes from the about page: cream, burgundy, and rose.</p>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             {colors.map(c => (
               <div class="flex flex-col gap-2">
@@ -206,7 +206,7 @@ const spacingSteps = [
         {/* Typography */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Typography</h2>
-          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Three fonts, one scale. Headlines scale fluidly with the viewport. Body text steps once at 768px for readability.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Three fonts that reference different moments in type history. Ogg for editorial warmth, rooted in calligraphy. Cabinet Grotesk for headings, with distinctive terminals that give it personality. Areal for body text, chosen for its readability and the extra space built into each letterform. Headlines scale fluidly with the viewport. Body text steps once at 768px.</p>
           <div class="flex flex-col gap-6">
             {typeScale.map(t => (
               <div class="border-t border-token pt-5">
@@ -260,27 +260,7 @@ const spacingSteps = [
         {/* Layout */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Layout</h2>
-          <p class="type-body text-fg-secondary mb-8 max-w-3xl">One container, two breakpoints, three background layers. Everything else is standard Tailwind.</p>
-
-          {/* Container */}
-          <div class="mb-10">
-            <p class="type-label mb-4">Container</p>
-            <p class="type-body text-fg-secondary mb-4 max-w-3xl">All page content wraps in a <code>Container</code> component: <code>max-w-7xl</code> (1280px), centered with <code>mx-auto</code>, and <code>px-6</code> (24px) side padding. On viewports narrower than 1280px, the max-width has no effect and the padding creates the gutter.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="bg-surface rounded-lg p-5 border border-token">
-                <p class="type-body mb-2">Default (lg)</p>
-                <p class="type-meta">max-w-7xl / 1280px</p>
-              </div>
-              <div class="bg-surface rounded-lg p-5 border border-token">
-                <p class="type-body mb-2">Medium (md)</p>
-                <p class="type-meta">max-w-4xl / 896px</p>
-              </div>
-              <div class="bg-surface rounded-lg p-5 border border-token">
-                <p class="type-body mb-2">Small (sm)</p>
-                <p class="type-meta">max-w-3xl / 768px</p>
-              </div>
-            </div>
-          </div>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Three background layers create depth without borders. Breakpoints keep it simple: one for navigation, one for content density.</p>
 
           {/* Breakpoints */}
           <div class="mb-10">
@@ -334,7 +314,7 @@ const spacingSteps = [
         {/* Components */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Components</h2>
-          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Pure Astro components. No JavaScript shipped to the browser for any of these.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">A small set of building blocks used across every page. No JavaScript shipped for any of them.</p>
 
           {/* Buttons */}
           <div class="mb-12">
