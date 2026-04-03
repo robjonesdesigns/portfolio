@@ -85,7 +85,7 @@
 :root {
   /* Color */
   --bg:        #fffbf5;
-  --fg:        #222222;
+  --fg:        #1c1a16;
   --accent:    #813746;
   --on-accent: #fffbf5;   /* text on brand-primary bg — 7.78:1 AAA */
   --surface:   #f5f0e8;
