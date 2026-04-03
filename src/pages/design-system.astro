@@ -80,6 +80,21 @@ const spacingSteps = [
             <p class="type-body text-fg-secondary max-w-3xl">A subtle noise texture sits over every surface at low opacity. Adds warmth to flat backgrounds without competing with the content.</p>
           </div>
 
+          {/* Three-layer structure */}
+          <div class="mt-10">
+            <p class="type-label mb-4">Three-layer structure</p>
+            <p class="type-body text-fg-secondary mb-4 max-w-3xl">Every page uses three background layers. Shadows mark the transitions between them. Cards sit on the middle layer.</p>
+            <div class="rounded-xl p-6 border border-token bg-[var(--bg)]">
+              <p class="type-meta mb-3">--bg (nav, hero, footer)</p>
+              <div class="bg-subtle rounded-lg p-5 border border-token">
+                <p class="type-meta mb-3">--bg-subtle (content sections)</p>
+                <div class="bg-surface rounded-md p-4 border border-token">
+                  <p class="type-meta">--surface (cards)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </section>
 
         {/* Accessibility */}
@@ -257,45 +272,11 @@ const spacingSteps = [
           </div>
         </section>
 
-        {/* Layout */}
+        {/* Spacing */}
         <section class="mb-20" data-animate>
-          <h2 class="type-display-md mb-3">Layout</h2>
-          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Three background layers create depth without borders. Breakpoints keep it simple: one for navigation, one for content density.</p>
-
-          {/* Breakpoints */}
-          <div class="mb-10">
-            <p class="type-label mb-4">Breakpoints</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-surface rounded-lg p-5 border border-token">
-                <p class="type-body mb-2">sm (640px)</p>
-                <p class="type-meta">Case study nav stacks to side-by-side</p>
-              </div>
-              <div class="bg-surface rounded-lg p-5 border border-token">
-                <p class="type-body mb-2">md (768px)</p>
-                <p class="type-meta">Desktop nav visible, hamburger hidden. Body text steps to 20px. Grids expand to multi-column.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Three-layer structure */}
-          <div class="mb-10">
-            <p class="type-label mb-4">Three-layer structure</p>
-            <p class="type-body text-fg-secondary mb-4 max-w-3xl">Every page uses three background layers. Shadows mark the transitions between them. Cards sit on the middle layer.</p>
-            <div class="rounded-xl p-6 border border-token bg-[var(--bg)]">
-              <p class="type-meta mb-3">--bg (nav, hero, footer)</p>
-              <div class="bg-subtle rounded-lg p-5 border border-token">
-                <p class="type-meta mb-3">--bg-subtle (content sections)</p>
-                <div class="bg-surface rounded-md p-4 border border-token">
-                  <p class="type-meta">--surface (cards)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Spacing */}
+          <h2 class="type-display-md mb-3">Spacing</h2>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">4px base grid. Everything uses the standard Tailwind numeric scale.</p>
           <div>
-            <p class="type-label mb-4">Spacing</p>
-            <p class="type-body text-fg-secondary mb-4 max-w-3xl">4px base grid using the standard Tailwind numeric scale. All spacing uses utility classes (<code>gap-4</code>, <code>p-6</code>, <code>mb-8</code>).</p>
             <div class="flex flex-wrap items-end gap-6">
               {spacingSteps.map(s => (
                 <div class="flex flex-col items-center gap-2">
