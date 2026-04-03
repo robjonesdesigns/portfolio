@@ -1,36 +1,23 @@
-# Portfolio Handoff -- Session 21/22 End
+# Portfolio Handoff -- Session 22/23 End
 
 ## START HERE
-Massive session. Nielsen audit, heuristic fixes, data model refactor, system map, design system refinements. Next: design system voice rewrite, visual review, lede typography experiment.
+Voice rewrite session. About page bio and design decisions rewritten from interview. Style guide (was "Design System") section intros rewritten. Token refinement: surface to parchment, fg to dark chocolate for true theme inversion, noise overlay removed. APM and Keytrn videos replaced on Cloudinary. Custom domains live. Next: lede typography experiment, missing media assets, visual review.
 
 ## Deployed
 https://designedbyrob.com
 
 ## Next session priorities
 
-### 1. Design system page voice rewrite
-The page documents the system correctly but reads like developer docs. Rewrite in Rob's voice:
-- Each section answers "what decision did I make and why"
-- Colors: "Eight tokens. Three background layers..." not "Defined as CSS custom properties..."
-- Typography: "Three fonts, each with a job..." not "Composition classes defined in @layer..."
-- Layout: one paragraph philosophy, not container size cards
-- Cut the viewport preview tool (cool engineering, wrong audience)
-- Keep live specimens (swatches, type scale, spacing, components, accessibility)
-- Add meta + code badge specimen to typography section
-
-### 2. Lede typography experiment
+### 1. Lede typography experiment
 Try bumping `type-intro` to 20/28 on mobile, 24/32 on desktop for case study intros. Narrower width + larger type + tighter gap to heading = editorial lede pattern. See if it works visually before committing.
 
-### 3. Visual review in browser
+### 2. Visual review in browser
 Walk through all changes across all 3 projects:
 - Portfolio: hamburger menu, theme toggle, about bio, hero copy, case study nav, 404, design system page, system map
 - Keytrn: 11 heuristic fixes (tooltips, score descriptors, onboarding, filter chips, etc.)
 - APM: severity refactor, data model derivations, help modal, sidebar tooltips, timestamp
 
-### 4. Surface token decision
-Light theme --surface (#f4f1ec). Rob wants to evaluate.
-
-### 5. Portfolio missing media
+### 3. Portfolio missing media
 See memory file `portfolio_missing_media.md`.
 
 ## What was completed this session
