@@ -236,6 +236,27 @@
     line-height: 0;
   }
 
+  /* Q&A transcript cards — research conversation styling */
+  .quote-card {
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 1px solid var(--border);
+  }
+  .quote-card--question {
+    background: color-mix(in srgb, var(--fg) 4%, var(--surface));
+    align-self: flex-end;
+    max-width: 85%;
+  }
+  .quote-card--response {
+    background: color-mix(in srgb, var(--accent) 5%, var(--bg));
+    border-left: 3px solid var(--accent);
+    align-self: flex-start;
+    max-width: 90%;
+  }
+
   /* List reset — strip default list styling */
   .list-reset { list-style: none; padding: 0; margin: 0; }
 }

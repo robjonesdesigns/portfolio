@@ -201,6 +201,32 @@ const next = projects[(idx + 1) % projects.length]
               </div>
             )}
 
+            {/* Research conversations -- Q&A cards with quote styling */}
+            {item.conversations && item.conversations.length > 0 && (
+              <div class="flex flex-col gap-6 mt-8" data-animate>
+                <span class="type-label">From the calls</span>
+                <div class="flex flex-col gap-6 max-w-2xl">
+                  {item.conversations.map((c: any) => (
+                    <div class="flex flex-col gap-3">
+                      {/* Question card (me) */}
+                      <div class="quote-card quote-card--question">
+                        <span class="type-label" style="font-size: 10px;">Me</span>
+                        <p class="type-body leading-relaxed m-0">{c.question}</p>
+                      </div>
+                      {/* Response card (county) */}
+                      <div class="quote-card quote-card--response">
+                        <span class="type-label" style="font-size: 10px; color: var(--accent);">{c.source}</span>
+                        <p class="type-body leading-relaxed m-0" style="font-style: italic;">&ldquo;{c.response}&rdquo;</p>
+                      </div>
+                    </div>
+                  ))}
+                  {item.conversationsFootnote && (
+                    <p class="type-body leading-relaxed mt-2" style="color: var(--fg-secondary);">{item.conversationsFootnote}</p>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Key insight callout */}
             {item.followedByInsight && project.keyInsight && (
               <div
