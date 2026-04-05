@@ -4,15 +4,15 @@ export const projects = [
     title: 'PropTech Property Data Platform',
     company: 'Keytrn',
     year: '2025',
-    tags: ['0→1 Product Design', 'Primary Research', 'B2G + B2C', 'Data-Heavy UI', 'Implementation'],
+    tags: ['0-to-1 Product Design', 'Primary Research', 'B2G + B2C', 'Data-Heavy UI', 'Implementation'],
     liveUrl: 'https://keytrn.vercel.app',
     liveUrlNote: 'For access, email <a href="mailto:robjonesdesigns@gmail.com?subject=Keytrn%20preview%20access" target="_blank" rel="noopener noreferrer" class="type-link underline">robjonesdesigns@gmail.com</a>.',
     headline: 'A two-sided PA tax sale platform with AI for counties and homebuyers',
-    description: 'Called 20+ county offices to understand tax sale workflows, then designed and built both sides of the platform: a consumer app with live data and an AI assistant, plus a government portal where clerks drop in a photo of their paper list and the system extracts the listings. Sole designer and engineer.',
+    description: 'A two-sided PA tax sale platform I designed and built solo: a consumer app with live scraped data, AI on every page, and a government portal where clerks photograph their paper list and the system extracts the listings. Research across 20+ county offices shaped every decision.',
     outcomes: [
-      'Two-sided platform: consumer app + government portal with live listings.',
-      'Ask Key: AI assistant on every page, both sides.',
-      'OCR upload: photo in, structured data out.',
+      'Designed and built both sides of the platform solo in 5 months.',
+      'Live scraped data from PA Legal Ads with geocoding, Street View, and sale type classification.',
+      'Research across 20+ county offices produced the outreach playbook for the first pilot.',
     ],
     videoGrid: [
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/keytrn-desktop',
@@ -32,14 +32,7 @@ export const projects = [
         'Where manual processes break down',
       ]},
       { type: 'paragraph', text: 'Used NotebookLM to organize call notes by county, then queried it to surface patterns and inconsistencies across municipalities. These answers shaped every design decision.' },
-      { type: 'paragraph', text: 'Designed both product sides simultaneously. Then built the consumer app:' },
-      { type: 'bullets', items: [
-        'Astro 6 + React 19 front end with Tailwind v4 and custom design tokens',
-        'Supabase backend with auth and row-level security',
-        'PDF scraper pulling live listings from palegalads.org, Pennsylvania\'s public legal journal database',
-        'Geocoding, Google Street View, and weighted scoring to classify sale types from legal language',
-        'AI property assistant built on Claude Haiku via Astro server routes',
-      ]},
+      { type: 'paragraph', text: 'Designed both product sides simultaneously, then built the consumer app myself. Astro and React front end, Supabase backend, a PDF scraper pulling live listings from Pennsylvania\'s public legal journal database, geocoding and Street View on every property, weighted scoring to classify sale types from legal language, and an AI assistant on Claude Haiku that answers questions on every page.' },
     ],
     processMedia: [
       {
@@ -47,7 +40,7 @@ export const projects = [
         sectionLabel: 'Calling counties',
         followedByInsight: true,
         label: 'County quotes in NotebookLM',
-        caption: 'Greene County call, transcribed and queried in NotebookLM. Beyond the calls, I ran a moderated interview with a homebuyer who went through the foreclosure process firsthand, and attended a tax property conference in Savannah.',
+        caption: 'Greene County call, transcribed and queried in NotebookLM. I also ran a moderated interview with a homebuyer who went through the foreclosure process firsthand, and attended a tax property conference in Savannah. Three different angles on the same problem.',
         video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/keytrn-notebooklm.mp4',
         conversations: [
           {
@@ -100,7 +93,7 @@ export const projects = [
         decision: {
           problem: 'Government sales cycles are slow. No county is going to adopt a portal from a slide deck. They need something they can click through and evaluate. And consumer apps in the space all looked alike, copying each other, with investor tools hidden behind $99-$699/month paywalls.',
           headline: 'Build what people see.',
-          decision: 'Honestly, it just made sense. I designed a consumer app prototype first, something counties could test and see. The feel of Zillow or Redfin, carrying the data investors pay for, made digestible for homebuyers.',
+          decision: 'I designed a consumer app prototype first, something counties could test and see. The feel of Zillow or Redfin, carrying the data investors pay for, made digestible for homebuyers.',
           why: 'If municipalities can touch a working prototype of their data treated well, the pitch changes. They see a view of their inventory they don\'t have today. The prototype becomes the demo: something they can click, not just a slide deck. That\'s what closes a government sales cycle.',
         },
       },
@@ -114,7 +107,7 @@ export const projects = [
           problem: 'Homebuyers going into tax sales are flying blind. They can call the county, Google the process, stitch together fragments. Most don\'t. They show up to an auction and lose money on risks they didn\'t see coming.',
           headline: 'Make the risk obvious.',
           decision: 'Surface the risk on the listing itself. Sale type badges use color: green for liens cleared, amber for liens survive. Price tooltips explain what the number actually means. The "Before you bid" checklist changes per sale type. The Learn section covers the fundamentals. Homebuyers don\'t leave the product to understand what they\'re walking into.',
-          why: 'This came out of Honeywell. Industrial dashboards use color to signal criticality because decisions can\'t wait. Green, amber, red, information surfaced at a glance. The same principle works for homebuyers. A $5,000 tax sale can carry a $150,000 mortgage. That risk has to be visible from the first time they see the listing.',
+          why: 'This came out of Honeywell. Industrial dashboards use color to signal criticality because decisions can\'t wait. Green, amber, red, information surfaced at a glance. The same principle works here. A $5,000 tax sale can carry a $150,000 mortgage. If the risk isn\'t visible the first time someone sees the listing, they find out at the auction.',
         },
       },
       {
@@ -129,13 +122,13 @@ export const projects = [
         decision: {
           problem: 'Both sides had questions. First-time homebuyers didn\'t understand sale types, liens, or redemption periods, so they clicked away or called the county. Clerks reported spending 2+ hours per day answering the same five buyer questions. Static educational content didn\'t solve either side.',
           headline: 'Give both sides an expert.',
-          decision: 'Built Ask Key: an AI assistant on every page. Claude Haiku via Astro server routes, trained on PA tax sale law, context-aware of the property on consumer, workflow-aware on portal. Guardrails so it doesn\'t hallucinate. Name pulled from Keytrn, friendly and on-brand. Gradient CTA so people see it without an annoying popup.',
-          why: 'Both sides are people with questions. Unite it under one place. Buyers get an expert they couldn\'t otherwise afford. Clerks stop fielding the same five questions forty times a week, and can cross-reference other counties when they don\'t know something. The pitch to counties turns into "use our portal and your call volume drops." Guardrails keep it real, not hallucinated.',
+          decision: 'Built Ask Key: an AI assistant on every page. Claude Haiku via Astro server routes, trained on PA tax sale law. On consumer, it knows the property you\'re looking at. On portal, it knows the upload workflow. Guardrails so it doesn\'t hallucinate. Name pulled from Keytrn, friendly and on-brand. Gradient CTA so people see it without an annoying popup.',
+          why: 'Both sides are people with questions. Give both sides the same tool. Buyers get an expert they couldn\'t otherwise afford. Clerks stop fielding the same five questions forty times a week, and can cross-reference other counties when they don\'t know something. The pitch to counties turns into "use our portal and your call volume drops." Guardrails keep it real, not hallucinated.',
         },
       },
     ],
     keyInsight: 'Every county operates as if it\'s the only one. 67 counties, 67 processes. The lesson from the calls: they\'re never going to standardize. Don\'t fight it. Absorb it.',
-    reflection: 'One limit of cold calls: they surface workflows but not organizational structure. I learned what each county does, not who does it. That shaped the permissions model through assumption instead of interview. Next time, I\'d pair cold calls with one deep-dive interview per pilot county.',
+    reflection: 'Cold calls surface workflows but not organizational structure. I learned what each county does, not who does it. That meant the permissions model was shaped by assumption instead of interview data. The scraping strategy had the same gap: it proved the pipeline worked, but it also meant I was enriching data I didn\'t control. If I were starting over, I\'d pair the cold calls with one deep-dive interview per pilot county to map the org chart, not just the process. And I\'d get a letter of intent from one county before building the portal, so the first upload came from a partner, not a demo.',
     finalMedia: {
       label: 'Consumer App: Final Prototype',
       caption: 'The consumer-facing property browser, built with live data. Designed to surface tax sale listings with variable data across counties.',
@@ -145,11 +138,11 @@ export const projects = [
     // UGA Business Law Clinic — entity structure, IP, equity agreements
     // Add content here once documents are reviewed
     ugaContent: 'I didn\'t know whether this should be a non-profit or a for-profit. The portal felt like a public good. The consumer app needed revenue. I took the whole question to UGA\'s Business Law Clinic: entity type, IP ownership, equity structure. They said LLC, protect the IP early, get equity on paper. That gave the project a legal foundation it didn\'t have before.',
-    outcome: 'Designed both sides of the platform and built the consumer app with live data from a statewide scraper. Active listings with geocoding, Street View imagery, and sale type classification. Created a full design token system with zero hardcoded values for handoff. Research across 20+ municipalities produced the outreach playbook for the first county pilot.',
+    outcome: 'Designed both sides of the platform and built the consumer app with live data from a statewide scraper. Active listings with geocoding, Street View imagery, and sale type classification. Built a complete design token system with zero hardcoded values across both products. Research across 20+ municipalities produced the outreach playbook for the first county pilot.',
     metaProblem: 'Homebuyers had nothing. Counties had no way to reach them. Both sides needed a product that didn\'t exist.',
     role: 'Co-founder, Design + Engineering',
     duration: '5 months',
-    team: '3 co-founders. Sole designer and engineer.',
+    team: 'Solo. Designed and built the entire product.',
     color: '#4a2c1e',
     mobileCardColor: 'var(--card-bg-keytrn)',
   },
@@ -160,10 +153,10 @@ export const projects = [
     year: '2024–2025',
     tags: ['Enterprise SaaS', 'UX Research', 'Data Visualization', 'Agile', 'Industrial'],
     headline: 'Turning equipment data into decisions for reliability engineers',
-    description: 'Led UX research and design across Honeywell\'s APM (Asset Performance Management) platform, redesigning Plant Overview and building Asset Inspection from scratch. Iterated designs from mid-fidelity through SUS testing, reaching the high 80s.',
+    description: 'I led UX research and design across Honeywell\'s APM platform, redesigning Plant Overview and building Asset Inspection from scratch. I iterated from mid-fidelity through SUS testing, reaching the high 80s.',
     outcomes: [
       'SUS from the low 70s to high 80s across Plant Overview and Asset Inspection.',
-      'Owned 3 shipped dashboards, contributed to 2 more across the APM platform.',
+      '3 dashboards shipped and in daily use by reliability engineers at Shell and other operators.',
     ],
     liveUrl: 'https://apm.designedbyrob.com',
     videoGrid: [
@@ -175,11 +168,11 @@ export const projects = [
     image: null,
     orientationNote: 'The live prototype is a working recreation I designed and built in React, sourcing from IBM\'s Carbon Design System and adapting the components to fit the domain. Honeywell NDA prevents showing the original product, so this is my vision of what the platform should have been: grounded in the research I ran, the workflows I documented, and the design decisions I made during the original engagement. The demo continues to evolve as I refine the data model, severity logic, and interaction design.',
     intro: 'My last year at Honeywell was on the APM (Asset Performance Management) platform, building tools for reliability engineers at companies like Shell to prevent equipment failure. The work I\'m most proud of is the research I led for Plant Overview and Asset Inspection: two dashboards I took from low usability scores to high, through primary research, iteration, and usability testing at every step.',
-    overview: 'UX research and design for Honeywell\'s Asset Performance Management platform, used by reliability and maintenance engineers in industrial operations. Owned the redesign of Plant Overview and the ground-up design of Asset Inspection: a complex, data-heavy dashboard structured across three domains: Reliability, Maintenance, and Performance. Also designed a compressor performance dashboard for the APM Performance Suite, covering load analysis, surge detection, and efficiency curves for oil and gas and chemical manufacturing customers.',
+    overview: 'I worked on Honeywell\'s APM platform, the tool reliability and maintenance engineers use to prevent equipment failure in industrial operations. I redesigned Plant Overview and built Asset Inspection from scratch: a data-heavy dashboard covering Reliability, Maintenance, and Performance. I also designed a compressor performance dashboard for the Performance Suite, covering load analysis, surge detection, and efficiency curves.',
     problem: 'Reliability engineers at companies like Shell depend on these dashboards to catch equipment failures before they happen. A missed signal doesn\'t just mean a delayed report. It means unplanned downtime, costly repairs, and in industrial settings, potential safety incidents. The existing Plant Overview dashboard was getting in their way. The visual hierarchy was unclear, affordances were broken, and the KPI organization made it harder than it needed to be to see what actually needed attention. Asset Inspection didn\'t exist. Engineers who needed a complete picture of a single asset\'s health had no way to get one. Every drill-down was a dead end.',
     process: [
-      { type: 'p', text: 'Led research for both Plant Overview and Asset Inspection. Wrote screeners and interview scripts from scratch, completed Dovetail\'s course on moderated test design, and ran usability sessions at each major iteration to validate decisions before moving forward.' },
-      { type: 'p', text: 'For Plant Overview, the redesign is structured around the reliability engineer\'s 7 AM workflow. The original dashboard put everything at the same visual priority. Research showed engineers scan in a specific sequence, so each section of the redesign answers the next question:' },
+      { type: 'p', text: 'I led research for both Plant Overview and Asset Inspection. I wrote screeners and interview scripts from scratch, completed Dovetail\'s course on moderated test design, and ran usability sessions at each major iteration to validate decisions before moving forward.' },
+      { type: 'p', text: 'For Plant Overview, I structured the redesign around the reliability engineer\'s 7 AM workflow. The original dashboard put everything at the same visual priority. My research showed engineers scan in a specific sequence, so I organized each section to answer the next question:' },
       { type: 'bullets', items: [
         'System Health surfaces KPI drops and threshold breaches',
         'What Happened tells the three-act story of an overnight compressor trip',
@@ -187,8 +180,8 @@ export const projects = [
         'Needs Action highlights the assets that still need decisions',
         'The asset table at the bottom is the drill-down into individual equipment',
       ]},
-      { type: 'p', text: 'For Asset Inspection, research supported a tab-based information architecture. Users in testing valued the ability to scan one domain at a time without visual interference from the others. The PM and subject matter experts pushed for a single-page layout showing all data at once.' },
-      { type: 'p', text: 'I advocated for tabs on multiple calls and in writing, with user quotes and documented findings. The decision stayed with single page. That tension directly shaped the three-level modular structure: a way to manage complexity on one surface without overwhelming the user. It turned out to be a better answer than tabs would have been.' },
+      { type: 'p', text: 'For Asset Inspection, my research supported a tab-based information architecture. Users valued scanning one domain at a time without visual interference from the others. The PM and subject matter experts pushed for a single-page layout showing all data at once.' },
+      { type: 'p', text: 'I advocated for tabs on multiple calls and in writing, with user quotes and documented findings. The decision stayed with single page. That tension directly shaped the three-level modular structure: a way to manage complexity on one surface without overwhelming the user. It was a better answer than tabs would have been.' },
     ],
     processMedia: [
       {
@@ -207,7 +200,7 @@ export const projects = [
         id: 'asset-details-structure',
         label: 'Asset Inspection: 3-Level Modular Structure',
         note: 'Photo or video: system diagram or annotated Figma frame',
-        caption: 'The three-level structure covers Reliability, Maintenance, and Performance. It came out of a combination of research, SME conversations, and iteration. My research supported a tab-based layout to keep cognitive load manageable, but the PM and subject matter experts wanted everything on one page. This modular breakdown was how I designed for that constraint without overwhelming the user.',
+        caption: 'The three-level structure: Reliability, Maintenance, and Performance as distinct visual zones on one surface. I built it from research findings, SME conversations, and three rounds of iteration. Each domain has its own metric hierarchy and drill-down, so engineers scan without switching context.',
         video: null,
       },
       {
@@ -226,8 +219,8 @@ export const projects = [
       caption: 'The final Asset Inspection design, reimagined without Honeywell branding. Shows the three-level modular structure, sub-asset drill-down, and the metric hierarchy across Reliability, Maintenance, and Performance.',
       video: null,
     },
-    solution: 'Redesigned Plant Overview by fixing the affordances, reorganizing the KPI hierarchy, and correcting the color usage. Those changes drove the SUS improvement directly. Designed Asset Inspection from scratch as a three-level modular dashboard: Reliability (failure risk, remaining useful life), Maintenance (alerts, case management), and Performance (OEE, operational metrics). Sub-asset drill-down let engineers isolate which components were affected without leaving the page. Also designed a compressor performance dashboard for the Performance Suite, covering load analysis, surge detection, and efficiency curves for oil and gas and chemical manufacturing.\n\nThe recreation is built to WCAG 2.1 AA. Every chart, filter, and table row is keyboard-navigable with visible focus indicators. Screen readers can navigate the asset table by row and column. Panels trap focus when open, and all animations respect reduced motion preferences. The original product relied on mouse interaction for most data visualization. Engineers working 12-hour shifts in control rooms shouldn\'t have to.',
-    outcome: 'Owned and shipped three dashboards: Plant Overview, Asset Inspection, and a compressor performance dashboard for the Performance Suite. Contributed iterative design support on two others (Trends and Performance View) that also shipped. Built for reliability engineers at companies like Shell and other industrial operators. The three-level information architecture (Reliability, Maintenance, Performance) used existing Forge design system cards to solve the tab vs. single-page conflict without adding new components.',
+    solution: 'I redesigned Plant Overview: fixed broken affordances, reorganized the KPI hierarchy, and corrected the color system. Those changes drove the SUS improvement directly. I designed Asset Inspection from scratch as a three-level modular dashboard: Reliability (failure risk, remaining useful life), Maintenance (alerts, case management), and Performance (OEE, operational metrics). Sub-asset drill-down let engineers isolate which components were affected without leaving the page. I also designed a compressor performance dashboard for the Performance Suite, covering load analysis, surge detection, and efficiency curves for oil and gas and chemical manufacturing.\n\nThe original product relied on mouse interaction for most data visualization. Engineers working 12-hour shifts in control rooms shouldn\'t have to. The recreation is WCAG 2.1 AA. Every chart, filter, and table is keyboard-navigable. Screen readers work row by row. Focus trapping and reduced motion are handled.',
+    outcome: 'I owned and shipped three dashboards: Plant Overview, Asset Inspection, and a compressor performance dashboard for the Performance Suite. I contributed iterative design support on two others (Trends and Performance View) that also shipped. Built for reliability engineers at companies like Shell and other industrial operators. The three-level information architecture (Reliability, Maintenance, Performance) used existing Forge design system cards to solve the tab vs. single-page conflict without adding new components.',
     designDecisions: [
       {
         title: 'Push back with data, then redirect when the call is made',
@@ -338,7 +331,7 @@ export const projects = [
     title: 'Corporate Transparency App',
     company: 'Aysa',
     year: '2025',
-    tags: ['0→1 Product Design', 'Brand', 'UI Systems', 'Social Impact'],
+    tags: ['0-to-1 Product Design', 'Brand', 'UI Systems', 'Social Impact'],
     headline: 'Helping consumers see how ethically companies operate before they buy',
     description: 'Took a founder\'s concept from nothing to a working MVP in under 2 weeks. 15,000+ views in the first social rollout on LinkedIn and Instagram.',
     outcomes: [
@@ -408,7 +401,7 @@ export const projects = [
     title: 'Next-Gen Interview Platform',
     company: 'Sinta',
     year: '2022',
-    tags: ['0→1 Product Design', 'HR Tech', 'Startup', 'Figma'],
+    tags: ['0-to-1 Product Design', 'HR Tech', 'Startup', 'Figma'],
     headline: 'Giving interviewers a way to capture structured data without breaking eye contact',
     description: 'Took a founder\'s concept to a complete HR interview management platform. One month of close collaboration with two founders, zero existing screens.',
     outcomes: [
@@ -455,7 +448,7 @@ export const projects = [
     process: 'Worked directly from founder conversations. No existing product to reference, no user research to draw from. Each flow started as a discussion and turned into screens the founders could react to. The live interview screen took the most iteration. The challenge was input density: interviewers needed to flag competencies and reactions in real time during a video call without the UI becoming the interruption. The answer was shortcut buttons over forms. One tap to timestamp a competency or reaction. Everything else waits until after the call. The post-interview review screen had a similar tension: how much can one screen hold before it collapses? Three columns kept every artifact visible at the same time: video with timestamps, transcript alongside the job description, evaluation form and candidate profile. Dense on purpose. Reviewers could see the candidate, the evidence, and the scorecard in the same glance.',
     solution: 'Designed five flows: a stage-based interview builder, scheduling, a live interview screen with real-time competency and reaction tagging, a three-column post-interview review, and a candidate scorecard. Founders built directly from the designs and were pitching investors before the engagement ended.',
     outcome: 'Founders implemented the designs and were actively pitching investors when I left for Honeywell. Sinta is still operating. A design agency was brought in to build on the foundation after I left.',
-    reflection: 'I left before knowing how it landed. The founders hired a design agency to build on what I started, which is how 0→1 work usually goes. Your job is to give the next person something solid. The one thing I\'d change: I designed entirely from founder conversations, no user research. The live interview screen especially would have benefited from watching real interviewers run sessions. I had a strong instinct about what the UI needed to do, but instinct isn\'t evidence. Next time I\'d push for one or two user conversations before designing the hardest flow.',
+    reflection: 'I left before knowing how it landed. The founders hired a design agency to build on what I started, which is how 0-to-1 work usually goes. Your job is to give the next person something solid. The one thing I\'d change: I designed entirely from founder conversations, no user research. The live interview screen especially would have benefited from watching real interviewers run sessions. I had a strong instinct about what the UI needed to do, but instinct isn\'t evidence. Next time I\'d push for one or two user conversations before designing the hardest flow.',
     designDecisions: [
       {
         title: 'Shortcut buttons over forms for live annotation',

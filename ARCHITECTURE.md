@@ -1,6 +1,6 @@
 # ARCHITECTURE.md
 
-> Last Updated: 2026-03-21
+> Last Updated: 2026-04-05
 > This file is the technical specification. Read VECTOR.md for philosophy. Read CLAUDE.md for agent briefing and component reference.
 
 ---
@@ -9,15 +9,14 @@
 
 | Layer | Location | Rule |
 |-------|----------|------|
-| SSG Routes | `src/pages/` | Astro files only. No logic. Pass data as props to React page components. |
-| Page Components | `src/components/pages/` | Own `LazyMotion` + `MotionConfig` wrapper. Include Navbar + Footer. Full page shell. |
-| Section Components | `src/components/sections/` | Always used inside a page component that owns `LazyMotion`. Use `m` (not `motion`). |
-| Layout Components | `src/components/layout/` | Shared across all pages. Use `motion` (not `m`) — self-contained, no `LazyMotion` dependency. |
-| UI Primitives | `src/components/ui/` | Shared building blocks. If used in layout components (Navbar, Footer), use `motion`. If used only inside page components, use `m`. |
-| Case Study | `src/components/case-study/` | Feature component. Uses `m`. Always rendered inside `CaseStudyPage` which owns `LazyMotion`. |
-| Experiments | `src/components/experiments/` | Isolated experimental components. Not imported by any production layer. Not shipped. |
+| SSG Routes | `src/pages/` | Astro files only. Minimal logic. Pass data as props to components. |
+| Sections | `src/components/sections/` | Page-level content blocks. Used inside page routes. |
+| Layout | `src/components/layout/` | Shared shell components (Navbar, Footer, Container). Present on every page. |
+| UI Primitives | `src/components/ui/` | Reusable building blocks (WorkEntry, Button, Badge, LazyVideo). No page-specific logic. |
+| Case Study | `src/components/case-study/` | Feature components for case study rendering. CaseStudy.astro is the main renderer. SystemMap.astro is APM-only. |
 | Data | `src/data/projects.js` | Single source of truth for all project content. No content in components. |
 | Styles | `src/styles/globals.css` | Design tokens as CSS custom properties. Composition classes in `@layer components`. |
+| Layouts | `src/layouts/Layout.astro` | HTML shell: head, meta, OG tags, fonts, Navbar, Footer, shared scripts. |
 | Research | `vector/` | Investiture knowledge artifacts. Not shipped. |
 
 ---
@@ -26,19 +25,22 @@
 
 ```
 src/pages/
-  └── imports → src/components/pages/
-        └── imports → src/components/sections/
-        └── imports → src/components/layout/
-        └── imports → src/components/ui/
-        └── imports → src/data/
-src/components/layout/
-  └── imports → src/components/ui/
+  └── imports → src/layouts/Layout.astro
+  └── imports → src/components/sections/
+  └── imports → src/components/case-study/
+  └── imports → src/data/
+src/layouts/Layout.astro
+  └── imports → src/components/layout/ (Navbar, Footer)
 src/components/case-study/
   └── imports → src/components/ui/
   └── imports → src/data/
+src/components/sections/
+  └── imports → src/components/ui/
+src/components/layout/
+  └── imports → src/components/ui/
 ```
 
-Pages import page components. Page components import sections, layout, UI, and data. No reverse imports. Data layer imports nothing.
+Pages import layouts and sections. Layouts import layout components. Sections and case study import UI primitives and data. No reverse imports. Data layer imports nothing.
 
 ---
 
@@ -47,13 +49,13 @@ Pages import page components. Page components import sections, layout, UI, and d
 | Layer | Technology | Why |
 |-------|-----------|-----|
 | Framework | Astro 6 (SSG) | Pre-renders all HTML at build time. Fast, SEO-clean, no server needed. |
-| UI | React 19 islands (`client:load`) | Interactive components (animations, theme toggle) hydrate client-side. |
-| Animation | Framer Motion 12 | `whileInView`, `animate`, spring physics. `m` + `LazyMotion` for bundle splitting. |
 | Styling | Tailwind CSS v3.4 + PostCSS | Utility classes + custom design tokens. No CSS modules. |
-| 3D | Three.js + React Three Fiber | Available for RJLogo3D. Not currently rendered in production. |
+| Animation | CSS only | Scroll animations via IntersectionObserver, page transitions via ViewTransitions, entrance keyframes. Zero JS animation libraries. |
+| Interactivity | Vanilla JS | ~30 lines total: theme toggle, clipboard copy, scroll observer. All in `<script>` tags. |
 | Deployment | Vercel (static) | Auto-deploys from `main` branch. Runs `npm run build`. |
 | Video CDN | Cloudinary (`dlqvgithx`) | Videos gitignored locally. Served via `f_auto,q_auto` for format/quality optimization. |
-| Docs/Workshop | Storybook 10 | Component documentation. Not deployed. |
+
+Zero framework JavaScript shipped to the browser. No React, no hydration, no client-side routing.
 
 ---
 
@@ -63,68 +65,52 @@ Pages import page components. Page components import sections, layout, UI, and d
 portfolio/
 ├── src/
 │   ├── pages/                  SSG routes (Astro)
-│   │   ├── index.astro                 Home → HomePage.jsx
-│   │   ├── resume.astro                Resume → ResumePage.jsx
-│   │   ├── sitemap.astro               Sitemap → SitemapPage.jsx
-│   │   ├── keytrn-prototype.astro      Keytrn interactive prototype (non-production route)
-│   │   ├── rippleeffectonpink.astro    WebGL ripple experiment (non-production route)
+│   │   ├── index.astro                 Home (Hero + Projects)
+│   │   ├── about.astro                 About page
+│   │   ├── resume.astro                Resume
+│   │   ├── sitemap.astro               Sitemap
+│   │   ├── design-system.astro         Style guide
+│   │   ├── 404.astro                   Custom error page
 │   │   └── projects/
-│   │       └── [slug].astro    Dynamic case study → CaseStudyPage.jsx
+│   │       └── [slug].astro            Dynamic case study route
 │   ├── components/
-│   │   ├── pages/              Full page shells (own LazyMotion)
-│   │   │   ├── HomePage.jsx
-│   │   │   ├── ResumePage.jsx
-│   │   │   ├── SitemapPage.jsx
-│   │   │   └── CaseStudyPage.jsx
-│   │   ├── sections/           Page sections (use m, need LazyMotion above)
-│   │   │   ├── Hero.jsx
-│   │   │   ├── About.jsx
-│   │   │   ├── Projects.jsx
-│   │   │   └── Contact.jsx
-│   │   ├── layout/             Shared shell (use motion, self-contained)
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── Footer.jsx
-│   │   │   └── Container.jsx
-│   │   ├── ui/                 Primitives
-│   │   │   ├── WorkEntry.jsx
-│   │   │   ├── LazyVideo.jsx
-│   │   │   ├── Badge.jsx
-│   │   │   ├── Button.jsx
-│   │   │   ├── ThemeToggle.jsx
-│   │   │   ├── PageTransition.jsx
-│   │   │   ├── Marquee.jsx
-│   │   │   ├── CircleLetters.jsx
-│   │   │   ├── HeroName.jsx        Animated hero wordmark component
-│   │   │   ├── SEO.jsx             Head meta/OG tag helper
-│   │   │   ├── RJLogo.jsx
-│   │   │   └── RJLogo3D.jsx
-│   │   ├── case-study/
-│   │   │   ├── CaseStudy.jsx
-│   │   │   └── KeytrnPrototype.jsx     Self-contained interactive prototype
-│   │   └── experiments/                Isolated experiments — not imported by production layers
-│   │       └── RippleEffectOnPink.jsx
+│   │   ├── sections/
+│   │   │   └── AboutContent.astro      Full about page content
+│   │   ├── layout/
+│   │   │   ├── Navbar.astro            Fixed header, nav links, theme toggle
+│   │   │   ├── Footer.astro            CTA + email copy + sitemap link
+│   │   │   └── Container.astro         Max-width wrapper (lg/md/sm)
+│   │   ├── ui/
+│   │   │   ├── WorkEntry.astro         Project card (LaptopFrame, VideoGrid, or ImageGrid)
+│   │   │   ├── LazyVideo.astro         IntersectionObserver lazy loader for videos
+│   │   │   ├── Badge.astro             Metadata tag
+│   │   │   └── Button.astro            Polymorphic button/link (primary/secondary/tertiary/link)
+│   │   └── case-study/
+│   │       ├── CaseStudy.astro         Full case study renderer
+│   │       └── SystemMap.astro         System architecture flowchart (APM only)
 │   ├── data/
-│   │   └── projects.js         All project content and case study data
-│   ├── hooks/
-│   │   └── useTheme.js
+│   │   └── projects.js                 All project content and case study data
 │   ├── layouts/
-│   │   └── Layout.astro        HTML shell — head, meta, fonts, OG tags
-│   ├── assets/                 Static assets imported by components (e.g. react.svg)
-│   ├── stories/                Storybook stories and MDX docs (not deployed)
+│   │   └── Layout.astro                HTML shell: head, meta, OG, fonts, Navbar, Footer, scripts
 │   └── styles/
-│       └── globals.css         Tokens + composition classes
+│       └── globals.css                 Tokens, type classes, animations, scrollbar
 ├── public/
-│   ├── fonts/                  Self-hosted: Areal, Ogg (trial)
-│   ├── images/                 Static assets (videos gitignored)
+│   ├── fonts/                          Self-hosted: Cabinet Grotesk, Areal, Ogg (trial)
+│   ├── images/                         Static assets (videos gitignored)
 │   └── RobJonesResume.pdf
-├── vector/                     Investiture research artifacts
+├── .reference/
+│   ├── stories/                        Old Storybook stories (patterns for reference)
+│   └── design-system-docs/             Old MDX docs (Color, Typography, Spacing, etc.)
+├── vector/                             Investiture research artifacts
 │   ├── audits/
 │   ├── decisions/
 │   ├── research/
-│   └── schemas/                Investiture JSON schema definitions
-├── VECTOR.md                   Project doctrine
-├── CLAUDE.md                   Agent briefing + component reference
-├── ARCHITECTURE.md             This file
+│   └── schemas/                        Investiture JSON schema definitions
+├── VECTOR.md                           Project doctrine
+├── CLAUDE.md                           Agent briefing + component reference
+├── ARCHITECTURE.md                     This file
+├── HANDOFF.md                          Session handoff notes
+├── HEURISTICS.md                       Nielsen's 10 heuristic evaluation reference
 ├── astro.config.mjs
 ├── tailwind.config.js
 └── package.json
@@ -134,11 +120,12 @@ portfolio/
 
 ## Naming Conventions
 
-- **Components:** PascalCase, `.jsx` — `WorkEntry.jsx`, `CaseStudy.jsx`
-- **Hooks:** camelCase, `.js` — `useTheme.js`
-- **Data files:** camelCase, `.js` — `projects.js`
-- **Astro pages:** kebab-case or bracket notation — `[slug].astro`
-- **CSS classes:** Tailwind utilities + composition classes prefixed `type-` — `type-body`, `type-display-lg`
+| File type | Casing | Example |
+|-----------|--------|---------|
+| Astro components | PascalCase, `.astro` | `WorkEntry.astro`, `CaseStudy.astro` |
+| Astro pages | kebab-case or bracket notation, `.astro` | `design-system.astro`, `[slug].astro` |
+| Data files | camelCase, `.js` | `projects.js` |
+| CSS classes | Tailwind utilities + composition classes prefixed `type-` | `type-body`, `type-display-lg` |
 
 ---
 
@@ -154,10 +141,10 @@ All color tokens defined on `:root` and `.dark` in `globals.css`. Never hardcode
 --accent-hover, --accent-bg-10, --accent-ring
 
 /* Component tokens */
---hover-overlay   (tertiary button hover — flips light/dark via .dark)
+--hover-overlay   (tertiary button hover, flips light/dark via .dark)
 --shadow-button   (primary button shadow)
 
-/* Laptop mockup — intentionally theme-independent hardware colors */
+/* Laptop mockup, intentionally theme-independent hardware colors */
 --laptop-bezel, --laptop-border, --laptop-camera, --laptop-shadow
 ```
 
@@ -165,51 +152,58 @@ All color tokens defined on `:root` and `.dark` in `globals.css`. Never hardcode
 `text-fg`, `text-fg-secondary`, `text-brand-primary`, `bg-brand-primary`, `text-on-accent`, `bg-surface`, `bg-subtle`, `border-token`
 
 ### Type Composition Classes
-Defined in `@layer components` in `globals.css`. Use plain CSS — not `@apply` (fails with fontSize tokens in PostCSS).
+Defined in `@layer components` in `globals.css`. Use plain CSS, not `@apply` (fails with fontSize tokens in PostCSS).
 
 ```
 type-display-2xl  type-display-xl  type-display-lg  type-display-md  type-display-sm
-type-body  type-label  type-link  type-badge  type-nav-link
+type-body  type-intro  type-label  type-link  type-badge  type-nav-link
 ```
 
 ### Spacing
-4px/8px grid. Standard Tailwind numeric scale (`gap-6`, `p-8`). Custom `space-*` tokens defined in `tailwind.config.js` DO NOT generate JIT classes — do not use `gap-space-4`.
+4px/8px grid. Standard Tailwind numeric scale (`gap-6`, `p-8`). Custom `space-*` tokens defined in `tailwind.config.js` DO NOT generate JIT classes. Do not use `gap-space-4`.
 
 ---
 
 ## Animation Architecture
 
-### Rule: `m` vs `motion`
-- **`m`** — lightweight stub, requires `LazyMotion` provider above it in the tree. Use in section and feature components.
-- **`motion`** (imported as `motion as m`) — self-contained, no provider needed. Use in `Navbar`, `Footer`, `ThemeToggle`.
+All animations are CSS. No JS animation libraries.
+
+### Scroll Animations (`globals.css`)
+- `data-animate` — fade-up (opacity 0 to 1 + translateY 16px to 0), triggered by IntersectionObserver
+- `data-animate-y` — translateY only, no opacity change. **Use on headings** so VoiceOver always finds them
+- `data-animate-delay="1|2|3|4"` — stagger via `transition-delay`
+- `.visible` class added by scroll observer when element enters viewport
+
+### Hero Entrance (scoped in `index.astro`)
+- `.hero-headline` / `.hero-subtext` — CSS `@keyframes hero-in` with staggered delays
+
+### Page Transitions
+- Astro `<ClientRouter />` with CSS `::view-transition-old/new(root)` keyframes
+
+### Navbar
+- CSS `@keyframes navbar-enter` on `.navbar-header`
+
+### Reduced Motion
+- `@media (prefers-reduced-motion: reduce)` disables all animations
 
 ### Rule: Never hide headings
-Never set `initial={{ opacity: 0 }}` on an element that contains a heading. VoiceOver quick nav cannot find headings inside invisible elements.
-
-Pattern: animate `y` on outer wrapper, fade opacity on inner div so heading is always in DOM at full opacity.
-
-### Rule: No global stagger on whileInView
-Each section animates independently with its own `whileInView`. A global stagger parent causes all content to depend on a single viewport trigger, creating hectic loading behavior.
-
-### `LazyMotion` ownership
-Page components (`pages/`) own the `LazyMotion` + `MotionConfig reducedMotion="user"` wrapper. Layout components (`layout/`) use `motion` directly and are self-contained.
+Never set `opacity: 0` on an element that contains a heading. VoiceOver quick nav cannot find headings inside invisible elements. Use `data-animate-y` (translateY only) on heading containers.
 
 ---
 
-## State Management
+## Theme System
 
-No global state library. State is local to components:
-- `useTheme` hook — reads/writes `localStorage` + applies `.dark` class to `<html>`
-- Passed as props: `theme` and `toggleTheme` from page component down to `Navbar` and `ThemeToggle`
-- No Context, no Redux, no Zustand
+- `Layout.astro` inline `<script is:inline>` reads localStorage/system preference, sets `.dark` before paint (FOUC prevention)
+- `Navbar.astro` `<script>` binds click on `[data-theme-toggle]`, toggles `.dark` class + localStorage
+- `astro:after-swap` event restores theme after ViewTransitions navigation
+- System preference change listener in `Layout.astro`
+- CSS variables in `globals.css` swap via `.dark` class on `<html>`
 
 ---
 
 ## Data Architecture
 
 All project content lives in `src/data/projects.js` as a single exported array. Components import and render from this array. No content in component files.
-
-Case study fields: `slug`, `title`, `company`, `year`, `tags`, `headline`, `description`, `outcomes`, `intro`, `orientationNote`, `processMedia`, `keyInsight`, `designDecisions`, `reflection`, `ugaContent`, `metaProblem`, `role`, `duration`.
 
 See `CLAUDE.md` for full field reference.
 
@@ -219,23 +213,21 @@ See `CLAUDE.md` for full field reference.
 
 1. **No hardcoded colors.** Use CSS custom properties (`var(--accent)`) or Tailwind token classes (`text-brand-primary`). Never `#813746` in a component.
 
-2. **No content in components.** All copy lives in `src/data/projects.js`. Components render data — they do not contain it.
+2. **No content in components.** All copy lives in `src/data/projects.js`. Components render data, they do not contain it.
 
-3. **No `initial={{ opacity: 0 }}` on heading containers.** Breaks VoiceOver quick nav. Animate `y` on the outer wrapper instead.
+3. **No `opacity: 0` on heading containers.** Breaks VoiceOver quick nav. Use `data-animate-y` (translateY only) on elements containing headings.
 
-4. **No global stagger parent on `whileInView` content.** Each section gets its own `whileInView`. See Animation Architecture above.
+4. **No `@apply` with fontSize tokens.** PostCSS cannot resolve custom `fontSize` tokens in `@apply` inside `@layer components`. Write plain CSS instead.
 
-5. **No `m` in layout components.** `Navbar`, `Footer`, and `ThemeToggle` use `motion as m` — they must be self-contained without a `LazyMotion` provider.
+5. **No `gap-space-*` Tailwind classes.** Custom spacing tokens do not generate JIT classes. Use standard numeric scale (`gap-6`) or inline CSS.
 
-6. **No `@apply` with fontSize tokens.** PostCSS cannot resolve custom `fontSize` tokens in `@apply` inside `@layer components`. Write plain CSS instead.
-
-7. **No `gap-space-*` Tailwind classes.** Custom spacing tokens do not generate JIT classes. Use standard numeric scale (`gap-6`) or inline CSS.
+6. **No framework JavaScript.** No React, no Svelte, no client-side hydration. All interactivity is vanilla JS in `<script>` tags.
 
 ---
 
 ## Development
 
-- **Dev server:** `npm run dev` → `http://127.0.0.1:4321` (use 127.0.0.1 — localhost has IPv6 lag on macOS)
+- **Dev server:** `npm run dev` → `http://127.0.0.1:4321` (use 127.0.0.1, localhost has IPv6 lag on macOS)
 - **Cache issues:** `rm -rf .astro node_modules/.vite` then restart
 - **Production preview:** `npm run build && npx astro preview`
 - **Deploy:** Push to `main` → Vercel auto-builds

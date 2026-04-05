@@ -35,7 +35,7 @@ Claude does not add features, refactor unprompted, or make "improvements" beyond
 
 A personal portfolio site for Rob Jones, a Product Designer with 4+ years of experience across enterprise SaaS (Honeywell) and early-stage startups. The site presents case studies, a resume, and contact information to hiring managers, recruiters, and product teams considering Rob for mid-level product design roles.
 
-The site is also a demonstration of technical capability — Rob built it himself using Astro, React, Framer Motion, and Tailwind, which is uncommon for a product designer and worth noting.
+The site is also a demonstration of technical capability. Rob built it himself using Astro and Tailwind, which is uncommon for a product designer and worth noting.
 
 ---
 
@@ -55,7 +55,7 @@ The site is also a demonstration of technical capability — Rob built it himsel
 
 Rob's work is research-driven, systems-aware, and ships. The portfolio demonstrates:
 - Primary research ownership (screeners, moderated sessions, affinity mapping)
-- End-to-end product design (0→1 and enterprise SaaS)
+- End-to-end product design (0-to-1 and enterprise SaaS)
 - Architectural and systems thinking beyond typical designer scope
 - Real outcomes (SUS scores, views, funding rounds, acquisitions)
 
@@ -122,7 +122,7 @@ Rob's work is research-driven, systems-aware, and ships. The portfolio demonstra
 - No hardcoded colors outside CSS custom properties
 - Font sizes in `rem`, not `px`
 - All copy reviewed for em dashes, AI-sounding phrasing, and passive voice before shipping
-- Case study copy reviewed against interview notes in `memory/interviews.md` for accuracy
+- Case study copy reviewed against interview notes in `vector/research/interviews/INTERVIEW-001-all-projects.md` for accuracy
 - Security headers configured in `vercel.json` (CSP, X-Frame-Options, nosniff, referrer policy)
 
 ---

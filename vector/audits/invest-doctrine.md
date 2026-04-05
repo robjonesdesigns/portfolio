@@ -1,51 +1,36 @@
 ## Doctrine Audit
 
 **Files audited:** VECTOR.md, CLAUDE.md, ARCHITECTURE.md
-**Run date:** 2026-03-21
-**Project stage:** development
+**Run date:** 2026-04-05 (pass 3)
+**Project stage:** development (since 2026-02-28)
 
 ---
 
 ### Findings
 
-#### STRUCTURE — medium
+#### GAP -- low
 
-- `src/components/experiments/` exists on disk and contains `RippleEffectOnPink.jsx` but is not declared in ARCHITECTURE.md's layer map or structure tree. Its layer purpose (isolated experiments, not shipped) is undocumented.
-- `src/pages/keytrn-prototype.astro` and `src/pages/rippleeffectonpink.astro` exist on disk and resolve as live routes but are not declared in ARCHITECTURE.md's routing section.
-- `src/components/ui/NoHero.jsx` and `src/components/ui/PracticeHero.jsx` exist on disk but are not declared in ARCHITECTURE.md or CLAUDE.md's component reference.
-- `src/stories/` exists on disk with Storybook story and MDX files but is not declared in ARCHITECTURE.md's project structure tree. (Storybook is listed in the stack table but the directory itself is undocumented.)
-
-#### STRUCTURE — low
-
-- `src/assets/` exists on disk but is not declared in ARCHITECTURE.md's project structure tree.
-- `src/components/ui/Cursor.stories.jsx` is an orphaned story file. `Cursor.jsx` was deleted; the story was not.
-- `vector/schemas/` exists on disk (Investiture JSON schemas) but is not referenced in VECTOR.md's Research Status table or ARCHITECTURE.md's layer map.
-
-#### GAP — low
-
-- `VECTOR.md:research-status` references `~/.claude/projects/.../memory/interviews.md`, a path outside the project directory. `vector/research/interviews/` is empty. Research artifacts live in Claude memory, not in the declared knowledge system. The reference does not resolve within the project.
-- `ARCHITECTURE.md:naming` declares conventions for `.jsx`, `.js`, and route `.astro` files but does not cover `.astro` files in `src/layouts/`.
+- `CLAUDE.md:design-tokens` table documents 8 core color variables. `globals.css` defines additional undocumented tokens: `--border-strong`, `--grad-from/to`, `--media-bg/border`, `--card-bg-apm/keytrn`. Not blocking but invest-architecture cannot check these tokens without declaration.
+- `VECTOR.md` has no Key Assumptions or Open Questions sections. Expected for a mature development-stage project, but their absence means no documented hypothesis tracking.
 
 #### INFO
 
-- `vector/research/personas/`, `jtbd/`, `competitive/`, and `assumptions/` are all empty. Expected at this project stage.
-- `vector/audits/invest-backfill.md` describes spacing tokens as "space-1=4px → space-9=128px". Actual tokens use semantic names (`space-xs` through `space-5xl`). The codebase and live CLAUDE.md are correct; the backfill artifact is stale.
+- `vector/research/personas/`, `jtbd/`, `competitive/`, `assumptions/` contain JSON files but no markdown summaries. Expected at this project stage.
+- `.reference/` correctly documented as old Storybook reference files, not part of build.
 
 ---
 
 ### Summary
 
-- Critical: 0 | High: 0 | Medium: 4 | Low: 5 | Info: 2
-- Doctrine health: **GAPS FOUND**
+- Critical: 0 | High: 0 | Medium: 0 | Low: 2 | Info: 2
+- Doctrine health: **SOUND**
 
-VECTOR.md and CLAUDE.md are sound. ARCHITECTURE.md has drifted from the actual codebase: the experiments layer, two prototype pages, and two UI components exist on disk without doctrine coverage. Research knowledge is split between Claude memory and the `vector/` system, so the declared research paths don't resolve within the project.
+All three doctrine files are present, internally consistent, and aligned with each other and the codebase. The ARCHITECTURE.md rewrite, token drift fixes, CLAUDE.md doctrine line correction, tailwind.config.js comment/alias updates, and content glob cleanup resolved all previous high and medium findings. The `src/` layer matches the declared structure exactly. Remaining findings are documentation coverage gaps, not contradictions.
 
 ---
 
 ### Recommended Actions
 
-1. **Declare `src/components/experiments/` in ARCHITECTURE.md** as a layer with an explicit rule: experimental components only, not imported by any production layer. Add `keytrn-prototype.astro` and `rippleeffectonpink.astro` to the routing section with a note that they are non-production routes.
+1. **Document additional CSS tokens in CLAUDE.md** when they are next modified. The media-card, gradient, and card-bg tokens are functional but invisible to doctrine audits.
 
-2. **Resolve `NoHero.jsx` and `PracticeHero.jsx`** — decide whether they are permanent components (declare in ARCHITECTURE.md and CLAUDE.md) or experimental leftovers (move to `experiments/` or delete). Undeclared components in `ui/` are invisible to architecture audits.
-
-3. **Update `VECTOR.md:research-status`** — point the interviews row to `memory/interviews.md` with a note that it lives in Claude's project memory, or copy the content into `vector/research/interviews/` so the declared path resolves. Either is correct; the current mismatch is not.
+2. **Add Key Assumptions and Open Questions to VECTOR.md** if the project enters a new phase or pivot. Not urgent for current scope.

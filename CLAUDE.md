@@ -6,7 +6,7 @@ Rob Jones. Product Designer. This is a personal portfolio site.
 **Dev server:** `npm run dev` → `http://localhost:4321/` (falls back to 4322, 4323 if port is in use)
 **Stack:** Astro 6 (SSG) + Tailwind CSS v3.4 — zero React, zero Framer Motion, zero client-side frameworks
 
-**Doctrine:** `VECTOR.md`, `HANDOFF.md`, `HEURISTICS.md` (Nielsen's 10 heuristic evaluation reference)
+**Doctrine:** `VECTOR.md`, `ARCHITECTURE.md`, `HANDOFF.md`, `HEURISTICS.md` (Nielsen's 10 heuristic evaluation reference)
 
 ---
 
@@ -56,10 +56,10 @@ All animations are CSS. No JS animation libraries.
 | Variable | Light | Dark |
 |---|---|---|
 | `--bg` | `#fffbf5` (cream) | `#1c1a16` |
-| `--fg` | `#222222` | `#fffbf5` |
+| `--fg` | `#1c1a16` | `#fffbf5` |
 | `--accent` | `#813746` (burgundy) | `#e36f86` (rose) |
 | `--on-accent` | `#fffbf5` | `#1c1a16` |
-| `--surface` | `#f7f3f5` | `#252220` |
+| `--surface` | `#f5f0e8` | `#28251f` |
 | `--border` | `rgba(92,82,80,0.1)` | `rgba(176,168,158,0.1)` |
 | `--fg-secondary` | `#6e6562` | `#c2bab0` |
 | `--bg-subtle` | `#fdf8f2` | `#201e1a` |
@@ -145,7 +145,8 @@ src/
 │   │   ├── Badge.astro           Metadata tag
 │   │   └── Button.astro          Polymorphic button/link (primary/secondary/tertiary/link)
 │   └── case-study/
-│       └── CaseStudy.astro       Full case study renderer
+│       ├── CaseStudy.astro       Full case study renderer
+│       └── SystemMap.astro       System architecture flowchart (APM only)
 ├── data/
 │   └── projects.js               All project content and case study data
 ├── pages/                         Astro file-based SSG routes
@@ -153,6 +154,8 @@ src/
 │   ├── about.astro
 │   ├── resume.astro
 │   ├── sitemap.astro
+│   ├── design-system.astro         Style guide
+│   ├── 404.astro                   Custom error page
 │   └── projects/
 │       └── [slug].astro          Dynamic case study route
 ├── layouts/
@@ -179,7 +182,9 @@ Astro file-based SSG routing with `<ClientRouter />` (ViewTransitions).
 /about             → about.astro → AboutContent.astro
 /resume            → resume.astro → inline resume content
 /sitemap           → sitemap.astro → inline sitemap
+/design-system     → design-system.astro → style guide
 /projects/:slug    → projects/[slug].astro → CaseStudy.astro
+/404               → 404.astro → custom error page
 ```
 
 All pages are pure Astro. Zero client-side hydration. Layout.astro handles all `<head>`, Navbar, Footer, and shared scripts.
