@@ -10,7 +10,7 @@ export const projects = [
     headline: 'A two-sided PA tax sale platform with AI for counties and homebuyers',
     description: 'Called 20+ county offices to understand tax sale workflows, then designed and built both sides of the platform: a consumer app with live data and an AI assistant, plus a government portal where clerks drop in a photo of their paper list and the system extracts the listings. Sole designer and engineer.',
     outcomes: [
-      'Two-sided platform: consumer app + government portal with 240+ live listings.',
+      'Two-sided platform: consumer app + government portal with live listings.',
       'Ask Key: AI assistant on every page, both sides.',
       'OCR upload: photo in, structured data out.',
     ],
@@ -145,7 +145,7 @@ export const projects = [
     // UGA Business Law Clinic — entity structure, IP, equity agreements
     // Add content here once documents are reviewed
     ugaContent: 'I didn\'t know whether this should be a non-profit or a for-profit. The portal felt like a public good. The consumer app needed revenue. I took the whole question to UGA\'s Business Law Clinic: entity type, IP ownership, equity structure. They said LLC, protect the IP early, get equity on paper. That gave the project a legal foundation it didn\'t have before.',
-    outcome: 'Designed both sides of the platform and built the consumer app with live data from a statewide scraper. 240+ active listings with geocoding, Street View imagery, and sale type classification. Created a full design token system with zero hardcoded values for handoff. Research across 20+ municipalities produced the outreach playbook for the first county pilot.',
+    outcome: 'Designed both sides of the platform and built the consumer app with live data from a statewide scraper. Active listings with geocoding, Street View imagery, and sale type classification. Created a full design token system with zero hardcoded values for handoff. Research across 20+ municipalities produced the outreach playbook for the first county pilot.',
     metaProblem: 'Homebuyers had nothing. Counties had no way to reach them. Both sides needed a product that didn\'t exist.',
     role: 'Co-founder, Design + Engineering',
     duration: '5 months',
