@@ -145,7 +145,7 @@ const next = projects[(idx + 1) % projects.length]
 
         {/* Process media — with optional section labels and key insight */}
         {project.processMedia?.map((item: any) => (
-          <>
+          <div class={`flex flex-col ${(item.label || item.video || item.image || item.videoGrid || item.caption || item.conversations) ? 'gap-12' : 'gap-6'}`}>
             {item.beforeAfter ? (
               <div data-animate>
                 <h3 class="type-display-sm mb-5">{item.label}</h3>
@@ -162,32 +162,53 @@ const next = projects[(idx + 1) % projects.length]
                   </div>
                 </div>
                 {item.caption && (
-                  <p class="type-body leading-relaxed max-w-3xl mt-2">{item.caption}</p>
+                  <p class="type-body leading-relaxed max-w-3xl mt-2" style="color: var(--fg-secondary);" set:html={item.caption}></p>
                 )}
               </div>
             ) : item.sectionLabel ? (
               <div class="flex flex-col gap-3">
                 <h2 class="type-display-md" data-animate-y>{item.sectionLabel}</h2>
-                <div data-animate>
-                  {(item.video || item.image) && (
-                    <div class="media-card">
-                      {item.video ? (
-                        <LazyVideo src={item.video} style="width: 100%; display: block;" />
-                      ) : (
-                        <img src={item.image} alt={item.label || ''} style="width: 100%; display: block;" loading="lazy" />
-                      )}
-                    </div>
-                  )}
-                  {item.caption && (
-                    <p class={`type-body leading-relaxed max-w-3xl ${(item.video || item.image) ? 'mt-2' : ''}`}>{item.caption}</p>
-                  )}
-                </div>
+                {(item.label || item.video || item.image || item.videoGrid || item.caption) && (
+                  <div data-animate>
+                    {item.label && (
+                      <p class="type-label mb-3">{item.label}</p>
+                    )}
+                    {item.videoGrid && item.videoGrid.length > 0 ? (
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+                        {item.videoGrid.map((src: string) => (
+                          <div class="media-card">
+                            <LazyVideo src={src} style="width: 100%; display: block;" />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (item.video || item.image) && (
+                      <div class="media-card max-w-2xl">
+                        {item.video ? (
+                          <LazyVideo src={item.video} style="width: 100%; display: block;" />
+                        ) : (
+                          <img src={item.image} alt={item.label || ''} style="width: 100%; display: block;" loading="lazy" />
+                        )}
+                      </div>
+                    )}
+                    {item.caption && (
+                      <p class={`type-body leading-relaxed max-w-3xl ${(item.video || item.image || item.videoGrid) ? 'mt-2' : ''}`} style="color: var(--fg-secondary);" set:html={item.caption}></p>
+                    )}
+                  </div>
+                )}
               </div>
             ) : (
               <div data-animate>
                 <h3 class="type-display-sm mb-5">{item.label}</h3>
-                {(item.video || item.image) && (
-                  <div class="media-card">
+                {item.videoGrid && item.videoGrid.length > 0 ? (
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+                    {item.videoGrid.map((src: string) => (
+                      <div class="media-card" style="aspect-ratio: 9/16;">
+                        <LazyVideo src={src} style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+                      </div>
+                    ))}
+                  </div>
+                ) : (item.video || item.image) && (
+                  <div class="media-card max-w-2xl">
                     {item.video ? (
                       <LazyVideo src={item.video} style="width: 100%; display: block;" />
                     ) : (
@@ -196,18 +217,18 @@ const next = projects[(idx + 1) % projects.length]
                   </div>
                 )}
                 {item.caption && (
-                  <p class={`type-body leading-relaxed max-w-3xl ${(item.video || item.image) ? 'mt-2' : ''}`}>{item.caption}</p>
+                  <p class={`type-body leading-relaxed max-w-3xl ${(item.video || item.image || item.videoGrid) ? 'mt-2' : ''}`} style="color: var(--fg-secondary);" set:html={item.caption}></p>
                 )}
               </div>
             )}
 
             {/* Research conversations -- Q&A cards with quote styling */}
             {item.conversations && item.conversations.length > 0 && (
-              <div class="flex flex-col gap-6 mt-8" data-animate>
+              <div class="flex flex-col gap-6" data-animate>
                 <span class="type-label">From the calls</span>
                 <div class="flex flex-col gap-6 max-w-2xl">
-                  {item.conversations.map((c: any) => (
-                    <div class="flex flex-col gap-3">
+                  {item.conversations.map((c: any, i: number) => (
+                    <div class={`flex flex-col gap-3 ${i > 0 ? 'pt-6 border-t border-token' : ''}`}>
                       {/* Question card (me) */}
                       <div class="quote-card quote-card--question">
                         <span class="type-label" style="font-size: 10px;">Me</span>
@@ -227,10 +248,35 @@ const next = projects[(idx + 1) % projects.length]
               </div>
             )}
 
+            {/* Inline design decision — editorial hero treatment */}
+            {item.decision && (
+              <div class="flex flex-col gap-6 max-w-3xl" data-animate>
+                {item.decision.problem && (
+                  <p class="type-body leading-relaxed m-0">{item.decision.problem}</p>
+                )}
+                {item.decision.headline && (
+                  <div class="py-6" style="border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent);">
+                    <p class="type-display-sm m-0" style="color: var(--accent); font-weight: 600; line-height: 1.3;">{item.decision.headline}</p>
+                  </div>
+                )}
+                {item.decision.decision && !item.decision.headline && (
+                  <div class="py-6" style="border-top: 1px solid var(--accent); border-bottom: 1px solid var(--accent);">
+                    <p class="type-display-sm m-0" style="color: var(--accent); font-weight: 600; line-height: 1.3;">{item.decision.decision}</p>
+                  </div>
+                )}
+                {item.decision.decision && item.decision.headline && (
+                  <p class="type-body leading-relaxed m-0">{item.decision.decision}</p>
+                )}
+                {item.decision.why && (
+                  <p class="type-body leading-relaxed m-0">{item.decision.why}</p>
+                )}
+              </div>
+            )}
+
             {/* Key insight callout */}
             {item.followedByInsight && project.keyInsight && (
               <div
-                class="flex flex-col gap-5 py-4 mt-8"
+                class="flex flex-col gap-5 py-4 mt-2"
                 style="border-left: 4px solid var(--accent); padding-left: 2rem;"
                 data-animate
               >
@@ -238,7 +284,7 @@ const next = projects[(idx + 1) % projects.length]
                 <p class="type-intro leading-relaxed max-w-2xl">{project.keyInsight}</p>
               </div>
             )}
-          </>
+          </div>
         ))}
 
 
