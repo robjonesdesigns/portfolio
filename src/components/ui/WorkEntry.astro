@@ -105,7 +105,7 @@ const restImages = hasImages && validImages.length > 2 ? validImages.slice(1) : 
       {/* ImageGrid — 1 image */}
       {hasImages && imageCount === 1 && (
         <div class="w-full" style="aspect-ratio: 16/9;">
-          <img src={firstImage} alt="" class="w-full h-full object-cover rounded-sm" />
+          <img src={firstImage} alt={`${company} project screenshot`} class="w-full h-full object-cover rounded-sm" />
         </div>
       )}
 
@@ -114,7 +114,7 @@ const restImages = hasImages && validImages.length > 2 ? validImages.slice(1) : 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {validImages.map((src: string) => (
             <div style="aspect-ratio: 4/3;">
-              <img src={src} alt="" class="w-full h-full object-cover rounded-sm" />
+              <img src={src} alt={`${company} project screenshot`} class="w-full h-full object-cover rounded-sm" />
             </div>
           ))}
         </div>
@@ -124,12 +124,12 @@ const restImages = hasImages && validImages.length > 2 ? validImages.slice(1) : 
       {hasImages && imageCount >= 3 && (
         <div class="flex flex-col gap-3">
           <div style="aspect-ratio: 16/9;">
-            <img src={firstImage} alt="" class="w-full h-full object-cover rounded-sm" />
+            <img src={firstImage} alt={`${company} project screenshot`} class="w-full h-full object-cover rounded-sm" />
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {restImages.map((src: string) => (
               <div style="aspect-ratio: 4/3;">
-                <img src={src} alt="" class="w-full h-full object-cover rounded-sm" />
+                <img src={src} alt={`${company} project screenshot`} class="w-full h-full object-cover rounded-sm" />
               </div>
             ))}
           </div>
