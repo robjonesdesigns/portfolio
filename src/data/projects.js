@@ -120,10 +120,10 @@ export const projects = [
           'https://res.cloudinary.com/dlqvgithx/video/upload/f_mp4,q_auto/portfolio/keytrn-government-ai',
         ],
         decision: {
-          problem: 'Both sides had questions. First-time homebuyers didn\'t understand sale types, liens, or redemption periods, so they clicked away or called the county. Clerks reported spending 2+ hours per day answering the same five buyer questions. Static educational content didn\'t solve either side.',
+          problem: 'Both sides had questions. First-time homebuyers didn\'t understand sale types, liens, or redemption periods, so they clicked away or called the county. Clerks reported spending two hours a day answering the same three buyer questions: is the sale still on, are there liens, and how much do I need to bring. Static educational content didn\'t solve either side.',
           headline: 'Give both sides an expert.',
           decision: 'Built Ask Key: an AI assistant on every page. Claude Haiku via Astro server routes, trained on PA tax sale law. On consumer, it knows the property you\'re looking at. On portal, it knows the upload workflow. Guardrails so it doesn\'t hallucinate. Name pulled from Keytrn, friendly and on-brand. Gradient CTA so people see it without an annoying popup.',
-          why: 'Both sides are people with questions. Give both sides the same tool. Buyers get an expert they couldn\'t otherwise afford. Clerks stop fielding the same five questions forty times a week, and can cross-reference other counties when they don\'t know something. The pitch to counties turns into "use our portal and your call volume drops." Guardrails keep it real, not hallucinated.',
+          why: 'Both sides are people with questions. Give both sides the same tool. Buyers get an expert they couldn\'t otherwise afford. Clerks stop fielding the same three questions forty times a week, and can cross-reference other counties when they don\'t know something. The pitch to counties turns into "use our portal and your call volume drops." Guardrails keep it real, not hallucinated.',
         },
       },
     ],
