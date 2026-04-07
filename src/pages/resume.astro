@@ -65,6 +65,20 @@ const skills = [
   description="Resume of Rob Jones - UX Designer for enterprise SaaS and product builder for early-stage founders. Available for new roles."
   canonical="/resume"
 >
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Rob Jones",
+      "jobTitle": "Product Designer",
+      "url": "https://designedbyrob.com",
+      "sameAs": ["https://linkedin.com/in/robjonesdesigns"],
+      "hasOccupation": [
+        { "@type": "Occupation", "name": "UX Designer", "occupationalCategory": "27-1024.00" },
+      ]
+    }
+  })} />
   {/* Hero */}
   <div class="relative z-10 pt-28 md:pt-36 pb-20 shadow-section-down">
     <Container>
