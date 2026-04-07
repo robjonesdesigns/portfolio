@@ -1,36 +1,40 @@
 ## Doctrine Audit
 
 **Files audited:** VECTOR.md, CLAUDE.md, ARCHITECTURE.md
-**Run date:** 2026-04-05 (pass 3)
-**Project stage:** development (since 2026-02-28)
+**Run date:** 2026-04-07 (session 25)
+**Project stage:** development
 
 ---
 
 ### Findings
 
-#### GAP -- low
+#### DRIFT — medium
 
-- `CLAUDE.md:design-tokens` table documents 8 core color variables. `globals.css` defines additional undocumented tokens: `--border-strong`, `--grad-from/to`, `--media-bg/border`, `--card-bg-apm/keytrn`. Not blocking but invest-architecture cannot check these tokens without declaration.
-- `VECTOR.md` has no Key Assumptions or Open Questions sections. Expected for a mature development-stage project, but their absence means no documented hypothesis tracking.
+- `CLAUDE.md:37-41` describes scroll animation as `.js-ready [data-animate] { opacity: 0 }` with `.visible` class. Codebase now uses `.will-animate` class for hiding and `.visible` for revealing (progressive enhancement flip). CLAUDE.md does not document `.will-animate`.
+- `CLAUDE.md:214` documents `processMedia` fields but does not include `sectionBreak`, `systemMap`, or inline `decision` as processMedia item properties. These are actively used in the APM case study.
+- `CLAUDE.md:122-129` type composition table does not include `type-meta` or `type-meta-bold`, which exist in globals.css and are used for metadata labels across WorkEntry, CaseStudy, and resume.
+- `CLAUDE.md:208` says `images` array accepts "null slots ok." Data was cleaned to `images: []`. Null slots no longer expected.
+- `ARCHITECTURE.md:172-175` describes scroll animation as `data-animate` with opacity 0 triggered by IntersectionObserver. Does not mention `.will-animate` progressive enhancement pattern.
 
-#### INFO
+#### GAP — low
 
-- `vector/research/personas/`, `jtbd/`, `competitive/`, `assumptions/` contain JSON files but no markdown summaries. Expected at this project stage.
-- `.reference/` correctly documented as old Storybook reference files, not part of build.
+- `CLAUDE.md` processMedia field reference missing: `sectionBreak` (boolean, renders h2 header with optional caption), `systemMap` (boolean, renders SystemMap component), inline `decision` on processMedia items (editorial decision block within flow).
+- `CLAUDE.md` does not document additional CSS tokens noted in previous audit: `--border-strong`, `--grad-from/to`, `--media-bg/border`, `--card-bg-apm/keytrn`.
+- `VECTOR.md` has no Key Assumptions or Open Questions sections.
 
 ---
 
 ### Summary
 
-- Critical: 0 | High: 0 | Medium: 0 | Low: 2 | Info: 2
-- Doctrine health: **SOUND**
+- Critical: 0 | High: 0 | Medium: 5 | Low: 3 | Info: 0
+- Doctrine health: **GAPS FOUND**
 
-All three doctrine files are present, internally consistent, and aligned with each other and the codebase. The ARCHITECTURE.md rewrite, token drift fixes, CLAUDE.md doctrine line correction, tailwind.config.js comment/alias updates, and content glob cleanup resolved all previous high and medium findings. The `src/` layer matches the declared structure exactly. Remaining findings are documentation coverage gaps, not contradictions.
+No contradictions between files. No structure mismatches with disk. All declared directories exist. All files on disk are declared. The findings are documentation drift from session 25 changes (animation rewrite, processMedia extensions, type class additions). The codebase is ahead of the doctrine.
 
 ---
 
 ### Recommended Actions
 
-1. **Document additional CSS tokens in CLAUDE.md** when they are next modified. The media-card, gradient, and card-bg tokens are functional but invisible to doctrine audits.
-
-2. **Add Key Assumptions and Open Questions to VECTOR.md** if the project enters a new phase or pivot. Not urgent for current scope.
+1. **Update CLAUDE.md animation docs (lines 37-41)** to describe `.will-animate` progressive enhancement: elements start visible, observer adds `.will-animate` to hide below-fold, `.visible` to reveal on scroll. Update ARCHITECTURE.md lines 172-175 to match.
+2. **Update CLAUDE.md processMedia field reference (lines 214-221)** to include `sectionBreak`, `systemMap`, inline `decision`, and remove "null slots ok" from `images`.
+3. **Add `type-meta` and `type-meta-bold` to CLAUDE.md type composition table (lines 122-129)** with values: 14px fixed, line-height 1.5, fg-secondary/fg color, used for metadata labels.

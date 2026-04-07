@@ -171,7 +171,7 @@ export const projects = [
     intro: 'The last year I worked at Honeywell I was put on a new product introduction for what would become Honeywell APM. The legacy product was Asset Sentinel, built by engineers, heavy on data, light on usability. I was part of a team of three UX designers building for reliability and maintenance engineers at companies like Shell. The product had to consolidate fragmented workflows into one platform. I owned the two entry points: Asset Health, the first screen engineers see, and Asset Details, where they investigate a specific asset.',
     problem: 'Reliability engineers were juggling multiple tools to understand their plant. Checking one system for sensor data, another for work orders, another for trends. Tons of tabs, no single view. APM was supposed to bring all of that into one place: see, understand, triage, and maintain, in a structured flow. My challenge was figuring out how engineers actually think through that workflow. What are they looking at first, what patterns are they making sense of, where do they dive deeper, and at what point do they decide to take action and create a work order or open a case.',
     process: [
-      { type: 'paragraph', text: 'Three designers, no research budget. We started with desk research and independent exploration, then came together to compare. I owned the two entry points: Asset Health and Asset Details.' },
+      { type: 'paragraph', text: 'Three designers, no research budget. We started with desk research and independent exploration, then came together to compare.' },
       { type: 'paragraph', text: 'During sessions with PMs, engineers, and subject matter experts, I kept raising questions that needed real answers. That got us approved for research. We had a researcher but they got pulled onto another project early. I took over: screeners, interview guides, moderated sessions on UserTesting, affinity mapping in Miro after each round. I ran the research and the design iterations together, testing at every major milestone. SUS went from the low 70s to the high 80s.' },
     ],
     processMedia: [
@@ -184,10 +184,10 @@ export const projects = [
       {
         id: 'risk-matrix',
         decision: {
-          problem: 'The risk matrix was red across the board. High, medium, low, all the same hue at different weights. Color is semantic. A low priority asset going to routine maintenance shouldn\'t feel like an emergency. On top of that, clicking it filtered the data table below, but users didn\'t notice the table changed. A known issue from Warehouse Ops. Same pattern here.',
+          problem: 'The risk matrix was red across the board. High, medium, low, all the same hue at different weights. Color is semantic. A low priority asset going to routine maintenance shouldn\'t feel like an emergency. Clicking it also filtered the data table below, but users didn\'t notice the table changed. A known issue from Warehouse Ops. Same pattern here.',
           headline: 'Red means stop. Blue means routine. If the table changed, prove it.',
-          decision: 'Tested alternatives for each color. Orange for medium, carries caution without screaming. Yellow failed accessibility. Darker yellow looked like food poisoning. Blue tested well for low. People read it as calm and routine, which matched the meaning. For the interaction, pushed for a tooltip, a hover affordance, and auto-scroll to the table. Tooltip and affordance shipped. Scroll got rejected.',
-          why: 'Red, orange, blue. Three priorities, three meanings. Two out of three interaction fixes shipped. The scroll tested better but the constraint was valid.',
+          decision: 'I tested alternatives for each color. Orange for medium, carries caution without screaming. Yellow failed accessibility. Darker yellow looked like food poisoning. Blue tested well for low. People read it as calm and routine, which matched the meaning. For the interaction, pushed for a tooltip, a hover affordance, and auto-scroll to the table. Tooltip and affordance shipped. Scroll got rejected.',
+          why: 'Red, orange, blue. Three priorities, three meanings. Two out of three interaction fixes shipped. The scroll tested better but the tradeoff was real.',
         },
       },
       {
@@ -201,7 +201,7 @@ export const projects = [
         decision: {
           problem: 'My research supported tabs. Users valued scanning one domain at a time without interference from the others. Stakeholders wanted everything on one page so engineers could compare across domains. I advocated for tabs with user quotes and documented findings. The decision didn\'t move.',
           headline: 'They said one page. I made it work.',
-          decision: 'Redirected the design energy into a three-level modular structure: Reliability, Maintenance, and Performance as distinct visual zones on one surface. First card in each row filters the cards beside it. Run status got a full accessibility redesign: color, shape, and icon system with a legend to replace a visualization pulled from another platform.',
+          decision: 'I redirected the design energy into a three-level modular structure: Reliability, Maintenance, and Performance as distinct visual zones on one surface. First card in each row filters the cards beside it. Run status got a full accessibility redesign: color, shape, and icon system with a legend to replace a visualization pulled from another platform.',
           why: 'The constraint forced a better answer. The modular structure gave engineers comparison without tabs and compartmentalization without navigation.',
         },
       },
@@ -234,7 +234,7 @@ export const projects = [
         decision: {
           problem: 'The dashboard shows event severity, work order urgency, investigation status, asset criticality, and asset status. Early iterations used the same colored pill badges for both event severity and work order priority. Engineers scanning the Work Orders card couldn\'t tell whether "Critical" meant a dangerous event or an urgent repair.',
           headline: 'Five systems, zero collisions.',
-          decision: 'I designed five distinct visual languages that never share shapes or color logic. Event severity uses tally bars in colored pills. Work order urgency uses circle fill hierarchy (filled, hollow, clock) in neutral gray. Investigation status uses right-pointing triangles. Asset criticality uses letter-grade pills. Asset status uses small colored dots with text labels. Each system is readable without color alone.',
+          decision: 'Each classification system got its own shape language. Tally bars for severity. Circles for work orders. Triangles for investigations. Letter grades for criticality. Dots for status. No shared shapes, no shared color logic, readable without color alone.',
           why: 'If two systems look the same, the engineer has to read the label to tell them apart. Distinct shape families let them pattern-match at a glance: pill with bars means event, circle means work order, triangle means investigation.',
         },
       },
