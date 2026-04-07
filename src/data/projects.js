@@ -19,7 +19,7 @@ export const projects = [
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/keytrn-mobile',
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/keytrn-detail',
     ],
-    images: [null, null, null],
+    images: [],
     image: null,
     intro: 'Before opening Figma, I spent weeks calling Pennsylvania county offices. What data did they have? What format? Where did the process break down? Everything that followed came from those calls: the IA, the upload system, how the consumer side surfaced property data.',
     orientationNote: 'Keytrn is a two-sided PA tax sale platform: an upload portal for counties and a property browser for homebuyers. The final product flows are on the homepage. This page covers the research and decisions behind them.',
@@ -143,7 +143,7 @@ export const projects = [
     role: 'Co-founder, Design + Engineering',
     duration: '5 months',
     team: 'Solo. Designed and built the entire product.',
-    color: '#4a2c1e',
+    color: '#a0522d',
     mobileCardColor: 'var(--card-bg-keytrn)',
   },
   {
@@ -164,7 +164,7 @@ export const projects = [
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-risk-matrix',
       'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/apm-mobile-notifications',
     ],
-    images: [null, null, null],
+    images: [],
     image: null,
     orientationNote: 'The live prototype is a working recreation I designed and built in React, sourcing from IBM\'s Carbon Design System and adapting the components to fit the domain. Honeywell NDA prevents showing the original product, so this is my vision of what the platform should have been: grounded in the research I ran, the workflows I documented, and the design decisions I made during the original engagement. The demo continues to evolve as I refine the data model, severity logic, and interaction design.',
     intro: 'My last year at Honeywell was on the APM (Asset Performance Management) platform, building tools for reliability engineers at companies like Shell to prevent equipment failure. The work I\'m most proud of is the research I led for Plant Overview and Asset Inspection: two dashboards I took from low usability scores to high, through primary research, iteration, and usability testing at every step.',
@@ -246,7 +246,7 @@ export const projects = [
     role: 'UX Designer',
     duration: '1 year',
     team: 'UX Designer, Researcher, SMEs, Engineering, PM (Agile)',
-    color: '#1e3a5f',
+    color: '#3b7dd8',
     mobileCardColor: 'var(--card-bg-apm)',
   },
   {
@@ -261,7 +261,7 @@ export const projects = [
       'Shipped the Merge Dashboard and Homepage from scratch for warehouse operations managers.',
       'Heuristic evaluation led to platform-wide UXQA fixes across the product.',
     ],
-    images: [null, null],
+    images: [],
     image: null,
     orientationNote: 'Final screens are de-branded recreations. Honeywell NDA prevents showing real client data. This page covers the research process and design decisions behind the work.',
     intro: 'Before I could design anything on the Warehouse Operations platform, I needed to understand what was already broken. My first assignment was a full heuristic evaluation, documenting usability violations across the interface and giving the design team a shared baseline to work from. That audit shaped the UXQA work I drove across the team and directly informed the two dashboards I built from scratch: the Merge Dashboard and the Homepage.',
@@ -324,7 +324,7 @@ export const projects = [
     role: 'UX Designer',
     duration: '3 years',
     team: 'UX Designer, Researcher, Engineering, PM (Agile)',
-    color: '#1a3350',
+    color: '#2e6b9e',
   },
   {
     slug: 'aysa-mvp',
@@ -338,7 +338,7 @@ export const projects = [
       '15,000+ views in the first social rollout on LinkedIn and Instagram.',
       'Pitch deck actively used in $2.1M seed round investor outreach.',
     ],
-    images: [null, null],
+    images: [],
     image: null,
     orientationNote: 'Final app screens are on the homepage. This page covers the process and decisions behind the two phases of work.',
     intro: 'The founder had two weeks, a compelling idea, and no existing design. I shipped a working MVP, then came back months later to fix what I\'d compromised on the first time around.',
@@ -394,7 +394,7 @@ export const projects = [
     role: 'Product Designer',
     duration: '4 months',
     team: '1 Designer, 1 Founder',
-    color: '#2c4a3e',
+    color: '#3a8a6a',
   },
   {
     slug: 'sinta-hr-platform',
@@ -408,7 +408,7 @@ export const projects = [
       'Founders pitched investors directly from the designs.',
       'Five complete flows designed from scratch with zero existing screens.',
     ],
-    images: [null, null],
+    images: [],
     image: null,
     processMedia: [
       {
@@ -473,6 +473,6 @@ export const projects = [
     role: 'Freelance Product Designer',
     duration: '1 month',
     team: '1 Designer, 2 Founders',
-    color: '#3d2c4a',
+    color: '#7b5ea7',
   },
 ]

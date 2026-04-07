@@ -26,21 +26,21 @@ const next = projects[(idx + 1) % projects.length]
         </h1>
 
         {/* Meta strip */}
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-animate data-animate-delay="1">
-          <div class="flex flex-col gap-1">
-            <span class="type-badge font-bold uppercase tracking-wide">Company</span>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0" data-animate data-animate-delay="1">
+          <div class="flex flex-col gap-1 md:pr-6">
+            <span class="type-meta font-bold uppercase tracking-wide">Company</span>
             <span class="type-body font-medium">{project.company}</span>
           </div>
-          <div class="flex flex-col gap-1">
-            <span class="type-badge font-bold uppercase tracking-wide">Role</span>
+          <div class="flex flex-col gap-1 md:border-l md:border-token md:pl-6 md:pr-6">
+            <span class="type-meta font-bold uppercase tracking-wide">Role</span>
             <span class="type-body font-medium">{project.role}</span>
           </div>
-          <div class="flex flex-col gap-1">
-            <span class="type-badge font-bold uppercase tracking-wide">Problem</span>
+          <div class="flex flex-col gap-1 md:border-l md:border-token md:pl-6 md:pr-6">
+            <span class="type-meta font-bold uppercase tracking-wide">Problem</span>
             <p class="type-body">{project.metaProblem}</p>
           </div>
-          <div class="flex flex-col gap-1">
-            <span class="type-badge font-bold uppercase tracking-wide">Outcome</span>
+          <div class="flex flex-col gap-1 md:border-l md:border-token md:pl-6">
+            <span class="type-meta font-bold uppercase tracking-wide">Outcome</span>
             <ul class="list-reset flex flex-col gap-1">
               {project.outcomes?.map((o: string) => (
                 <li class="type-body flex gap-2">
@@ -76,6 +76,7 @@ const next = projects[(idx + 1) % projects.length]
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="primary"
+                    size="md"
                   >
                     View demo
                     <span aria-hidden="true">&rarr;</span>

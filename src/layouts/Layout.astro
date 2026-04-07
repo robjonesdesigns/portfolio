@@ -102,23 +102,36 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
     <script is:inline>
       (function() {
         function initScrollObserver() {
+          var els = document.querySelectorAll('[data-animate],[data-animate-y]');
           if (!('IntersectionObserver' in window)) {
-            document.querySelectorAll('[data-animate],[data-animate-y]').forEach(function(el) {
-              el.classList.add('visible');
-            });
+            els.forEach(function(el) { el.classList.add('visible'); });
             return;
           }
           var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
               if (entry.isIntersecting) {
+                entry.target.classList.remove('will-animate');
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
               }
             });
           }, { threshold: 0.1 });
 
-          document.querySelectorAll('[data-animate],[data-animate-y]').forEach(function(el) {
-            observer.observe(el);
+          els.forEach(function(el) {
+            var rect = el.getBoundingClientRect();
+            var inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+            if (inViewport) {
+              el.classList.add('will-animate');
+              requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                  el.classList.remove('will-animate');
+                  el.classList.add('visible');
+                });
+              });
+            } else {
+              el.classList.add('will-animate');
+              observer.observe(el);
+            }
           });
         }
 

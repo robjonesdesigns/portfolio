@@ -96,15 +96,15 @@ const skills = [
             class="text-brand-primary hover:opacity-70 transition-opacity duration-200">
             robjonesdesigns@gmail.com
           </a>
-          <span style="opacity: 0.3;">·</span>
+          <span class="text-fg-secondary">·</span>
           <span>470-382-0603</span>
-          <span style="opacity: 0.3;">·</span>
+          <span class="text-fg-secondary">·</span>
           <a href="https://linkedin.com/in/robjonesdesigner" target="_blank" rel="noopener noreferrer"
             aria-label="LinkedIn profile (opens in new tab)"
             class="text-brand-primary hover:opacity-70 transition-opacity duration-200">
             LinkedIn
           </a>
-          <span style="opacity: 0.3;">·</span>
+          <span class="text-fg-secondary">·</span>
           <a href="https://github.com/robjonesdesigns" target="_blank" rel="noopener noreferrer"
             aria-label="GitHub profile (opens in new tab)"
             class="text-brand-primary hover:opacity-70 transition-opacity duration-200">
@@ -131,10 +131,10 @@ const skills = [
       {/* Experience */}
       <div class="mb-16">
         <div class="mb-8">
-          <h2 class="type-display-sm">Experience</h2>
+          <h2 class="type-display-sm" data-animate-y>Experience</h2>
         </div>
         {experience.map((job) => (
-          <div class="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t border-token">
+          <div class="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t border-token" data-animate>
             <div>
               <h3 class="type-body font-bold">{job.company}</h3>
               <p class="type-body mt-1">{job.role}</p>
@@ -155,9 +155,9 @@ const skills = [
       {/* Education */}
       <div class="mb-16">
         <div class="mb-8">
-          <h2 class="type-display-sm">Education</h2>
+          <h2 class="type-display-sm" data-animate-y>Education</h2>
         </div>
-        <div class="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t border-token">
+        <div class="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t border-token" data-animate>
           <div>
             <p class="type-body font-bold">Stony Brook University</p>
             <p class="type-body mt-1">BA in Studio Arts</p>
@@ -173,17 +173,17 @@ const skills = [
       {/* Skills */}
       <div class="mb-16">
         <div class="mb-8">
-          <h2 class="type-display-sm">Skills</h2>
+          <h2 class="type-display-sm" data-animate-y>Skills</h2>
         </div>
-        <div class="grid md:grid-cols-2 gap-10 py-8 border-t border-token">
+        <div class="grid md:grid-cols-2 gap-10 py-8 border-t border-token" data-animate>
           <div>
-            <p class="type-badge font-bold mb-4 uppercase tracking-wide">What I Use</p>
+            <p class="type-meta font-bold mb-4 uppercase tracking-wide">What I Use</p>
             <div class="flex flex-wrap gap-2">
               {tools.map(t => <Badge>{t}</Badge>)}
             </div>
           </div>
           <div>
-            <p class="type-badge font-bold mb-4 uppercase tracking-wide">What I Do</p>
+            <p class="type-meta font-bold mb-4 uppercase tracking-wide">What I Do</p>
             <div class="flex flex-wrap gap-2">
               {[...methods, ...skills].map(s => <Badge>{s}</Badge>)}
             </div>

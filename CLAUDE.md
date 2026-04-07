@@ -71,7 +71,7 @@ All animations are CSS. No JS animation libraries.
 | `--surface` | `#f5f0e8` | `#28251f` |
 | `--border` | `rgba(92,82,80,0.1)` | `rgba(176,168,158,0.1)` |
 | `--fg-secondary` | `#6e6562` | `#c2bab0` |
-| `--bg-subtle` | `#fdf8f2` | `#201e1a` |
+| `--bg-subtle` | `#f7f2ea` | `#24211b` |
 
 ### Tailwind Color Classes
 `text-fg`, `text-fg-secondary`, `text-brand-primary`, `bg-brand-primary`, `text-on-accent`, `bg-surface`, `bg-subtle`, `border-token`, `border-token-strong`

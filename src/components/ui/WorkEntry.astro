@@ -1,5 +1,6 @@
 ---
 import LazyVideo from './LazyVideo.astro'
+import Button from './Button.astro'
 
 interface Props {
   project: any
@@ -138,34 +139,36 @@ const restImages = hasImages && validImages.length > 2 ? validImages.slice(1) : 
 
     </div>
 
-    {/* See more */}
+    {/* Case study link */}
     <div class="mb-10 md:mb-12">
-      <a
+      <Button
+        as="a"
         href={`/projects/${slug}`}
-        aria-label={`See more: ${headline}`}
-        class="group inline-flex items-center gap-2 py-2 -mx-2 px-2 type-link font-medium text-body md:text-body-lg"
+        aria-label={`View case study: ${headline}`}
+        variant="secondary"
+        size="md"
       >
-        <span>See more</span>
-        <span class="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
-      </a>
+        View case study
+        <span aria-hidden="true">&rarr;</span>
+      </Button>
     </div>
 
     {/* Metadata row */}
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-      <div>
-        <p class="type-badge font-bold mb-2 uppercase tracking-wide">Company</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-0">
+      <div class="md:pr-6">
+        <p class="type-meta font-bold mb-2 uppercase tracking-wide">Company</p>
         <p class="type-body">{company}</p>
       </div>
-      <div>
-        <p class="type-badge font-bold mb-2 uppercase tracking-wide">Role</p>
+      <div class="md:border-l md:border-token md:pl-6 md:pr-6">
+        <p class="type-meta font-bold mb-2 uppercase tracking-wide">Role</p>
         <p class="type-body">{role}</p>
       </div>
-      <div>
-        <p class="type-badge font-bold mb-2 uppercase tracking-wide">Problem</p>
+      <div class="md:border-l md:border-token md:pl-6 md:pr-6">
+        <p class="type-meta font-bold mb-2 uppercase tracking-wide">Problem</p>
         <p class="type-body">{metaProblem || description}</p>
       </div>
-      <div>
-        <p class="type-badge font-bold mb-2 uppercase tracking-wide">Outcome</p>
+      <div class="md:border-l md:border-token md:pl-6">
+        <p class="type-meta font-bold mb-2 uppercase tracking-wide">Outcome</p>
         <ul class="flex flex-col gap-2">
           {(outcomes || []).map((item: string) => (
             <li class="flex gap-2 type-body">

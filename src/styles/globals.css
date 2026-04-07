@@ -87,7 +87,7 @@
 
   /* Component tokens */
   --fg-secondary:   #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
-  --bg-subtle:      #fdf8f2;  /* warm section tint */
+  --bg-subtle:      #f7f2ea;  /* warm section tint */
   --hover-overlay:  rgba(0, 0, 0, 0.05);    /* tertiary button hover */
   --shadow-button:  rgba(10, 13, 18, 0.05); /* primary button shadow */
 }
@@ -112,7 +112,7 @@
 
   /* Component tokens */
   --fg-secondary:   #c2bab0;  /* lighter warm sandy gray — used for labels */
-  --bg-subtle:      #201e1a;  /* warm section tint */
+  --bg-subtle:      #24211b;  /* warm section tint */
   --hover-overlay:  rgba(255, 255, 255, 0.05); /* tertiary button hover */
   --shadow-button:  rgba(10, 13, 18, 0.05);    /* primary button shadow */
 }
@@ -196,11 +196,11 @@
   .bg-subtle           { background-color: var(--bg-subtle); }
 
   /* Depth — subtle shadow for layered sections */
-  /* Light: warm tint matching bg-subtle (#fdf8f2). Dark: warm tint matching bg-subtle (#201e1a). */
-  .shadow-section-down  { box-shadow: 0 4px 12px rgba(92, 82, 80, 0.07); }
-  .shadow-section-up    { box-shadow: 0 -4px 12px rgba(92, 82, 80, 0.07); }
-  :root.dark .shadow-section-down { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25); }
-  :root.dark .shadow-section-up   { box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.25); }
+  /* Light: warm tint matching bg-subtle (#f7f2ea). Dark: warm tint matching bg-subtle (#24211b). */
+  .shadow-section-down  { box-shadow: 0 4px 12px rgba(92, 82, 80, 0.12); }
+  .shadow-section-up    { box-shadow: 0 -4px 12px rgba(92, 82, 80, 0.12); }
+  :root.dark .shadow-section-down { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35); }
+  :root.dark .shadow-section-up   { box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.35); }
 
   /* Media container — image/video wrapper with tinted bg and border */
   .media-card {
@@ -413,9 +413,10 @@
 }
 
 /* ─── Scroll animations ──────────────────────────────────────────────── */
-/* Animations only activate when JS adds .js-ready to <html>.
-   Without JS (or if the observer fails), all content is fully visible. */
-.js-ready [data-animate] {
+/* Elements start visible. Observer marks below-fold elements with
+   .will-animate to hide them, then .visible to reveal on scroll.
+   If the observer never fires, content stays visible (true progressive enhancement). */
+.js-ready [data-animate].will-animate {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -423,21 +424,27 @@
 .js-ready [data-animate].visible {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.js-ready [data-animate-y] {
+.js-ready [data-animate-y].will-animate {
   transform: translateY(16px);
   transition: transform 0.6s ease;
 }
 .js-ready [data-animate-y].visible {
   transform: translateY(0);
+  transition: transform 0.6s ease;
 }
 
 /* Stagger delays */
-.js-ready [data-animate-delay="1"] { transition-delay: 0.1s; }
-.js-ready [data-animate-delay="2"] { transition-delay: 0.2s; }
-.js-ready [data-animate-delay="3"] { transition-delay: 0.3s; }
-.js-ready [data-animate-delay="4"] { transition-delay: 0.4s; }
+.js-ready [data-animate-delay="1"].will-animate,
+.js-ready [data-animate-delay="1"].visible { transition-delay: 0.1s; }
+.js-ready [data-animate-delay="2"].will-animate,
+.js-ready [data-animate-delay="2"].visible { transition-delay: 0.2s; }
+.js-ready [data-animate-delay="3"].will-animate,
+.js-ready [data-animate-delay="3"].visible { transition-delay: 0.3s; }
+.js-ready [data-animate-delay="4"].will-animate,
+.js-ready [data-animate-delay="4"].visible { transition-delay: 0.4s; }
 
 /* Reduced motion: disable all custom animations */
 @media (prefers-reduced-motion: reduce) {
@@ -555,6 +562,12 @@
 }
 
 /* ─── Theme toggle ───────────────────────────────────────────────────── */
+.theme-toggle { position: relative; }
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
 .theme-toggle:active {
   transform: scale(0.95);
 }
