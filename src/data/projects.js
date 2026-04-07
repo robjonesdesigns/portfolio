@@ -251,7 +251,7 @@ export const projects = [
         },
       },
     ],
-    reflection: 'A missed signal on a compressor can shut down a plant. Or worse. The deeper I got into this work, the more I felt the weight of every decision I put on screen.',
+    reflection: 'A missed signal on a compressor can shut down a plant. Or worse. The deeper I got into this work, the more I felt the weight of every decision I put on screen. I test, ask hard questions, and decide.',
     metaProblem: 'Engineers couldn\'t quickly see what was failing, why, or what to do next.',
     role: 'UX Designer',
     duration: '1 year',
