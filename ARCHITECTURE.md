@@ -169,10 +169,11 @@ type-body  type-intro  type-label  type-link  type-badge  type-nav-link
 All animations are CSS. No JS animation libraries.
 
 ### Scroll Animations (`globals.css`)
-- `data-animate` — fade-up (opacity 0 to 1 + translateY 16px to 0), triggered by IntersectionObserver
+- Elements start visible. Observer adds `.will-animate` to hide below-fold elements, then `.visible` to reveal on scroll. True progressive enhancement: if observer fails, content stays visible.
+- `data-animate` — fade-up (opacity 0 to 1 + translateY 16px to 0) via `.will-animate` to `.visible` transition
 - `data-animate-y` — translateY only, no opacity change. **Use on headings** so VoiceOver always finds them
 - `data-animate-delay="1|2|3|4"` — stagger via `transition-delay`
-- `.visible` class added by scroll observer when element enters viewport
+- In-viewport elements get immediate reveal via double-rAF (paint hidden state, then transition to visible)
 
 ### Hero Entrance (scoped in `index.astro`)
 - `.hero-headline` / `.hero-subtext` — CSS `@keyframes hero-in` with staggered delays

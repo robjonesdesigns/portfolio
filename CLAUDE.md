@@ -35,10 +35,11 @@ Pure Astro static site. Every component is `.astro`. All animations are CSS. Int
 All animations are CSS. No JS animation libraries.
 
 **Scroll animations** (`globals.css`):
-- `data-animate` — fade-up (opacity 0→1 + translateY 16px→0), triggered by IntersectionObserver
+- Elements start visible. Observer adds `.will-animate` to hide below-fold elements, then `.visible` to reveal on scroll. If observer fails, content stays visible (true progressive enhancement).
+- `data-animate` — fade-up (opacity 0→1 + translateY 16px→0) via `.will-animate` → `.visible` transition
 - `data-animate-y` — translateY only, no opacity change. **Use on headings** so VoiceOver always finds them
 - `data-animate-delay="1|2|3|4"` — stagger via `transition-delay`
-- `.visible` class added by scroll observer when element enters viewport
+- `.will-animate` class added by observer to below-fold elements. `.visible` class added when element enters viewport. In-viewport elements get immediate reveal via double-rAF.
 
 **Hero entrance** (scoped `<style>` in `index.astro`):
 - `.hero-headline` / `.hero-subtext` — CSS `@keyframes hero-in` with staggered delays
@@ -127,6 +128,8 @@ type-display-2xl   type-display-xl   type-display-lg   type-display-md   type-di
 | `type-link` | `text-brand-primary` | 400 | Inline links, opacity on hover |
 | `type-badge` | `text-fg` | 400 | Metadata / tag text |
 | `type-nav-link` | `text-fg` | 500 | Nav links — underline handled in component |
+| `type-meta` | `text-fg-secondary` | 400 | Fixed 14px, metadata labels, line-height 1.5 |
+| `type-meta-bold` | `text-fg` | 700 | Fixed 14px, bold metadata, line-height 1.5 |
 
 **Rule:** utilities always override composition classes. `type-body text-brand-primary` works as expected.
 
@@ -205,14 +208,17 @@ All pages are pure Astro. Zero client-side hydration. Layout.astro handles all `
 Each project can include:
 - `slug`, `title`, `company`, `year`, `tags`, `color`
 - `headline`, `description`, `outcomes` — for WorkEntry card
-- `images` (array, null slots ok), `video` — card media; `video` triggers LaptopFrame
+- `images` (array), `video` — card media; `video` triggers LaptopFrame
 - `videoGrid` — array of video URLs; triggers VideoGrid layout
 - `image` — case study hero image
 - `intro`, `problem`, `process`, `outcome` — case study text sections
 - `role`, `duration`, `team` — case study meta
 - `metaProblem` — short problem statement for meta strip
-- `processMedia` — array of `{ id, label, caption, video, sectionLabel?, followedByInsight? }` for case study process section
+- `processMedia` — array of `{ id, label, caption, video, sectionLabel?, followedByInsight?, decision?, sectionBreak?, systemMap? }` for case study process section
   - `sectionLabel` — renders an h2 above the card (e.g. "Research", "Information Architecture")
+  - `sectionBreak: true` — renders as a section header (h2) with optional caption. Use for major narrative breaks like "What I'd build"
+  - `decision` — inline `{ problem, headline, decision, why }` renders editorial decision block within the flow. Headlines support `|` for multi-line split
+  - `systemMap: true` — renders the SystemMap component (APM only)
   - `followedByInsight: true` — renders `keyInsight` callout after this card
 - `keyInsight` — string; renders as left-border accent callout after the `followedByInsight` card
 - `designDecisions` — array of `{ title, problem, decision, why }` — renders "Key design decisions" section; omit to hide

@@ -11,18 +11,38 @@ See `CLAUDE.md`, `VECTOR.md`, `HEURISTICS.md` in project root.
 
 ## Next priorities
 
-### 1. Lede typography experiment
-Try bumping `type-intro` to 20/28 on mobile, 24/32 on desktop for case study intros. Narrower width + larger type + tighter gap to heading = editorial lede pattern.
+### 1. APM media assets
+- Icon system screenshot/video (five visual languages side by side)
+- Filter interaction video (auto-scroll behavior in demo)
+- Before/after for recreation section (Asset Health vs Plant Overview)
+- APM demo walkthrough video for recreation section
 
-### 2. Visual review in browser
-Walk through recent changes across all 3 case studies (portfolio, Keytrn, APM).
+### 2. Keytrn media mismatch
+- "Designing for homebuyers: DetailView with sale type signals" currently shows the filter flow video. Swap for detail view screenshot.
 
-### 3. Missing media
-See internal notes on missing media assets across case studies.
+### 3. Lede typography experiment
+Try bumping `type-intro` to 20/28 on mobile, 24/32 on desktop for case study intros.
+
+### 4. Doctrine drift
+CLAUDE.md and ARCHITECTURE.md updated for session 25 changes. Run invest-doctrine to confirm SOUND after next code session.
+
+### 5. CaseStudy.astro refactor
+Move hardcoded "The problem" and "The work" h2s into processMedia data using sectionBreak pattern. Do after all case studies are content-complete.
 
 ## Recent shipped work
 
-### Portfolio
+### Session 25 (2026-04-07)
+- Design critic agent created (brutal design review with principles knowledge base)
+- 14-finding design audit: animation system rewrite (progressive enhancement), metadata hierarchy, column dividers, bg-subtle token, touch targets, button focus ring
+- APM case study full restructure: two-part narrative (Honeywell shipped vs recreation vision)
+- Honeywell naming: Asset Health / Asset Details. Recreation naming: Plant Overview / Asset Inspection
+- sectionBreak system added to processMedia for data-driven section headers
+- SystemMap moved into processMedia flow under "What I'd build"
+- Copy audit: voice consistency, repetition, spec-sheet rewrites
+- Keytrn copy fix: clerk question count corrected to match PER-007 research
+- VECTOR.md PreToolUse hook added to global settings
+
+### Previous
 - Hero + about bio voice rewrite
 - Resume updated (2021 freelance start, PDF)
 - Mobile nav: animated hamburger, theme toggle always visible
