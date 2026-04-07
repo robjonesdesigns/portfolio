@@ -10,6 +10,15 @@ Rob Jones. Product Designer. This is a personal portfolio site.
 
 ---
 
+## Zero Vector Principle
+
+All code generation must adhere to VECTOR.md. Before writing code:
+1. Read VECTOR.md to understand intent, audience, constraints, and design principles.
+2. If a requested change conflicts with VECTOR.md, flag the conflict before writing code.
+3. Move from intent to execution without intermediate mockups. VECTOR.md defines what to build and why. ARCHITECTURE.md defines how. Code is the output.
+
+---
+
 ## Architecture
 
 Pure Astro static site. Every component is `.astro`. All animations are CSS. Interactivity is vanilla JS in `<script>` tags. Zero framework JavaScript shipped to the browser.
