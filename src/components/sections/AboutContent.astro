@@ -86,13 +86,13 @@ const siteDecisions = [
         </div>
 
         {/* Design decisions */}
-        <div class="flex flex-col gap-10 max-w-3xl" data-animate>
+        <div class="flex flex-col gap-10 max-w-3xl">
           {siteDecisions.map((d, i) => (
             <div
               class="flex flex-col gap-3 border-t border-token pt-10"
             >
-              <h3 class="type-display-sm">{d.title}</h3>
-              <p class="type-body leading-relaxed">{d.body}</p>
+              <h3 class="type-display-sm" data-animate-y>{d.title}</h3>
+              <p class="type-body leading-relaxed" data-animate>{d.body}</p>
             </div>
           ))}
         </div>

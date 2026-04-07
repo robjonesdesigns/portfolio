@@ -283,7 +283,7 @@ const spacingSteps = [
                   {t.label}
                 </p>
                 <p class="type-meta mb-3">{t.font} / {t.size}</p>
-                <p class={t.class}>
+                <p class={`${t.class}${t.class === 'type-link' ? ' type-body' : ''}`}>
                   {t.class === 'type-label' ? 'UPPERCASE LABEL TEXT' : t.class === 'type-link' ? 'Inline link style' : t.class === 'type-meta' ? 'Small metadata text' : 'The quick brown fox'}
                 </p>
               </div>
