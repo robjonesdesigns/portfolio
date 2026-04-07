@@ -25,7 +25,6 @@
           "value": "camera=(), microphone=(), geolocation=()"
         }
       ]
-    }
     },
     {
       "source": "/fonts/(.*)",
