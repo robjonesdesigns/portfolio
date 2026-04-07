@@ -146,7 +146,7 @@ const next = projects[(idx + 1) % projects.length]
 
         {/* Process media — with optional section labels and key insight */}
         {project.processMedia?.map((item: any) => (
-          <div class={`flex flex-col ${(item.label || item.video || item.image || item.videoGrid || item.caption || item.conversations) ? 'gap-12' : 'gap-6'}`}>
+          <div class={`flex flex-col ${(item.video || item.image || item.videoGrid || item.conversations) ? 'gap-12' : 'gap-6'}`}>
             {item.beforeAfter ? (
               <div data-animate>
                 <h3 class="type-display-sm mb-5">{item.label}</h3>
@@ -174,7 +174,7 @@ const next = projects[(idx + 1) % projects.length]
                 {(item.label || item.video || item.image || item.videoGrid || item.caption || item.decision?.headline) && (
                   <div data-animate>
                     {item.decision?.headline && (
-                      <p class="type-label mb-3">{item.sectionLabel}{item.label ? ' — ' + item.label : ''}</p>
+                      <p class="type-label mb-3">{item.sectionLabel}{item.label ? ': ' + item.label : ''}</p>
                     )}
                     {!item.decision?.headline && item.label && (
                       <p class="type-label mb-3">{item.label}</p>
