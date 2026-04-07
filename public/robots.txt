@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.designedbyrob.com/sitemap.xml
+Sitemap: https://designedbyrob.com/sitemap.xml

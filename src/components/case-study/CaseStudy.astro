@@ -91,15 +91,15 @@ const next = projects[(idx + 1) % projects.length]
 
         {/* Problem */}
         {project.problem && (
-          <div class="flex flex-col gap-4 max-w-3xl" data-animate>
+          <div class="flex flex-col gap-4 max-w-3xl">
             <h2 class="type-display-md" data-animate-y>The problem</h2>
-            <p class="type-body leading-relaxed">{project.problem}</p>
+            <p class="type-body leading-relaxed" data-animate>{project.problem}</p>
           </div>
         )}
 
         {/* Process */}
         {project.process && (
-          <div class="flex flex-col gap-4 max-w-3xl" data-animate>
+          <div class="flex flex-col gap-4 max-w-3xl">
             <h2 class="type-display-md" data-animate-y>The work</h2>
             {Array.isArray(project.process) ? (
               project.process.map((block: any) =>
@@ -137,9 +137,9 @@ const next = projects[(idx + 1) % projects.length]
 
         {/* Outcome — shown when no reflection */}
         {!project.reflection && project.outcome && (
-          <div class="flex flex-col gap-4 max-w-3xl" data-animate>
+          <div class="flex flex-col gap-4 max-w-3xl">
             <h2 class="type-display-md" data-animate-y>Outcome</h2>
-            <p class="type-body leading-relaxed">{project.outcome}</p>
+            <p class="type-body leading-relaxed" data-animate>{project.outcome}</p>
           </div>
         )}
 
@@ -321,7 +321,7 @@ const next = projects[(idx + 1) % projects.length]
 
         {/* UGA Business Law Clinic */}
         {project.ugaContent !== undefined && (
-          <div class="flex flex-col gap-4 max-w-2xl mt-8" data-animate>
+          <div class="flex flex-col gap-4 max-w-2xl mt-8">
             <h2 class="type-display-md" data-animate-y>UGA Business Law Clinic</h2>
             {project.ugaContent ? (
               <p class="type-body leading-relaxed">{project.ugaContent}</p>
@@ -335,9 +335,9 @@ const next = projects[(idx + 1) % projects.length]
 
         {/* Reflection */}
         {project.reflection && (
-          <div class="flex flex-col gap-4 max-w-2xl mt-16" data-animate>
+          <div class="flex flex-col gap-4 max-w-2xl mt-16">
             <h2 class="type-display-md" data-animate-y>Reflection</h2>
-            <p class="type-body leading-relaxed">{project.reflection}</p>
+            <p class="type-body leading-relaxed" data-animate>{project.reflection}</p>
           </div>
         )}
 
