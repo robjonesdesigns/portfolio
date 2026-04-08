@@ -69,18 +69,6 @@
   --accent-bg-10:  rgba(129, 55, 70, 0.10);
   --accent-ring:   rgba(129, 55, 70, 0.20);
 
-  /* Laptop mockup — fixed hardware colors, intentionally theme-independent */
-  --laptop-bezel:  #1c1c1e;
-  --laptop-border: rgba(255, 255, 255, 0.09);
-  --laptop-camera: #3d3d3d;
-  --laptop-shadow: rgba(0, 0, 0, 0.4);
-
-  /* Media card — dark surface for video/image containers, fixed across themes */
-  --media-bg: #25221d;
-  --media-border: rgba(37, 34, 32, 0.2);
-  --media-bg-light: #f4f4f4;
-  --media-border-light: rgba(244, 244, 244, 0.2);
-
   /* Project card backgrounds (branded, fixed across themes) */
   --card-bg-apm: #95d1c9;
   --card-bg-keytrn: #1b2745;
@@ -188,8 +176,6 @@
   .text-fg-secondary { color: var(--fg-secondary); }
   .text-accent       { color: var(--accent); }
   .bg-surface        { background-color: var(--surface); }
-  .bg-media          { background-color: var(--media-bg); }
-  .border-media      { border-color: var(--media-border); }
   .bg-accent         { background-color: var(--accent); }
   .border-token        { border-color: var(--border); }
   .border-token-strong { border-color: var(--border-strong); }
@@ -221,12 +207,12 @@
     border: 1px solid var(--border);
   }
   .quote-card--question {
-    background: color-mix(in srgb, var(--fg) 4%, var(--surface));
+    background: var(--surface);
     align-self: flex-end;
     max-width: 85%;
   }
   .quote-card--response {
-    background: color-mix(in srgb, var(--accent) 5%, var(--bg));
+    background: color-mix(in srgb, var(--accent) 5%, var(--surface));
     border-left: 3px solid var(--accent);
     align-self: flex-start;
     max-width: 90%;

@@ -13,9 +13,8 @@ const { slug, headline, company, role, description, metaProblem, outcomes, image
 // Determine media type
 const validVideos = videoGrid ? videoGrid.filter(Boolean) : []
 const hasVideoGrid = validVideos.length > 0
-const hasLaptop = !hasVideoGrid && !!video
 // Filter out null/undefined image entries so no placeholders render
-const validImages = (!hasVideoGrid && !hasLaptop && images) ? images.filter(Boolean) : []
+const validImages = (!hasVideoGrid && images) ? images.filter(Boolean) : []
 const hasImages = validImages.length > 0
 
 // ImageGrid helpers
@@ -47,7 +46,7 @@ const restImages = hasImages && validImages.length > 2 ? validImages.slice(1) : 
 
       {hasVideoGrid && validVideos.length > 1 && (
         <div class="flex flex-col gap-3">
-          <div class="overflow-hidden rounded-lg border border-media">
+          <div class="overflow-hidden rounded-lg">
             <LazyVideo src={validVideos[0]} style="width: 100%; display: block;" />
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" style="min-height: 0;">
@@ -67,38 +66,17 @@ const restImages = hasImages && validImages.length > 2 ? validImages.slice(1) : 
               return secondRow
             })().map((src: string) =>
               src && src.includes('mobile') ? (
-                <div class="flex items-center justify-center rounded-lg p-3 sm:p-4" style={`min-height: 100%; background-color: ${mobileCardColor || 'var(--media-bg)'};`}>
+                <div class="flex items-center justify-center rounded-lg p-3 sm:p-4" style={`min-height: 100%; background-color: ${mobileCardColor || 'var(--surface)'};`}>
                   <div class="overflow-hidden rounded-lg bg-black" style="max-width: 160px; width: 100%;">
                     <LazyVideo src={src} style="width: 100%; display: block;" />
                   </div>
                 </div>
               ) : (
-                <div class="overflow-hidden rounded-lg border border-media" style="min-height: 100%;">
+                <div class="overflow-hidden rounded-lg" style="min-height: 100%;">
                   <LazyVideo src={src} style="width: 100%; height: 100%; display: block; object-fit: cover;" />
                 </div>
               )
             )}
-          </div>
-        </div>
-      )}
-
-      {/* LaptopFrame */}
-      {hasLaptop && (
-        <div
-          class="media-card relative rounded-2xl border border-token pt-8 px-[3%]"
-          style="line-height: normal;"
-        >
-          <div
-            class="absolute inset-0 pointer-events-none"
-            style={`background: radial-gradient(ellipse 80% 50% at 50% 0%, ${color}22 0%, transparent 70%);`}
-          />
-          <div class="relative" style="filter: drop-shadow(0 20px 40px var(--laptop-shadow)); transform: translateY(30px);">
-            <div class="relative" style="background: var(--laptop-bezel); border: 1px solid var(--laptop-border); border-radius: 10px; padding: 16px 16px 12px;">
-              <div class="absolute left-1/2 -translate-x-1/2" style="top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--laptop-camera);" />
-              <div class="overflow-hidden rounded-sm bg-black" style="line-height: 0; aspect-ratio: 16/9;">
-                <LazyVideo src={video} style="width: 100%; height: 100%; display: block; object-fit: cover;" />
-              </div>
-            </div>
           </div>
         </div>
       )}
