@@ -88,7 +88,7 @@
   /* Component tokens */
   --fg-secondary:   #6b6459;  /* ~5.5:1 on --bg ✓ AA — warm amber-brown, used for labels */
   --bg-subtle:      #e8e2d6;  /* warm section tint */
-  --hover-overlay:  rgba(0, 0, 0, 0.05);    /* tertiary button hover */
+  --hover-overlay:  rgba(28, 26, 22, 0.10);  /* tertiary button hover — fg at low opacity */
   --shadow-button:  rgba(10, 13, 18, 0.05); /* primary button shadow */
 }
 
@@ -113,7 +113,7 @@
   /* Component tokens */
   --fg-secondary:   #c2bab0;  /* lighter warm sandy gray — used for labels */
   --bg-subtle:      #26231d;  /* warm section tint */
-  --hover-overlay:  rgba(255, 255, 255, 0.05); /* tertiary button hover */
+  --hover-overlay:  rgba(255, 251, 245, 0.10); /* tertiary button hover — fg at low opacity */
   --shadow-button:  rgba(10, 13, 18, 0.05);    /* primary button shadow */
 }
 
