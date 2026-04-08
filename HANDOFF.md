@@ -17,19 +17,37 @@ See `CLAUDE.md`, `VECTOR.md`, `HEURISTICS.md` in project root.
 - Before/after for recreation section (Asset Health vs Plant Overview)
 - APM demo walkthrough video for recreation section
 
-### 2. Keytrn media mismatch
-- "Designing for homebuyers: DetailView with sale type signals" currently shows the filter flow video. Swap for detail view screenshot.
+### 2. Investiture skills build
+- 12 skills specced in `investiture_skills_roadmap.md`
+- Start with invest-voice and invest-a11y (universal), then project-specific
 
-### 3. Lede typography experiment
+### 3. Keytrn design system overhaul
+- Detail page, portal, AskKeytrn still need work
+
+### 4. Lede typography experiment
 Try bumping `type-intro` to 20/28 on mobile, 24/32 on desktop for case study intros.
 
-### 4. Doctrine drift
-CLAUDE.md and ARCHITECTURE.md updated for session 25 changes. Run invest-doctrine to confirm SOUND after next code session.
-
-### 5. CaseStudy.astro refactor
-Move hardcoded "The problem" and "The work" h2s into processMedia data using sectionBreak pattern. Do after all case studies are content-complete.
+### 5. Missing media assets
+Portfolio still needs several media captures for case studies.
 
 ## Recent shipped work
+
+### Session 26 (2026-04-07/08)
+- Co-author attribution removed from all 3 repos (portfolio, keytrn, apm-dashboard) via git filter-branch + commit-msg hooks
+- Full color system overhaul with depth model: surface lighter than bg-subtle in both themes (cards float above sections)
+  - Light: --bg #fffbf5, --surface #f5eee0, --bg-subtle #e8e2d6
+  - Dark: --bg #1c1a16, --bg-subtle #26231d, --surface #302c24
+  - fg-secondary hue realigned from red-brown to amber (#6e6562 -> #6b6459)
+  - Border and media-bg hues aligned to amber family in both themes
+  - Hover overlay: warm palette fg at 10% opacity
+- Quote card simplification: question uses var(--surface), response uses color-mix(accent 5%, surface)
+- Dead tokens removed: laptop mockup (4 tokens), media-bg-light, media-border-light
+- LaptopFrame block removed from WorkEntry (unused)
+- Accessibility cards in style guide updated with correct hex values and ratios (18 cards)
+- Copy fix: "Most hit AAA" -> "All primary text hits AAA"
+- Sitemap skip link added for screen reader navigation
+- Design critic agent upgraded: RISD protocol, subtractive evaluation, "never validate" rule, expanded color theory forensics
+- design-principles.md expanded: undertone forensics, hue drift analysis, depth model rules, Rams/Tufte subtractive lens
 
 ### Session 25 (2026-04-07)
 - Design critic agent created (brutal design review with principles knowledge base)
