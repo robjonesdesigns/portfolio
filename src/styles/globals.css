@@ -57,9 +57,9 @@
   --fg:        #1c1a16;
   --accent:    #813746;
   --on-accent: #fffbf5;   /* text on brand-primary bg — 7.78:1 AAA */
-  --surface:   #f5f0e8;
-  --border:        rgba(92, 82, 80, 0.1);
-  --border-strong: rgba(92, 82, 80, 0.25);
+  --surface:   #f5eee0;
+  --border:        rgba(90, 82, 72, 0.1);
+  --border-strong: rgba(90, 82, 72, 0.25);
   --grad-from: #1c1a16;
   --grad-to:   #813746;
   color-scheme: light;
@@ -76,7 +76,7 @@
   --laptop-shadow: rgba(0, 0, 0, 0.4);
 
   /* Media card — dark surface for video/image containers, fixed across themes */
-  --media-bg: #252220;
+  --media-bg: #25221d;
   --media-border: rgba(37, 34, 32, 0.2);
   --media-bg-light: #f4f4f4;
   --media-border-light: rgba(244, 244, 244, 0.2);
@@ -86,8 +86,8 @@
   --card-bg-keytrn: #1b2745;
 
   /* Component tokens */
-  --fg-secondary:   #6e6562;  /* ~5.5:1 on --bg ✓ AA — warm gray-brown, used for labels */
-  --bg-subtle:      #f7f2ea;  /* warm section tint */
+  --fg-secondary:   #6b6459;  /* ~5.5:1 on --bg ✓ AA — warm amber-brown, used for labels */
+  --bg-subtle:      #e8e2d6;  /* warm section tint */
   --hover-overlay:  rgba(0, 0, 0, 0.05);    /* tertiary button hover */
   --shadow-button:  rgba(10, 13, 18, 0.05); /* primary button shadow */
 }
@@ -98,9 +98,9 @@
   --fg:        #fffbf5;
   --accent:    #e36f86;
   --on-accent: #1c1a16;   /* text on brand-primary bg — 4.81:1 AA */
-  --surface:   #28251f;
-  --border:        rgba(176, 168, 158, 0.1);
-  --border-strong: rgba(176, 168, 158, 0.25);
+  --surface:   #302c24;
+  --border:        rgba(176, 168, 150, 0.1);
+  --border-strong: rgba(176, 168, 150, 0.25);
   --grad-from: #fffbf5;
   --grad-to:   #e36f86;
   color-scheme: dark;
@@ -112,7 +112,7 @@
 
   /* Component tokens */
   --fg-secondary:   #c2bab0;  /* lighter warm sandy gray — used for labels */
-  --bg-subtle:      #24211b;  /* warm section tint */
+  --bg-subtle:      #26231d;  /* warm section tint */
   --hover-overlay:  rgba(255, 255, 255, 0.05); /* tertiary button hover */
   --shadow-button:  rgba(10, 13, 18, 0.05);    /* primary button shadow */
 }

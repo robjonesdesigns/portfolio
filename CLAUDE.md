@@ -69,10 +69,10 @@ All animations are CSS. No JS animation libraries.
 | `--fg` | `#1c1a16` | `#fffbf5` |
 | `--accent` | `#813746` (burgundy) | `#e36f86` (rose) |
 | `--on-accent` | `#fffbf5` | `#1c1a16` |
-| `--surface` | `#f5f0e8` | `#28251f` |
+| `--surface` | `#f5eee0` | `#302c24` |
 | `--border` | `rgba(92,82,80,0.1)` | `rgba(176,168,158,0.1)` |
-| `--fg-secondary` | `#6e6562` | `#c2bab0` |
-| `--bg-subtle` | `#f7f2ea` | `#24211b` |
+| `--fg-secondary` | `#6b6459` | `#c2bab0` |
+| `--bg-subtle` | `#e8e2d6` | `#26231d` |
 
 ### Tailwind Color Classes
 `text-fg`, `text-fg-secondary`, `text-brand-primary`, `bg-brand-primary`, `text-on-accent`, `bg-surface`, `bg-subtle`, `border-token`, `border-token-strong`
