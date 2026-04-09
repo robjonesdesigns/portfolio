@@ -148,10 +148,13 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
           } catch(e) {}
         }
 
-        // System preference change listener
+        // System preference: only apply when user has not picked light/dark explicitly
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          try {
+            var stored = localStorage.getItem('theme');
+            if (stored === 'light' || stored === 'dark') return;
+          } catch (err) {}
           document.documentElement.classList.toggle('dark', e.matches);
-          localStorage.setItem('theme', e.matches ? 'dark' : 'light');
         });
 
         function initLazyVideos() {

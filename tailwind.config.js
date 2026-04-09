@@ -17,7 +17,7 @@ export default {
         cream:           '#fffbf5',
         'cream-surface': '#f5f0e8',
         'dark-bg':       '#1c1a16',
-        'dark-surface':  '#28251f',
+        'dark-surface':  '#302c24',
       },
       fontFamily: {
         display:    ['"Cabinet Grotesk"', 'sans-serif'],

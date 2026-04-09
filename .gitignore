@@ -35,3 +35,6 @@ public/images/*.mov
 src/pages/KeytrnPrototype.jsx
 .env
 upload-videos.mjs
+
+# Local agent session backups (not part of the site)
+.claude-memory-backup/
