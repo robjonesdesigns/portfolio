@@ -8,10 +8,10 @@ export const projects = [
     liveUrl: 'https://keytrn.vercel.app',
     liveUrlNote: 'For access, email <a href="mailto:robjonesdesigns@gmail.com?subject=Keytrn%20preview%20access" target="_blank" rel="noopener noreferrer" class="type-link underline">robjonesdesigns@gmail.com</a>.',
     headline: 'A two-sided PA tax sale platform with AI for counties and homebuyers',
-    description: 'A two-sided PA tax sale platform I designed and built solo: a consumer app with live scraped data, AI on every page, and a government portal where clerks photograph their paper list and the system extracts the listings. Research across 20+ county offices shaped every decision.',
+    description: 'A two-sided PA tax sale platform I designed and built solo: a consumer app with live public records data, AI on every page, and a government portal where clerks photograph their paper list and the system extracts the listings. Research across 20+ county offices shaped every decision.',
     outcomes: [
       'Designed and built both sides of the platform solo in 5 months.',
-      'Live scraped data from PA Legal Ads with geocoding, Street View, and sale type classification.',
+      'Live data pipeline with geocoding, Street View, and sale type classification.',
       'Research across 20+ county offices produced the outreach playbook for the first pilot.',
     ],
     videoGrid: [
@@ -32,7 +32,7 @@ export const projects = [
         'Where manual processes break down',
       ]},
       { type: 'paragraph', text: 'Used NotebookLM to organize call notes by county, then queried it to surface patterns and inconsistencies across municipalities. These answers shaped every design decision.' },
-      { type: 'paragraph', text: 'Designed both product sides simultaneously, then built the consumer app myself. Astro and React front end, Supabase backend, a PDF scraper pulling live listings from Pennsylvania\'s public legal journal database, geocoding and Street View on every property, weighted scoring to classify sale types from legal language, and an AI assistant on Claude Haiku that answers questions on every page.' },
+      { type: 'paragraph', text: 'Designed both product sides simultaneously, then built the consumer app myself. Astro and React front end, Supabase backend, a data pipeline pulling live listings from public records, geocoding and Street View on every property, weighted scoring to classify sale types from legal language, and an AI assistant on Claude Haiku that answers questions on every page.' },
     ],
     processMedia: [
       {
@@ -68,10 +68,10 @@ export const projects = [
         caption: 'Government portal IA mapped in Miro, grounded in how county workers actually file tax sale records, not how we wished they would. Upload, Manage, and Report as the three primary zones. Tabs within each to preserve context between tasks.',
         video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/keytrn-miro-ia.mp4',
         decision: {
-          problem: 'Before I made a single county call, I knew chasing lists wasn\'t going to work. My co-founder wanted to buy what we could and scrape the rest. I pushed back. That\'s a lot of energy. The data is messy, listings go stale, quality varies by county, and you pay forever to maintain the chase.',
+          problem: 'Early on, the obvious approach was to chase county lists: buy what we could, scrape the rest. But the data is messy, listings go stale, quality varies by county, and you pay forever to maintain the chase.',
           headline: 'Build the portal. Don\'t chase the lists.',
           decision: 'Build a portal counties own, not a data pipe. Upload, manage, report, and a dashboard showing their inventory, sales trends, and where blight concentrates. A tool that works for them, not just from them.',
-          why: 'The dashboard idea came out of that same conversation. Counties know their inventory. They just don\'t have a view of it. Give them the view. Years building enterprise dashboards made the shape of it obvious. That flips the pitch from "give us your data" to "here\'s a tool that helps you too." Fresh data stops being a scraping problem. It becomes a partnership.',
+          why: 'Counties know their inventory. They just don\'t have a view of it. Give them the view. Years building enterprise dashboards made the shape of it obvious. That flips the pitch from "give us your data" to "here\'s a tool that helps you too." Fresh data stops being an extraction problem. It becomes a partnership.',
         },
       },
       {
@@ -81,10 +81,10 @@ export const projects = [
         caption: 'Full 4-layer architecture in Figma. Both sides share one data model but serve completely different users. Mapping at this scale forced real decisions about data sources, API gaps, and what to defer.',
         video: 'https://res.cloudinary.com/dlqvgithx/video/upload/f_auto,q_auto,ac_none/portfolio/keytrn-figma-arch.mp4',
         decision: {
-          problem: 'I started with a question, not a strategy. Could I scrape the data and enrich it? Geocoding, Street View, sale type classification. Could I actually pull this all together? Scraping from Bid4listing and CountySuite wasn\'t the way. Then PA Legal Ads made sense.',
-          headline: 'Scrape to prove the pipeline.',
-          decision: 'palegalads.org is the Conference of County Legal Journals\' free statewide database. Public legal notices required by PA statute. Scrape the notices, layer the enrichment: weighted scoring to classify sale types from legal language, geocoding for map pins, Google Street View per listing, field normalization across county formats.',
-          why: 'Scraping was never the long-term strategy. It was the experiment. If I could prove the pipeline worked on chaotic public data, counties would eventually feed it cleaner data through the portal. The pitch becomes: "we already have your listings, here\'s what we enriched on top. Upload to make it better." The scraper turned into a demo.',
+          problem: 'I started with a question, not a strategy. Could I pull live public records and enrich them? Geocoding, Street View, sale type classification. Could I actually pull this all together?',
+          headline: 'Prototype the pipeline with public data.',
+          decision: 'Pennsylvania publishes tax sale legal notices as public records required by state statute. Pull the notices, layer the enrichment: weighted scoring to classify sale types from legal language, geocoding for map pins, Google Street View per listing, field normalization across county formats.',
+          why: 'This was never the long-term strategy. It was the experiment. If I could prove the pipeline worked on chaotic public data, counties would eventually feed it cleaner data through the portal. The pitch becomes: "we already have your listings, here\'s what we enriched on top. Upload to make it better." The prototype turned into a demo.',
         },
       },
       {
@@ -127,8 +127,8 @@ export const projects = [
         },
       },
     ],
-    keyInsight: 'Every county operates as if it\'s the only one. 67 counties, 67 processes. The lesson from the calls: they\'re never going to standardize. Don\'t fight it. Absorb it.',
-    reflection: 'Cold calls surface workflows but not organizational structure. I learned what each county does, not who does it. That meant the permissions model was shaped by assumption instead of interview data. The scraping strategy had the same gap: it proved the pipeline worked, but it also meant I was enriching data I didn\'t control. If I were starting over, I\'d pair the cold calls with one deep-dive interview per pilot county to map the org chart, not just the process. And I\'d get a letter of intent from one county before building the portal, so the first upload came from a partner, not a demo.',
+    keyInsight: 'Every county operates as if it\'s the only one. 67 counties, 67 workflows. The lesson from the calls: the product has to flex around every county\'s process, not the other way around.',
+    reflection: 'Cold calls surface workflows but not organizational structure. I learned what each county does, not who does it. That meant the permissions model was shaped by assumption instead of interview data. If I were starting over, I\'d pair the cold calls with one deep-dive interview per pilot county to map the org chart, not just the process. And I\'d get a letter of intent from one county before building the portal, so the first upload came from a partner, not a demo.',
     finalMedia: {
       label: 'Consumer App: Final Prototype',
       caption: 'The consumer-facing property browser, built with live data. Designed to surface tax sale listings with variable data across counties.',
@@ -138,7 +138,7 @@ export const projects = [
     // UGA Business Law Clinic — entity structure, IP, equity agreements
     // Add content here once documents are reviewed
     ugaContent: 'I didn\'t know whether this should be a non-profit or a for-profit. The portal felt like a public good. The consumer app needed revenue. I took the whole question to UGA\'s Business Law Clinic: entity type, IP ownership, equity structure. They said LLC, protect the IP early, get equity on paper. That gave the project a legal foundation it didn\'t have before.',
-    outcome: 'Designed both sides of the platform and built the consumer app with live data from a statewide scraper. Active listings with geocoding, Street View imagery, and sale type classification. Built a complete design token system with zero hardcoded values across both products. Research across 20+ municipalities produced the outreach playbook for the first county pilot.',
+    outcome: 'Designed both sides of the platform and built the consumer app with live public records data. Active listings with geocoding, Street View imagery, and sale type classification. Built a complete design token system with zero hardcoded values across both products. Research across 20+ municipalities produced the outreach playbook for the first county pilot.',
     metaProblem: 'Homebuyers had nothing. Counties had no way to reach them. Both sides needed a product that didn\'t exist.',
     role: 'Co-founder, Design + Engineering',
     duration: '5 months',
