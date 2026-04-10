@@ -32,7 +32,7 @@ export const projects = [
         'Where manual processes break down',
       ]},
       { type: 'paragraph', text: 'Used NotebookLM to organize call notes by county, then queried it to surface patterns and inconsistencies across municipalities. These answers shaped every design decision.' },
-      { type: 'paragraph', text: 'Designed both product sides simultaneously, then built the consumer app myself. Astro and React front end, Supabase backend, a data pipeline pulling live listings from public records, geocoding and Street View on every property, weighted scoring to classify sale types from legal language, and an AI assistant on Claude Haiku that answers questions on every page.' },
+      { type: 'paragraph', text: 'Designed both product sides simultaneously, then built the consumer app myself. React front end, Supabase backend, a data pipeline pulling live listings from public records, geocoding and Street View on every property, weighted scoring to classify sale types from legal language, and an AI assistant on Claude Haiku that answers questions on every page.' },
     ],
     processMedia: [
       {
@@ -122,7 +122,7 @@ export const projects = [
         decision: {
           problem: 'Both sides had questions. First-time homebuyers didn\'t understand sale types, liens, or redemption periods, so they clicked away or called the county. Clerks reported spending two hours a day answering the same three buyer questions: is the sale still on, are there liens, and how much do I need to bring. Static educational content didn\'t solve either side.',
           headline: 'Give both sides an expert.',
-          decision: 'Built Ask Key: an AI assistant on every page. Claude Haiku via Astro server routes, trained on PA tax sale law. On consumer, it knows the property you\'re looking at. On portal, it knows the upload workflow. Guardrails so it doesn\'t hallucinate. Name pulled from Keytrn, friendly and on-brand. Gradient CTA so people see it without an annoying popup.',
+          decision: 'Built Ask Key: an AI assistant on every page. Claude Haiku via serverless API routes, trained on PA tax sale law. On consumer, it knows the property you\'re looking at. On portal, it knows the upload workflow. Guardrails so it doesn\'t hallucinate. Name pulled from Keytrn, friendly and on-brand. Gradient CTA so people see it without an annoying popup.',
           why: 'Both sides are people with questions. Give both sides the same tool. Buyers get an expert they couldn\'t otherwise afford. Clerks get their two hours back, and can cross-reference other counties when they don\'t know something. The pitch to counties turns into "use our portal and your call volume drops." Guardrails keep it real, not hallucinated.',
         },
       },
