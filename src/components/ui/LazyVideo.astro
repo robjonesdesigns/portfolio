@@ -37,8 +37,9 @@ const { src, poster: posterProp, style = '', class: className = '' } = Astro.pro
  */
 function cloudinaryPoster(videoUrl: string): string | null {
   if (!videoUrl || !videoUrl.includes('res.cloudinary.com/')) return null
+  // Capture first frame, auto-format, auto-quality, and cap width at 800px for mobile-first LCP optimization
   const replaced = videoUrl
-    .replace(/\/video\/upload\/[^/]*\//, '/video/upload/so_0,f_jpg,q_auto,w_1200/')
+    .replace(/\/video\/upload\/[^/]*\//, '/video/upload/so_0,f_auto,q_auto,w_800,c_limit/')
     .replace(/\.mp4$/, '.jpg')
   return replaced.endsWith('.jpg') ? replaced : replaced + '.jpg'
 }
