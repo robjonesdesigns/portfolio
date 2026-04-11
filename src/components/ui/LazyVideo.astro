@@ -1,11 +1,49 @@
 ---
+/**
+ * LazyVideo — IntersectionObserver-loaded video with Cloudinary poster
+ * and noscript fallback.
+ *
+ * Props:
+ *   src     — video URL (Cloudinary recommended for auto-poster derivation)
+ *   poster  — optional explicit poster image URL. If omitted and src is a
+ *             Cloudinary URL, a poster is derived automatically from the
+ *             first frame (so_0) via Cloudinary's URL-based transformation.
+ *   style   — inline style forwarded to both <video> and the noscript <img>
+ *   class   — className forwarded to both <video> and the noscript <img>
+ *
+ * Loading strategy:
+ *   - poster renders immediately from Cloudinary (or the explicit URL),
+ *     so users see a static first frame before the video source attaches.
+ *   - IntersectionObserver (in Layout.astro) swaps data-src onto src and
+ *     flips autoplay when the element enters the viewport.
+ *   - If JavaScript is disabled, the <noscript> block renders the poster
+ *     as a static <img> so case-study pages still have visual media.
+ */
+
 interface Props {
   src: string
+  poster?: string
   style?: string
   class?: string
 }
 
-const { src, style = '', class: className = '' } = Astro.props
+const { src, poster: posterProp, style = '', class: className = '' } = Astro.props
+
+/**
+ * Derive a poster image URL from a Cloudinary video URL by replacing the
+ * existing transformation chain with one that captures the first frame
+ * as a JPEG. Falls back to null for non-Cloudinary URLs so the browser's
+ * default poster-less behavior kicks in.
+ */
+function cloudinaryPoster(videoUrl: string): string | null {
+  if (!videoUrl || !videoUrl.includes('res.cloudinary.com/')) return null
+  const replaced = videoUrl
+    .replace(/\/video\/upload\/[^/]*\//, '/video/upload/so_0,f_jpg,q_auto,w_1200/')
+    .replace(/\.mp4$/, '.jpg')
+  return replaced.endsWith('.jpg') ? replaced : replaced + '.jpg'
+}
+
+const poster = posterProp ?? cloudinaryPoster(src)
 ---
 
 <video
@@ -15,7 +53,11 @@ const { src, style = '', class: className = '' } = Astro.props
   loop
   playsinline
   preload="none"
+  poster={poster}
   aria-hidden="true"
   style={style}
   class={className}
 />
+<noscript>
+  {poster && <img src={poster} alt="" style={style} class={className} loading="lazy" />}
+</noscript>

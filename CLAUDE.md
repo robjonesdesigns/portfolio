@@ -95,7 +95,7 @@ Every page follows: hero (`--bg`) / content (`bg-subtle`) / footer (`--bg`). Sha
 |---|---|---|
 | `font-display` | Cabinet Grotesk | Self-hosted `/public/fonts/` |
 | `font-body` | Areal | Local `/public/fonts/` |
-| `font-editorial` | Ogg | Local `/public/fonts/` (trial) — one-off use only |
+| `font-editorial` | Ogg | Local `/public/fonts/` (**TRIAL — see known tech debt**) |
 
 ### Type Scale (`tailwind.config.js` → `fontSize`)
 Display sizes use fluid `clamp()`. Body sizes are fixed with a responsive step at `md:`.
@@ -320,6 +320,21 @@ Applied in:
 - **No redundant labels**: when a `processMedia` item has `sectionLabel`, the card h3 label is suppressed — the h2 already names the section
 
 ---
+
+## Known Tech Debt
+
+### Ogg Italic trial font (hero "Rob")
+
+**Status:** Trial version currently shipped for the hero "Rob" italic on `index.astro` line 38. See globals.css `@font-face 'Ogg'` TODO comment.
+
+**Risk level:** Low at current traffic, proportional to visibility. Foundries rarely target zero-traffic personal portfolios. Risk scales with marketing / case study views / job applications sent.
+
+**Resolution paths (in order of preference when funds permit):**
+1. **Buy Sharp Type Ogg web license** (~$200-500) — cleanest, full foundry rights
+2. **Trace "Rob" as SVG outlines** — open Figma, type "Rob" in Ogg, Type → Outline Stroke, export SVG, replace the `<span class="font-editorial italic">` with inline SVG + aria-label. Deletes the font file from /public/fonts/. Legal gray area resolved (no font distribution).
+3. **Free alternative font** — Cormorant Garamond, Fraunces, DM Serif Display, EB Garamond all rejected on 2026-04-11 as not matching Ogg's character for the brand mark.
+
+**When to resolve:** Before any major marketing push, before the portfolio gets real traffic, or the moment income permits — whichever comes first.
 
 ## Known Gotchas
 

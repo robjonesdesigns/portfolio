@@ -317,6 +317,11 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
           initEmailCopy();
           document.documentElement.classList.add('js-ready');
           window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+          // Move focus to <main> so screen readers announce the new page
+          // and keyboard users land at the content start, not the top of
+          // the previous page's tab order. main has tabindex="-1" for this.
+          var main = document.getElementById('main');
+          if (main) main.focus({ preventScroll: true });
           initScrollObserver();
           initLazyVideos();
         });

@@ -41,7 +41,21 @@
   font-display: swap;
 }
 
-/* ─── Ogg — editorial accent (trial, italic only) ────────────────────── */
+/* ─── Ogg — editorial accent (trial, italic only) ──────────────────────
+ * TODO: BUY SHARP TYPE OGG WEB LICENSE when income permits.
+ * Currently using the trial version for the hero "Rob" italic (see
+ * index.astro line 38). Legal risk is low at current traffic but should
+ * be resolved before any real marketing visibility or before the
+ * portfolio lands a commercial engagement.
+ *
+ * Alternatives considered (2026-04-11) but rejected: Cormorant Garamond,
+ * Fraunces, DM Serif Display, EB Garamond, Playfair Display — none
+ * matched Ogg's character for the brand mark.
+ *
+ * Other option when ready: trace "Rob" as SVG outlines in Figma (Type →
+ * Outline Stroke) and drop the font file entirely. The letterforms as
+ * SVG path data are artwork, not font distribution.
+ */
 @font-face {
   font-family: 'Ogg';
   src: url('/fonts/Ogg-Italic-Trial.woff2') format('woff2');
