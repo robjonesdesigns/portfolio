@@ -471,6 +471,10 @@
   box-shadow: 0 4px 12px rgba(92, 82, 80, 0.07);
   animation: navbar-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
+.navbar-scroll-ready {
+  animation: none;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
 :root.dark .navbar-header {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
@@ -478,6 +482,9 @@
 @keyframes navbar-enter {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+.navbar-hidden {
+  transform: translateY(-100%);
 }
 
 .logo-mark {

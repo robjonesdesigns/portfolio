@@ -136,6 +136,27 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
           });
         }
 
+        function initNavbarScroll() {
+          var nav = document.querySelector('.navbar-header');
+          if (!nav) return;
+          nav.addEventListener('animationend', function() {
+            nav.classList.add('navbar-scroll-ready');
+          }, { once: true });
+          var lastY = 0;
+          var threshold = 8;
+          window.addEventListener('scroll', function() {
+            var y = window.scrollY;
+            if (y < 100) {
+              nav.classList.remove('navbar-hidden');
+            } else if (y > lastY + threshold) {
+              nav.classList.add('navbar-hidden');
+            } else if (y < lastY - threshold) {
+              nav.classList.remove('navbar-hidden');
+            }
+            lastY = y;
+          }, { passive: true });
+        }
+
         function restoreTheme() {
           try {
             var stored = localStorage.getItem('theme');
@@ -186,6 +207,7 @@ const metaImage = ogImage ?? `${SITE_URL}/images/og-image.jpg`
         // Enable animations, observe scroll elements, lazy load videos
         document.documentElement.classList.add('js-ready');
         initScrollObserver();
+        initNavbarScroll();
         initLazyVideos();
 
         function initThemeToggle() {
