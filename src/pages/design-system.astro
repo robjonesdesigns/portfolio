@@ -6,7 +6,7 @@ import Badge from '../components/ui/Badge.astro'
 
 const colors = [
   { name: '--bg',           label: 'Background',       light: '#fffbf5', dark: '#1c1a16' },
-  { name: '--bg-subtle',    label: 'Background Subtle', light: '#e8e2d6', dark: '#26231d' },
+  { name: '--bg-subtle',    label: 'Background Subtle', light: '#f0ebe1', dark: '#26231d' },
   { name: '--surface',      label: 'Surface',           light: '#f5eee0', dark: '#302c24' },
   { name: '--fg',           label: 'Foreground',        light: '#1c1a16', dark: '#fffbf5' },
   { name: '--fg-secondary', label: 'Secondary',         light: '#6b6459', dark: '#c2bab0' },
@@ -26,6 +26,18 @@ const typeScale = [
   { class: 'type-link',        label: 'Link',         size: '16px / 20px',    font: 'Areal' },
   { class: 'type-badge',       label: 'Badge',        size: '16px / 20px',    font: 'Areal' },
   { class: 'type-meta',        label: 'Meta',         size: '14px',           font: 'Areal', note: 'Secondary color, no responsive step' },
+]
+
+const contrastSwatches = [
+  { fg: '--fg',           bg: '--bg',        label: '--fg on --bg',                  light: '16.85:1 · AAA', dark: '16.85:1 · AAA' },
+  { fg: '--fg',           bg: '--bg-subtle',  label: '--fg on --bg-subtle',           light: '14.78:1 · AAA', dark: '15.19:1 · AAA' },
+  { fg: '--fg',           bg: '--surface',    label: '--fg on --surface',             light: '15.05:1 · AAA', dark: '13.48:1 · AAA' },
+  { fg: '--fg-secondary', bg: '--bg',         label: '--fg-secondary on --bg',        light: '5.67:1 · AA',   dark: '9.05:1 · AAA' },
+  { fg: '--fg-secondary', bg: '--bg-subtle',  label: '--fg-secondary on --bg-subtle', light: '4.97:1 · AA',   dark: '8.16:1 · AAA' },
+  { fg: '--fg-secondary', bg: '--surface',    label: '--fg-secondary on --surface',   light: '5.06:1 · AA',   dark: '7.24:1 · AAA' },
+  { fg: '--accent',       bg: '--bg',         label: '--accent on --bg',              light: '7.93:1 · AAA',  dark: '5.70:1 · AA' },
+  { fg: '--accent',       bg: '--bg-subtle',  label: '--accent on --bg-subtle',       light: '6.94:1 · AA',   dark: '5.14:1 · AA' },
+  { fg: '--accent',       bg: '--surface',    label: '--accent on --surface',         light: '7.08:1 · AAA',  dark: '4.55:1 · AA' },
 ]
 
 const spacingSteps = [
@@ -98,140 +110,19 @@ const spacingSteps = [
         {/* Accessibility */}
         <section class="mb-20" data-animate>
           <h2 class="type-display-md mb-3">Accessibility</h2>
-          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Every text and background combination passes WCAG 2.1 AA. All primary text hits AAA.</p>
+          <p class="type-body text-fg-secondary mb-8 max-w-3xl">Every text and background combination passes WCAG 2.1 AA. All primary text hits AAA. Toggle the theme to see both modes live.</p>
 
-          <p class="type-label mb-4">Light theme</p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
-              <span class="type-body" style="color: #1c1a16; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--fg on --bg</p>
-                <p class="type-meta" style="color: #6b6459;">16.85:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #e8e2d6;">
-              <span class="type-body" style="color: #1c1a16; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--fg on --bg-subtle</p>
-                <p class="type-meta" style="color: #6b6459;">13.47:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #f5eee0;">
-              <span class="type-body" style="color: #1c1a16; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--fg on --surface</p>
-                <p class="type-meta" style="color: #6b6459;">15.05:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
-              <span class="type-body" style="color: #6b6459; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--fg-secondary on --bg</p>
-                <p class="type-meta" style="color: #6b6459;">5.67:1 -- AA</p>
-              </div>
-            </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #e8e2d6;">
-              <span class="type-body" style="color: #6b6459; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--fg-secondary on --bg-subtle</p>
-                <p class="type-meta" style="color: #6b6459;">4.53:1 -- AA</p>
-              </div>
-            </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #f5eee0;">
-              <span class="type-body" style="color: #6b6459; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--fg-secondary on --surface</p>
-                <p class="type-meta" style="color: #6b6459;">5.06:1 -- AA</p>
-              </div>
-            </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #fffbf5;">
-              <span class="type-body" style="color: #813746; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--accent on --bg</p>
-                <p class="type-meta" style="color: #6b6459;">7.93:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #e8e2d6;">
-              <span class="type-body" style="color: #813746; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--accent on --bg-subtle</p>
-                <p class="type-meta" style="color: #6b6459;">6.34:1 -- AA</p>
-              </div>
-            </div>
-            <div class="rounded-lg border border-token p-5 flex items-center gap-4" style="background-color: #f5eee0;">
-              <span class="type-body" style="color: #813746; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #6b6459;">--accent on --surface</p>
-                <p class="type-meta" style="color: #6b6459;">7.08:1 -- AAA</p>
-              </div>
-            </div>
-          </div>
-
-          <p class="type-label mb-4">Dark theme</p>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #fffbf5; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg on --bg</p>
-                <p class="type-meta" style="color: #c2bab0;">16.85:1 -- AAA</p>
+            {contrastSwatches.map(s => (
+              <div class="rounded-lg border border-token p-5 flex items-center gap-4" style={`background-color: var(${s.bg});`}>
+                <span style={`color: var(${s.fg}); font-size: 2rem; font-weight: 700; line-height: 1;`}>Aa</span>
+                <div class="flex flex-col gap-2">
+                  <p class="type-meta text-fg-secondary">{s.label}</p>
+                  <p class="type-meta text-fg-secondary contrast-light">{s.light}</p>
+                  <p class="type-meta text-fg-secondary contrast-dark">{s.dark}</p>
+                </div>
               </div>
-            </div>
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #26231d; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #fffbf5; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg on --bg-subtle</p>
-                <p class="type-meta" style="color: #c2bab0;">15.19:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #302c24; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #fffbf5; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg on --surface</p>
-                <p class="type-meta" style="color: #c2bab0;">13.48:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg</p>
-                <p class="type-meta" style="color: #c2bab0;">9.05:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #26231d; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --bg-subtle</p>
-                <p class="type-meta" style="color: #c2bab0;">8.16:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #302c24; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #c2bab0; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--fg-secondary on --surface</p>
-                <p class="type-meta" style="color: #c2bab0;">7.24:1 -- AAA</p>
-              </div>
-            </div>
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #1c1a16; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #e36f86; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--accent on --bg</p>
-                <p class="type-meta" style="color: #c2bab0;">5.70:1 -- AA</p>
-              </div>
-            </div>
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #26231d; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #e36f86; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--accent on --bg-subtle</p>
-                <p class="type-meta" style="color: #c2bab0;">5.14:1 -- AA</p>
-              </div>
-            </div>
-            <div class="rounded-lg p-5 flex items-center gap-4" style="background-color: #302c24; border: 1px solid rgba(176,168,150,0.2);">
-              <span class="type-body" style="color: #e36f86; font-size: 2rem;">Aa</span>
-              <div class="flex flex-col gap-2">
-                <p class="type-meta" style="color: #c2bab0;">--accent on --surface</p>
-                <p class="type-meta" style="color: #c2bab0;">4.55:1 -- AA</p>
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* Accessibility features */}
