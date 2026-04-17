@@ -140,7 +140,7 @@ export const projects = [
     ugaContent: 'I didn\'t know whether this should be a non-profit or a for-profit. The portal felt like a public good. The consumer app needed revenue. I took the whole question to UGA\'s Business Law Clinic: entity type, IP ownership, equity structure. They said LLC, protect the IP early, get equity on paper. That gave the project a legal foundation it didn\'t have before.',
     outcome: 'Designed both sides of the platform and built the consumer app with live public records data. Active listings with geocoding, Street View imagery, and sale type classification. Built a complete design token system with zero hardcoded values across both products. Research across 20+ municipalities produced the outreach playbook for the first county pilot.',
     metaProblem: 'Homebuyers had nothing. Counties had no way to reach them. Both sides needed a product that didn\'t exist.',
-    role: 'Co-founder, Design + Engineering',
+    role: 'Co-founder, Design & Engineering',
     duration: '5 months',
     team: 'Solo. Designed and built the entire product.',
     color: '#a0522d',

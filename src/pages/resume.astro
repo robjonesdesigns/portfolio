@@ -6,12 +6,23 @@ import Button from '../components/ui/Button.astro'
 
 const experience = [
   {
+    company:  'Keytrn Technologies',
+    role:     'Co-founder, Design & Engineering',
+    period:   'May 2025 – Present',
+    bullets: [
+      'Built a two-sided real-estate platform (consumer homebuyers plus government county clerks) for Pennsylvania tax sale properties, solo from discovery through production.',
+      'Led primary research across 20+ Pennsylvania counties: customer interviews with Tax Claim Bureau staff, synthesized transcripts in NotebookLM, translated findings directly into information architecture and upload UX.',
+      'Engineered the full design system (Tailwind v4 tokens, 30+ component classes, 14 type compositions) and eliminated 1,600+ inline styles across 53 React components.',
+      'Shipped Ask Key, an AI assistant on every page powered by Claude Haiku, context-aware of the property being viewed and trained on PA tax sale law.',
+    ],
+  },
+  {
     company:  'Honeywell: Asset Performance Management (APM)',
     role:     'UX Designer',
     period:   '2024 – 2025',
     bullets: [
       'Wrote screeners and interview guides from scratch, ran moderated usability sessions on UserTesting, and affinity mapped findings in Miro after each round to inform design decisions.',
-      'Redesigned Asset Health and built Asset Details from scratch. Raised SUS scores from the low 70s to the high 80s through research-driven iteration.',
+      'Redesigned Asset Health and built Asset Details from scratch. Increased SUS scores from 72 to 88 (22% improvement) through research-led iteration on complex data-heavy dashboards.',
       "Provided iterative design support across peers' dashboards and contributed updates across both the APM and Warehouse platforms throughout the engagement.",
     ],
   },
@@ -28,18 +39,17 @@ const experience = [
   {
     company:  'Freelance',
     role:     'Product Designer',
-    period:   '2021 – 2026',
+    period:   '2021 – Present',
     bullets: [
-      'Shipped a corporate transparency app (Aysa) from concept to live in 2 weeks, earning 15,000+ views in its first social rollout. Rebuilt the investor pitch deck from scratch in support of a $2.1M seed round.',
+      'Launched a corporate transparency app (Aysa) from concept to live in 2 weeks, earning 15,000+ views in its first social rollout. Rebuilt the investor pitch deck from scratch in support of a $2.1M seed round.',
       "Designed Sinta's full HR interview platform from scratch: interview builder, live session screen with competency timestamping, post-interview review, and candidate scorecard. Founders pitched investors directly from the designs. Design agency later hired to build on the foundation.",
-      'Led primary research across 20+ Pennsylvania county offices for Keytrn (PropTech platform) and designed both the government upload portal and consumer property browser as the sole designer.',
       'Led the mentee side of Alonesy (mentorship app): moderated interviews with 11 participants, 3 rounds of iteration, shipped with developers. App still live.',
       'Designed and built agency and client websites in Webflow for Coffee & Bananaz. Designed and maintained campaign websites for Justice Democrats across senate and congressional races.',
     ],
   },
 ]
 
-const tools = ['Figma', 'Balsamiq', 'Framer', 'Webflow', 'WordPress', 'Miro', 'Jira', 'Confluence', 'UserTesting', 'React', 'Astro']
+const tools = ['Figma', 'Webflow', 'WordPress', 'Miro', 'Jira', 'Confluence', 'UserTesting', 'React', 'Astro']
 
 const methods = [
   'Human-Centered Design',
@@ -62,7 +72,7 @@ const skills = [
 
 <Layout
   title="Resume"
-  description="Resume of Rob Jones - UX Designer for enterprise SaaS and product builder for early-stage founders. Available for new roles."
+  description="Resume of Rob Jones - Product Designer for enterprise SaaS and early-stage startups. Available for new roles."
   canonical="/resume"
 >
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -73,9 +83,12 @@ const skills = [
       "name": "Rob Jones",
       "jobTitle": "Product Designer",
       "url": "https://designedbyrob.com",
-      "sameAs": ["https://linkedin.com/in/robjonesdesigns"],
+      "sameAs": [
+        "https://linkedin.com/in/robjonesdesigner",
+        "https://github.com/robjonesdesigns"
+      ],
       "hasOccupation": [
-        { "@type": "Occupation", "name": "UX Designer", "occupationalCategory": "27-1024.00" },
+        { "@type": "Occupation", "name": "Product Designer", "occupationalCategory": "27-1024.00" },
       ]
     }
   })} />
@@ -88,7 +101,7 @@ const skills = [
         </h1>
 
         <p class="type-display-md tracking-tight mb-6" data-animate-y data-animate-delay="1">
-          UX &amp; Product Designer with 4+ years across startups &amp; SaaS enterprise
+          Product Designer with nearly 5 years across startups &amp; enterprise SaaS
         </p>
 
         <div class="flex flex-wrap gap-4 type-body" data-animate data-animate-delay="2">
@@ -97,7 +110,9 @@ const skills = [
             robjonesdesigns@gmail.com
           </a>
           <span class="text-fg-secondary">·</span>
-          <span>470-382-0603</span>
+          <span>+1 470 382 0603</span>
+          <span class="text-fg-secondary">·</span>
+          <span>Atlanta, GA, USA</span>
           <span class="text-fg-secondary">·</span>
           <a href="https://linkedin.com/in/robjonesdesigner" target="_blank" rel="noopener noreferrer"
             aria-label="LinkedIn profile (opens in new tab)"
@@ -161,6 +176,21 @@ const skills = [
           <div>
             <p class="type-body font-bold">Stony Brook University</p>
             <p class="type-body mt-1">BA in Studio Arts</p>
+          </div>
+          <div />
+        </div>
+      </div>
+
+      {/* Certifications */}
+      <div class="mb-16">
+        <div class="mb-8">
+          <h2 class="type-display-sm" data-animate-y>Certifications</h2>
+        </div>
+        <div class="grid md:grid-cols-[1fr_2fr] gap-4 md:gap-12 py-8 border-t border-token" data-animate>
+          <div>
+            <p class="type-body font-bold">Nielsen Norman Group</p>
+            <p class="type-body mt-1">UX Certification (UXC)</p>
+            <p class="type-meta mt-1">ID 1074409</p>
           </div>
           <div>
             <p class="type-body font-bold">CareerFoundry</p>
